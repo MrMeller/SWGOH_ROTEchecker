@@ -1,96 +1,122 @@
 import { describe, expect, it } from "vitest";
 import { phasePlanSentence, unitPlanSentence } from "./format";
-import { allocateUnit, missingSlots, phasePlan, planetOrder } from "./plan";
-import { phaseRequirements } from "./status";
-import { requirements } from "./test-data";
+import { maxPlatoons, phasePlan, unitAllocation } from "./plan";
+import type { Phase, Planet } from "./requirements";
+import type { Snapshot } from "./snapshot";
+import { phaseStatus } from "./status";
+import { readData, requirements } from "./test-data";
 
-const DS = "Mustafar";
-const MX = "Corellia";
-const LS = "Coruscant";
-const BONUS = "Zeffo";
-const ORDER = [DS, MX, LS];
-const unit = (baseId: string, meets: number, planets: Record<string, number>) => ({
-  baseId,
-  meets,
-  planets: Object.entries(planets).map(([planet, required]) => ({ planet, required })),
+const demand = (ids: string[]) => ids.reduce((m, id) => m.set(id, (m.get(id) ?? 0) + 1), new Map<string, number>());
+const supply = (o: Record<string, number>) => new Map(Object.entries(o));
+
+const planet = (name: string, platoons: string[][], bonus = false): Planet => ({
+  name,
+  alignment: "Light Side",
+  bonus,
+  units: [],
+  platoons,
 });
+const phase = (...planets: Planet[]): Phase => ({ phase: 1, minRelic: 5, planets });
 
-describe("allocateUnit", () => {
-  it("fills focus planets first, then the rest in display order", () => {
-    expect(allocateUnit(unit("A", 7, { [DS]: 7, [MX]: 5 }).planets, 7, [MX], ORDER)).toEqual([
-      { planet: DS, required: 7, placed: 2, focus: false },
-      { planet: MX, required: 5, placed: 5, focus: true },
-      { planet: LS, required: 0, placed: 0, focus: false },
-    ]);
+describe("maxPlatoons", () => {
+  it("finds the true maximum, not just the greedy pick", () => {
+    // Greedy takes the first platoon (A x2) and is stuck at 1; two A x1 platoons fit together.
+    const r = maxPlatoons([demand(["A", "A"]), demand(["A"]), demand(["A"])], supply({ A: 2 }));
+    expect(r).toEqual({ chosen: [1, 2], exact: true });
+  });
+
+  it("takes everything when everything fits, and nothing when a unit is missing", () => {
+    expect(maxPlatoons([demand(["A"]), demand(["B"])], supply({ A: 1, B: 1 })).chosen).toEqual([0, 1]);
+    expect(maxPlatoons([demand(["A", "C"])], supply({ A: 5 })).chosen).toEqual([]);
+  });
+
+  it("keeps the earlier platoons on a tie", () => {
+    expect(maxPlatoons([demand(["A"]), demand(["A"]), demand(["A"])], supply({ A: 2 })).chosen).toEqual([0, 1]);
+  });
+
+  it("reports when it stops at the node limit", () => {
+    const r = maxPlatoons([demand(["A", "A"]), demand(["A"]), demand(["A"])], supply({ A: 2 }), 1);
+    expect(r.exact).toBe(false);
+    expect(r.chosen).toEqual([0]);
   });
 });
 
 describe("phasePlan", () => {
-  it("picks the largest set of planets that can be filled completely", () => {
-    // A is shared: 4 players cover DS 2 + LS 2, but not Mixed 3 as well.
-    const units = [unit("A", 4, { [DS]: 2, [MX]: 3, [LS]: 2 }), unit("B", 9, { [DS]: 1, [MX]: 1, [LS]: 1 })];
-    expect(missingSlots(units, [DS, LS])).toBe(0);
-    expect(missingSlots(units, [DS, MX, LS])).toBe(3);
-    const plan = phasePlan(units, ORDER);
-    expect(plan.complete).toBe(true);
-    expect(plan.focus).toEqual([DS, LS]);
-    expect(plan.planets.find((p) => p.planet === MX)).toMatchObject({ slots: 4, filled: 1, focus: false });
+  it("marks planned platoons per planet and counts the slots each unit fills", () => {
+    const p = phase(planet("Kashyyyk", [["A", "B"], ["A", "C"], ["D"]]), planet("Zeffo", [["A"], ["B"]], true));
+    const plan = phasePlan(p, supply({ A: 2, B: 1, C: 1 }));
+    expect(plan.total).toBe(5);
+    // Nobody meets D, so Kashyyyk 3 stays open. With 2 A and 1 B, filling Kashyyyk 1 and 2
+    // gives 2 platoons; Kashyyyk 2 plus both Zeffo platoons gives 3, so the plan takes that.
+    expect(plan.planets).toEqual([
+      { planet: "Kashyyyk", platoons: [false, true, false], filled: 1 },
+      { planet: "Zeffo", platoons: [true, true], filled: 2 },
+    ]);
+    expect(plan.filled).toBe(3);
+    expect(plan.planned.get("A")).toEqual(new Map([["Kashyyyk", 1], ["Zeffo", 1]]));
   });
 
-  it("breaks ties by leaving the other planet closest to full", () => {
-    const units = [unit("A", 3, { [DS]: 1, [LS]: 3 }), unit("B", 3, { [DS]: 3, [LS]: 3 })];
-    const plan = phasePlan(units, ORDER);
-    expect(plan.focus).toEqual([DS]);
-    expect(plan.planets.find((p) => p.planet === LS)!.filled).toBe(2);
+  it("prefers regular planets over bonus planets on a tie", () => {
+    const plan = phasePlan(phase(planet("Zeffo", [["A"]], true), planet("Kashyyyk", [["A"]])), supply({ A: 1 }));
+    expect(plan.planets.find((x) => x.planet === "Kashyyyk")!.filled).toBe(1);
+    expect(plan.planets.find((x) => x.planet === "Zeffo")!.filled).toBe(0);
   });
 
-  it("falls back to the planet with the fewest empty slots", () => {
-    const units = [unit("A", 0, { [DS]: 2, [LS]: 1 }), unit("B", 5, { [DS]: 5, [LS]: 1 }), unit("C", 0, { [LS]: 3 })];
-    const plan = phasePlan(units, ORDER);
-    expect(plan.complete).toBe(false);
-    expect(plan.focus).toEqual([DS]);
-    expect(phasePlanSentence(plan)).toBe(
-      "No planet can be filled completely yet. Closest is Mustafar: 2 of 7 slots still empty.",
-    );
+  it("fills every real platoon when everyone meets everything, and none when nobody does", () => {
+    for (const p of requirements.phases) {
+      const ids = new Set(p.planets.flatMap((pl) => pl.platoons.flat()));
+      const all = phasePlan(p, new Map([...ids].map((id) => [id, 99])));
+      expect(all.filled).toBe(all.total);
+      expect(all.total).toBe(p.planets.length * 6);
+      expect(phasePlan(p, new Map()).filled).toBe(0);
+    }
   });
 
-  it("treats a bonus planet as its own planet, even with the same alignment", () => {
-    // Kashyyyk (LS) and Zeffo (bonus, LS) compete for the same 3 players of A.
-    const order = ["Kashyyyk", BONUS];
-    const units = [unit("A", 3, { Kashyyyk: 2, [BONUS]: 2 }), unit("B", 9, { Kashyyyk: 1, [BONUS]: 1 })];
-    const plan = phasePlan(units, order);
-    expect(plan.planets.map((p) => p.planet)).toEqual(["Kashyyyk", BONUS]);
-    expect(plan.focus).toHaveLength(1);
-  });
-
-  it("describes the plan in plain words", () => {
-    const units = [unit("A", 4, { [DS]: 2, [MX]: 3, [LS]: 2 }), unit("B", 9, { [DS]: 1, [MX]: 1, [LS]: 1 })];
-    expect(phasePlanSentence(phasePlan(units, ORDER))).toBe(
-      "Focus on Mustafar and Coruscant: they can be filled completely. After that, Corellia 3 short.",
-    );
-    expect(phasePlanSentence(phasePlan([unit("A", 9, { [DS]: 2, [LS]: 2 })], ORDER))).toBe(
-      "Every planet can be filled completely.",
-    );
-  });
-
-  it("fills every real planet, bonus ones included, when everyone meets everything", () => {
-    for (const phase of requirements.phases) {
-      const everyone = phaseRequirements(phase).map((u) => ({ ...u, meets: 99 }));
-      const plan = phasePlan(everyone, planetOrder(phase));
-      expect(plan.focus).toEqual(planetOrder(phase));
-      expect(plan.planets.every((x) => x.slots === 90 && x.filled === 90)).toBe(true);
+  it("solves every real phase exactly on the demo roster, quickly", () => {
+    const snapshot = JSON.parse(readData("snapshots/demo.json")) as Snapshot;
+    for (const p of requirements.phases) {
+      const meets = new Map(phaseStatus(p, snapshot.players).map((u) => [u.baseId, u.meets]));
+      const started = Date.now();
+      const plan = phasePlan(p, meets);
+      expect(plan.exact, `P${p.phase}`).toBe(true);
+      expect(Date.now() - started, `P${p.phase} ms`).toBeLessThan(2000);
+      // The planned platoons never need more players than meet a unit.
+      for (const [id, perPlanet] of plan.planned) {
+        expect([...perPlanet.values()].reduce((a, n) => a + n, 0)).toBeLessThanOrEqual(meets.get(id) ?? 0);
+      }
     }
   });
 });
 
-describe("unitPlanSentence", () => {
-  const s = (meets: number, planets: Record<string, number>, focus: string[]) =>
-    unitPlanSentence(allocateUnit(unit("X", meets, planets).planets, meets, focus, ORDER));
+describe("unitAllocation", () => {
+  const p = phase(planet("Kessel", [["A", "A", "B"], ["A", "C"], ["B"]]), planet("Lothal", [["A"]]));
 
-  it("follows the phase plan", () => {
-    expect(s(7, { [DS]: 7, [MX]: 5 }, [DS])).toBe("Covers the focus planet. 5 more needed for Corellia.");
-    expect(s(3, { [DS]: 7, [MX]: 5 }, [DS])).toBe("4 short on Mustafar, the focus planet. Gear this unit first.");
-    expect(s(12, { [DS]: 7, [MX]: 5 }, [DS])).toBe("Enough for every planet.");
-    expect(s(1, { [MX]: 2 }, [DS])).toBe("Not needed on the focus planet. 1 more needed for Corellia.");
+  it("shows the platoons a unit is in, what the plan fills, and what it is short for", () => {
+    // Nobody meets C, so Kessel 2 stays open. The plan fills Kessel 1 and 3 and Lothal,
+    // using all 3 A: none spare for Kessel 2, so A is short for it as well.
+    const plan = phasePlan(p, supply({ A: 3, B: 2 }));
+    expect(unitAllocation(p, plan, "A", 3)).toEqual([
+      { planet: "Kessel", required: 3, planned: 2, platoons: [true, false, undefined], shortFor: 1 },
+      { planet: "Lothal", required: 1, planned: 1, platoons: [true], shortFor: 0 },
+    ]);
+    // With a fourth A there is one spare, so only C holds Kessel 2 back.
+    const roomy = phasePlan(p, supply({ A: 4, B: 2 }));
+    expect(unitAllocation(p, roomy, "A", 4)[0].shortFor).toBe(0);
+  });
+
+  it("describes the unit and the phase in plain words", () => {
+    const plan = phasePlan(p, supply({ A: 3, B: 2 }));
+    expect(phasePlanSentence(plan)).toBe("3 of 4 platoons can be filled at the same time: Kessel 2 and Lothal 1.");
+    expect(unitPlanSentence(unitAllocation(p, plan, "B", 2))).toBe("Enough for every platoon it is in.");
+    expect(unitPlanSentence(unitAllocation(p, plan, "A", 3))).toBe(
+      "Short for 1 platoon on Kessel. Gearing this unit opens them up, if their other units are covered.",
+    );
+    const roomy = phasePlan(p, supply({ A: 4, B: 2 }));
+    expect(unitPlanSentence(unitAllocation(p, roomy, "A", 4))).toBe(
+      "Enough for every platoon the plan fills. Other units hold its open platoons back.",
+    );
+    const tight = phasePlan(p, supply({ A: 1, B: 2 }));
+    expect(unitPlanSentence(unitAllocation(p, tight, "A", 1))).toMatch(/^Short for \d platoons? on /);
+    expect(phasePlanSentence(phasePlan(p, new Map()))).toBe("No platoon can be filled completely yet.");
   });
 });

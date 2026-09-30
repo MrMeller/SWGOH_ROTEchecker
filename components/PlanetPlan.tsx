@@ -1,6 +1,6 @@
 import { phasePlanSentence, unitPlanSentence } from "@/lib/format";
-import { allocateUnit, type PhasePlan } from "@/lib/plan";
-import type { Planet } from "@/lib/requirements";
+import { unitAllocation, type PhasePlan } from "@/lib/plan";
+import type { Phase, Planet } from "@/lib/requirements";
 import { PLANET_STYLE } from "./planets";
 
 type PlanetMeta = Pick<Planet, "name" | "alignment" | "bonus">;
@@ -14,65 +14,72 @@ export function PlanetTag({ planet }: { planet: PlanetMeta }) {
   );
 }
 
-function PlanetCard({
-  planet,
-  value,
-  total,
-  unitLabel,
-  focus,
+/**
+ * Six flat pills, one per platoon: filled in the planet colour when the plan fills it,
+ * an outline when it stays open. `undefined` marks a platoon that does not apply (faded).
+ */
+export function PlatoonPills({
+  platoons,
+  alignment,
+  className = "",
 }: {
-  planet: PlanetMeta;
-  value: number;
-  total: number;
-  unitLabel: string;
-  focus: boolean;
+  platoons: readonly (boolean | undefined)[];
+  alignment: Planet["alignment"];
+  className?: string;
 }) {
-  const style = PLANET_STYLE[planet.alignment];
-  if (!total) {
-    return (
-      <div className="rounded-lg border-t-4 border-t-slate-700 bg-slate-900/40 p-2 text-center">
-        <p className="text-xs font-semibold break-words text-slate-500">{planet.name}</p>
-        <p className="mt-2 text-xs text-slate-600">Not needed</p>
-      </div>
-    );
-  }
-  const full = value >= total;
+  const filled = platoons.filter(Boolean).length;
+  const applies = platoons.filter((p) => p !== undefined).length;
   return (
     <div
-      className={`relative rounded-lg border-t-4 ${style.accent} p-2 text-center ${
-        focus ? `bg-slate-800 ring-2 ${style.ring}` : "bg-slate-900 ring-1 ring-slate-800"
-      }`}
+      role="img"
+      aria-label={`${filled} of ${applies} platoons filled`}
+      className={`grid grid-cols-6 gap-1 ${className}`}
     >
-      {focus && (
-        <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 rounded-full bg-slate-100 px-1.5 text-[10px] font-bold tracking-wide text-slate-900 uppercase">
-          Focus
-        </span>
-      )}
+      {platoons.map((p, i) => (
+        <span
+          key={i}
+          className={`h-1.5 rounded-full ${
+            p === undefined
+              ? "bg-slate-800"
+              : p
+                ? PLANET_STYLE[alignment].bar
+                : `ring-1 ring-inset ${PLANET_STYLE[alignment].ring} opacity-70`
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
+
+function PlanetCard({ planet, children }: { planet: PlanetMeta; children: React.ReactNode }) {
+  const style = PLANET_STYLE[planet.alignment];
+  return (
+    <div className={`rounded-lg border-t-4 ${style.accent} bg-slate-900 p-2 text-center ring-1 ring-slate-800`}>
       <p className={`text-xs leading-tight font-semibold break-words ${style.text}`}>{planet.name}</p>
       <PlanetTag planet={planet} />
-      <p className="mt-1 text-lg leading-tight font-semibold tabular-nums">
-        {value}
-        <span className="text-sm font-normal text-slate-500"> / {total}</span>
-      </p>
-      <p className="text-[11px] text-slate-500">{unitLabel}</p>
-      <div className="mt-2 h-1.5 overflow-hidden rounded-full bg-slate-700/60">
-        <div className={`h-full ${full ? style.bar : "bg-slate-400"}`} style={{ width: `${Math.min(100, (value / total) * 100)}%` }} />
-      </div>
+      {children}
     </div>
   );
 }
 
 const gridCols = (n: number) => (n > 3 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3");
 
-/** Phase level: every planet in display order with how full the plan gets it. */
+/** Phase level: per planet, how many of its six platoons the plan fills. */
 export function PhasePlanCard({ plan, planets }: { plan: PhasePlan; planets: PlanetMeta[] }) {
   return (
     <div>
-      <div className={`grid gap-2 pt-2 ${gridCols(planets.length)}`}>
+      <div className={`grid gap-2 ${gridCols(planets.length)}`}>
         {planets.map((meta) => {
-          const p = plan.planets.find((x) => x.planet === meta.name);
+          const p = plan.planets.find((x) => x.planet === meta.name)!;
           return (
-            <PlanetCard key={meta.name} planet={meta} value={p?.filled ?? 0} total={p?.slots ?? 0} unitLabel="slots filled" focus={!!p?.focus} />
+            <PlanetCard key={meta.name} planet={meta}>
+              <p className="mt-1 text-lg leading-tight font-semibold tabular-nums">
+                {p.filled}
+                <span className="text-sm font-normal text-slate-500"> / {p.platoons.length}</span>
+              </p>
+              <p className="text-[11px] text-slate-500">platoons</p>
+              <PlatoonPills platoons={p.platoons} alignment={meta.alignment} className="mt-2" />
+            </PlanetCard>
           );
         })}
       </div>
@@ -81,32 +88,32 @@ export function PhasePlanCard({ plan, planets }: { plan: PhasePlan; planets: Pla
   );
 }
 
-/** Unit level: where this unit's meeting players go under the phase plan. */
-export function UnitPlanetPlan({
-  unitPlanets,
-  meets,
-  plan,
-  planets,
-}: {
-  unitPlanets: { planet: string; required: number }[];
-  meets: number;
-  plan: PhasePlan;
-  planets: PlanetMeta[];
-}) {
-  const alloc = allocateUnit(unitPlanets, meets, plan.focus, planets.map((p) => p.name));
+/** Unit level: the platoons this unit is in, and how many players the plan places there. */
+export function UnitPlanetPlan({ phase, plan, baseId, meets }: { phase: Phase; plan: PhasePlan; baseId: string; meets: number }) {
+  const alloc = unitAllocation(phase, plan, baseId, meets);
   return (
     <div>
-      <div className={`grid gap-2 pt-2 ${gridCols(planets.length)}`}>
-        {alloc.map((a, i) => (
-          <PlanetCard
-            key={a.planet}
-            planet={planets[i]}
-            value={a.placed}
-            total={a.required}
-            unitLabel="players placed"
-            focus={a.focus && a.required > 0}
-          />
-        ))}
+      <div className={`grid gap-2 ${gridCols(phase.planets.length)}`}>
+        {alloc.map((a, i) => {
+          const meta = phase.planets[i];
+          return (
+            <PlanetCard key={a.planet} planet={meta}>
+              {a.required ? (
+                <>
+                  <p className="mt-1 text-lg leading-tight font-semibold tabular-nums">
+                    {a.planned}
+                    <span className="text-sm font-normal text-slate-500"> / {a.required}</span>
+                  </p>
+                  <p className="text-[11px] text-slate-500">in planned platoons</p>
+                  <PlatoonPills platoons={a.platoons} alignment={meta.alignment} className="mt-2" />
+                  {a.shortFor > 0 && <p className="mt-1.5 text-[11px] text-rose-300">short for {a.shortFor}</p>}
+                </>
+              ) : (
+                <p className="mt-2 text-xs text-slate-600">Not needed</p>
+              )}
+            </PlanetCard>
+          );
+        })}
       </div>
       <p className="mt-2 text-sm text-slate-300">{unitPlanSentence(alloc)}</p>
     </div>

@@ -5,7 +5,7 @@ import platoons from "@/data/rote-platoons.json";
 import ships from "@/data/fixtures/ships.json";
 import { focusList, type FocusItem } from "./focus";
 import { buildRequirements, type CatalogUnit, type Phase, type PlatoonData, type Requirements } from "./requirements";
-import { phasePlan, planetOrder, type PhasePlan } from "./plan";
+import { phasePlan, type PhasePlan } from "./plan";
 import { loadSnapshot, type Snapshot } from "./snapshot";
 import { phaseStatus, type PhaseUnitStatus } from "./status";
 
@@ -62,7 +62,7 @@ export function getFocus(n: number): FocusItem[] {
 const plans = new Map<number, PhasePlan>();
 
 export function getPhasePlan(n: number): PhasePlan {
-  if (!plans.has(n)) plans.set(n, phasePlan(getPhaseStatus(n), planetOrder(getPhase(n)!)));
+  if (!plans.has(n)) plans.set(n, phasePlan(getPhase(n)!, new Map(getPhaseStatus(n).map((u) => [u.baseId, u.meets]))));
   return plans.get(n)!;
 }
 
