@@ -15,8 +15,3 @@ export function StatusChip({ status }: { status: Status }) {
   );
 }
 
-export const STATUS_DOT: Record<Status, string> = {
-  enough: "bg-emerald-400",
-  planet: "bg-amber-300",
-  short: "bg-rose-400",
-};

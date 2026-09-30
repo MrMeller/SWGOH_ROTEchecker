@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import type { Phase, Requirements } from "./requirements";
-import { phaseRequirements, phaseStatus, statusFor, STATUS_COLOUR } from "./status";
+import { phaseRequirements, phaseStatus, statusFor } from "./status";
 import type { TrimmedPlayer } from "./swgoh";
 
 describe("statusFor (§5.3)", () => {
@@ -23,9 +23,6 @@ describe("statusFor (§5.3)", () => {
     expect(statusFor(2, 3, 3)).toBe("short");
   });
 
-  it("maps to the sheet colours", () => {
-    expect(STATUS_COLOUR).toEqual({ enough: "green", planet: "yellow", short: "red" });
-  });
 });
 
 const phase: Phase = {

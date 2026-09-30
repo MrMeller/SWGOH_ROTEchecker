@@ -1,12 +1,13 @@
-// swgoh.gg public API client (server-side only) and the trim-on-ingest step.
+// swgoh.gg API client (server-side only, needs a bot access key) and the trim-on-ingest step.
 // Field names and the relic offset are pinned by lib/swgoh.test.ts against
 // real responses saved in data/fixtures/.
 
 export const SWGOH_BASE = "https://swgoh.gg/api";
 export const USER_AGENT =
   "DutchJedi-RotE-Tracker/0.1 (+https://github.com/MrMeller/SWGOH_ROTEchecker; weekly guild sync)";
-export const MAX_CONCURRENCY = 3;
-const REQUEST_DELAY_MS = 250;
+export const API_KEY_HEADER = "x-gg-bot-access";
+/** swgoh.gg API terms ask for about 1 request per second, so requests are sequential. */
+export const REQUEST_INTERVAL_MS = 1000;
 
 /** swgoh.gg stores relic_tier shifted by 2: 1 = locked, 2 = R0 ... 12 = R10. Ships are null. */
 export const RELIC_TIER_OFFSET = 2;
@@ -96,43 +97,30 @@ export class SwgohError extends Error {
   }
 }
 
-async function getJson<T>(url: string, fetchImpl: typeof fetch = fetch): Promise<T> {
-  const res = await fetchImpl(url, { headers: { "User-Agent": USER_AGENT, Accept: "application/json" } });
+export interface ClientOptions {
+  /** swgoh.gg bot access key, sent as the x-gg-bot-access header. */
+  apiKey: string;
+  fetchImpl?: typeof fetch;
+}
+
+async function getJson<T>(url: string, { apiKey, fetchImpl = fetch }: ClientOptions): Promise<T> {
+  const res = await fetchImpl(url, {
+    headers: { "User-Agent": USER_AGENT, Accept: "application/json", [API_KEY_HEADER]: apiKey },
+  });
   if (res.headers.get("cf-mitigated") === "challenge") {
-    throw new SwgohError(`Blocked by a Cloudflare challenge: ${url}`, res.status);
+    throw new SwgohError(`Blocked by a Cloudflare challenge (${url}). Is the API key valid?`, res.status);
+  }
+  if (res.status === 401 || res.status === 403) {
+    throw new SwgohError(`HTTP ${res.status} for ${url}: API key missing, invalid or revoked`, res.status);
   }
   if (!res.ok) throw new SwgohError(`HTTP ${res.status} for ${url}`, res.status);
   return (await res.json()) as T;
 }
 
-export function fetchGuildProfile(guildId: string, fetchImpl?: typeof fetch): Promise<RawGuildProfile> {
-  return getJson(`${SWGOH_BASE}/guild-profile/${guildId}/`, fetchImpl);
+export function fetchGuildProfile(guildId: string, opts: ClientOptions): Promise<RawGuildProfile> {
+  return getJson(`${SWGOH_BASE}/guild-profile/${guildId}/`, opts);
 }
 
-export function fetchPlayer(allyCode: number, fetchImpl?: typeof fetch): Promise<RawPlayer> {
-  return getJson(`${SWGOH_BASE}/player/${allyCode}/`, fetchImpl);
-}
-
-/** Run tasks with at most `limit` in flight and a small pause between starts. */
-export async function mapLimited<T, R>(
-  items: readonly T[],
-  fn: (item: T) => Promise<R>,
-  limit = MAX_CONCURRENCY,
-  delayMs = REQUEST_DELAY_MS,
-): Promise<PromiseSettledResult<R>[]> {
-  const results: PromiseSettledResult<R>[] = new Array(items.length);
-  let next = 0;
-  const worker = async () => {
-    while (next < items.length) {
-      const i = next++;
-      try {
-        results[i] = { status: "fulfilled", value: await fn(items[i]) };
-      } catch (reason) {
-        results[i] = { status: "rejected", reason };
-      }
-      if (delayMs) await new Promise((r) => setTimeout(r, delayMs));
-    }
-  };
-  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, worker));
-  return results;
+export function fetchPlayer(allyCode: number, opts: ClientOptions): Promise<RawPlayer> {
+  return getJson(`${SWGOH_BASE}/player/${allyCode}/`, opts);
 }

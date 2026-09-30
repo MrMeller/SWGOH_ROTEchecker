@@ -3,8 +3,8 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 import type { Requirements } from "./requirements";
 import {
+  API_KEY_HEADER,
   fetchPlayer,
-  mapLimited,
   relicFromTier,
   trimPlayer,
   USER_AGENT,
@@ -84,36 +84,26 @@ describe("trimPlayer", () => {
 });
 
 describe("http client", () => {
-  it("sends a descriptive User-Agent and reports Cloudflare challenges", async () => {
-    let sentUa = "";
+  const respond = (status: number, headers: Record<string, string> = {}) =>
+    (async () => new Response("<html>Just a moment...</html>", { status, headers })) as unknown as typeof fetch;
+
+  it("sends the API key and a descriptive User-Agent", async () => {
+    let sent: Record<string, string> = {};
     const fakeFetch = (async (_url: string, init?: RequestInit) => {
-      sentUa = (init?.headers as Record<string, string>)["User-Agent"];
-      return new Response("<html>Just a moment...</html>", {
-        status: 403,
-        headers: { "cf-mitigated": "challenge" },
-      });
+      sent = init?.headers as Record<string, string>;
+      return new Response(JSON.stringify(raw), { status: 200 });
     }) as typeof fetch;
-    await expect(fetchPlayer(528558646, fakeFetch)).rejects.toThrow(/Cloudflare challenge/);
-    expect(sentUa).toBe(USER_AGENT);
+    const player = await fetchPlayer(528558646, { apiKey: "test-key", fetchImpl: fakeFetch });
+    expect(player.data.name).toBe("MrMeller");
+    expect(sent[API_KEY_HEADER]).toBe("test-key");
+    expect(sent["User-Agent"]).toBe(USER_AGENT);
   });
 
-  it("never runs more than 3 requests at once", async () => {
-    let inFlight = 0;
-    let peak = 0;
-    const results = await mapLimited(
-      Array.from({ length: 10 }, (_, i) => i),
-      async (i) => {
-        peak = Math.max(peak, ++inFlight);
-        await new Promise((r) => setTimeout(r, 5));
-        inFlight--;
-        if (i === 4) throw new Error("boom");
-        return i;
-      },
-      3,
-      0,
-    );
-    expect(peak).toBe(3);
-    expect(results[4].status).toBe("rejected");
-    expect(results.filter((r) => r.status === "fulfilled")).toHaveLength(9);
+  it("explains Cloudflare challenges and rejected keys", async () => {
+    await expect(
+      fetchPlayer(1, { apiKey: "k", fetchImpl: respond(403, { "cf-mitigated": "challenge" }) }),
+    ).rejects.toThrow(/Cloudflare challenge/);
+    await expect(fetchPlayer(1, { apiKey: "k", fetchImpl: respond(401) })).rejects.toThrow(/API key/);
+    await expect(fetchPlayer(1, { apiKey: "k", fetchImpl: respond(500) })).rejects.toThrow(/HTTP 500/);
   });
 });
