@@ -7,3 +7,6 @@ next-env.d.ts
 .vercel
 .DS_Store
 coverage/
+!.env.example
+# iCloud Drive conflict copies ("file 2.ts")
+* [2-9].*

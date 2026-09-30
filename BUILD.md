@@ -59,7 +59,7 @@ Known limitations:
 
 ## 4. Roster data (swgoh.gg public API)
 
-Verified working on 2026-09-30:
+Checked on 2026-09-30. Cloudflare blocks every non-browser request, so the API needs a bot access key (applied for on swgoh.gg), sent as the `x-gg-bot-access` header. API terms: about 1 request per second, no large-scale production use, keys can be revoked at any time.
 
 | Endpoint | Returns |
 |---|---|
@@ -161,7 +161,7 @@ GitHub Action (weekly, or triggered by Refresh)
 - **Schedule:** `.github/workflows/sync.yml` with `schedule` (e.g. Sunday 03:00 UTC) and `workflow_dispatch`.
 - **Manual refresh:** the Refresh button calls `/api/refresh`, a small Vercel function that triggers `workflow_dispatch` via the GitHub API (fine-grained token with Actions permission on this repo only, stored as a Vercel env var). Cooldown 6 hours, checked against `syncedAt` in `latest.json`. The UI says "Refresh started, new data in about 3 minutes".
 - **History for free:** every dated snapshot is a git commit, which powers the progress view later. Old dated files can be pruned to one per week.
-- **Politeness:** concurrency 3, small delay, descriptive `User-Agent`.
+- **Politeness:** sequential requests at about 1 per second (swgoh.gg API terms), descriptive `User-Agent`, API key from the `SWGOH_GG_API_KEY` Actions secret. A sync takes about 45 seconds.
 
 ### Membership changes
 

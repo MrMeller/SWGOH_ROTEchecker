@@ -5,12 +5,6 @@ import type { TrimmedPlayer } from "./swgoh";
 
 export type Status = "enough" | "planet" | "short";
 
-export const STATUS_COLOUR: Record<Status, "green" | "yellow" | "red"> = {
-  enough: "green",
-  planet: "yellow",
-  short: "red",
-};
-
 export interface PhaseUnitRequirement {
   baseId: string;
   name: string;

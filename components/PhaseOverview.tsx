@@ -3,15 +3,10 @@ import { getPhase, getPhasePlan, getPhaseStatus, getSnapshot, unitName } from "@
 import { formatDate } from "@/lib/format";
 import { allocateUnit } from "@/lib/plan";
 import { PhaseSwitcher } from "./PhaseSwitcher";
-import { PhasePlanCard, PLANET_STYLE } from "./PlanetPlan";
+import { PhasePlanCard } from "./PlanetPlan";
+import { PLANET_STYLE } from "./planets";
 import { ShortFilter } from "./ShortFilter";
 import { StatusChip } from "./StatusChip";
-
-const PLANET_BORDER: Record<string, string> = {
-  "Dark Side": "border-red-500",
-  Mixed: "border-yellow-400",
-  "Light Side": "border-sky-400",
-};
 
 export function PhaseOverview({ phase: n }: { phase: number }) {
   const phase = getPhase(n)!;
@@ -73,7 +68,7 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
           {phase.planets.map((planet) => (
             <section key={planet.alignment}>
               <h2
-                className={`mb-2 flex items-baseline justify-between border-l-4 pl-2 text-sm font-semibold tracking-wide uppercase ${PLANET_STYLE[planet.alignment]?.text ?? "text-slate-300"} ${PLANET_BORDER[planet.alignment] ?? "border-slate-600"}`}
+                className={`mb-2 flex items-baseline justify-between border-l-4 pl-2 text-sm font-semibold tracking-wide uppercase ${PLANET_STYLE[planet.alignment]?.text ?? "text-slate-300"} ${PLANET_STYLE[planet.alignment]?.border ?? "border-slate-600"}`}
               >
                 {planet.alignment}
                 <span className="text-xs font-normal normal-case text-slate-500">{planet.units.length} units</span>
