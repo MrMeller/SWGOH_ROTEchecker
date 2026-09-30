@@ -43,6 +43,9 @@ export interface RawRow {
   name: string;
   planetReq: number;
   phaseReq: number;
+  /** Guild members owning / meeting the unit when the sheet was made (June 2026). */
+  guildHas: number;
+  guildMeets: number;
 }
 
 const RAW_PLANETS: Record<string, string> = { DS: "Dark Side", MX: "Mixed", LS: "Light Side" };
@@ -61,7 +64,15 @@ export function parseRaw(text: string): RawRow[] {
     }
     const m = line.match(/^(.*\S)\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)$/);
     if (!m) throw new Error(`Unparseable line in rote_raw.txt: "${line}"`);
-    rows.push({ phase, planet, name: m[1], planetReq: Number(m[2]), phaseReq: Number(m[3]) });
+    rows.push({
+      phase,
+      planet,
+      name: m[1],
+      planetReq: Number(m[2]),
+      phaseReq: Number(m[3]),
+      guildHas: Number(m[4]),
+      guildMeets: Number(m[5]),
+    });
   }
   return rows;
 }
