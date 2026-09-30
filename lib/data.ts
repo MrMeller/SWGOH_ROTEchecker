@@ -1,11 +1,11 @@
-// Server-side data access for pages. Loads requirements, snapshot and unit names once
+// Server-side data access for pages. Builds requirements from the platoon data, loads the snapshot and unit names once
 // per build and memoises the derived per-phase results.
 import characters from "@/data/fixtures/characters.json";
-import requirements from "@/data/rote-requirements.json";
+import platoons from "@/data/rote-platoons.json";
 import ships from "@/data/fixtures/ships.json";
 import { focusList, type FocusItem } from "./focus";
-import type { CatalogUnit, Phase, Requirements } from "./requirements";
-import { phasePlan, type PhasePlan } from "./plan";
+import { buildRequirements, type CatalogUnit, type Phase, type PlatoonData, type Requirements } from "./requirements";
+import { phasePlan, planetOrder, type PhasePlan } from "./plan";
 import { loadSnapshot, type Snapshot } from "./snapshot";
 import { phaseStatus, type PhaseUnitStatus } from "./status";
 
@@ -19,8 +19,8 @@ let cache: {
 
 function load() {
   if (cache) return cache;
-  const req = requirements as Requirements;
   const catalog = [...characters, ...ships] as CatalogUnit[];
+  const req = buildRequirements(platoons as PlatoonData, catalog);
   const names = new Map(catalog.map((u) => [u.base_id, u.name]));
   const snapshot = loadSnapshot();
   snapshot.players.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
@@ -62,7 +62,7 @@ export function getFocus(n: number): FocusItem[] {
 const plans = new Map<number, PhasePlan>();
 
 export function getPhasePlan(n: number): PhasePlan {
-  if (!plans.has(n)) plans.set(n, phasePlan(getPhaseStatus(n)));
+  if (!plans.has(n)) plans.set(n, phasePlan(getPhaseStatus(n), planetOrder(getPhase(n)!)));
   return plans.get(n)!;
 }
 
@@ -72,6 +72,6 @@ export function allUnits(): { baseId: string; name: string; combatType: 1 | 2 }[
   for (const p of load().req.phases)
     for (const pl of p.planets)
       for (const u of pl.units)
-        if (!seen.has(u.baseId!)) seen.set(u.baseId!, { baseId: u.baseId!, name: unitName(u.baseId!, u.name), combatType: u.combatType! });
+        if (!seen.has(u.baseId)) seen.set(u.baseId, { baseId: u.baseId, name: unitName(u.baseId, u.name), combatType: u.combatType });
   return [...seen.values()];
 }

@@ -1,10 +1,10 @@
 /** Planet colours as on the in-game map: Dark Side red, Mixed yellow, Light Side blue. */
 export const PLANET_STYLE: Record<
   string,
-  { label: string; accent: string; border: string; text: string; bar: string; ring: string }
+  { short: string; accent: string; border: string; text: string; bar: string; ring: string }
 > = {
   "Dark Side": {
-    label: "Dark Side",
+    short: "DS",
     accent: "border-t-red-500",
     border: "border-red-500",
     text: "text-red-300",
@@ -12,7 +12,7 @@ export const PLANET_STYLE: Record<
     ring: "ring-red-500/70",
   },
   Mixed: {
-    label: "Mixed",
+    short: "Mixed",
     accent: "border-t-yellow-400",
     border: "border-yellow-400",
     text: "text-yellow-200",
@@ -20,7 +20,7 @@ export const PLANET_STYLE: Record<
     ring: "ring-yellow-400/70",
   },
   "Light Side": {
-    label: "Light Side",
+    short: "LS",
     accent: "border-t-sky-400",
     border: "border-sky-400",
     text: "text-sky-300",

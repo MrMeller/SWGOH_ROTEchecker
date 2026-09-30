@@ -1,9 +1,8 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { Phase, Requirements } from "./requirements";
+import type { Phase } from "./requirements";
 import { phaseRequirements, phaseStatus, statusFor } from "./status";
 import type { TrimmedPlayer } from "./swgoh";
+import { requirements } from "./test-data";
 
 describe("statusFor (§5.3)", () => {
   // need = phase total 10, highest single planet 7 (Darth Traya in P1)
@@ -22,22 +21,23 @@ describe("statusFor (§5.3)", () => {
     expect(statusFor(3, 3, 3)).toBe("enough");
     expect(statusFor(2, 3, 3)).toBe("short");
   });
-
 });
 
 const phase: Phase = {
   phase: 3,
   minRelic: 7,
   planets: [
-    { alignment: "Dark Side", units: [{ name: "A", required: 3, baseId: "A", combatType: 1 }] },
+    { name: "DS", alignment: "Dark Side", bonus: false, units: [{ name: "A", required: 3, baseId: "A", combatType: 1 }] },
     {
+      name: "MX",
       alignment: "Mixed",
+      bonus: false,
       units: [
         { name: "A", required: 1, baseId: "A", combatType: 1 },
         { name: "SHIP", required: 2, baseId: "SHIP", combatType: 2 },
       ],
     },
-    { alignment: "Light Side", units: [] },
+    { name: "LS", alignment: "Light Side", bonus: false, units: [] },
   ],
 };
 
@@ -46,19 +46,16 @@ describe("phaseRequirements", () => {
     const [a, ship] = phaseRequirements(phase);
     expect(a).toMatchObject({ baseId: "A", need: 4, maxPlanet: 3 });
     expect(a.planets).toEqual([
-      { alignment: "Dark Side", required: 3 },
-      { alignment: "Mixed", required: 1 },
+      { planet: "DS", required: 3 },
+      { planet: "MX", required: 1 },
     ]);
     expect(ship).toMatchObject({ need: 2, maxPlanet: 2, combatType: 2 });
   });
 
   it("covers the real dataset with need == sum of planets", () => {
-    const req: Requirements = JSON.parse(
-      readFileSync(path.join(__dirname, "../data/rote-requirements.json"), "utf8"),
-    );
-    for (const p of req.phases) {
+    for (const p of requirements.phases) {
       const units = phaseRequirements(p);
-      expect(units.reduce((a, u) => a + u.need, 0)).toBe(90 * 3);
+      expect(units.reduce((a, u) => a + u.need, 0)).toBe(90 * p.planets.length);
       for (const u of units) expect(u.need).toBe(u.planets.reduce((a, x) => a + x.required, 0));
     }
   });

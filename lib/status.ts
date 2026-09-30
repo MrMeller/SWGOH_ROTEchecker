@@ -12,7 +12,8 @@ export interface PhaseUnitRequirement {
   /** Phase total: a player fills a unit once per phase, across all planets. */
   need: number;
   maxPlanet: number;
-  planets: { alignment: string; required: number }[];
+  /** Planet name and slots, in the phase planet order. */
+  planets: { planet: string; required: number }[];
 }
 
 export interface PhaseUnitStatus extends PhaseUnitRequirement {
@@ -32,7 +33,6 @@ export function phaseRequirements(phase: Phase): PhaseUnitRequirement[] {
   const byId = new Map<string, PhaseUnitRequirement>();
   for (const planet of phase.planets) {
     for (const u of planet.units) {
-      if (!u.baseId || !u.combatType) throw new Error(`"${u.name}" has no baseId; run npm run validate -- --write`);
       let r = byId.get(u.baseId);
       if (!r) {
         r = { baseId: u.baseId, name: u.name, combatType: u.combatType, need: 0, maxPlanet: 0, planets: [] };
@@ -40,7 +40,7 @@ export function phaseRequirements(phase: Phase): PhaseUnitRequirement[] {
       }
       r.need += u.required;
       r.maxPlanet = Math.max(r.maxPlanet, u.required);
-      r.planets.push({ alignment: planet.alignment, required: u.required });
+      r.planets.push({ planet: planet.name, required: u.required });
     }
   }
   return [...byId.values()];

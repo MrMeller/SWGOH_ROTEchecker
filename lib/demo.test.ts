@@ -1,13 +1,16 @@
-import { readFileSync } from "node:fs";
-import path from "node:path";
 import { describe, expect, it } from "vitest";
 import { demoPlayers, unitProfiles } from "./demo";
-import { parseRaw, type Requirements } from "./requirements";
+import { parseRaw } from "./requirements";
+import { catalog, readData, requirements } from "./test-data";
 
-const read = (f: string) => readFileSync(path.join(__dirname, "../data", f), "utf8");
-const profiles = unitProfiles(JSON.parse(read("rote-requirements.json")) as Requirements, parseRaw(read("rote_raw.txt")));
+const profiles = unitProfiles(requirements, parseRaw(readData("rote_raw.txt")), catalog);
 
 describe("demo players", () => {
+  it("has a profile for every required unit, including bonus planet units", () => {
+    expect(profiles.size).toBe(293);
+    expect(profiles.get("DOCTORAPHRA")).toMatchObject({ ownFrac: 0.5 });
+  });
+
   it("is deterministic and clearly named as demo", () => {
     const a = demoPlayers(profiles, 5);
     expect(demoPlayers(profiles, 5)).toEqual(a);

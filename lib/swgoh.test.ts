@@ -1,7 +1,7 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
-import type { Requirements } from "./requirements";
+import { wantedUnits } from "./requirements";
 import {
   API_KEY_HEADER,
   fetchPlayer,
@@ -11,13 +11,13 @@ import {
   type RawGuildProfile,
   type RawPlayer,
 } from "./swgoh";
+import { platoons } from "./test-data";
 
 const fixture = (f: string) => readFileSync(path.join(__dirname, "../data", f), "utf8");
 const rawText = fixture("fixtures/player-528558646.json");
 const raw: RawPlayer = JSON.parse(rawText);
 const guild: RawGuildProfile = JSON.parse(fixture("fixtures/guild-profile.json"));
-const req: Requirements = JSON.parse(fixture("rote-requirements.json"));
-const wanted = new Set(req.phases.flatMap((p) => p.planets.flatMap((pl) => pl.units.map((u) => u.baseId!))));
+const wanted = wantedUnits(platoons);
 
 const rawUnit = (id: string) => raw.units.find((u) => u.data.base_id === id)!.data;
 
