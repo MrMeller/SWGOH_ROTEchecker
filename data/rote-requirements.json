@@ -10,187 +10,279 @@
      "units": [
       {
        "name": "DARTH TRAYA",
-       "required": 7
+       "required": 7,
+       "baseId": "DARTHTRAYA",
+       "combatType": 1
       },
       {
        "name": "CHIMAERA",
-       "required": 6
+       "required": 6,
+       "baseId": "CAPITALCHIMAERA",
+       "combatType": 2
       },
       {
        "name": "DARTH REVAN",
-       "required": 5
+       "required": 5,
+       "baseId": "DARTHREVAN",
+       "combatType": 1
       },
       {
        "name": "GENERAL GRIEVOUS",
-       "required": 5
+       "required": 5,
+       "baseId": "GRIEVOUS",
+       "combatType": 1
       },
       {
        "name": "0-0-0",
-       "required": 4
+       "required": 4,
+       "baseId": "TRIPLEZERO",
+       "combatType": 1
       },
       {
        "name": "EMPEROR PALPATINE",
-       "required": 4
+       "required": 4,
+       "baseId": "EMPERORPALPATINE",
+       "combatType": 1
       },
       {
        "name": "WAT TAMBOR",
-       "required": 4
+       "required": 4,
+       "baseId": "WATTAMBOR",
+       "combatType": 1
       },
       {
        "name": "GRAND ADMIRAL THRAWN",
-       "required": 3
+       "required": 3,
+       "baseId": "GRANDADMIRALTHRAWN",
+       "combatType": 1
       },
       {
        "name": "UGNAUGHT",
-       "required": 3
+       "required": 3,
+       "baseId": "UGNAUGHT",
+       "combatType": 1
       },
       {
        "name": "BT-1",
-       "required": 2
+       "required": 2,
+       "baseId": "BT1",
+       "combatType": 1
       },
       {
        "name": "CANDEROUS ORDO",
-       "required": 2
+       "required": 2,
+       "baseId": "CANDEROUSORDO",
+       "combatType": 1
       },
       {
        "name": "DARTH MAUL",
-       "required": 2
+       "required": 2,
+       "baseId": "MAUL",
+       "combatType": 1
       },
       {
        "name": "DARTH SIDIOUS",
-       "required": 2
+       "required": 2,
+       "baseId": "DARTHSIDIOUS",
+       "combatType": 1
       },
       {
        "name": "DARTH SION",
-       "required": 2
+       "required": 2,
+       "baseId": "DARTHSION",
+       "combatType": 1
       },
       {
        "name": "DARTH VADER",
-       "required": 2
+       "required": 2,
+       "baseId": "VADER",
+       "combatType": 1
       },
       {
        "name": "DROIDEKA",
-       "required": 2
+       "required": 2,
+       "baseId": "DROIDEKA",
+       "combatType": 1
       },
       {
        "name": "FIRST ORDER OFFICER",
-       "required": 2
+       "required": 2,
+       "baseId": "FIRSTORDEROFFICERMALE",
+       "combatType": 1
       },
       {
        "name": "FIRST ORDER SF TIE PILOT",
-       "required": 2
+       "required": 2,
+       "baseId": "FIRSTORDERSPECIALFORCESPILOT",
+       "combatType": 1
       },
       {
        "name": "HOUND'S TOOTH",
-       "required": 2
+       "required": 2,
+       "baseId": "HOUNDSTOOTH",
+       "combatType": 2
       },
       {
        "name": "IG-88",
-       "required": 2
+       "required": 2,
+       "baseId": "IG88",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL PROBE DROID",
-       "required": 2
+       "required": 2,
+       "baseId": "IMPERIALPROBEDROID",
+       "combatType": 1
       },
       {
        "name": "ASAJJ VENTRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "ASAJVENTRESS",
+       "combatType": 1
       },
       {
        "name": "B1 BATTLE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "B1BATTLEDROIDV2",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT",
-       "required": 1
+       "required": 1,
+       "baseId": "BOBAFETT",
+       "combatType": 1
       },
       {
        "name": "COUNT DOOKU",
-       "required": 1
+       "required": 1,
+       "baseId": "COUNTDOOKU",
+       "combatType": 1
       },
       {
        "name": "DARK TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "DARKTROOPER",
+       "combatType": 1
       },
       {
        "name": "DENGAR",
-       "required": 1
+       "required": 1,
+       "baseId": "DENGAR",
+       "combatType": 1
       },
       {
        "name": "EMBO",
-       "required": 1
+       "required": 1,
+       "baseId": "EMBO",
+       "combatType": 1
       },
       {
        "name": "FIFTH BROTHER",
-       "required": 1
+       "required": 1,
+       "baseId": "FIFTHBROTHER",
+       "combatType": 1
       },
       {
        "name": "GAMORREAN GUARD",
-       "required": 1
+       "required": 1,
+       "baseId": "GAMORREANGUARD",
+       "combatType": 1
       },
       {
        "name": "GAUNTLET STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GAUNTLETSTARFIGHTER",
+       "combatType": 2
       },
       {
        "name": "GEONOSIAN SPY'S STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSTARFIGHTER3",
+       "combatType": 2
       },
       {
        "name": "HYENA BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "IG-86 SENTINEL DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "IG86SENTINELDROID",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL SUPER COMMANDO",
-       "required": 1
+       "required": 1,
+       "baseId": "IMPERIALSUPERCOMMANDO",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL TIE BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEBOMBERIMPERIAL",
+       "combatType": 2
       },
       {
        "name": "IMPERIAL TIE FIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEFIGHTERIMPERIAL",
+       "combatType": 2
       },
       {
        "name": "JANGO FETT",
-       "required": 1
+       "required": 1,
+       "baseId": "JANGOFETT",
+       "combatType": 1
       },
       {
        "name": "MARA JADE, THE EMPEROR'S HAND",
-       "required": 1
+       "required": 1,
+       "baseId": "MARAJADE",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER INITIATE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERINITIATE",
+       "combatType": 1
       },
       {
        "name": "NINTH SISTER",
-       "required": 1
+       "required": 1,
+       "baseId": "NINTHSISTER",
+       "combatType": 1
       },
       {
        "name": "NUTE GUNRAY",
-       "required": 1
+       "required": 1,
+       "baseId": "NUTEGUNRAY",
+       "combatType": 1
       },
       {
        "name": "SITH ASSASSIN",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHASSASSIN",
+       "combatType": 1
       },
       {
        "name": "SITH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "FOSITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "TIE FIGHTER PILOT",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEFIGHTERPILOT",
+       "combatType": 1
       },
       {
        "name": "TUSKEN SHAMAN",
-       "required": 1
+       "required": 1,
+       "baseId": "TUSKENSHAMAN",
+       "combatType": 1
       }
      ]
     },
@@ -199,235 +291,351 @@
      "units": [
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 5
+       "required": 5,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "DARTH REVAN",
-       "required": 5
+       "required": 5,
+       "baseId": "DARTHREVAN",
+       "combatType": 1
       },
       {
        "name": "TIE/IN INTERCEPTOR PROTOTYPE",
-       "required": 5
+       "required": 5,
+       "baseId": "TIEINTERCEPTOR",
+       "combatType": 2
       },
       {
        "name": "C-3PO",
-       "required": 3
+       "required": 3,
+       "baseId": "C3POLEGENDARY",
+       "combatType": 1
       },
       {
        "name": "CHEWBACCA",
-       "required": 3
+       "required": 3,
+       "baseId": "CHEWBACCALEGENDARY",
+       "combatType": 1
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 3
+       "required": 3,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "COMMANDER LUKE SKYWALKER",
-       "required": 3
+       "required": 3,
+       "baseId": "COMMANDERLUKESKYWALKER",
+       "combatType": 1
       },
       {
        "name": "DARTH TRAYA",
-       "required": 3
+       "required": 3,
+       "baseId": "DARTHTRAYA",
+       "combatType": 1
       },
       {
        "name": "BEN SOLO",
-       "required": 2
+       "required": 2,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 2
+       "required": 2,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "GENERAL KENOBI",
-       "required": 2
+       "required": 2,
+       "baseId": "GENERALKENOBI",
+       "combatType": 1
       },
       {
        "name": "GEONOSIAN BROOD ALPHA",
-       "required": 2
+       "required": 2,
+       "baseId": "GEONOSIANBROODALPHA",
+       "combatType": 1
       },
       {
        "name": "GRAND MASTER YODA",
-       "required": 2
+       "required": 2,
+       "baseId": "GRANDMASTERYODA",
+       "combatType": 1
       },
       {
        "name": "HAN SOLO",
-       "required": 2
+       "required": 2,
+       "baseId": "HANSOLO",
+       "combatType": 1
       },
       {
        "name": "KI-ADI-MUNDI",
-       "required": 2
+       "required": 2,
+       "baseId": "KIADIMUNDI",
+       "combatType": 1
       },
       {
        "name": "R2-D2",
-       "required": 2
+       "required": 2,
+       "baseId": "R2D2_LEGENDARY",
+       "combatType": 1
       },
       {
        "name": "THE MANDALORIAN (BESKAR ARMOR)",
-       "required": 2
+       "required": 2,
+       "baseId": "THEMANDALORIANBESKARARMOR",
+       "combatType": 1
       },
       {
        "name": "WAT TAMBOR",
-       "required": 2
+       "required": 2,
+       "baseId": "WATTAMBOR",
+       "combatType": 1
       },
       {
        "name": "ADMIRAL PIETT",
-       "required": 1
+       "required": 1,
+       "baseId": "ADMIRALPIETT",
+       "combatType": 1
       },
       {
        "name": "ANAKIN'S ETA-2 STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDISTARFIGHTERANAKIN",
+       "combatType": 2
       },
       {
        "name": "BB-8",
-       "required": 1
+       "required": 1,
+       "baseId": "BB8",
+       "combatType": 1
       },
       {
        "name": "BOSSK",
-       "required": 1
+       "required": 1,
+       "baseId": "BOSSK",
+       "combatType": 1
       },
       {
        "name": "BT-1",
-       "required": 1
+       "required": 1,
+       "baseId": "BT1",
+       "combatType": 1
       },
       {
        "name": "CHIMAERA",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALCHIMAERA",
+       "combatType": 2
       },
       {
        "name": "CLONE SERGEANT'S ARC-170",
-       "required": 1
+       "required": 1,
+       "baseId": "ARC170CLONESERGEANT",
+       "combatType": 2
       },
       {
        "name": "CLONE SERGEANT - PHASE I",
-       "required": 1
+       "required": 1,
+       "baseId": "CLONESERGEANTPHASEI",
+       "combatType": 1
       },
       {
        "name": "COLONEL STARCK",
-       "required": 1
+       "required": 1,
+       "baseId": "COLONELSTARCK",
+       "combatType": 1
       },
       {
        "name": "DARTH MAUL",
-       "required": 1
+       "required": 1,
+       "baseId": "MAUL",
+       "combatType": 1
       },
       {
        "name": "DARTH SION",
-       "required": 1
+       "required": 1,
+       "baseId": "DARTHSION",
+       "combatType": 1
       },
       {
        "name": "DARTH VADER",
-       "required": 1
+       "required": 1,
+       "baseId": "VADER",
+       "combatType": 1
       },
       {
        "name": "EETH KOTH",
-       "required": 1
+       "required": 1,
+       "baseId": "EETHKOTH",
+       "combatType": 1
       },
       {
        "name": "EMPEROR PALPATINE",
-       "required": 1
+       "required": 1,
+       "baseId": "EMPERORPALPATINE",
+       "combatType": 1
       },
       {
        "name": "GHOST",
-       "required": 1
+       "required": 1,
+       "baseId": "GHOST",
+       "combatType": 2
       },
       {
        "name": "GRAND ADMIRAL THRAWN",
-       "required": 1
+       "required": 1,
+       "baseId": "GRANDADMIRALTHRAWN",
+       "combatType": 1
       },
       {
        "name": "HERMIT YODA",
-       "required": 1
+       "required": 1,
+       "baseId": "HERMITYODA",
+       "combatType": 1
       },
       {
        "name": "HUNTER",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHHUNTER",
+       "combatType": 1
       },
       {
        "name": "HYENA BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "IMA-GUN DI",
-       "required": 1
+       "required": 1,
+       "baseId": "IMAGUNDI",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL PROBE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "IMPERIALPROBEDROID",
+       "combatType": 1
       },
       {
        "name": "JAWA ENGINEER",
-       "required": 1
+       "required": 1,
+       "baseId": "JAWAENGINEER",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT REVAN",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDIKNIGHTREVAN",
+       "combatType": 1
       },
       {
        "name": "JOLEE BINDO",
-       "required": 1
+       "required": 1,
+       "baseId": "JOLEEBINDO",
+       "combatType": 1
       },
       {
        "name": "KYLO REN'S COMMAND SHUTTLE",
-       "required": 1
+       "required": 1,
+       "baseId": "COMMANDSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "LOGRAY",
-       "required": 1
+       "required": 1,
+       "baseId": "LOGRAY",
+       "combatType": 1
       },
       {
        "name": "MALEVOLENCE",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALMALEVOLENCE",
+       "combatType": 2
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 1
+       "required": 1,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "PAPLOO",
-       "required": 1
+       "required": 1,
+       "baseId": "PAPLOO",
+       "combatType": 1
       },
       {
        "name": "PLO KOON'S JEDI STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "BLADEOFDORIN",
+       "combatType": 2
       },
       {
        "name": "POE DAMERON",
-       "required": 1
+       "required": 1,
+       "baseId": "POE",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 1
+       "required": 1,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "REBEL OFFICER LEIA ORGANA",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHLEIA",
+       "combatType": 1
       },
       {
        "name": "REY (JEDI TRAINING)",
-       "required": 1
+       "required": 1,
+       "baseId": "REYJEDITRAINING",
+       "combatType": 1
       },
       {
        "name": "SANA STARROS",
-       "required": 1
+       "required": 1,
+       "baseId": "SANASTARROS",
+       "combatType": 1
       },
       {
        "name": "SITH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "FOSITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "T3-M4",
-       "required": 1
+       "required": 1,
+       "baseId": "T3_M4",
+       "combatType": 1
       },
       {
        "name": "TALIA",
-       "required": 1
+       "required": 1,
+       "baseId": "TALIA",
+       "combatType": 1
       },
       {
        "name": "THREEPIO & CHEWIE",
-       "required": 1
+       "required": 1,
+       "baseId": "C3POCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "TIE SILENCER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIESILENCER",
+       "combatType": 2
       }
      ]
     },
@@ -436,175 +644,261 @@
      "units": [
       {
        "name": "GENERAL SKYWALKER",
-       "required": 10
+       "required": 10,
+       "baseId": "GENERALSKYWALKER",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT LUKE SKYWALKER",
-       "required": 8
+       "required": 8,
+       "baseId": "JEDIKNIGHTLUKE",
+       "combatType": 1
       },
       {
        "name": "HERMIT YODA",
-       "required": 6
+       "required": 6,
+       "baseId": "HERMITYODA",
+       "combatType": 1
       },
       {
        "name": "BB-8",
-       "required": 5
+       "required": 5,
+       "baseId": "BB8",
+       "combatType": 1
       },
       {
        "name": "THE MANDALORIAN (BESKAR ARMOR)",
-       "required": 5
+       "required": 5,
+       "baseId": "THEMANDALORIANBESKARARMOR",
+       "combatType": 1
       },
       {
        "name": "SANA STARROS",
-       "required": 4
+       "required": 4,
+       "baseId": "SANASTARROS",
+       "combatType": 1
       },
       {
        "name": "C-3PO",
-       "required": 3
+       "required": 3,
+       "baseId": "C3POLEGENDARY",
+       "combatType": 1
       },
       {
        "name": "HAN SOLO",
-       "required": 3
+       "required": 3,
+       "baseId": "HANSOLO",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT REVAN",
-       "required": 3
+       "required": 3,
+       "baseId": "JEDIKNIGHTREVAN",
+       "combatType": 1
       },
       {
        "name": "CHEWBACCA",
-       "required": 2
+       "required": 2,
+       "baseId": "CHEWBACCALEGENDARY",
+       "combatType": 1
       },
       {
        "name": "COMMANDER LUKE SKYWALKER",
-       "required": 2
+       "required": 2,
+       "baseId": "COMMANDERLUKESKYWALKER",
+       "combatType": 1
       },
       {
        "name": "GENERAL KENOBI",
-       "required": 2
+       "required": 2,
+       "baseId": "GENERALKENOBI",
+       "combatType": 1
       },
       {
        "name": "GRAND MASTER YODA",
-       "required": 2
+       "required": 2,
+       "baseId": "GRANDMASTERYODA",
+       "combatType": 1
       },
       {
        "name": "LOGRAY",
-       "required": 2
+       "required": 2,
+       "baseId": "LOGRAY",
+       "combatType": 1
       },
       {
        "name": "PHANTOM II",
-       "required": 2
+       "required": 2,
+       "baseId": "PHANTOM2",
+       "combatType": 2
       },
       {
        "name": "R2-D2",
-       "required": 2
+       "required": 2,
+       "baseId": "R2D2_LEGENDARY",
+       "combatType": 1
       },
       {
        "name": "REY (JEDI TRAINING)",
-       "required": 2
+       "required": 2,
+       "baseId": "REYJEDITRAINING",
+       "combatType": 1
       },
       {
        "name": "THREEPIO & CHEWIE",
-       "required": 2
+       "required": 2,
+       "baseId": "C3POCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "AHSOKA TANO (FULCRUM)",
-       "required": 1
+       "required": 1,
+       "baseId": "FULCRUMAHSOKA",
+       "combatType": 1
       },
       {
        "name": "AMILYN HOLDO",
-       "required": 1
+       "required": 1,
+       "baseId": "AMILYNHOLDO",
+       "combatType": 1
       },
       {
        "name": "ANAKIN'S ETA-2 STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDISTARFIGHTERANAKIN",
+       "combatType": 2
       },
       {
        "name": "BARRISS OFFEE",
-       "required": 1
+       "required": 1,
+       "baseId": "BARRISSOFFEE",
+       "combatType": 1
       },
       {
        "name": "CC-2224 \"CODY\"",
-       "required": 1
+       "required": 1,
+       "baseId": "CC2224",
+       "combatType": 1
       },
       {
        "name": "GREEF KARGA",
-       "required": 1
+       "required": 1,
+       "baseId": "GREEFKARGA",
+       "combatType": 1
       },
       {
        "name": "HOME ONE",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALMONCALAMARICRUISER",
+       "combatType": 2
       },
       {
        "name": "HONDO OHNAKA",
-       "required": 1
+       "required": 1,
+       "baseId": "HONDO",
+       "combatType": 1
       },
       {
        "name": "JOLEE BINDO",
-       "required": 1
+       "required": 1,
+       "baseId": "JOLEEBINDO",
+       "combatType": 1
       },
       {
        "name": "JYN ERSO",
-       "required": 1
+       "required": 1,
+       "baseId": "JYNERSO",
+       "combatType": 1
       },
       {
        "name": "KI-ADI-MUNDI",
-       "required": 1
+       "required": 1,
+       "baseId": "KIADIMUNDI",
+       "combatType": 1
       },
       {
        "name": "KUIIL",
-       "required": 1
+       "required": 1,
+       "baseId": "KUIIL",
+       "combatType": 1
       },
       {
        "name": "L3-37",
-       "required": 1
+       "required": 1,
+       "baseId": "L3_37",
+       "combatType": 1
       },
       {
        "name": "LOBOT",
-       "required": 1
+       "required": 1,
+       "baseId": "LOBOT",
+       "combatType": 1
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 1
+       "required": 1,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "PLO KOON'S JEDI STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "BLADEOFDORIN",
+       "combatType": 2
       },
       {
        "name": "RAVEN'S CLAW",
-       "required": 1
+       "required": 1,
+       "baseId": "RAVENSCLAW",
+       "combatType": 2
       },
       {
        "name": "REBEL OFFICER LEIA ORGANA",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHLEIA",
+       "combatType": 1
       },
       {
        "name": "RESISTANCE X-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "XWINGRESISTANCE",
+       "combatType": 2
       },
       {
        "name": "SABINE WREN",
-       "required": 1
+       "required": 1,
+       "baseId": "SABINEWRENS3",
+       "combatType": 1
       },
       {
        "name": "TEEBO",
-       "required": 1
+       "required": 1,
+       "baseId": "TEEBO",
+       "combatType": 1
       },
       {
        "name": "THE ARMORER",
-       "required": 1
+       "required": 1,
+       "baseId": "ARMORER",
+       "combatType": 1
       },
       {
        "name": "UMBARAN STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "UMBARANSTARFIGHTER",
+       "combatType": 2
       },
       {
        "name": "VISAS MARR",
-       "required": 1
+       "required": 1,
+       "baseId": "VISASMARR",
+       "combatType": 1
       },
       {
        "name": "ZAALBAR",
-       "required": 1
+       "required": 1,
+       "baseId": "ZAALBAR",
+       "combatType": 1
       }
      ]
     }
@@ -619,159 +913,237 @@
      "units": [
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 7
+       "required": 7,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "DARTH REVAN",
-       "required": 6
+       "required": 6,
+       "baseId": "DARTHREVAN",
+       "combatType": 1
       },
       {
        "name": "SCYTHE",
-       "required": 6
+       "required": 6,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "DARTH MALGUS",
-       "required": 5
+       "required": 5,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "TIE/IN INTERCEPTOR PROTOTYPE",
-       "required": 5
+       "required": 5,
+       "baseId": "TIEINTERCEPTOR",
+       "combatType": 2
       },
       {
        "name": "CHIMAERA",
-       "required": 4
+       "required": 4,
+       "baseId": "CAPITALCHIMAERA",
+       "combatType": 2
       },
       {
        "name": "EMPEROR PALPATINE",
-       "required": 4
+       "required": 4,
+       "baseId": "EMPERORPALPATINE",
+       "combatType": 1
       },
       {
        "name": "GRAND ADMIRAL THRAWN",
-       "required": 4
+       "required": 4,
+       "baseId": "GRANDADMIRALTHRAWN",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 4
+       "required": 4,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "DARTH MALAK",
-       "required": 3
+       "required": 3,
+       "baseId": "DARTHMALAK",
+       "combatType": 1
       },
       {
        "name": "GRAND INQUISITOR",
-       "required": 3
+       "required": 3,
+       "baseId": "GRANDINQUISITOR",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL PROBE DROID",
-       "required": 3
+       "required": 3,
+       "baseId": "IMPERIALPROBEDROID",
+       "combatType": 1
       },
       {
        "name": "STARKILLER",
-       "required": 3
+       "required": 3,
+       "baseId": "STARKILLER",
+       "combatType": 1
       },
       {
        "name": "B2 SUPER BATTLE DROID",
-       "required": 2
+       "required": 2,
+       "baseId": "B2SUPERBATTLEDROID",
+       "combatType": 1
       },
       {
        "name": "EXECUTOR",
-       "required": 2
+       "required": 2,
+       "baseId": "CAPITALEXECUTOR",
+       "combatType": 2
       },
       {
        "name": "FIRST ORDER OFFICER",
-       "required": 2
+       "required": 2,
+       "baseId": "FIRSTORDEROFFICERMALE",
+       "combatType": 1
       },
       {
        "name": "KYLO REN (UNMASKED)",
-       "required": 2
+       "required": 2,
+       "baseId": "KYLORENUNMASKED",
+       "combatType": 1
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 2
+       "required": 2,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 2
+       "required": 2,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "WAT TAMBOR",
-       "required": 2
+       "required": 2,
+       "baseId": "WATTAMBOR",
+       "combatType": 1
       },
       {
        "name": "ASAJJ VENTRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "ASAJVENTRESS",
+       "combatType": 1
       },
       {
        "name": "CAD BANE",
-       "required": 1
+       "required": 1,
+       "baseId": "CADBANE",
+       "combatType": 1
       },
       {
        "name": "COLONEL STARCK",
-       "required": 1
+       "required": 1,
+       "baseId": "COLONELSTARCK",
+       "combatType": 1
       },
       {
        "name": "DARTH TALON",
-       "required": 1
+       "required": 1,
+       "baseId": "DARTHTALON",
+       "combatType": 1
       },
       {
        "name": "DEATH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "DEATHTROOPER",
+       "combatType": 1
       },
       {
        "name": "DENGAR",
-       "required": 1
+       "required": 1,
+       "baseId": "DENGAR",
+       "combatType": 1
       },
       {
        "name": "DROIDEKA",
-       "required": 1
+       "required": 1,
+       "baseId": "DROIDEKA",
+       "combatType": 1
       },
       {
        "name": "EMPEROR'S SHUTTLE",
-       "required": 1
+       "required": 1,
+       "baseId": "EMPERORSSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "EXECUTRIX",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALSTARDESTROYER",
+       "combatType": 2
       },
       {
        "name": "GENERAL GRIEVOUS",
-       "required": 1
+       "required": 1,
+       "baseId": "GRIEVOUS",
+       "combatType": 1
       },
       {
        "name": "GENERAL VEERS",
-       "required": 1
+       "required": 1,
+       "baseId": "VEERS",
+       "combatType": 1
       },
       {
        "name": "HK-47",
-       "required": 1
+       "required": 1,
+       "baseId": "HK47",
+       "combatType": 1
       },
       {
        "name": "HYENA BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "KYLO REN'S COMMAND SHUTTLE",
-       "required": 1
+       "required": 1,
+       "baseId": "COMMANDSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "MAGMATROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "MAGMATROOPER",
+       "combatType": 1
       },
       {
        "name": "MALEVOLENCE",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALMALEVOLENCE",
+       "combatType": 2
       },
       {
        "name": "SCIMITAR",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHINFILTRATOR",
+       "combatType": 2
       },
       {
        "name": "TIE ECHELON",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDERTIEECHELON",
+       "combatType": 2
       },
       {
        "name": "TIE REAPER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEREAPER",
+       "combatType": 2
       }
      ]
     },
@@ -780,199 +1152,297 @@
      "units": [
       {
        "name": "SCYTHE",
-       "required": 7
+       "required": 7,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 6
+       "required": 6,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 5
+       "required": 5,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 5
+       "required": 5,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "GENERAL SKYWALKER",
-       "required": 4
+       "required": 4,
+       "baseId": "GENERALSKYWALKER",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 4
+       "required": 4,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "REBEL OFFICER LEIA ORGANA",
-       "required": 4
+       "required": 4,
+       "baseId": "HOTHLEIA",
+       "combatType": 1
       },
       {
        "name": "BEN SOLO",
-       "required": 3
+       "required": 3,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "GRAND INQUISITOR",
-       "required": 3
+       "required": 3,
+       "baseId": "GRANDINQUISITOR",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT LUKE SKYWALKER",
-       "required": 3
+       "required": 3,
+       "baseId": "JEDIKNIGHTLUKE",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 3
+       "required": 3,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "TIE/IN INTERCEPTOR PROTOTYPE",
-       "required": 3
+       "required": 3,
+       "baseId": "TIEINTERCEPTOR",
+       "combatType": 2
       },
       {
        "name": "EMBO",
-       "required": 2
+       "required": 2,
+       "baseId": "EMBO",
+       "combatType": 1
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 2
+       "required": 2,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "WAT TAMBOR",
-       "required": 2
+       "required": 2,
+       "baseId": "WATTAMBOR",
+       "combatType": 1
       },
       {
        "name": "AAYLA SECURA",
-       "required": 1
+       "required": 1,
+       "baseId": "AAYLASECURA",
+       "combatType": 1
       },
       {
        "name": "ADMIRAL ACKBAR",
-       "required": 1
+       "required": 1,
+       "baseId": "ADMIRALACKBAR",
+       "combatType": 1
       },
       {
        "name": "BASTILA SHAN",
-       "required": 1
+       "required": 1,
+       "baseId": "BASTILASHAN",
+       "combatType": 1
       },
       {
        "name": "BT-1",
-       "required": 1
+       "required": 1,
+       "baseId": "BT1",
+       "combatType": 1
       },
       {
        "name": "CASSIAN'S U-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "UWINGROGUEONE",
+       "combatType": 2
       },
       {
        "name": "COUNT DOOKU",
-       "required": 1
+       "required": 1,
+       "baseId": "COUNTDOOKU",
+       "combatType": 1
       },
       {
        "name": "DARTH MALAK",
-       "required": 1
+       "required": 1,
+       "baseId": "DARTHMALAK",
+       "combatType": 1
       },
       {
        "name": "DEATH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "DEATHTROOPER",
+       "combatType": 1
       },
       {
        "name": "EMPEROR'S SHUTTLE",
-       "required": 1
+       "required": 1,
+       "baseId": "EMPERORSSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "GENERAL HUX",
-       "required": 1
+       "required": 1,
+       "baseId": "GENERALHUX",
+       "combatType": 1
       },
       {
        "name": "GENERAL KENOBI",
-       "required": 1
+       "required": 1,
+       "baseId": "GENERALKENOBI",
+       "combatType": 1
       },
       {
        "name": "GENERAL VEERS",
-       "required": 1
+       "required": 1,
+       "baseId": "VEERS",
+       "combatType": 1
       },
       {
        "name": "HAN SOLO",
-       "required": 1
+       "required": 1,
+       "baseId": "HANSOLO",
+       "combatType": 1
       },
       {
        "name": "HERMIT YODA",
-       "required": 1
+       "required": 1,
+       "baseId": "HERMITYODA",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL PROBE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "IMPERIALPROBEDROID",
+       "combatType": 1
       },
       {
        "name": "JAWA",
-       "required": 1
+       "required": 1,
+       "baseId": "JAWA",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 1
+       "required": 1,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "KI-ADI-MUNDI",
-       "required": 1
+       "required": 1,
+       "baseId": "KIADIMUNDI",
+       "combatType": 1
       },
       {
        "name": "KUIIL",
-       "required": 1
+       "required": 1,
+       "baseId": "KUIIL",
+       "combatType": 1
       },
       {
        "name": "L3-37",
-       "required": 1
+       "required": 1,
+       "baseId": "L3_37",
+       "combatType": 1
       },
       {
        "name": "LANDO CALRISSIAN",
-       "required": 1
+       "required": 1,
+       "baseId": "ADMINISTRATORLANDO",
+       "combatType": 1
       },
       {
        "name": "LOGRAY",
-       "required": 1
+       "required": 1,
+       "baseId": "LOGRAY",
+       "combatType": 1
       },
       {
        "name": "LORD VADER",
-       "required": 1
+       "required": 1,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "OUTRIDER",
-       "required": 1
+       "required": 1,
+       "baseId": "OUTRIDER",
+       "combatType": 2
       },
       {
        "name": "PLO KOON'S JEDI STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "BLADEOFDORIN",
+       "combatType": 2
       },
       {
        "name": "REY",
-       "required": 1
+       "required": 1,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "SANA STARROS",
-       "required": 1
+       "required": 1,
+       "baseId": "SANASTARROS",
+       "combatType": 1
       },
       {
        "name": "SITH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "FOSITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "SNOWTROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "SNOWTROOPER",
+       "combatType": 1
       },
       {
        "name": "STARKILLER",
-       "required": 1
+       "required": 1,
+       "baseId": "STARKILLER",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 1
+       "required": 1,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "THE MANDALORIAN",
-       "required": 1
+       "required": 1,
+       "baseId": "THEMANDALORIAN",
+       "combatType": 1
       },
       {
        "name": "THREEPIO & CHEWIE",
-       "required": 1
+       "required": 1,
+       "baseId": "C3POCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "ZAALBAR",
-       "required": 1
+       "required": 1,
+       "baseId": "ZAALBAR",
+       "combatType": 1
       }
      ]
     },
@@ -981,203 +1451,303 @@
      "units": [
       {
        "name": "RAZOR CREST",
-       "required": 12
+       "required": 12,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "BEN SOLO",
-       "required": 10
+       "required": 10,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 5
+       "required": 5,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "GRAND MASTER YODA",
-       "required": 4
+       "required": 4,
+       "baseId": "GRANDMASTERYODA",
+       "combatType": 1
       },
       {
        "name": "BB-8",
-       "required": 2
+       "required": 2,
+       "baseId": "BB8",
+       "combatType": 1
       },
       {
        "name": "BTL-B Y-WING STARFIGHTER",
-       "required": 2
+       "required": 2,
+       "baseId": "YWINGCLONEWARS",
+       "combatType": 2
       },
       {
        "name": "C-3PO",
-       "required": 2
+       "required": 2,
+       "baseId": "C3POLEGENDARY",
+       "combatType": 1
       },
       {
        "name": "CHEWBACCA",
-       "required": 2
+       "required": 2,
+       "baseId": "CHEWBACCALEGENDARY",
+       "combatType": 1
       },
       {
        "name": "GHOST",
-       "required": 2
+       "required": 2,
+       "baseId": "GHOST",
+       "combatType": 2
       },
       {
        "name": "GREEF KARGA",
-       "required": 2
+       "required": 2,
+       "baseId": "GREEFKARGA",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 2
+       "required": 2,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "KANAN JARRUS",
-       "required": 2
+       "required": 2,
+       "baseId": "KANANJARRUSS3",
+       "combatType": 1
       },
       {
        "name": "OUTRIDER",
-       "required": 2
+       "required": 2,
+       "baseId": "OUTRIDER",
+       "combatType": 2
       },
       {
        "name": "PROFUNDITY",
-       "required": 2
+       "required": 2,
+       "baseId": "CAPITALPROFUNDITY",
+       "combatType": 2
       },
       {
        "name": "R2-D2",
-       "required": 2
+       "required": 2,
+       "baseId": "R2D2_LEGENDARY",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 2
+       "required": 2,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "REY (JEDI TRAINING)",
-       "required": 2
+       "required": 2,
+       "baseId": "REYJEDITRAINING",
+       "combatType": 1
       },
       {
        "name": "AAYLA SECURA",
-       "required": 1
+       "required": 1,
+       "baseId": "AAYLASECURA",
+       "combatType": 1
       },
       {
        "name": "ADMIRAL RADDUS",
-       "required": 1
+       "required": 1,
+       "baseId": "ADMIRALRADDUS",
+       "combatType": 1
       },
       {
        "name": "ARC TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "ARCTROOPER501ST",
+       "combatType": 1
       },
       {
        "name": "BISTAN'S U-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "UWINGSCARIF",
+       "combatType": 2
       },
       {
        "name": "BODHI ROOK",
-       "required": 1
+       "required": 1,
+       "baseId": "BODHIROOK",
+       "combatType": 1
       },
       {
        "name": "BOUSHH (LEIA ORGANA)",
-       "required": 1
+       "required": 1,
+       "baseId": "BOUSHH",
+       "combatType": 1
       },
       {
        "name": "CLONE SERGEANT - PHASE I",
-       "required": 1
+       "required": 1,
+       "baseId": "CLONESERGEANTPHASEI",
+       "combatType": 1
       },
       {
        "name": "COMMANDER LUKE SKYWALKER",
-       "required": 1
+       "required": 1,
+       "baseId": "COMMANDERLUKESKYWALKER",
+       "combatType": 1
       },
       {
        "name": "CT-21-0408 \"ECHO\"",
-       "required": 1
+       "required": 1,
+       "baseId": "CT210408",
+       "combatType": 1
       },
       {
        "name": "CT-5555 \"FIVES\"",
-       "required": 1
+       "required": 1,
+       "baseId": "CT5555",
+       "combatType": 1
       },
       {
        "name": "CT-7567 \"REX\"",
-       "required": 1
+       "required": 1,
+       "baseId": "CT7567",
+       "combatType": 1
       },
       {
        "name": "EBON HAWK",
-       "required": 1
+       "required": 1,
+       "baseId": "EBONHAWK",
+       "combatType": 2
       },
       {
        "name": "ENDURANCE",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALJEDICRUISER",
+       "combatType": 2
       },
       {
        "name": "ENFYS NEST",
-       "required": 1
+       "required": 1,
+       "baseId": "ENFYSNEST",
+       "combatType": 1
       },
       {
        "name": "EZRA BRIDGER",
-       "required": 1
+       "required": 1,
+       "baseId": "EZRABRIDGERS3",
+       "combatType": 1
       },
       {
        "name": "HAN'S MILLENNIUM FALCON",
-       "required": 1
+       "required": 1,
+       "baseId": "MILLENNIUMFALCON",
+       "combatType": 2
       },
       {
        "name": "JEDI CONSULAR'S STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDISTARFIGHTERCONSULAR",
+       "combatType": 2
       },
       {
        "name": "JEDI KNIGHT REVAN",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDIKNIGHTREVAN",
+       "combatType": 1
       },
       {
        "name": "JUHANI",
-       "required": 1
+       "required": 1,
+       "baseId": "JUHANI",
+       "combatType": 1
       },
       {
        "name": "L3-37",
-       "required": 1
+       "required": 1,
+       "baseId": "L3_37",
+       "combatType": 1
       },
       {
        "name": "MON MOTHMA",
-       "required": 1
+       "required": 1,
+       "baseId": "MONMOTHMA",
+       "combatType": 1
       },
       {
        "name": "OMEGA",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHOMEGA",
+       "combatType": 1
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 1
+       "required": 1,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "PAO",
-       "required": 1
+       "required": 1,
+       "baseId": "PAO",
+       "combatType": 1
       },
       {
        "name": "POE DAMERON'S X-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "XWINGBLACKONE",
+       "combatType": 2
       },
       {
        "name": "RAVEN'S CLAW",
-       "required": 1
+       "required": 1,
+       "baseId": "RAVENSCLAW",
+       "combatType": 2
       },
       {
        "name": "ROSE TICO",
-       "required": 1
+       "required": 1,
+       "baseId": "ROSETICO",
+       "combatType": 1
       },
       {
        "name": "TEEBO",
-       "required": 1
+       "required": 1,
+       "baseId": "TEEBO",
+       "combatType": 1
       },
       {
        "name": "THREEPIO & CHEWIE",
-       "required": 1
+       "required": 1,
+       "baseId": "C3POCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "VANDOR CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "YOUNGCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "VETERAN SMUGGLER CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "SMUGGLERCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "WEDGE ANTILLES",
-       "required": 1
+       "required": 1,
+       "baseId": "WEDGEANTILLES",
+       "combatType": 1
       },
       {
        "name": "YOUNG HAN SOLO",
-       "required": 1
+       "required": 1,
+       "baseId": "YOUNGHAN",
+       "combatType": 1
       }
      ]
     }
@@ -1192,175 +1762,261 @@
      "units": [
       {
        "name": "DARTH MALGUS",
-       "required": 9
+       "required": 9,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "SCYTHE",
-       "required": 9
+       "required": 9,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "TIE/IN INTERCEPTOR PROTOTYPE",
-       "required": 8
+       "required": 8,
+       "baseId": "TIEINTERCEPTOR",
+       "combatType": 2
       },
       {
        "name": "LORD VADER",
-       "required": 6
+       "required": 6,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 6
+       "required": 6,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 4
+       "required": 4,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 4
+       "required": 4,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "GENERAL GRIEVOUS",
-       "required": 3
+       "required": 3,
+       "baseId": "GRIEVOUS",
+       "combatType": 1
       },
       {
        "name": "WAT TAMBOR",
-       "required": 3
+       "required": 3,
+       "baseId": "WATTAMBOR",
+       "combatType": 1
       },
       {
        "name": "DENGAR",
-       "required": 2
+       "required": 2,
+       "baseId": "DENGAR",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL PROBE DROID",
-       "required": 2
+       "required": 2,
+       "baseId": "IMPERIALPROBEDROID",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 2
+       "required": 2,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "TUSKEN RAIDER",
-       "required": 2
+       "required": 2,
+       "baseId": "TUSKENRAIDER",
+       "combatType": 1
       },
       {
        "name": "0-0-0",
-       "required": 1
+       "required": 1,
+       "baseId": "TRIPLEZERO",
+       "combatType": 1
       },
       {
        "name": "AURRA SING",
-       "required": 1
+       "required": 1,
+       "baseId": "AURRA_SING",
+       "combatType": 1
       },
       {
        "name": "CAD BANE",
-       "required": 1
+       "required": 1,
+       "baseId": "CADBANE",
+       "combatType": 1
       },
       {
        "name": "CHIMAERA",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALCHIMAERA",
+       "combatType": 2
       },
       {
        "name": "DARK TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "DARKTROOPER",
+       "combatType": 1
       },
       {
        "name": "DARTH MAUL",
-       "required": 1
+       "required": 1,
+       "baseId": "MAUL",
+       "combatType": 1
       },
       {
        "name": "DARTH REVAN",
-       "required": 1
+       "required": 1,
+       "baseId": "DARTHREVAN",
+       "combatType": 1
       },
       {
        "name": "DARTH TRAYA",
-       "required": 1
+       "required": 1,
+       "baseId": "DARTHTRAYA",
+       "combatType": 1
       },
       {
        "name": "DIRECTOR KRENNIC",
-       "required": 1
+       "required": 1,
+       "baseId": "DIRECTORKRENNIC",
+       "combatType": 1
       },
       {
        "name": "EMBO",
-       "required": 1
+       "required": 1,
+       "baseId": "EMBO",
+       "combatType": 1
       },
       {
        "name": "EMPEROR'S SHUTTLE",
-       "required": 1
+       "required": 1,
+       "baseId": "EMPERORSSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "FIRST ORDER SF TIE FIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEFIGHTERFOSF",
+       "combatType": 2
       },
       {
        "name": "FIRST ORDER SF TIE PILOT",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDERSPECIALFORCESPILOT",
+       "combatType": 1
       },
       {
        "name": "GAR SAXON",
-       "required": 1
+       "required": 1,
+       "baseId": "GARSAXON",
+       "combatType": 1
       },
       {
        "name": "GENERAL HUX",
-       "required": 1
+       "required": 1,
+       "baseId": "GENERALHUX",
+       "combatType": 1
       },
       {
        "name": "GEONOSIAN SOLDIER'S STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSTARFIGHTER2",
+       "combatType": 2
       },
       {
        "name": "GEONOSIAN SPY'S STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSTARFIGHTER3",
+       "combatType": 2
       },
       {
        "name": "GRAND ADMIRAL THRAWN",
-       "required": 1
+       "required": 1,
+       "baseId": "GRANDADMIRALTHRAWN",
+       "combatType": 1
       },
       {
        "name": "GRAND MOFF TARKIN",
-       "required": 1
+       "required": 1,
+       "baseId": "GRANDMOFFTARKIN",
+       "combatType": 1
       },
       {
        "name": "HK-47",
-       "required": 1
+       "required": 1,
+       "baseId": "HK47",
+       "combatType": 1
       },
       {
        "name": "HYENA BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "IG-88",
-       "required": 1
+       "required": 1,
+       "baseId": "IG88",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL TIE FIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEFIGHTERIMPERIAL",
+       "combatType": 2
       },
       {
        "name": "MOTHER TALZIN",
-       "required": 1
+       "required": 1,
+       "baseId": "MOTHERTALZIN",
+       "combatType": 1
       },
       {
        "name": "SAVAGE OPRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "SAVAGEOPRESS",
+       "combatType": 1
       },
       {
        "name": "SEVENTH SISTER",
-       "required": 1
+       "required": 1,
+       "baseId": "SEVENTHSISTER",
+       "combatType": 1
       },
       {
        "name": "SITH ASSASSIN",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHASSASSIN",
+       "combatType": 1
       },
       {
        "name": "SITH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "FOSITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "TALIA",
-       "required": 1
+       "required": 1,
+       "baseId": "TALIA",
+       "combatType": 1
       },
       {
        "name": "TIE ADVANCED X1",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEADVANCED",
+       "combatType": 2
       }
      ]
     },
@@ -1369,207 +2025,309 @@
      "units": [
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 6
+       "required": 6,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 5
+       "required": 5,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 5
+       "required": 5,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "TIE/IN INTERCEPTOR PROTOTYPE",
-       "required": 5
+       "required": 5,
+       "baseId": "TIEINTERCEPTOR",
+       "combatType": 2
       },
       {
        "name": "JEDI KNIGHT LUKE SKYWALKER",
-       "required": 4
+       "required": 4,
+       "baseId": "JEDIKNIGHTLUKE",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 4
+       "required": 4,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "SCYTHE",
-       "required": 4
+       "required": 4,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 3
+       "required": 3,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 3
+       "required": 3,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 3
+       "required": 3,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "BASTILA SHAN (FALLEN)",
-       "required": 2
+       "required": 2,
+       "baseId": "BASTILASHANDARK",
+       "combatType": 1
       },
       {
        "name": "DARTH MALAK",
-       "required": 2
+       "required": 2,
+       "baseId": "DARTHMALAK",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 2
+       "required": 2,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "OBI-WAN KENOBI (OLD BEN)",
-       "required": 2
+       "required": 2,
+       "baseId": "OLDBENKENOBI",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 2
+       "required": 2,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "STARKILLER",
-       "required": 2
+       "required": 2,
+       "baseId": "STARKILLER",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 2
+       "required": 2,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "50R-T",
-       "required": 1
+       "required": 1,
+       "baseId": "50RT",
+       "combatType": 1
       },
       {
        "name": "B1 BATTLE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "B1BATTLEDROIDV2",
+       "combatType": 1
       },
       {
        "name": "BARRISS OFFEE",
-       "required": 1
+       "required": 1,
+       "baseId": "BARRISSOFFEE",
+       "combatType": 1
       },
       {
        "name": "BEN SOLO",
-       "required": 1
+       "required": 1,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "BODHI ROOK",
-       "required": 1
+       "required": 1,
+       "baseId": "BODHIROOK",
+       "combatType": 1
       },
       {
        "name": "CARA DUNE",
-       "required": 1
+       "required": 1,
+       "baseId": "CARADUNE",
+       "combatType": 1
       },
       {
        "name": "CHIRRUT ÎMWE",
-       "required": 1
+       "required": 1,
+       "baseId": "CHIRRUTIMWE",
+       "combatType": 1
       },
       {
        "name": "CORUSCANT UNDERWORLD POLICE",
-       "required": 1
+       "required": 1,
+       "baseId": "CORUSCANTUNDERWORLDPOLICE",
+       "combatType": 1
       },
       {
        "name": "EWOK ELDER",
-       "required": 1
+       "required": 1,
+       "baseId": "EWOKELDER",
+       "combatType": 1
       },
       {
        "name": "EWOK SCOUT",
-       "required": 1
+       "required": 1,
+       "baseId": "EWOKSCOUT",
+       "combatType": 1
       },
       {
        "name": "TUSKEN CHIEFTAIN",
-       "required": 1
+       "required": 1,
+       "baseId": "TUSKENCHIEFTAIN",
+       "combatType": 1
       },
       {
        "name": "FINALIZER",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALFINALIZER",
+       "combatType": 2
       },
       {
        "name": "FIRST ORDER SF TIE FIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEFIGHTERFOSF",
+       "combatType": 2
       },
       {
        "name": "GAUNTLET STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GAUNTLETSTARFIGHTER",
+       "combatType": 2
       },
       {
        "name": "GENERAL SKYWALKER",
-       "required": 1
+       "required": 1,
+       "baseId": "GENERALSKYWALKER",
+       "combatType": 1
       },
       {
        "name": "GEONOSIAN SPY",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSPY",
+       "combatType": 1
       },
       {
        "name": "HK-47",
-       "required": 1
+       "required": 1,
+       "baseId": "HK47",
+       "combatType": 1
       },
       {
        "name": "HONDO OHNAKA",
-       "required": 1
+       "required": 1,
+       "baseId": "HONDO",
+       "combatType": 1
       },
       {
        "name": "HOTH REBEL SCOUT",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHREBELSCOUT",
+       "combatType": 1
       },
       {
        "name": "HUNTER",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHHUNTER",
+       "combatType": 1
       },
       {
        "name": "IG-2000",
-       "required": 1
+       "required": 1,
+       "baseId": "IG2000",
+       "combatType": 2
       },
       {
        "name": "KYLO REN (UNMASKED)",
-       "required": 1
+       "required": 1,
+       "baseId": "KYLORENUNMASKED",
+       "combatType": 1
       },
       {
        "name": "LUMINARA UNDULI",
-       "required": 1
+       "required": 1,
+       "baseId": "LUMINARAUNDULI",
+       "combatType": 1
       },
       {
        "name": "MARA JADE, THE EMPEROR'S HAND",
-       "required": 1
+       "required": 1,
+       "baseId": "MARAJADE",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER ACOLYTE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERACOLYTE",
+       "combatType": 1
       },
       {
        "name": "OUTRIDER",
-       "required": 1
+       "required": 1,
+       "baseId": "OUTRIDER",
+       "combatType": 2
       },
       {
        "name": "QUI-GON JINN",
-       "required": 1
+       "required": 1,
+       "baseId": "QUIGONJINN",
+       "combatType": 1
       },
       {
        "name": "RESISTANCE HERO FINN",
-       "required": 1
+       "required": 1,
+       "baseId": "EPIXFINN",
+       "combatType": 1
       },
       {
        "name": "RESISTANCE HERO POE",
-       "required": 1
+       "required": 1,
+       "baseId": "EPIXPOE",
+       "combatType": 1
       },
       {
        "name": "ROSE TICO",
-       "required": 1
+       "required": 1,
+       "baseId": "ROSETICO",
+       "combatType": 1
       },
       {
        "name": "SKIFF GUARD (LANDO CALRISSIAN)",
-       "required": 1
+       "required": 1,
+       "baseId": "UNDERCOVERLANDO",
+       "combatType": 1
       },
       {
        "name": "TEEBO",
-       "required": 1
+       "required": 1,
+       "baseId": "TEEBO",
+       "combatType": 1
       },
       {
        "name": "TIE REAPER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEREAPER",
+       "combatType": 2
       },
       {
        "name": "YOUNG HAN SOLO",
-       "required": 1
+       "required": 1,
+       "baseId": "YOUNGHAN",
+       "combatType": 1
       }
      ]
     },
@@ -1578,143 +2336,213 @@
      "units": [
       {
        "name": "BEN SOLO",
-       "required": 6
+       "required": 6,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 6
+       "required": 6,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 6
+       "required": 6,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "HAN'S MILLENNIUM FALCON",
-       "required": 5
+       "required": 5,
+       "baseId": "MILLENNIUMFALCON",
+       "combatType": 2
       },
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 5
+       "required": 5,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "LOGRAY",
-       "required": 5
+       "required": 5,
+       "baseId": "LOGRAY",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 5
+       "required": 5,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "GREEF KARGA",
-       "required": 5
+       "required": 5,
+       "baseId": "GREEFKARGA",
+       "combatType": 1
       },
       {
        "name": "R2-D2",
-       "required": 4
+       "required": 4,
+       "baseId": "R2D2_LEGENDARY",
+       "combatType": 1
       },
       {
        "name": "BB-8",
-       "required": 3
+       "required": 3,
+       "baseId": "BB8",
+       "combatType": 1
       },
       {
        "name": "C-3PO",
-       "required": 3
+       "required": 3,
+       "baseId": "C3POLEGENDARY",
+       "combatType": 1
       },
       {
        "name": "COMMANDER LUKE SKYWALKER",
-       "required": 3
+       "required": 3,
+       "baseId": "COMMANDERLUKESKYWALKER",
+       "combatType": 1
       },
       {
        "name": "KI-ADI-MUNDI",
-       "required": 3
+       "required": 3,
+       "baseId": "KIADIMUNDI",
+       "combatType": 1
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 3
+       "required": 3,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "GRAND MASTER YODA",
-       "required": 2
+       "required": 2,
+       "baseId": "GRANDMASTERYODA",
+       "combatType": 1
       },
       {
        "name": "HAN SOLO",
-       "required": 2
+       "required": 2,
+       "baseId": "HANSOLO",
+       "combatType": 1
       },
       {
        "name": "HERMIT YODA",
-       "required": 2
+       "required": 2,
+       "baseId": "HERMITYODA",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT REVAN",
-       "required": 2
+       "required": 2,
+       "baseId": "JEDIKNIGHTREVAN",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 2
+       "required": 2,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "REBEL OFFICER LEIA ORGANA",
-       "required": 2
+       "required": 2,
+       "baseId": "HOTHLEIA",
+       "combatType": 1
       },
       {
        "name": "RESISTANCE TROOPER",
-       "required": 2
+       "required": 2,
+       "baseId": "RESISTANCETROOPER",
+       "combatType": 1
       },
       {
        "name": "CLONE SERGEANT - PHASE I",
-       "required": 1
+       "required": 1,
+       "baseId": "CLONESERGEANTPHASEI",
+       "combatType": 1
       },
       {
        "name": "CT-5555 \"FIVES\"",
-       "required": 1
+       "required": 1,
+       "baseId": "CT5555",
+       "combatType": 1
       },
       {
        "name": "EWOK SCOUT",
-       "required": 1
+       "required": 1,
+       "baseId": "EWOKSCOUT",
+       "combatType": 1
       },
       {
        "name": "GENERAL KENOBI",
-       "required": 1
+       "required": 1,
+       "baseId": "GENERALKENOBI",
+       "combatType": 1
       },
       {
        "name": "HOTH REBEL SCOUT",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHREBELSCOUT",
+       "combatType": 1
       },
       {
        "name": "HOTH REBEL SOLDIER",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHREBELSOLDIER",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT ANAKIN",
-       "required": 1
+       "required": 1,
+       "baseId": "ANAKINKNIGHT",
+       "combatType": 1
       },
       {
        "name": "K-2SO",
-       "required": 1
+       "required": 1,
+       "baseId": "K2SO",
+       "combatType": 1
       },
       {
        "name": "LANDO'S MILLENNIUM FALCON",
-       "required": 1
+       "required": 1,
+       "baseId": "MILLENNIUMFALCONPRISTINE",
+       "combatType": 2
       },
       {
        "name": "MACE WINDU",
-       "required": 1
+       "required": 1,
+       "baseId": "MACEWINDU",
+       "combatType": 1
       },
       {
        "name": "NEGOTIATOR",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALNEGOTIATOR",
+       "combatType": 2
       },
       {
        "name": "RAVEN'S CLAW",
-       "required": 1
+       "required": 1,
+       "baseId": "RAVENSCLAW",
+       "combatType": 2
       },
       {
        "name": "REY (JEDI TRAINING)",
-       "required": 1
+       "required": 1,
+       "baseId": "REYJEDITRAINING",
+       "combatType": 1
       },
       {
        "name": "SKIFF GUARD (LANDO CALRISSIAN)",
-       "required": 1
+       "required": 1,
+       "baseId": "UNDERCOVERLANDO",
+       "combatType": 1
       }
      ]
     }
@@ -1729,195 +2557,291 @@
      "units": [
       {
        "name": "TIE/IN INTERCEPTOR PROTOTYPE",
-       "required": 7
+       "required": 7,
+       "baseId": "TIEINTERCEPTOR",
+       "combatType": 2
       },
       {
        "name": "STARKILLER",
-       "required": 6
+       "required": 6,
+       "baseId": "STARKILLER",
+       "combatType": 1
       },
       {
        "name": "LORD VADER",
-       "required": 5
+       "required": 5,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "SCYTHE",
-       "required": 5
+       "required": 5,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 5
+       "required": 5,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 4
+       "required": 4,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "EXECUTOR",
-       "required": 4
+       "required": 4,
+       "baseId": "CAPITALEXECUTOR",
+       "combatType": 2
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 4
+       "required": 4,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "DARTH MALAK",
-       "required": 3
+       "required": 3,
+       "baseId": "DARTHMALAK",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 3
+       "required": 3,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "ASAJJ VENTRESS",
-       "required": 2
+       "required": 2,
+       "baseId": "ASAJVENTRESS",
+       "combatType": 1
       },
       {
        "name": "AURRA SING",
-       "required": 2
+       "required": 2,
+       "baseId": "AURRA_SING",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 2
+       "required": 2,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "EMPEROR'S SHUTTLE",
-       "required": 2
+       "required": 2,
+       "baseId": "EMPERORSSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "HYENA BOMBER",
-       "required": 2
+       "required": 2,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "SNOWTROOPER",
-       "required": 2
+       "required": 2,
+       "baseId": "SNOWTROOPER",
+       "combatType": 1
       },
       {
        "name": "B2 SUPER BATTLE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "B2SUPERBATTLEDROID",
+       "combatType": 1
       },
       {
        "name": "BASTILA SHAN (FALLEN)",
-       "required": 1
+       "required": 1,
+       "baseId": "BASTILASHANDARK",
+       "combatType": 1
       },
       {
        "name": "BT-1",
-       "required": 1
+       "required": 1,
+       "baseId": "BT1",
+       "combatType": 1
       },
       {
        "name": "CAD BANE",
-       "required": 1
+       "required": 1,
+       "baseId": "CADBANE",
+       "combatType": 1
       },
       {
        "name": "DARTH MAUL",
-       "required": 1
+       "required": 1,
+       "baseId": "MAUL",
+       "combatType": 1
       },
       {
        "name": "DARTH VADER",
-       "required": 1
+       "required": 1,
+       "baseId": "VADER",
+       "combatType": 1
       },
       {
        "name": "DATHCHA",
-       "required": 1
+       "required": 1,
+       "baseId": "DATHCHA",
+       "combatType": 1
       },
       {
        "name": "DENGAR",
-       "required": 1
+       "required": 1,
+       "baseId": "DENGAR",
+       "combatType": 1
       },
       {
        "name": "DIRECTOR KRENNIC",
-       "required": 1
+       "required": 1,
+       "baseId": "DIRECTORKRENNIC",
+       "combatType": 1
       },
       {
        "name": "EIGHTH BROTHER",
-       "required": 1
+       "required": 1,
+       "baseId": "EIGHTHBROTHER",
+       "combatType": 1
       },
       {
        "name": "EMBO",
-       "required": 1
+       "required": 1,
+       "baseId": "EMBO",
+       "combatType": 1
       },
       {
        "name": "FIRST ORDER STORMTROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDERTROOPER",
+       "combatType": 1
       },
       {
        "name": "FIRST ORDER TIE PILOT",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDERTIEPILOT",
+       "combatType": 1
       },
       {
        "name": "GENERAL VEERS",
-       "required": 1
+       "required": 1,
+       "baseId": "VEERS",
+       "combatType": 1
       },
       {
        "name": "HK-47",
-       "required": 1
+       "required": 1,
+       "baseId": "HK47",
+       "combatType": 1
       },
       {
        "name": "HONDO OHNAKA",
-       "required": 1
+       "required": 1,
+       "baseId": "HONDO",
+       "combatType": 1
       },
       {
        "name": "IDEN VERSIO",
-       "required": 1
+       "required": 1,
+       "baseId": "IDENVERSIOEMPIRE",
+       "combatType": 1
       },
       {
        "name": "IG-88",
-       "required": 1
+       "required": 1,
+       "baseId": "IG88",
+       "combatType": 1
       },
       {
        "name": "KRRSANTAN",
-       "required": 1
+       "required": 1,
+       "baseId": "KRRSANTAN",
+       "combatType": 1
       },
       {
        "name": "MALEVOLENCE",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALMALEVOLENCE",
+       "combatType": 2
       },
       {
        "name": "MARA JADE, THE EMPEROR'S HAND",
-       "required": 1
+       "required": 1,
+       "baseId": "MARAJADE",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER ACOLYTE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERACOLYTE",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER INITIATE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERINITIATE",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER SPIRIT",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERSPIRIT",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER ZOMBIE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERZOMBIE",
+       "combatType": 1
       },
       {
        "name": "RANGE TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "RANGETROOPER",
+       "combatType": 1
       },
       {
        "name": "SAVAGE OPRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "SAVAGEOPRESS",
+       "combatType": 1
       },
       {
        "name": "SECOND SISTER",
-       "required": 1
+       "required": 1,
+       "baseId": "SECONDSISTER",
+       "combatType": 1
       },
       {
        "name": "SEVENTH SISTER",
-       "required": 1
+       "required": 1,
+       "baseId": "SEVENTHSISTER",
+       "combatType": 1
       },
       {
        "name": "TIE FIGHTER PILOT",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEFIGHTERPILOT",
+       "combatType": 1
       },
       {
        "name": "TIE SILENCER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIESILENCER",
+       "combatType": 2
       },
       {
        "name": "WAMPA",
-       "required": 1
+       "required": 1,
+       "baseId": "WAMPA",
+       "combatType": 1
       }
      ]
     },
@@ -1926,191 +2850,285 @@
      "units": [
       {
        "name": "STARKILLER",
-       "required": 7
+       "required": 7,
+       "baseId": "STARKILLER",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 6
+       "required": 6,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 5
+       "required": 5,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "TIE/IN INTERCEPTOR PROTOTYPE",
-       "required": 5
+       "required": 5,
+       "baseId": "TIEINTERCEPTOR",
+       "combatType": 2
       },
       {
        "name": "GENERAL SKYWALKER",
-       "required": 4
+       "required": 4,
+       "baseId": "GENERALSKYWALKER",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT LUKE SKYWALKER",
-       "required": 4
+       "required": 4,
+       "baseId": "JEDIKNIGHTLUKE",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 4
+       "required": 4,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "BEN SOLO",
-       "required": 3
+       "required": 3,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "DARTH MALAK",
-       "required": 3
+       "required": 3,
+       "baseId": "DARTHMALAK",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 3
+       "required": 3,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "SCYTHE",
-       "required": 3
+       "required": 3,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 2
+       "required": 2,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 2
+       "required": 2,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 2
+       "required": 2,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "EXECUTOR",
-       "required": 2
+       "required": 2,
+       "baseId": "CAPITALEXECUTOR",
+       "combatType": 2
       },
       {
        "name": "LORD VADER",
-       "required": 2
+       "required": 2,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER INITIATE",
-       "required": 2
+       "required": 2,
+       "baseId": "NIGHTSISTERINITIATE",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 2
+       "required": 2,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "50R-T",
-       "required": 1
+       "required": 1,
+       "baseId": "50RT",
+       "combatType": 1
       },
       {
        "name": "ADMIRAL ACKBAR",
-       "required": 1
+       "required": 1,
+       "baseId": "ADMIRALACKBAR",
+       "combatType": 1
       },
       {
        "name": "ASAJJ VENTRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "ASAJVENTRESS",
+       "combatType": 1
       },
       {
        "name": "AURRA SING",
-       "required": 1
+       "required": 1,
+       "baseId": "AURRA_SING",
+       "combatType": 1
       },
       {
        "name": "B-28 EXTINCTION-CLASS BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHBOMBER",
+       "combatType": 2
       },
       {
        "name": "BAZE MALBUS",
-       "required": 1
+       "required": 1,
+       "baseId": "BAZEMALBUS",
+       "combatType": 1
       },
       {
        "name": "BISTAN",
-       "required": 1
+       "required": 1,
+       "baseId": "BISTAN",
+       "combatType": 1
       },
       {
        "name": "BO-KATAN KRYZE",
-       "required": 1
+       "required": 1,
+       "baseId": "BOKATAN",
+       "combatType": 1
       },
       {
        "name": "CORUSCANT UNDERWORLD POLICE",
-       "required": 1
+       "required": 1,
+       "baseId": "CORUSCANTUNDERWORLDPOLICE",
+       "combatType": 1
       },
       {
        "name": "DARK TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "DARKTROOPER",
+       "combatType": 1
       },
       {
        "name": "EBON HAWK",
-       "required": 1
+       "required": 1,
+       "baseId": "EBONHAWK",
+       "combatType": 2
       },
       {
        "name": "ECHO",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHECHO",
+       "combatType": 1
       },
       {
        "name": "GAMORREAN GUARD",
-       "required": 1
+       "required": 1,
+       "baseId": "GAMORREANGUARD",
+       "combatType": 1
       },
       {
        "name": "GENERAL VEERS",
-       "required": 1
+       "required": 1,
+       "baseId": "VEERS",
+       "combatType": 1
       },
       {
        "name": "HOTH REBEL SOLDIER",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHREBELSOLDIER",
+       "combatType": 1
       },
       {
        "name": "IG-88",
-       "required": 1
+       "required": 1,
+       "baseId": "IG88",
+       "combatType": 1
       },
       {
        "name": "JEDI CONSULAR'S STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDISTARFIGHTERCONSULAR",
+       "combatType": 2
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "KYLO REN",
-       "required": 1
+       "required": 1,
+       "baseId": "KYLOREN",
+       "combatType": 1
       },
       {
        "name": "OUTRIDER",
-       "required": 1
+       "required": 1,
+       "baseId": "OUTRIDER",
+       "combatType": 2
       },
       {
        "name": "POGGLE THE LESSER",
-       "required": 1
+       "required": 1,
+       "baseId": "POGGLETHELESSER",
+       "combatType": 1
       },
       {
        "name": "REBEL Y-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "YWINGREBEL",
+       "combatType": 2
       },
       {
        "name": "REX'S ARC-170",
-       "required": 1
+       "required": 1,
+       "baseId": "ARC170REX",
+       "combatType": 2
       },
       {
        "name": "SEVENTH SISTER",
-       "required": 1
+       "required": 1,
+       "baseId": "SEVENTHSISTER",
+       "combatType": 1
       },
       {
        "name": "SITH EMPIRE TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "SITH FIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHFIGHTER",
+       "combatType": 2
       },
       {
        "name": "SLAVE I",
-       "required": 1
+       "required": 1,
+       "baseId": "SLAVE1",
+       "combatType": 2
       },
       {
        "name": "THE MANDALORIAN",
-       "required": 1
+       "required": 1,
+       "baseId": "THEMANDALORIAN",
+       "combatType": 1
       },
       {
        "name": "TIE SILENCER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIESILENCER",
+       "combatType": 2
       }
      ]
     },
@@ -2119,191 +3137,285 @@
      "units": [
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 8
+       "required": 8,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "PROFUNDITY",
-       "required": 7
+       "required": 7,
+       "baseId": "CAPITALPROFUNDITY",
+       "combatType": 2
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 5
+       "required": 5,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "HERMIT YODA",
-       "required": 5
+       "required": 5,
+       "baseId": "HERMITYODA",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 4
+       "required": 4,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "REBEL OFFICER LEIA ORGANA",
-       "required": 4
+       "required": 4,
+       "baseId": "HOTHLEIA",
+       "combatType": 1
       },
       {
        "name": "BEN SOLO",
-       "required": 3
+       "required": 3,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "GENERAL KENOBI",
-       "required": 3
+       "required": 3,
+       "baseId": "GENERALKENOBI",
+       "combatType": 1
       },
       {
        "name": "50R-T",
-       "required": 2
+       "required": 2,
+       "baseId": "50RT",
+       "combatType": 1
       },
       {
        "name": "CHEWBACCA",
-       "required": 2
+       "required": 2,
+       "baseId": "CHEWBACCALEGENDARY",
+       "combatType": 1
       },
       {
        "name": "PLO KOON'S JEDI STARFIGHTER",
-       "required": 2
+       "required": 2,
+       "baseId": "BLADEOFDORIN",
+       "combatType": 2
       },
       {
        "name": "HAN SOLO",
-       "required": 2
+       "required": 2,
+       "baseId": "HANSOLO",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT REVAN",
-       "required": 2
+       "required": 2,
+       "baseId": "JEDIKNIGHTREVAN",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 2
+       "required": 2,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "KI-ADI-MUNDI",
-       "required": 2
+       "required": 2,
+       "baseId": "KIADIMUNDI",
+       "combatType": 1
       },
       {
        "name": "LOGRAY",
-       "required": 2
+       "required": 2,
+       "baseId": "LOGRAY",
+       "combatType": 1
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 2
+       "required": 2,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "SCARIF REBEL PATHFINDER",
-       "required": 2
+       "required": 2,
+       "baseId": "SCARIFREBEL",
+       "combatType": 1
       },
       {
        "name": "XANADU BLOOD",
-       "required": 2
+       "required": 2,
+       "baseId": "XANADUBLOOD",
+       "combatType": 2
       },
       {
        "name": "ZAALBAR",
-       "required": 2
+       "required": 2,
+       "baseId": "ZAALBAR",
+       "combatType": 1
       },
       {
        "name": "AAYLA SECURA",
-       "required": 1
+       "required": 1,
+       "baseId": "AAYLASECURA",
+       "combatType": 1
       },
       {
        "name": "BB-8",
-       "required": 1
+       "required": 1,
+       "baseId": "BB8",
+       "combatType": 1
       },
       {
        "name": "BISTAN",
-       "required": 1
+       "required": 1,
+       "baseId": "BISTAN",
+       "combatType": 1
       },
       {
        "name": "CHIEF NEBIT",
-       "required": 1
+       "required": 1,
+       "baseId": "CHIEFNEBIT",
+       "combatType": 1
       },
       {
        "name": "DASH RENDAR",
-       "required": 1
+       "required": 1,
+       "baseId": "DASHRENDAR",
+       "combatType": 1
       },
       {
        "name": "EBON HAWK",
-       "required": 1
+       "required": 1,
+       "baseId": "EBONHAWK",
+       "combatType": 2
       },
       {
        "name": "ECHO",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHECHO",
+       "combatType": 1
       },
       {
        "name": "EETH KOTH",
-       "required": 1
+       "required": 1,
+       "baseId": "EETHKOTH",
+       "combatType": 1
       },
       {
        "name": "FINN",
-       "required": 1
+       "required": 1,
+       "baseId": "FINN",
+       "combatType": 1
       },
       {
        "name": "GRAND MASTER YODA",
-       "required": 1
+       "required": 1,
+       "baseId": "GRANDMASTERYODA",
+       "combatType": 1
       },
       {
        "name": "HAN'S MILLENNIUM FALCON",
-       "required": 1
+       "required": 1,
+       "baseId": "MILLENNIUMFALCON",
+       "combatType": 2
       },
       {
        "name": "HONDO OHNAKA",
-       "required": 1
+       "required": 1,
+       "baseId": "HONDO",
+       "combatType": 1
       },
       {
        "name": "JEDI CONSULAR",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDIKNIGHTCONSULAR",
+       "combatType": 1
       },
       {
        "name": "JOLEE BINDO",
-       "required": 1
+       "required": 1,
+       "baseId": "JOLEEBINDO",
+       "combatType": 1
       },
       {
        "name": "KYLE KATARN",
-       "required": 1
+       "required": 1,
+       "baseId": "KYLEKATARN",
+       "combatType": 1
       },
       {
        "name": "OUTRIDER",
-       "required": 1
+       "required": 1,
+       "baseId": "OUTRIDER",
+       "combatType": 2
       },
       {
        "name": "R2-D2",
-       "required": 1
+       "required": 1,
+       "baseId": "R2D2_LEGENDARY",
+       "combatType": 1
       },
       {
        "name": "RAVEN'S CLAW",
-       "required": 1
+       "required": 1,
+       "baseId": "RAVENSCLAW",
+       "combatType": 2
       },
       {
        "name": "REBEL Y-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "YWINGREBEL",
+       "combatType": 2
       },
       {
        "name": "REY",
-       "required": 1
+       "required": 1,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "REY (JEDI TRAINING)",
-       "required": 1
+       "required": 1,
+       "baseId": "REYJEDITRAINING",
+       "combatType": 1
       },
       {
        "name": "SANA STARROS",
-       "required": 1
+       "required": 1,
+       "baseId": "SANASTARROS",
+       "combatType": 1
       },
       {
        "name": "TECH",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHTECH",
+       "combatType": 1
       },
       {
        "name": "THE MANDALORIAN (BESKAR ARMOR)",
-       "required": 1
+       "required": 1,
+       "baseId": "THEMANDALORIANBESKARARMOR",
+       "combatType": 1
       },
       {
        "name": "VETERAN SMUGGLER CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "SMUGGLERCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "WEDGE ANTILLES'S X-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "XWINGRED2",
+       "combatType": 2
       },
       {
        "name": "WICKET",
-       "required": 1
+       "required": 1,
+       "baseId": "WICKET",
+       "combatType": 1
       }
      ]
     }
@@ -2318,163 +3430,243 @@
      "units": [
       {
        "name": "STARKILLER",
-       "required": 9
+       "required": 9,
+       "baseId": "STARKILLER",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 7
+       "required": 7,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "DARTH MALAK",
-       "required": 6
+       "required": 6,
+       "baseId": "DARTHMALAK",
+       "combatType": 1
       },
       {
        "name": "SCYTHE",
-       "required": 6
+       "required": 6,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 6
+       "required": 6,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 5
+       "required": 5,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "EXECUTOR",
-       "required": 5
+       "required": 5,
+       "baseId": "CAPITALEXECUTOR",
+       "combatType": 2
       },
       {
        "name": "LORD VADER",
-       "required": 4
+       "required": 4,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "GRAND INQUISITOR",
-       "required": 3
+       "required": 3,
+       "baseId": "GRANDINQUISITOR",
+       "combatType": 1
       },
       {
        "name": "IG-88",
-       "required": 3
+       "required": 3,
+       "baseId": "IG88",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 3
+       "required": 3,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 3
+       "required": 3,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "FIRST ORDER SF TIE PILOT",
-       "required": 2
+       "required": 2,
+       "baseId": "FIRSTORDERSPECIALFORCESPILOT",
+       "combatType": 1
       },
       {
        "name": "SITH EMPIRE TROOPER",
-       "required": 2
+       "required": 2,
+       "baseId": "SITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "B-28 EXTINCTION-CLASS BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHBOMBER",
+       "combatType": 2
       },
       {
        "name": "BOBA FETT",
-       "required": 1
+       "required": 1,
+       "baseId": "BOBAFETT",
+       "combatType": 1
       },
       {
        "name": "COLONEL STARCK",
-       "required": 1
+       "required": 1,
+       "baseId": "COLONELSTARCK",
+       "combatType": 1
       },
       {
        "name": "COUNT DOOKU",
-       "required": 1
+       "required": 1,
+       "baseId": "COUNTDOOKU",
+       "combatType": 1
       },
       {
        "name": "EXECUTRIX",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALSTARDESTROYER",
+       "combatType": 2
       },
       {
        "name": "FIRST ORDER OFFICER",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDEROFFICERMALE",
+       "combatType": 1
       },
       {
        "name": "FIRST ORDER TIE FIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEFIGHTERFIRSTORDER",
+       "combatType": 2
       },
       {
        "name": "FIRST ORDER TIE PILOT",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDERTIEPILOT",
+       "combatType": 1
       },
       {
        "name": "GAUNTLET STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GAUNTLETSTARFIGHTER",
+       "combatType": 2
       },
       {
        "name": "GEONOSIAN SOLDIER",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSOLDIER",
+       "combatType": 1
       },
       {
        "name": "GEONOSIAN SOLDIER'S STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSTARFIGHTER2",
+       "combatType": 2
       },
       {
        "name": "HYENA BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "IDEN VERSIO",
-       "required": 1
+       "required": 1,
+       "baseId": "IDENVERSIOEMPIRE",
+       "combatType": 1
       },
       {
        "name": "IG-2000",
-       "required": 1
+       "required": 1,
+       "baseId": "IG2000",
+       "combatType": 2
       },
       {
        "name": "JANGO FETT",
-       "required": 1
+       "required": 1,
+       "baseId": "JANGOFETT",
+       "combatType": 1
       },
       {
        "name": "KYLO REN",
-       "required": 1
+       "required": 1,
+       "baseId": "KYLOREN",
+       "combatType": 1
       },
       {
        "name": "KYLO REN (UNMASKED)",
-       "required": 1
+       "required": 1,
+       "baseId": "KYLORENUNMASKED",
+       "combatType": 1
       },
       {
        "name": "MAGMATROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "MAGMATROOPER",
+       "combatType": 1
       },
       {
        "name": "MOFF GIDEON",
-       "required": 1
+       "required": 1,
+       "baseId": "MOFFGIDEONS1",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER ZOMBIE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERZOMBIE",
+       "combatType": 1
       },
       {
        "name": "SITH ASSASSIN",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHASSASSIN",
+       "combatType": 1
       },
       {
        "name": "SNOWTROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "SNOWTROOPER",
+       "combatType": 1
       },
       {
        "name": "TALIA",
-       "required": 1
+       "required": 1,
+       "baseId": "TALIA",
+       "combatType": 1
       },
       {
        "name": "TUSKEN SHAMAN",
-       "required": 1
+       "required": 1,
+       "baseId": "TUSKENSHAMAN",
+       "combatType": 1
       },
       {
        "name": "VULTURE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "VULTUREDROID",
+       "combatType": 2
       },
       {
        "name": "WAMPA",
-       "required": 1
+       "required": 1,
+       "baseId": "WAMPA",
+       "combatType": 1
       }
      ]
     },
@@ -2483,215 +3675,321 @@
      "units": [
       {
        "name": "GRAND INQUISITOR",
-       "required": 7
+       "required": 7,
+       "baseId": "GRANDINQUISITOR",
+       "combatType": 1
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 6
+       "required": 6,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "PROFUNDITY",
-       "required": 5
+       "required": 5,
+       "baseId": "CAPITALPROFUNDITY",
+       "combatType": 2
       },
       {
        "name": "STARKILLER",
-       "required": 4
+       "required": 4,
+       "baseId": "STARKILLER",
+       "combatType": 1
       },
       {
        "name": "DARTH MALAK",
-       "required": 3
+       "required": 3,
+       "baseId": "DARTHMALAK",
+       "combatType": 1
       },
       {
        "name": "GENERAL SKYWALKER",
-       "required": 3
+       "required": 3,
+       "baseId": "GENERALSKYWALKER",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 3
+       "required": 3,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "SCYTHE",
-       "required": 3
+       "required": 3,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "BEN SOLO",
-       "required": 2
+       "required": 2,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 2
+       "required": 2,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 2
+       "required": 2,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "EXECUTOR",
-       "required": 2
+       "required": 2,
+       "baseId": "CAPITALEXECUTOR",
+       "combatType": 2
       },
       {
        "name": "HYENA BOMBER",
-       "required": 2
+       "required": 2,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "JEDI CONSULAR'S STARFIGHTER",
-       "required": 2
+       "required": 2,
+       "baseId": "JEDISTARFIGHTERCONSULAR",
+       "combatType": 2
       },
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 2
+       "required": 2,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "OLD DAKA",
-       "required": 2
+       "required": 2,
+       "baseId": "DAKA",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 2
+       "required": 2,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 2
+       "required": 2,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 2
+       "required": 2,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "50R-T",
-       "required": 1
+       "required": 1,
+       "baseId": "50RT",
+       "combatType": 1
       },
       {
        "name": "AHSOKA TANO (FULCRUM)",
-       "required": 1
+       "required": 1,
+       "baseId": "FULCRUMAHSOKA",
+       "combatType": 1
       },
       {
        "name": "ANAKIN'S ETA-2 STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDISTARFIGHTERANAKIN",
+       "combatType": 2
       },
       {
        "name": "BARRISS OFFEE",
-       "required": 1
+       "required": 1,
+       "baseId": "BARRISSOFFEE",
+       "combatType": 1
       },
       {
        "name": "BASTILA SHAN",
-       "required": 1
+       "required": 1,
+       "baseId": "BASTILASHAN",
+       "combatType": 1
       },
       {
        "name": "BISTAN",
-       "required": 1
+       "required": 1,
+       "baseId": "BISTAN",
+       "combatType": 1
       },
       {
        "name": "BODHI ROOK",
-       "required": 1
+       "required": 1,
+       "baseId": "BODHIROOK",
+       "combatType": 1
       },
       {
        "name": "CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "CHEWBACCALEGENDARY",
+       "combatType": 1
       },
       {
        "name": "DARTH SIDIOUS",
-       "required": 1
+       "required": 1,
+       "baseId": "DARTHSIDIOUS",
+       "combatType": 1
       },
       {
        "name": "ECHO",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHECHO",
+       "combatType": 1
       },
       {
        "name": "EMPEROR PALPATINE",
-       "required": 1
+       "required": 1,
+       "baseId": "EMPERORPALPATINE",
+       "combatType": 1
       },
       {
        "name": "FIRST ORDER EXECUTIONER",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDEREXECUTIONER",
+       "combatType": 1
       },
       {
        "name": "GAUNTLET STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GAUNTLETSTARFIGHTER",
+       "combatType": 2
       },
       {
        "name": "HONDO OHNAKA",
-       "required": 1
+       "required": 1,
+       "baseId": "HONDO",
+       "combatType": 1
       },
       {
        "name": "HOUND'S TOOTH",
-       "required": 1
+       "required": 1,
+       "baseId": "HOUNDSTOOTH",
+       "combatType": 2
       },
       {
        "name": "HUNTER",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHHUNTER",
+       "combatType": 1
       },
       {
        "name": "IG-100 MAGNAGUARD",
-       "required": 1
+       "required": 1,
+       "baseId": "MAGNAGUARD",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL TIE BOMBER",
-       "required": 1
+       "required": 1,
+       "baseId": "TIEBOMBERIMPERIAL",
+       "combatType": 2
       },
       {
        "name": "JEDI KNIGHT LUKE SKYWALKER",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDIKNIGHTLUKE",
+       "combatType": 1
       },
       {
        "name": "JOLEE BINDO",
-       "required": 1
+       "required": 1,
+       "baseId": "JOLEEBINDO",
+       "combatType": 1
       },
       {
        "name": "KYLO REN",
-       "required": 1
+       "required": 1,
+       "baseId": "KYLOREN",
+       "combatType": 1
       },
       {
        "name": "LORD VADER",
-       "required": 1
+       "required": 1,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "MACE WINDU",
-       "required": 1
+       "required": 1,
+       "baseId": "MACEWINDU",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 1
+       "required": 1,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER INITIATE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERINITIATE",
+       "combatType": 1
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 1
+       "required": 1,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "RAVEN'S CLAW",
-       "required": 1
+       "required": 1,
+       "baseId": "RAVENSCLAW",
+       "combatType": 2
       },
       {
        "name": "RESISTANCE HERO FINN",
-       "required": 1
+       "required": 1,
+       "baseId": "EPIXFINN",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 1
+       "required": 1,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "TALIA",
-       "required": 1
+       "required": 1,
+       "baseId": "TALIA",
+       "combatType": 1
       },
       {
        "name": "TIE ECHELON",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDERTIEECHELON",
+       "combatType": 2
       },
       {
        "name": "TUSKEN SHAMAN",
-       "required": 1
+       "required": 1,
+       "baseId": "TUSKENSHAMAN",
+       "combatType": 1
       },
       {
        "name": "WEDGE ANTILLES'S X-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "XWINGRED2",
+       "combatType": 2
       },
       {
        "name": "WICKET",
-       "required": 1
+       "required": 1,
+       "baseId": "WICKET",
+       "combatType": 1
       }
      ]
     },
@@ -2700,183 +3998,273 @@
      "units": [
       {
        "name": "JEDI KNIGHT LUKE SKYWALKER",
-       "required": 11
+       "required": 11,
+       "baseId": "JEDIKNIGHTLUKE",
+       "combatType": 1
       },
       {
        "name": "GENERAL SKYWALKER",
-       "required": 7
+       "required": 7,
+       "baseId": "GENERALSKYWALKER",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 6
+       "required": 6,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 6
+       "required": 6,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "GRAND MASTER YODA",
-       "required": 5
+       "required": 5,
+       "baseId": "GRANDMASTERYODA",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 4
+       "required": 4,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "COMMANDER LUKE SKYWALKER",
-       "required": 3
+       "required": 3,
+       "baseId": "COMMANDERLUKESKYWALKER",
+       "combatType": 1
       },
       {
        "name": "JEDI KNIGHT REVAN",
-       "required": 3
+       "required": 3,
+       "baseId": "JEDIKNIGHTREVAN",
+       "combatType": 1
       },
       {
        "name": "50R-T",
-       "required": 2
+       "required": 2,
+       "baseId": "50RT",
+       "combatType": 1
       },
       {
        "name": "BAZE MALBUS",
-       "required": 2
+       "required": 2,
+       "baseId": "BAZEMALBUS",
+       "combatType": 1
       },
       {
        "name": "C-3PO",
-       "required": 2
+       "required": 2,
+       "baseId": "C3POLEGENDARY",
+       "combatType": 1
       },
       {
        "name": "EETH KOTH",
-       "required": 2
+       "required": 2,
+       "baseId": "EETHKOTH",
+       "combatType": 1
       },
       {
        "name": "PROFUNDITY",
-       "required": 2
+       "required": 2,
+       "baseId": "CAPITALPROFUNDITY",
+       "combatType": 2
       },
       {
        "name": "R2-D2",
-       "required": 2
+       "required": 2,
+       "baseId": "R2D2_LEGENDARY",
+       "combatType": 1
       },
       {
        "name": "TECH",
-       "required": 2
+       "required": 2,
+       "baseId": "BADBATCHTECH",
+       "combatType": 1
       },
       {
        "name": "WEDGE ANTILLES'S X-WING",
-       "required": 2
+       "required": 2,
+       "baseId": "XWINGRED2",
+       "combatType": 2
       },
       {
        "name": "AMILYN HOLDO",
-       "required": 1
+       "required": 1,
+       "baseId": "AMILYNHOLDO",
+       "combatType": 1
       },
       {
        "name": "BARRISS OFFEE",
-       "required": 1
+       "required": 1,
+       "baseId": "BARRISSOFFEE",
+       "combatType": 1
       },
       {
        "name": "BASTILA SHAN",
-       "required": 1
+       "required": 1,
+       "baseId": "BASTILASHAN",
+       "combatType": 1
       },
       {
        "name": "BODHI ROOK",
-       "required": 1
+       "required": 1,
+       "baseId": "BODHIROOK",
+       "combatType": 1
       },
       {
        "name": "BOUSHH (LEIA ORGANA)",
-       "required": 1
+       "required": 1,
+       "baseId": "BOUSHH",
+       "combatType": 1
       },
       {
        "name": "CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "CHEWBACCALEGENDARY",
+       "combatType": 1
       },
       {
        "name": "CHIRRUT ÎMWE",
-       "required": 1
+       "required": 1,
+       "baseId": "CHIRRUTIMWE",
+       "combatType": 1
       },
       {
        "name": "CHOPPER",
-       "required": 1
+       "required": 1,
+       "baseId": "CHOPPERS3",
+       "combatType": 1
       },
       {
        "name": "CLONE SERGEANT'S ARC-170",
-       "required": 1
+       "required": 1,
+       "baseId": "ARC170CLONESERGEANT",
+       "combatType": 2
       },
       {
        "name": "CLONE WARS CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "CLONEWARSCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "CT-7567 \"REX\"",
-       "required": 1
+       "required": 1,
+       "baseId": "CT7567",
+       "combatType": 1
       },
       {
        "name": "ECHO",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHECHO",
+       "combatType": 1
       },
       {
        "name": "GHOST",
-       "required": 1
+       "required": 1,
+       "baseId": "GHOST",
+       "combatType": 2
       },
       {
        "name": "HAN'S MILLENNIUM FALCON",
-       "required": 1
+       "required": 1,
+       "baseId": "MILLENNIUMFALCON",
+       "combatType": 2
       },
       {
        "name": "HOTH REBEL SOLDIER",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHREBELSOLDIER",
+       "combatType": 1
       },
       {
        "name": "IMA-GUN DI",
-       "required": 1
+       "required": 1,
+       "baseId": "IMAGUNDI",
+       "combatType": 1
       },
       {
        "name": "LANDO CALRISSIAN",
-       "required": 1
+       "required": 1,
+       "baseId": "ADMINISTRATORLANDO",
+       "combatType": 1
       },
       {
        "name": "LOBOT",
-       "required": 1
+       "required": 1,
+       "baseId": "LOBOT",
+       "combatType": 1
       },
       {
        "name": "MON MOTHMA",
-       "required": 1
+       "required": 1,
+       "baseId": "MONMOTHMA",
+       "combatType": 1
       },
       {
        "name": "NEGOTIATOR",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALNEGOTIATOR",
+       "combatType": 2
       },
       {
        "name": "OMEGA",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHOMEGA",
+       "combatType": 1
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 1
+       "required": 1,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "RESISTANCE TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "RESISTANCETROOPER",
+       "combatType": 1
       },
       {
        "name": "ROSE TICO",
-       "required": 1
+       "required": 1,
+       "baseId": "ROSETICO",
+       "combatType": 1
       },
       {
        "name": "T3-M4",
-       "required": 1
+       "required": 1,
+       "baseId": "T3_M4",
+       "combatType": 1
       },
       {
        "name": "THE ARMORER",
-       "required": 1
+       "required": 1,
+       "baseId": "ARMORER",
+       "combatType": 1
       },
       {
        "name": "UMBARAN STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "UMBARANSTARFIGHTER",
+       "combatType": 2
       },
       {
        "name": "VETERAN SMUGGLER CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "SMUGGLERCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "ZAALBAR",
-       "required": 1
+       "required": 1,
+       "baseId": "ZAALBAR",
+       "combatType": 1
       }
      ]
     }
@@ -2891,203 +4279,303 @@
      "units": [
       {
        "name": "LORD VADER",
-       "required": 7
+       "required": 7,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 6
+       "required": 6,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "EXECUTOR",
-       "required": 5
+       "required": 5,
+       "baseId": "CAPITALEXECUTOR",
+       "combatType": 2
       },
       {
        "name": "MAUL",
-       "required": 5
+       "required": 5,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "DARTH MALGUS",
-       "required": 4
+       "required": 4,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 4
+       "required": 4,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "HONDO OHNAKA",
-       "required": 3
+       "required": 3,
+       "baseId": "HONDO",
+       "combatType": 1
       },
       {
        "name": "HYENA BOMBER",
-       "required": 3
+       "required": 3,
+       "baseId": "HYENABOMBER",
+       "combatType": 2
       },
       {
        "name": "SCYTHE",
-       "required": 3
+       "required": 3,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "COUNT DOOKU",
-       "required": 2
+       "required": 2,
+       "baseId": "COUNTDOOKU",
+       "combatType": 1
       },
       {
        "name": "EMPEROR'S SHUTTLE",
-       "required": 2
+       "required": 2,
+       "baseId": "EMPERORSSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "GEONOSIAN BROOD ALPHA",
-       "required": 2
+       "required": 2,
+       "baseId": "GEONOSIANBROODALPHA",
+       "combatType": 1
       },
       {
        "name": "IG-88",
-       "required": 2
+       "required": 2,
+       "baseId": "IG88",
+       "combatType": 1
       },
       {
        "name": "IMPERIAL SUPER COMMANDO",
-       "required": 2
+       "required": 2,
+       "baseId": "IMPERIALSUPERCOMMANDO",
+       "combatType": 1
       },
       {
        "name": "MALEVOLENCE",
-       "required": 2
+       "required": 2,
+       "baseId": "CAPITALMALEVOLENCE",
+       "combatType": 2
       },
       {
        "name": "NIGHTSISTER ACOLYTE",
-       "required": 2
+       "required": 2,
+       "baseId": "NIGHTSISTERACOLYTE",
+       "combatType": 1
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 2
+       "required": 2,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "UGNAUGHT",
-       "required": 2
+       "required": 2,
+       "baseId": "UGNAUGHT",
+       "combatType": 1
       },
       {
        "name": "ASAJJ VENTRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "ASAJVENTRESS",
+       "combatType": 1
       },
       {
        "name": "B1 BATTLE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "B1BATTLEDROIDV2",
+       "combatType": 1
       },
       {
        "name": "B2 SUPER BATTLE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "B2SUPERBATTLEDROID",
+       "combatType": 1
       },
       {
        "name": "DARTH MAUL",
-       "required": 1
+       "required": 1,
+       "baseId": "MAUL",
+       "combatType": 1
       },
       {
        "name": "DARTH TALON",
-       "required": 1
+       "required": 1,
+       "baseId": "DARTHTALON",
+       "combatType": 1
       },
       {
        "name": "EXECUTRIX",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALSTARDESTROYER",
+       "combatType": 2
       },
       {
        "name": "FIFTH BROTHER",
-       "required": 1
+       "required": 1,
+       "baseId": "FIFTHBROTHER",
+       "combatType": 1
       },
       {
        "name": "GENERAL HUX",
-       "required": 1
+       "required": 1,
+       "baseId": "GENERALHUX",
+       "combatType": 1
       },
       {
        "name": "GEONOSIAN SOLDIER",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSOLDIER",
+       "combatType": 1
       },
       {
        "name": "GEONOSIAN SPY",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSPY",
+       "combatType": 1
       },
       {
        "name": "GEONOSIAN SPY'S STARFIGHTER",
-       "required": 1
+       "required": 1,
+       "baseId": "GEONOSIANSTARFIGHTER3",
+       "combatType": 2
       },
       {
        "name": "GRAND MOFF TARKIN",
-       "required": 1
+       "required": 1,
+       "baseId": "GRANDMOFFTARKIN",
+       "combatType": 1
       },
       {
        "name": "HK-47",
-       "required": 1
+       "required": 1,
+       "baseId": "HK47",
+       "combatType": 1
       },
       {
        "name": "HOUND'S TOOTH",
-       "required": 1
+       "required": 1,
+       "baseId": "HOUNDSTOOTH",
+       "combatType": 2
       },
       {
        "name": "IG-100 MAGNAGUARD",
-       "required": 1
+       "required": 1,
+       "baseId": "MAGNAGUARD",
+       "combatType": 1
       },
       {
        "name": "IG-86 SENTINEL DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "IG86SENTINELDROID",
+       "combatType": 1
       },
       {
        "name": "JAWA",
-       "required": 1
+       "required": 1,
+       "baseId": "JAWA",
+       "combatType": 1
       },
       {
        "name": "JAWA ENGINEER",
-       "required": 1
+       "required": 1,
+       "baseId": "JAWAENGINEER",
+       "combatType": 1
       },
       {
        "name": "JAWA SCAVENGER",
-       "required": 1
+       "required": 1,
+       "baseId": "JAWASCAVENGER",
+       "combatType": 1
       },
       {
        "name": "KRRSANTAN",
-       "required": 1
+       "required": 1,
+       "baseId": "KRRSANTAN",
+       "combatType": 1
       },
       {
        "name": "KYLO REN (UNMASKED)",
-       "required": 1
+       "required": 1,
+       "baseId": "KYLORENUNMASKED",
+       "combatType": 1
       },
       {
        "name": "MARA JADE, THE EMPEROR'S HAND",
-       "required": 1
+       "required": 1,
+       "baseId": "MARAJADE",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER SPIRIT",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERSPIRIT",
+       "combatType": 1
       },
       {
        "name": "NINTH SISTER",
-       "required": 1
+       "required": 1,
+       "baseId": "NINTHSISTER",
+       "combatType": 1
       },
       {
        "name": "RANGE TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "RANGETROOPER",
+       "combatType": 1
       },
       {
        "name": "ROYAL GUARD",
-       "required": 1
+       "required": 1,
+       "baseId": "ROYALGUARD",
+       "combatType": 1
       },
       {
        "name": "SAVAGE OPRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "SAVAGEOPRESS",
+       "combatType": 1
       },
       {
        "name": "SHORETROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "SHORETROOPER",
+       "combatType": 1
       },
       {
        "name": "SITH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "FOSITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "TUSKEN RAIDER",
-       "required": 1
+       "required": 1,
+       "baseId": "TUSKENRAIDER",
+       "combatType": 1
       },
       {
        "name": "URORRUR'R'R",
-       "required": 1
+       "required": 1,
+       "baseId": "URORRURRR",
+       "combatType": 1
       },
       {
        "name": "ZAM WESELL",
-       "required": 1
+       "required": 1,
+       "baseId": "ZAMWESELL",
+       "combatType": 1
       }
      ]
     },
@@ -3096,191 +4584,285 @@
      "units": [
       {
        "name": "DARTH MALGUS",
-       "required": 7
+       "required": 7,
+       "baseId": "DARTHMALGUS",
+       "combatType": 1
       },
       {
        "name": "SCYTHE",
-       "required": 6
+       "required": 6,
+       "baseId": "SCYTHE",
+       "combatType": 2
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 5
+       "required": 5,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 5
+       "required": 5,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "SUPREME LEADER KYLO REN",
-       "required": 4
+       "required": 4,
+       "baseId": "SUPREMELEADERKYLOREN",
+       "combatType": 1
       },
       {
        "name": "BEN SOLO",
-       "required": 3
+       "required": 3,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "BOBA FETT, SCION OF JANGO",
-       "required": 3
+       "required": 3,
+       "baseId": "BOBAFETTSCION",
+       "combatType": 1
       },
       {
        "name": "DARTH TRAYA",
-       "required": 3
+       "required": 3,
+       "baseId": "DARTHTRAYA",
+       "combatType": 1
       },
       {
        "name": "GENERAL KENOBI",
-       "required": 3
+       "required": 3,
+       "baseId": "GENERALKENOBI",
+       "combatType": 1
       },
       {
        "name": "HAN SOLO",
-       "required": 3
+       "required": 3,
+       "baseId": "HANSOLO",
+       "combatType": 1
       },
       {
        "name": "LORD VADER",
-       "required": 3
+       "required": 3,
+       "baseId": "LORDVADER",
+       "combatType": 1
       },
       {
        "name": "MAUL",
-       "required": 3
+       "required": 3,
+       "baseId": "MAULS7",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 3
+       "required": 3,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "IMPERIAL PROBE DROID",
-       "required": 2
+       "required": 2,
+       "baseId": "IMPERIALPROBEDROID",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 2
+       "required": 2,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 2
+       "required": 2,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "SANA STARROS",
-       "required": 2
+       "required": 2,
+       "baseId": "SANASTARROS",
+       "combatType": 1
       },
       {
        "name": "WAT TAMBOR",
-       "required": 2
+       "required": 2,
+       "baseId": "WATTAMBOR",
+       "combatType": 1
       },
       {
        "name": "ADMIRAL RADDUS",
-       "required": 1
+       "required": 1,
+       "baseId": "ADMIRALRADDUS",
+       "combatType": 1
       },
       {
        "name": "ASAJJ VENTRESS",
-       "required": 1
+       "required": 1,
+       "baseId": "ASAJVENTRESS",
+       "combatType": 1
       },
       {
        "name": "AURRA SING",
-       "required": 1
+       "required": 1,
+       "baseId": "AURRA_SING",
+       "combatType": 1
       },
       {
        "name": "B1 BATTLE DROID",
-       "required": 1
+       "required": 1,
+       "baseId": "B1BATTLEDROIDV2",
+       "combatType": 1
       },
       {
        "name": "CHIEF NEBIT",
-       "required": 1
+       "required": 1,
+       "baseId": "CHIEFNEBIT",
+       "combatType": 1
       },
       {
        "name": "CLONE SERGEANT - PHASE I",
-       "required": 1
+       "required": 1,
+       "baseId": "CLONESERGEANTPHASEI",
+       "combatType": 1
       },
       {
        "name": "DARK TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "DARKTROOPER",
+       "combatType": 1
       },
       {
        "name": "DENGAR",
-       "required": 1
+       "required": 1,
+       "baseId": "DENGAR",
+       "combatType": 1
       },
       {
        "name": "EMPEROR'S SHUTTLE",
-       "required": 1
+       "required": 1,
+       "baseId": "EMPERORSSHUTTLE",
+       "combatType": 2
       },
       {
        "name": "EXECUTOR",
-       "required": 1
+       "required": 1,
+       "baseId": "CAPITALEXECUTOR",
+       "combatType": 2
       },
       {
        "name": "FIRST ORDER OFFICER",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDEROFFICERMALE",
+       "combatType": 1
       },
       {
        "name": "HERMIT YODA",
-       "required": 1
+       "required": 1,
+       "baseId": "HERMITYODA",
+       "combatType": 1
       },
       {
        "name": "HK-47",
-       "required": 1
+       "required": 1,
+       "baseId": "HK47",
+       "combatType": 1
       },
       {
        "name": "IG-100 MAGNAGUARD",
-       "required": 1
+       "required": 1,
+       "baseId": "MAGNAGUARD",
+       "combatType": 1
       },
       {
        "name": "JEDI CONSULAR",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDIKNIGHTCONSULAR",
+       "combatType": 1
       },
       {
        "name": "NIGHTSISTER INITIATE",
-       "required": 1
+       "required": 1,
+       "baseId": "NIGHTSISTERINITIATE",
+       "combatType": 1
       },
       {
        "name": "NINTH SISTER",
-       "required": 1
+       "required": 1,
+       "baseId": "NINTHSISTER",
+       "combatType": 1
       },
       {
        "name": "NUTE GUNRAY",
-       "required": 1
+       "required": 1,
+       "baseId": "NUTEGUNRAY",
+       "combatType": 1
       },
       {
        "name": "OLD DAKA",
-       "required": 1
+       "required": 1,
+       "baseId": "DAKA",
+       "combatType": 1
       },
       {
        "name": "OUTRIDER",
-       "required": 1
+       "required": 1,
+       "baseId": "OUTRIDER",
+       "combatType": 2
       },
       {
        "name": "PAO",
-       "required": 1
+       "required": 1,
+       "baseId": "PAO",
+       "combatType": 1
       },
       {
        "name": "REBEL OFFICER LEIA ORGANA",
-       "required": 1
+       "required": 1,
+       "baseId": "HOTHLEIA",
+       "combatType": 1
       },
       {
        "name": "RESISTANCE PILOT",
-       "required": 1
+       "required": 1,
+       "baseId": "RESISTANCEPILOT",
+       "combatType": 1
       },
       {
        "name": "SITH EMPIRE TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "SITH ETERNAL EMPEROR",
-       "required": 1
+       "required": 1,
+       "baseId": "SITHPALPATINE",
+       "combatType": 1
       },
       {
        "name": "SITH TROOPER",
-       "required": 1
+       "required": 1,
+       "baseId": "FOSITHTROOPER",
+       "combatType": 1
       },
       {
        "name": "TIE ECHELON",
-       "required": 1
+       "required": 1,
+       "baseId": "FIRSTORDERTIEECHELON",
+       "combatType": 2
       },
       {
        "name": "VETERAN SMUGGLER CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "SMUGGLERCHEWBACCA",
+       "combatType": 1
       },
       {
        "name": "YOUNG LANDO CALRISSIAN",
-       "required": 1
+       "required": 1,
+       "baseId": "YOUNGLANDO",
+       "combatType": 1
       }
      ]
     },
@@ -3289,151 +4871,225 @@
      "units": [
       {
        "name": "BEN SOLO",
-       "required": 7
+       "required": 7,
+       "baseId": "BENSOLO",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER LUKE SKYWALKER",
-       "required": 7
+       "required": 7,
+       "baseId": "GRANDMASTERLUKE",
+       "combatType": 1
       },
       {
        "name": "RAZOR CREST",
-       "required": 7
+       "required": 7,
+       "baseId": "RAZORCREST",
+       "combatType": 2
       },
       {
        "name": "BASTILA SHAN",
-       "required": 6
+       "required": 6,
+       "baseId": "BASTILASHAN",
+       "combatType": 1
       },
       {
        "name": "REY",
-       "required": 6
+       "required": 6,
+       "baseId": "GLREY",
+       "combatType": 1
       },
       {
        "name": "DASH RENDAR",
-       "required": 5
+       "required": 5,
+       "baseId": "DASHRENDAR",
+       "combatType": 1
       },
       {
        "name": "JEDI MASTER KENOBI",
-       "required": 5
+       "required": 5,
+       "baseId": "JEDIMASTERKENOBI",
+       "combatType": 1
       },
       {
        "name": "COMMANDER AHSOKA TANO",
-       "required": 4
+       "required": 4,
+       "baseId": "COMMANDERAHSOKA",
+       "combatType": 1
       },
       {
        "name": "HERMIT YODA",
-       "required": 4
+       "required": 4,
+       "baseId": "HERMITYODA",
+       "combatType": 1
       },
       {
        "name": "HAN SOLO",
-       "required": 3
+       "required": 3,
+       "baseId": "HANSOLO",
+       "combatType": 1
       },
       {
        "name": "KI-ADI-MUNDI",
-       "required": 3
+       "required": 3,
+       "baseId": "KIADIMUNDI",
+       "combatType": 1
       },
       {
        "name": "RAVEN'S CLAW",
-       "required": 3
+       "required": 3,
+       "baseId": "RAVENSCLAW",
+       "combatType": 2
       },
       {
        "name": "REBEL OFFICER LEIA ORGANA",
-       "required": 3
+       "required": 3,
+       "baseId": "HOTHLEIA",
+       "combatType": 1
       },
       {
        "name": "IMA-GUN DI",
-       "required": 2
+       "required": 2,
+       "baseId": "IMAGUNDI",
+       "combatType": 1
       },
       {
        "name": "REY (SCAVENGER)",
-       "required": 2
+       "required": 2,
+       "baseId": "REY",
+       "combatType": 1
       },
       {
        "name": "SKIFF GUARD (LANDO CALRISSIAN)",
-       "required": 2
+       "required": 2,
+       "baseId": "UNDERCOVERLANDO",
+       "combatType": 1
       },
       {
        "name": "BB-8",
-       "required": 1
+       "required": 1,
+       "baseId": "BB8",
+       "combatType": 1
       },
       {
        "name": "BIGGS DARKLIGHTER'S X-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "XWINGRED3",
+       "combatType": 2
       },
       {
        "name": "CHEWBACCA",
-       "required": 1
+       "required": 1,
+       "baseId": "CHEWBACCALEGENDARY",
+       "combatType": 1
       },
       {
        "name": "CORUSCANT UNDERWORLD POLICE",
-       "required": 1
+       "required": 1,
+       "baseId": "CORUSCANTUNDERWORLDPOLICE",
+       "combatType": 1
       },
       {
        "name": "GENERAL KENOBI",
-       "required": 1
+       "required": 1,
+       "baseId": "GENERALKENOBI",
+       "combatType": 1
       },
       {
        "name": "GRAND MASTER YODA",
-       "required": 1
+       "required": 1,
+       "baseId": "GRANDMASTERYODA",
+       "combatType": 1
       },
       {
        "name": "HAN'S MILLENNIUM FALCON",
-       "required": 1
+       "required": 1,
+       "baseId": "MILLENNIUMFALCON",
+       "combatType": 2
       },
       {
        "name": "JEDI KNIGHT REVAN",
-       "required": 1
+       "required": 1,
+       "baseId": "JEDIKNIGHTREVAN",
+       "combatType": 1
       },
       {
        "name": "KANAN JARRUS",
-       "required": 1
+       "required": 1,
+       "baseId": "KANANJARRUSS3",
+       "combatType": 1
       },
       {
        "name": "L3-37",
-       "required": 1
+       "required": 1,
+       "baseId": "L3_37",
+       "combatType": 1
       },
       {
        "name": "LOBOT",
-       "required": 1
+       "required": 1,
+       "baseId": "LOBOT",
+       "combatType": 1
       },
       {
        "name": "LOGRAY",
-       "required": 1
+       "required": 1,
+       "baseId": "LOGRAY",
+       "combatType": 1
       },
       {
        "name": "MARA JADE, THE EMPEROR'S HAND",
-       "required": 1
+       "required": 1,
+       "baseId": "MARAJADE",
+       "combatType": 1
       },
       {
        "name": "OUTRIDER",
-       "required": 1
+       "required": 1,
+       "baseId": "OUTRIDER",
+       "combatType": 2
       },
       {
        "name": "PADMÉ AMIDALA",
-       "required": 1
+       "required": 1,
+       "baseId": "PADMEAMIDALA",
+       "combatType": 1
       },
       {
        "name": "POE DAMERON",
-       "required": 1
+       "required": 1,
+       "baseId": "POE",
+       "combatType": 1
       },
       {
        "name": "RESISTANCE X-WING",
-       "required": 1
+       "required": 1,
+       "baseId": "XWINGRESISTANCE",
+       "combatType": 2
       },
       {
        "name": "TECH",
-       "required": 1
+       "required": 1,
+       "baseId": "BADBATCHTECH",
+       "combatType": 1
       },
       {
        "name": "THE MANDALORIAN",
-       "required": 1
+       "required": 1,
+       "baseId": "THEMANDALORIAN",
+       "combatType": 1
       },
       {
        "name": "XANADU BLOOD",
-       "required": 1
+       "required": 1,
+       "baseId": "XANADUBLOOD",
+       "combatType": 2
       },
       {
        "name": "ZAALBAR",
-       "required": 1
+       "required": 1,
+       "baseId": "ZAALBAR",
+       "combatType": 1
       }
      ]
     }
