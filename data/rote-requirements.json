@@ -1,0 +1,3443 @@
+{
+ "source": "DutchJedi RotE Guild Operations Unit Overview (Jim Petron & Mhann), snapshot 2026-06-10",
+ "phases": [
+  {
+   "phase": 1,
+   "minRelic": 5,
+   "planets": [
+    {
+     "alignment": "Dark Side",
+     "units": [
+      {
+       "name": "DARTH TRAYA",
+       "required": 7
+      },
+      {
+       "name": "CHIMAERA",
+       "required": 6
+      },
+      {
+       "name": "DARTH REVAN",
+       "required": 5
+      },
+      {
+       "name": "GENERAL GRIEVOUS",
+       "required": 5
+      },
+      {
+       "name": "0-0-0",
+       "required": 4
+      },
+      {
+       "name": "EMPEROR PALPATINE",
+       "required": 4
+      },
+      {
+       "name": "WAT TAMBOR",
+       "required": 4
+      },
+      {
+       "name": "GRAND ADMIRAL THRAWN",
+       "required": 3
+      },
+      {
+       "name": "UGNAUGHT",
+       "required": 3
+      },
+      {
+       "name": "BT-1",
+       "required": 2
+      },
+      {
+       "name": "CANDEROUS ORDO",
+       "required": 2
+      },
+      {
+       "name": "DARTH MAUL",
+       "required": 2
+      },
+      {
+       "name": "DARTH SIDIOUS",
+       "required": 2
+      },
+      {
+       "name": "DARTH SION",
+       "required": 2
+      },
+      {
+       "name": "DARTH VADER",
+       "required": 2
+      },
+      {
+       "name": "DROIDEKA",
+       "required": 2
+      },
+      {
+       "name": "FIRST ORDER OFFICER",
+       "required": 2
+      },
+      {
+       "name": "FIRST ORDER SF TIE PILOT",
+       "required": 2
+      },
+      {
+       "name": "HOUND'S TOOTH",
+       "required": 2
+      },
+      {
+       "name": "IG-88",
+       "required": 2
+      },
+      {
+       "name": "IMPERIAL PROBE DROID",
+       "required": 2
+      },
+      {
+       "name": "ASAJJ VENTRESS",
+       "required": 1
+      },
+      {
+       "name": "B1 BATTLE DROID",
+       "required": 1
+      },
+      {
+       "name": "BOBA FETT",
+       "required": 1
+      },
+      {
+       "name": "COUNT DOOKU",
+       "required": 1
+      },
+      {
+       "name": "DARK TROOPER",
+       "required": 1
+      },
+      {
+       "name": "DENGAR",
+       "required": 1
+      },
+      {
+       "name": "EMBO",
+       "required": 1
+      },
+      {
+       "name": "FIFTH BROTHER",
+       "required": 1
+      },
+      {
+       "name": "GAMORREAN GUARD",
+       "required": 1
+      },
+      {
+       "name": "GAUNTLET STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SPY'S STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 1
+      },
+      {
+       "name": "IG-86 SENTINEL DROID",
+       "required": 1
+      },
+      {
+       "name": "IMPERIAL SUPER COMMANDO",
+       "required": 1
+      },
+      {
+       "name": "IMPERIAL TIE BOMBER",
+       "required": 1
+      },
+      {
+       "name": "IMPERIAL TIE FIGHTER",
+       "required": 1
+      },
+      {
+       "name": "JANGO FETT",
+       "required": 1
+      },
+      {
+       "name": "MARA JADE, THE EMPEROR'S HAND",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER INITIATE",
+       "required": 1
+      },
+      {
+       "name": "NINTH SISTER",
+       "required": 1
+      },
+      {
+       "name": "NUTE GUNRAY",
+       "required": 1
+      },
+      {
+       "name": "SITH ASSASSIN",
+       "required": 1
+      },
+      {
+       "name": "SITH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "TIE FIGHTER PILOT",
+       "required": 1
+      },
+      {
+       "name": "TUSKEN SHAMAN",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Mixed",
+     "units": [
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 5
+      },
+      {
+       "name": "DARTH REVAN",
+       "required": 5
+      },
+      {
+       "name": "TIE/IN INTERCEPTOR PROTOTYPE",
+       "required": 5
+      },
+      {
+       "name": "C-3PO",
+       "required": 3
+      },
+      {
+       "name": "CHEWBACCA",
+       "required": 3
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 3
+      },
+      {
+       "name": "COMMANDER LUKE SKYWALKER",
+       "required": 3
+      },
+      {
+       "name": "DARTH TRAYA",
+       "required": 3
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 2
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 2
+      },
+      {
+       "name": "GENERAL KENOBI",
+       "required": 2
+      },
+      {
+       "name": "GEONOSIAN BROOD ALPHA",
+       "required": 2
+      },
+      {
+       "name": "GRAND MASTER YODA",
+       "required": 2
+      },
+      {
+       "name": "HAN SOLO",
+       "required": 2
+      },
+      {
+       "name": "KI-ADI-MUNDI",
+       "required": 2
+      },
+      {
+       "name": "R2-D2",
+       "required": 2
+      },
+      {
+       "name": "THE MANDALORIAN (BESKAR ARMOR)",
+       "required": 2
+      },
+      {
+       "name": "WAT TAMBOR",
+       "required": 2
+      },
+      {
+       "name": "ADMIRAL PIETT",
+       "required": 1
+      },
+      {
+       "name": "ANAKIN'S ETA-2 STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "BB-8",
+       "required": 1
+      },
+      {
+       "name": "BOSSK",
+       "required": 1
+      },
+      {
+       "name": "BT-1",
+       "required": 1
+      },
+      {
+       "name": "CHIMAERA",
+       "required": 1
+      },
+      {
+       "name": "CLONE SERGEANT'S ARC-170",
+       "required": 1
+      },
+      {
+       "name": "CLONE SERGEANT - PHASE I",
+       "required": 1
+      },
+      {
+       "name": "COLONEL STARCK",
+       "required": 1
+      },
+      {
+       "name": "DARTH MAUL",
+       "required": 1
+      },
+      {
+       "name": "DARTH SION",
+       "required": 1
+      },
+      {
+       "name": "DARTH VADER",
+       "required": 1
+      },
+      {
+       "name": "EETH KOTH",
+       "required": 1
+      },
+      {
+       "name": "EMPEROR PALPATINE",
+       "required": 1
+      },
+      {
+       "name": "GHOST",
+       "required": 1
+      },
+      {
+       "name": "GRAND ADMIRAL THRAWN",
+       "required": 1
+      },
+      {
+       "name": "HERMIT YODA",
+       "required": 1
+      },
+      {
+       "name": "HUNTER",
+       "required": 1
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 1
+      },
+      {
+       "name": "IMA-GUN DI",
+       "required": 1
+      },
+      {
+       "name": "IMPERIAL PROBE DROID",
+       "required": 1
+      },
+      {
+       "name": "JAWA ENGINEER",
+       "required": 1
+      },
+      {
+       "name": "JEDI KNIGHT REVAN",
+       "required": 1
+      },
+      {
+       "name": "JOLEE BINDO",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN'S COMMAND SHUTTLE",
+       "required": 1
+      },
+      {
+       "name": "LOGRAY",
+       "required": 1
+      },
+      {
+       "name": "MALEVOLENCE",
+       "required": 1
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 1
+      },
+      {
+       "name": "PAPLOO",
+       "required": 1
+      },
+      {
+       "name": "PLO KOON'S JEDI STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "POE DAMERON",
+       "required": 1
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 1
+      },
+      {
+       "name": "REBEL OFFICER LEIA ORGANA",
+       "required": 1
+      },
+      {
+       "name": "REY (JEDI TRAINING)",
+       "required": 1
+      },
+      {
+       "name": "SANA STARROS",
+       "required": 1
+      },
+      {
+       "name": "SITH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "T3-M4",
+       "required": 1
+      },
+      {
+       "name": "TALIA",
+       "required": 1
+      },
+      {
+       "name": "THREEPIO & CHEWIE",
+       "required": 1
+      },
+      {
+       "name": "TIE SILENCER",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Light Side",
+     "units": [
+      {
+       "name": "GENERAL SKYWALKER",
+       "required": 10
+      },
+      {
+       "name": "JEDI KNIGHT LUKE SKYWALKER",
+       "required": 8
+      },
+      {
+       "name": "HERMIT YODA",
+       "required": 6
+      },
+      {
+       "name": "BB-8",
+       "required": 5
+      },
+      {
+       "name": "THE MANDALORIAN (BESKAR ARMOR)",
+       "required": 5
+      },
+      {
+       "name": "SANA STARROS",
+       "required": 4
+      },
+      {
+       "name": "C-3PO",
+       "required": 3
+      },
+      {
+       "name": "HAN SOLO",
+       "required": 3
+      },
+      {
+       "name": "JEDI KNIGHT REVAN",
+       "required": 3
+      },
+      {
+       "name": "CHEWBACCA",
+       "required": 2
+      },
+      {
+       "name": "COMMANDER LUKE SKYWALKER",
+       "required": 2
+      },
+      {
+       "name": "GENERAL KENOBI",
+       "required": 2
+      },
+      {
+       "name": "GRAND MASTER YODA",
+       "required": 2
+      },
+      {
+       "name": "LOGRAY",
+       "required": 2
+      },
+      {
+       "name": "PHANTOM II",
+       "required": 2
+      },
+      {
+       "name": "R2-D2",
+       "required": 2
+      },
+      {
+       "name": "REY (JEDI TRAINING)",
+       "required": 2
+      },
+      {
+       "name": "THREEPIO & CHEWIE",
+       "required": 2
+      },
+      {
+       "name": "AHSOKA TANO (FULCRUM)",
+       "required": 1
+      },
+      {
+       "name": "AMILYN HOLDO",
+       "required": 1
+      },
+      {
+       "name": "ANAKIN'S ETA-2 STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "BARRISS OFFEE",
+       "required": 1
+      },
+      {
+       "name": "CC-2224 \"CODY\"",
+       "required": 1
+      },
+      {
+       "name": "GREEF KARGA",
+       "required": 1
+      },
+      {
+       "name": "HOME ONE",
+       "required": 1
+      },
+      {
+       "name": "HONDO OHNAKA",
+       "required": 1
+      },
+      {
+       "name": "JOLEE BINDO",
+       "required": 1
+      },
+      {
+       "name": "JYN ERSO",
+       "required": 1
+      },
+      {
+       "name": "KI-ADI-MUNDI",
+       "required": 1
+      },
+      {
+       "name": "KUIIL",
+       "required": 1
+      },
+      {
+       "name": "L3-37",
+       "required": 1
+      },
+      {
+       "name": "LOBOT",
+       "required": 1
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 1
+      },
+      {
+       "name": "PLO KOON'S JEDI STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "RAVEN'S CLAW",
+       "required": 1
+      },
+      {
+       "name": "REBEL OFFICER LEIA ORGANA",
+       "required": 1
+      },
+      {
+       "name": "RESISTANCE X-WING",
+       "required": 1
+      },
+      {
+       "name": "SABINE WREN",
+       "required": 1
+      },
+      {
+       "name": "TEEBO",
+       "required": 1
+      },
+      {
+       "name": "THE ARMORER",
+       "required": 1
+      },
+      {
+       "name": "UMBARAN STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "VISAS MARR",
+       "required": 1
+      },
+      {
+       "name": "ZAALBAR",
+       "required": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": 2,
+   "minRelic": 6,
+   "planets": [
+    {
+     "alignment": "Dark Side",
+     "units": [
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 7
+      },
+      {
+       "name": "DARTH REVAN",
+       "required": 6
+      },
+      {
+       "name": "SCYTHE",
+       "required": 6
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 5
+      },
+      {
+       "name": "TIE/IN INTERCEPTOR PROTOTYPE",
+       "required": 5
+      },
+      {
+       "name": "CHIMAERA",
+       "required": 4
+      },
+      {
+       "name": "EMPEROR PALPATINE",
+       "required": 4
+      },
+      {
+       "name": "GRAND ADMIRAL THRAWN",
+       "required": 4
+      },
+      {
+       "name": "MAUL",
+       "required": 4
+      },
+      {
+       "name": "DARTH MALAK",
+       "required": 3
+      },
+      {
+       "name": "GRAND INQUISITOR",
+       "required": 3
+      },
+      {
+       "name": "IMPERIAL PROBE DROID",
+       "required": 3
+      },
+      {
+       "name": "STARKILLER",
+       "required": 3
+      },
+      {
+       "name": "B2 SUPER BATTLE DROID",
+       "required": 2
+      },
+      {
+       "name": "EXECUTOR",
+       "required": 2
+      },
+      {
+       "name": "FIRST ORDER OFFICER",
+       "required": 2
+      },
+      {
+       "name": "KYLO REN (UNMASKED)",
+       "required": 2
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 2
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 2
+      },
+      {
+       "name": "WAT TAMBOR",
+       "required": 2
+      },
+      {
+       "name": "ASAJJ VENTRESS",
+       "required": 1
+      },
+      {
+       "name": "CAD BANE",
+       "required": 1
+      },
+      {
+       "name": "COLONEL STARCK",
+       "required": 1
+      },
+      {
+       "name": "DARTH TALON",
+       "required": 1
+      },
+      {
+       "name": "DEATH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "DENGAR",
+       "required": 1
+      },
+      {
+       "name": "DROIDEKA",
+       "required": 1
+      },
+      {
+       "name": "EMPEROR'S SHUTTLE",
+       "required": 1
+      },
+      {
+       "name": "EXECUTRIX",
+       "required": 1
+      },
+      {
+       "name": "GENERAL GRIEVOUS",
+       "required": 1
+      },
+      {
+       "name": "GENERAL VEERS",
+       "required": 1
+      },
+      {
+       "name": "HK-47",
+       "required": 1
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN'S COMMAND SHUTTLE",
+       "required": 1
+      },
+      {
+       "name": "MAGMATROOPER",
+       "required": 1
+      },
+      {
+       "name": "MALEVOLENCE",
+       "required": 1
+      },
+      {
+       "name": "SCIMITAR",
+       "required": 1
+      },
+      {
+       "name": "TIE ECHELON",
+       "required": 1
+      },
+      {
+       "name": "TIE REAPER",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Mixed",
+     "units": [
+      {
+       "name": "SCYTHE",
+       "required": 7
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 6
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 5
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 5
+      },
+      {
+       "name": "GENERAL SKYWALKER",
+       "required": 4
+      },
+      {
+       "name": "MAUL",
+       "required": 4
+      },
+      {
+       "name": "REBEL OFFICER LEIA ORGANA",
+       "required": 4
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 3
+      },
+      {
+       "name": "GRAND INQUISITOR",
+       "required": 3
+      },
+      {
+       "name": "JEDI KNIGHT LUKE SKYWALKER",
+       "required": 3
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 3
+      },
+      {
+       "name": "TIE/IN INTERCEPTOR PROTOTYPE",
+       "required": 3
+      },
+      {
+       "name": "EMBO",
+       "required": 2
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 2
+      },
+      {
+       "name": "WAT TAMBOR",
+       "required": 2
+      },
+      {
+       "name": "AAYLA SECURA",
+       "required": 1
+      },
+      {
+       "name": "ADMIRAL ACKBAR",
+       "required": 1
+      },
+      {
+       "name": "BASTILA SHAN",
+       "required": 1
+      },
+      {
+       "name": "BT-1",
+       "required": 1
+      },
+      {
+       "name": "CASSIAN'S U-WING",
+       "required": 1
+      },
+      {
+       "name": "COUNT DOOKU",
+       "required": 1
+      },
+      {
+       "name": "DARTH MALAK",
+       "required": 1
+      },
+      {
+       "name": "DEATH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "EMPEROR'S SHUTTLE",
+       "required": 1
+      },
+      {
+       "name": "GENERAL HUX",
+       "required": 1
+      },
+      {
+       "name": "GENERAL KENOBI",
+       "required": 1
+      },
+      {
+       "name": "GENERAL VEERS",
+       "required": 1
+      },
+      {
+       "name": "HAN SOLO",
+       "required": 1
+      },
+      {
+       "name": "HERMIT YODA",
+       "required": 1
+      },
+      {
+       "name": "IMPERIAL PROBE DROID",
+       "required": 1
+      },
+      {
+       "name": "JAWA",
+       "required": 1
+      },
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 1
+      },
+      {
+       "name": "KI-ADI-MUNDI",
+       "required": 1
+      },
+      {
+       "name": "KUIIL",
+       "required": 1
+      },
+      {
+       "name": "L3-37",
+       "required": 1
+      },
+      {
+       "name": "LANDO CALRISSIAN",
+       "required": 1
+      },
+      {
+       "name": "LOGRAY",
+       "required": 1
+      },
+      {
+       "name": "LORD VADER",
+       "required": 1
+      },
+      {
+       "name": "OUTRIDER",
+       "required": 1
+      },
+      {
+       "name": "PLO KOON'S JEDI STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "REY",
+       "required": 1
+      },
+      {
+       "name": "SANA STARROS",
+       "required": 1
+      },
+      {
+       "name": "SITH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "SNOWTROOPER",
+       "required": 1
+      },
+      {
+       "name": "STARKILLER",
+       "required": 1
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 1
+      },
+      {
+       "name": "THE MANDALORIAN",
+       "required": 1
+      },
+      {
+       "name": "THREEPIO & CHEWIE",
+       "required": 1
+      },
+      {
+       "name": "ZAALBAR",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Light Side",
+     "units": [
+      {
+       "name": "RAZOR CREST",
+       "required": 12
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 10
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 5
+      },
+      {
+       "name": "GRAND MASTER YODA",
+       "required": 4
+      },
+      {
+       "name": "BB-8",
+       "required": 2
+      },
+      {
+       "name": "BTL-B Y-WING STARFIGHTER",
+       "required": 2
+      },
+      {
+       "name": "C-3PO",
+       "required": 2
+      },
+      {
+       "name": "CHEWBACCA",
+       "required": 2
+      },
+      {
+       "name": "GHOST",
+       "required": 2
+      },
+      {
+       "name": "GREEF KARGA",
+       "required": 2
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 2
+      },
+      {
+       "name": "KANAN JARRUS",
+       "required": 2
+      },
+      {
+       "name": "OUTRIDER",
+       "required": 2
+      },
+      {
+       "name": "PROFUNDITY",
+       "required": 2
+      },
+      {
+       "name": "R2-D2",
+       "required": 2
+      },
+      {
+       "name": "REY",
+       "required": 2
+      },
+      {
+       "name": "REY (JEDI TRAINING)",
+       "required": 2
+      },
+      {
+       "name": "AAYLA SECURA",
+       "required": 1
+      },
+      {
+       "name": "ADMIRAL RADDUS",
+       "required": 1
+      },
+      {
+       "name": "ARC TROOPER",
+       "required": 1
+      },
+      {
+       "name": "BISTAN'S U-WING",
+       "required": 1
+      },
+      {
+       "name": "BODHI ROOK",
+       "required": 1
+      },
+      {
+       "name": "BOUSHH (LEIA ORGANA)",
+       "required": 1
+      },
+      {
+       "name": "CLONE SERGEANT - PHASE I",
+       "required": 1
+      },
+      {
+       "name": "COMMANDER LUKE SKYWALKER",
+       "required": 1
+      },
+      {
+       "name": "CT-21-0408 \"ECHO\"",
+       "required": 1
+      },
+      {
+       "name": "CT-5555 \"FIVES\"",
+       "required": 1
+      },
+      {
+       "name": "CT-7567 \"REX\"",
+       "required": 1
+      },
+      {
+       "name": "EBON HAWK",
+       "required": 1
+      },
+      {
+       "name": "ENDURANCE",
+       "required": 1
+      },
+      {
+       "name": "ENFYS NEST",
+       "required": 1
+      },
+      {
+       "name": "EZRA BRIDGER",
+       "required": 1
+      },
+      {
+       "name": "HAN'S MILLENNIUM FALCON",
+       "required": 1
+      },
+      {
+       "name": "JEDI CONSULAR'S STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "JEDI KNIGHT REVAN",
+       "required": 1
+      },
+      {
+       "name": "JUHANI",
+       "required": 1
+      },
+      {
+       "name": "L3-37",
+       "required": 1
+      },
+      {
+       "name": "MON MOTHMA",
+       "required": 1
+      },
+      {
+       "name": "OMEGA",
+       "required": 1
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 1
+      },
+      {
+       "name": "PAO",
+       "required": 1
+      },
+      {
+       "name": "POE DAMERON'S X-WING",
+       "required": 1
+      },
+      {
+       "name": "RAVEN'S CLAW",
+       "required": 1
+      },
+      {
+       "name": "ROSE TICO",
+       "required": 1
+      },
+      {
+       "name": "TEEBO",
+       "required": 1
+      },
+      {
+       "name": "THREEPIO & CHEWIE",
+       "required": 1
+      },
+      {
+       "name": "VANDOR CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "VETERAN SMUGGLER CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "WEDGE ANTILLES",
+       "required": 1
+      },
+      {
+       "name": "YOUNG HAN SOLO",
+       "required": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": 3,
+   "minRelic": 7,
+   "planets": [
+    {
+     "alignment": "Dark Side",
+     "units": [
+      {
+       "name": "DARTH MALGUS",
+       "required": 9
+      },
+      {
+       "name": "SCYTHE",
+       "required": 9
+      },
+      {
+       "name": "TIE/IN INTERCEPTOR PROTOTYPE",
+       "required": 8
+      },
+      {
+       "name": "LORD VADER",
+       "required": 6
+      },
+      {
+       "name": "MAUL",
+       "required": 6
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 4
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 4
+      },
+      {
+       "name": "GENERAL GRIEVOUS",
+       "required": 3
+      },
+      {
+       "name": "WAT TAMBOR",
+       "required": 3
+      },
+      {
+       "name": "DENGAR",
+       "required": 2
+      },
+      {
+       "name": "IMPERIAL PROBE DROID",
+       "required": 2
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 2
+      },
+      {
+       "name": "TUSKEN RAIDER",
+       "required": 2
+      },
+      {
+       "name": "0-0-0",
+       "required": 1
+      },
+      {
+       "name": "AURRA SING",
+       "required": 1
+      },
+      {
+       "name": "CAD BANE",
+       "required": 1
+      },
+      {
+       "name": "CHIMAERA",
+       "required": 1
+      },
+      {
+       "name": "DARK TROOPER",
+       "required": 1
+      },
+      {
+       "name": "DARTH MAUL",
+       "required": 1
+      },
+      {
+       "name": "DARTH REVAN",
+       "required": 1
+      },
+      {
+       "name": "DARTH TRAYA",
+       "required": 1
+      },
+      {
+       "name": "DIRECTOR KRENNIC",
+       "required": 1
+      },
+      {
+       "name": "EMBO",
+       "required": 1
+      },
+      {
+       "name": "EMPEROR'S SHUTTLE",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER SF TIE FIGHTER",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER SF TIE PILOT",
+       "required": 1
+      },
+      {
+       "name": "GAR SAXON",
+       "required": 1
+      },
+      {
+       "name": "GENERAL HUX",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SOLDIER'S STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SPY'S STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "GRAND ADMIRAL THRAWN",
+       "required": 1
+      },
+      {
+       "name": "GRAND MOFF TARKIN",
+       "required": 1
+      },
+      {
+       "name": "HK-47",
+       "required": 1
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 1
+      },
+      {
+       "name": "IG-88",
+       "required": 1
+      },
+      {
+       "name": "IMPERIAL TIE FIGHTER",
+       "required": 1
+      },
+      {
+       "name": "MOTHER TALZIN",
+       "required": 1
+      },
+      {
+       "name": "SAVAGE OPRESS",
+       "required": 1
+      },
+      {
+       "name": "SEVENTH SISTER",
+       "required": 1
+      },
+      {
+       "name": "SITH ASSASSIN",
+       "required": 1
+      },
+      {
+       "name": "SITH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "TALIA",
+       "required": 1
+      },
+      {
+       "name": "TIE ADVANCED X1",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Mixed",
+     "units": [
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 6
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 5
+      },
+      {
+       "name": "MAUL",
+       "required": 5
+      },
+      {
+       "name": "TIE/IN INTERCEPTOR PROTOTYPE",
+       "required": 5
+      },
+      {
+       "name": "JEDI KNIGHT LUKE SKYWALKER",
+       "required": 4
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 4
+      },
+      {
+       "name": "SCYTHE",
+       "required": 4
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 3
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 3
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 3
+      },
+      {
+       "name": "BASTILA SHAN (FALLEN)",
+       "required": 2
+      },
+      {
+       "name": "DARTH MALAK",
+       "required": 2
+      },
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 2
+      },
+      {
+       "name": "OBI-WAN KENOBI (OLD BEN)",
+       "required": 2
+      },
+      {
+       "name": "REY",
+       "required": 2
+      },
+      {
+       "name": "STARKILLER",
+       "required": 2
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 2
+      },
+      {
+       "name": "50R-T",
+       "required": 1
+      },
+      {
+       "name": "B1 BATTLE DROID",
+       "required": 1
+      },
+      {
+       "name": "BARRISS OFFEE",
+       "required": 1
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 1
+      },
+      {
+       "name": "BODHI ROOK",
+       "required": 1
+      },
+      {
+       "name": "CARA DUNE",
+       "required": 1
+      },
+      {
+       "name": "CHIRRUT ÎMWE",
+       "required": 1
+      },
+      {
+       "name": "CORUSCANT UNDERWORLD POLICE",
+       "required": 1
+      },
+      {
+       "name": "EWOK ELDER",
+       "required": 1
+      },
+      {
+       "name": "EWOK SCOUT",
+       "required": 1
+      },
+      {
+       "name": "TUSKEN CHIEFTAIN",
+       "required": 1
+      },
+      {
+       "name": "FINALIZER",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER SF TIE FIGHTER",
+       "required": 1
+      },
+      {
+       "name": "GAUNTLET STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "GENERAL SKYWALKER",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SPY",
+       "required": 1
+      },
+      {
+       "name": "HK-47",
+       "required": 1
+      },
+      {
+       "name": "HONDO OHNAKA",
+       "required": 1
+      },
+      {
+       "name": "HOTH REBEL SCOUT",
+       "required": 1
+      },
+      {
+       "name": "HUNTER",
+       "required": 1
+      },
+      {
+       "name": "IG-2000",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN (UNMASKED)",
+       "required": 1
+      },
+      {
+       "name": "LUMINARA UNDULI",
+       "required": 1
+      },
+      {
+       "name": "MARA JADE, THE EMPEROR'S HAND",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER ACOLYTE",
+       "required": 1
+      },
+      {
+       "name": "OUTRIDER",
+       "required": 1
+      },
+      {
+       "name": "QUI-GON JINN",
+       "required": 1
+      },
+      {
+       "name": "RESISTANCE HERO FINN",
+       "required": 1
+      },
+      {
+       "name": "RESISTANCE HERO POE",
+       "required": 1
+      },
+      {
+       "name": "ROSE TICO",
+       "required": 1
+      },
+      {
+       "name": "SKIFF GUARD (LANDO CALRISSIAN)",
+       "required": 1
+      },
+      {
+       "name": "TEEBO",
+       "required": 1
+      },
+      {
+       "name": "TIE REAPER",
+       "required": 1
+      },
+      {
+       "name": "YOUNG HAN SOLO",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Light Side",
+     "units": [
+      {
+       "name": "BEN SOLO",
+       "required": 6
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 6
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 6
+      },
+      {
+       "name": "HAN'S MILLENNIUM FALCON",
+       "required": 5
+      },
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 5
+      },
+      {
+       "name": "LOGRAY",
+       "required": 5
+      },
+      {
+       "name": "REY",
+       "required": 5
+      },
+      {
+       "name": "GREEF KARGA",
+       "required": 5
+      },
+      {
+       "name": "R2-D2",
+       "required": 4
+      },
+      {
+       "name": "BB-8",
+       "required": 3
+      },
+      {
+       "name": "C-3PO",
+       "required": 3
+      },
+      {
+       "name": "COMMANDER LUKE SKYWALKER",
+       "required": 3
+      },
+      {
+       "name": "KI-ADI-MUNDI",
+       "required": 3
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 3
+      },
+      {
+       "name": "GRAND MASTER YODA",
+       "required": 2
+      },
+      {
+       "name": "HAN SOLO",
+       "required": 2
+      },
+      {
+       "name": "HERMIT YODA",
+       "required": 2
+      },
+      {
+       "name": "JEDI KNIGHT REVAN",
+       "required": 2
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 2
+      },
+      {
+       "name": "REBEL OFFICER LEIA ORGANA",
+       "required": 2
+      },
+      {
+       "name": "RESISTANCE TROOPER",
+       "required": 2
+      },
+      {
+       "name": "CLONE SERGEANT - PHASE I",
+       "required": 1
+      },
+      {
+       "name": "CT-5555 \"FIVES\"",
+       "required": 1
+      },
+      {
+       "name": "EWOK SCOUT",
+       "required": 1
+      },
+      {
+       "name": "GENERAL KENOBI",
+       "required": 1
+      },
+      {
+       "name": "HOTH REBEL SCOUT",
+       "required": 1
+      },
+      {
+       "name": "HOTH REBEL SOLDIER",
+       "required": 1
+      },
+      {
+       "name": "JEDI KNIGHT ANAKIN",
+       "required": 1
+      },
+      {
+       "name": "K-2SO",
+       "required": 1
+      },
+      {
+       "name": "LANDO'S MILLENNIUM FALCON",
+       "required": 1
+      },
+      {
+       "name": "MACE WINDU",
+       "required": 1
+      },
+      {
+       "name": "NEGOTIATOR",
+       "required": 1
+      },
+      {
+       "name": "RAVEN'S CLAW",
+       "required": 1
+      },
+      {
+       "name": "REY (JEDI TRAINING)",
+       "required": 1
+      },
+      {
+       "name": "SKIFF GUARD (LANDO CALRISSIAN)",
+       "required": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": 4,
+   "minRelic": 8,
+   "planets": [
+    {
+     "alignment": "Dark Side",
+     "units": [
+      {
+       "name": "TIE/IN INTERCEPTOR PROTOTYPE",
+       "required": 7
+      },
+      {
+       "name": "STARKILLER",
+       "required": 6
+      },
+      {
+       "name": "LORD VADER",
+       "required": 5
+      },
+      {
+       "name": "SCYTHE",
+       "required": 5
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 5
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 4
+      },
+      {
+       "name": "EXECUTOR",
+       "required": 4
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 4
+      },
+      {
+       "name": "DARTH MALAK",
+       "required": 3
+      },
+      {
+       "name": "MAUL",
+       "required": 3
+      },
+      {
+       "name": "ASAJJ VENTRESS",
+       "required": 2
+      },
+      {
+       "name": "AURRA SING",
+       "required": 2
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 2
+      },
+      {
+       "name": "EMPEROR'S SHUTTLE",
+       "required": 2
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 2
+      },
+      {
+       "name": "SNOWTROOPER",
+       "required": 2
+      },
+      {
+       "name": "B2 SUPER BATTLE DROID",
+       "required": 1
+      },
+      {
+       "name": "BASTILA SHAN (FALLEN)",
+       "required": 1
+      },
+      {
+       "name": "BT-1",
+       "required": 1
+      },
+      {
+       "name": "CAD BANE",
+       "required": 1
+      },
+      {
+       "name": "DARTH MAUL",
+       "required": 1
+      },
+      {
+       "name": "DARTH VADER",
+       "required": 1
+      },
+      {
+       "name": "DATHCHA",
+       "required": 1
+      },
+      {
+       "name": "DENGAR",
+       "required": 1
+      },
+      {
+       "name": "DIRECTOR KRENNIC",
+       "required": 1
+      },
+      {
+       "name": "EIGHTH BROTHER",
+       "required": 1
+      },
+      {
+       "name": "EMBO",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER STORMTROOPER",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER TIE PILOT",
+       "required": 1
+      },
+      {
+       "name": "GENERAL VEERS",
+       "required": 1
+      },
+      {
+       "name": "HK-47",
+       "required": 1
+      },
+      {
+       "name": "HONDO OHNAKA",
+       "required": 1
+      },
+      {
+       "name": "IDEN VERSIO",
+       "required": 1
+      },
+      {
+       "name": "IG-88",
+       "required": 1
+      },
+      {
+       "name": "KRRSANTAN",
+       "required": 1
+      },
+      {
+       "name": "MALEVOLENCE",
+       "required": 1
+      },
+      {
+       "name": "MARA JADE, THE EMPEROR'S HAND",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER ACOLYTE",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER INITIATE",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER SPIRIT",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER ZOMBIE",
+       "required": 1
+      },
+      {
+       "name": "RANGE TROOPER",
+       "required": 1
+      },
+      {
+       "name": "SAVAGE OPRESS",
+       "required": 1
+      },
+      {
+       "name": "SECOND SISTER",
+       "required": 1
+      },
+      {
+       "name": "SEVENTH SISTER",
+       "required": 1
+      },
+      {
+       "name": "TIE FIGHTER PILOT",
+       "required": 1
+      },
+      {
+       "name": "TIE SILENCER",
+       "required": 1
+      },
+      {
+       "name": "WAMPA",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Mixed",
+     "units": [
+      {
+       "name": "STARKILLER",
+       "required": 7
+      },
+      {
+       "name": "REY",
+       "required": 6
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 5
+      },
+      {
+       "name": "TIE/IN INTERCEPTOR PROTOTYPE",
+       "required": 5
+      },
+      {
+       "name": "GENERAL SKYWALKER",
+       "required": 4
+      },
+      {
+       "name": "JEDI KNIGHT LUKE SKYWALKER",
+       "required": 4
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 4
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 3
+      },
+      {
+       "name": "DARTH MALAK",
+       "required": 3
+      },
+      {
+       "name": "MAUL",
+       "required": 3
+      },
+      {
+       "name": "SCYTHE",
+       "required": 3
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 2
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 2
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 2
+      },
+      {
+       "name": "EXECUTOR",
+       "required": 2
+      },
+      {
+       "name": "LORD VADER",
+       "required": 2
+      },
+      {
+       "name": "NIGHTSISTER INITIATE",
+       "required": 2
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 2
+      },
+      {
+       "name": "50R-T",
+       "required": 1
+      },
+      {
+       "name": "ADMIRAL ACKBAR",
+       "required": 1
+      },
+      {
+       "name": "ASAJJ VENTRESS",
+       "required": 1
+      },
+      {
+       "name": "AURRA SING",
+       "required": 1
+      },
+      {
+       "name": "B-28 EXTINCTION-CLASS BOMBER",
+       "required": 1
+      },
+      {
+       "name": "BAZE MALBUS",
+       "required": 1
+      },
+      {
+       "name": "BISTAN",
+       "required": 1
+      },
+      {
+       "name": "BO-KATAN KRYZE",
+       "required": 1
+      },
+      {
+       "name": "CORUSCANT UNDERWORLD POLICE",
+       "required": 1
+      },
+      {
+       "name": "DARK TROOPER",
+       "required": 1
+      },
+      {
+       "name": "EBON HAWK",
+       "required": 1
+      },
+      {
+       "name": "ECHO",
+       "required": 1
+      },
+      {
+       "name": "GAMORREAN GUARD",
+       "required": 1
+      },
+      {
+       "name": "GENERAL VEERS",
+       "required": 1
+      },
+      {
+       "name": "HOTH REBEL SOLDIER",
+       "required": 1
+      },
+      {
+       "name": "IG-88",
+       "required": 1
+      },
+      {
+       "name": "JEDI CONSULAR'S STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN",
+       "required": 1
+      },
+      {
+       "name": "OUTRIDER",
+       "required": 1
+      },
+      {
+       "name": "POGGLE THE LESSER",
+       "required": 1
+      },
+      {
+       "name": "REBEL Y-WING",
+       "required": 1
+      },
+      {
+       "name": "REX'S ARC-170",
+       "required": 1
+      },
+      {
+       "name": "SEVENTH SISTER",
+       "required": 1
+      },
+      {
+       "name": "SITH EMPIRE TROOPER",
+       "required": 1
+      },
+      {
+       "name": "SITH FIGHTER",
+       "required": 1
+      },
+      {
+       "name": "SLAVE I",
+       "required": 1
+      },
+      {
+       "name": "THE MANDALORIAN",
+       "required": 1
+      },
+      {
+       "name": "TIE SILENCER",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Light Side",
+     "units": [
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 8
+      },
+      {
+       "name": "PROFUNDITY",
+       "required": 7
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 5
+      },
+      {
+       "name": "HERMIT YODA",
+       "required": 5
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 4
+      },
+      {
+       "name": "REBEL OFFICER LEIA ORGANA",
+       "required": 4
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 3
+      },
+      {
+       "name": "GENERAL KENOBI",
+       "required": 3
+      },
+      {
+       "name": "50R-T",
+       "required": 2
+      },
+      {
+       "name": "CHEWBACCA",
+       "required": 2
+      },
+      {
+       "name": "PLO KOON'S JEDI STARFIGHTER",
+       "required": 2
+      },
+      {
+       "name": "HAN SOLO",
+       "required": 2
+      },
+      {
+       "name": "JEDI KNIGHT REVAN",
+       "required": 2
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 2
+      },
+      {
+       "name": "KI-ADI-MUNDI",
+       "required": 2
+      },
+      {
+       "name": "LOGRAY",
+       "required": 2
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 2
+      },
+      {
+       "name": "SCARIF REBEL PATHFINDER",
+       "required": 2
+      },
+      {
+       "name": "XANADU BLOOD",
+       "required": 2
+      },
+      {
+       "name": "ZAALBAR",
+       "required": 2
+      },
+      {
+       "name": "AAYLA SECURA",
+       "required": 1
+      },
+      {
+       "name": "BB-8",
+       "required": 1
+      },
+      {
+       "name": "BISTAN",
+       "required": 1
+      },
+      {
+       "name": "CHIEF NEBIT",
+       "required": 1
+      },
+      {
+       "name": "DASH RENDAR",
+       "required": 1
+      },
+      {
+       "name": "EBON HAWK",
+       "required": 1
+      },
+      {
+       "name": "ECHO",
+       "required": 1
+      },
+      {
+       "name": "EETH KOTH",
+       "required": 1
+      },
+      {
+       "name": "FINN",
+       "required": 1
+      },
+      {
+       "name": "GRAND MASTER YODA",
+       "required": 1
+      },
+      {
+       "name": "HAN'S MILLENNIUM FALCON",
+       "required": 1
+      },
+      {
+       "name": "HONDO OHNAKA",
+       "required": 1
+      },
+      {
+       "name": "JEDI CONSULAR",
+       "required": 1
+      },
+      {
+       "name": "JOLEE BINDO",
+       "required": 1
+      },
+      {
+       "name": "KYLE KATARN",
+       "required": 1
+      },
+      {
+       "name": "OUTRIDER",
+       "required": 1
+      },
+      {
+       "name": "R2-D2",
+       "required": 1
+      },
+      {
+       "name": "RAVEN'S CLAW",
+       "required": 1
+      },
+      {
+       "name": "REBEL Y-WING",
+       "required": 1
+      },
+      {
+       "name": "REY",
+       "required": 1
+      },
+      {
+       "name": "REY (JEDI TRAINING)",
+       "required": 1
+      },
+      {
+       "name": "SANA STARROS",
+       "required": 1
+      },
+      {
+       "name": "TECH",
+       "required": 1
+      },
+      {
+       "name": "THE MANDALORIAN (BESKAR ARMOR)",
+       "required": 1
+      },
+      {
+       "name": "VETERAN SMUGGLER CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "WEDGE ANTILLES'S X-WING",
+       "required": 1
+      },
+      {
+       "name": "WICKET",
+       "required": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": 5,
+   "minRelic": 9,
+   "planets": [
+    {
+     "alignment": "Dark Side",
+     "units": [
+      {
+       "name": "STARKILLER",
+       "required": 9
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 7
+      },
+      {
+       "name": "DARTH MALAK",
+       "required": 6
+      },
+      {
+       "name": "SCYTHE",
+       "required": 6
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 6
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 5
+      },
+      {
+       "name": "EXECUTOR",
+       "required": 5
+      },
+      {
+       "name": "LORD VADER",
+       "required": 4
+      },
+      {
+       "name": "GRAND INQUISITOR",
+       "required": 3
+      },
+      {
+       "name": "IG-88",
+       "required": 3
+      },
+      {
+       "name": "MAUL",
+       "required": 3
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 3
+      },
+      {
+       "name": "FIRST ORDER SF TIE PILOT",
+       "required": 2
+      },
+      {
+       "name": "SITH EMPIRE TROOPER",
+       "required": 2
+      },
+      {
+       "name": "B-28 EXTINCTION-CLASS BOMBER",
+       "required": 1
+      },
+      {
+       "name": "BOBA FETT",
+       "required": 1
+      },
+      {
+       "name": "COLONEL STARCK",
+       "required": 1
+      },
+      {
+       "name": "COUNT DOOKU",
+       "required": 1
+      },
+      {
+       "name": "EXECUTRIX",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER OFFICER",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER TIE FIGHTER",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER TIE PILOT",
+       "required": 1
+      },
+      {
+       "name": "GAUNTLET STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SOLDIER",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SOLDIER'S STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 1
+      },
+      {
+       "name": "IDEN VERSIO",
+       "required": 1
+      },
+      {
+       "name": "IG-2000",
+       "required": 1
+      },
+      {
+       "name": "JANGO FETT",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN (UNMASKED)",
+       "required": 1
+      },
+      {
+       "name": "MAGMATROOPER",
+       "required": 1
+      },
+      {
+       "name": "MOFF GIDEON",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER ZOMBIE",
+       "required": 1
+      },
+      {
+       "name": "SITH ASSASSIN",
+       "required": 1
+      },
+      {
+       "name": "SNOWTROOPER",
+       "required": 1
+      },
+      {
+       "name": "TALIA",
+       "required": 1
+      },
+      {
+       "name": "TUSKEN SHAMAN",
+       "required": 1
+      },
+      {
+       "name": "VULTURE DROID",
+       "required": 1
+      },
+      {
+       "name": "WAMPA",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Mixed",
+     "units": [
+      {
+       "name": "GRAND INQUISITOR",
+       "required": 7
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 6
+      },
+      {
+       "name": "PROFUNDITY",
+       "required": 5
+      },
+      {
+       "name": "STARKILLER",
+       "required": 4
+      },
+      {
+       "name": "DARTH MALAK",
+       "required": 3
+      },
+      {
+       "name": "GENERAL SKYWALKER",
+       "required": 3
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 3
+      },
+      {
+       "name": "SCYTHE",
+       "required": 3
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 2
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 2
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 2
+      },
+      {
+       "name": "EXECUTOR",
+       "required": 2
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 2
+      },
+      {
+       "name": "JEDI CONSULAR'S STARFIGHTER",
+       "required": 2
+      },
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 2
+      },
+      {
+       "name": "OLD DAKA",
+       "required": 2
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 2
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 2
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 2
+      },
+      {
+       "name": "50R-T",
+       "required": 1
+      },
+      {
+       "name": "AHSOKA TANO (FULCRUM)",
+       "required": 1
+      },
+      {
+       "name": "ANAKIN'S ETA-2 STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "BARRISS OFFEE",
+       "required": 1
+      },
+      {
+       "name": "BASTILA SHAN",
+       "required": 1
+      },
+      {
+       "name": "BISTAN",
+       "required": 1
+      },
+      {
+       "name": "BODHI ROOK",
+       "required": 1
+      },
+      {
+       "name": "CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "DARTH SIDIOUS",
+       "required": 1
+      },
+      {
+       "name": "ECHO",
+       "required": 1
+      },
+      {
+       "name": "EMPEROR PALPATINE",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER EXECUTIONER",
+       "required": 1
+      },
+      {
+       "name": "GAUNTLET STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "HONDO OHNAKA",
+       "required": 1
+      },
+      {
+       "name": "HOUND'S TOOTH",
+       "required": 1
+      },
+      {
+       "name": "HUNTER",
+       "required": 1
+      },
+      {
+       "name": "IG-100 MAGNAGUARD",
+       "required": 1
+      },
+      {
+       "name": "IMPERIAL TIE BOMBER",
+       "required": 1
+      },
+      {
+       "name": "JEDI KNIGHT LUKE SKYWALKER",
+       "required": 1
+      },
+      {
+       "name": "JOLEE BINDO",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN",
+       "required": 1
+      },
+      {
+       "name": "LORD VADER",
+       "required": 1
+      },
+      {
+       "name": "MACE WINDU",
+       "required": 1
+      },
+      {
+       "name": "MAUL",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER INITIATE",
+       "required": 1
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 1
+      },
+      {
+       "name": "RAVEN'S CLAW",
+       "required": 1
+      },
+      {
+       "name": "RESISTANCE HERO FINN",
+       "required": 1
+      },
+      {
+       "name": "REY",
+       "required": 1
+      },
+      {
+       "name": "TALIA",
+       "required": 1
+      },
+      {
+       "name": "TIE ECHELON",
+       "required": 1
+      },
+      {
+       "name": "TUSKEN SHAMAN",
+       "required": 1
+      },
+      {
+       "name": "WEDGE ANTILLES'S X-WING",
+       "required": 1
+      },
+      {
+       "name": "WICKET",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Light Side",
+     "units": [
+      {
+       "name": "JEDI KNIGHT LUKE SKYWALKER",
+       "required": 11
+      },
+      {
+       "name": "GENERAL SKYWALKER",
+       "required": 7
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 6
+      },
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 6
+      },
+      {
+       "name": "GRAND MASTER YODA",
+       "required": 5
+      },
+      {
+       "name": "REY",
+       "required": 4
+      },
+      {
+       "name": "COMMANDER LUKE SKYWALKER",
+       "required": 3
+      },
+      {
+       "name": "JEDI KNIGHT REVAN",
+       "required": 3
+      },
+      {
+       "name": "50R-T",
+       "required": 2
+      },
+      {
+       "name": "BAZE MALBUS",
+       "required": 2
+      },
+      {
+       "name": "C-3PO",
+       "required": 2
+      },
+      {
+       "name": "EETH KOTH",
+       "required": 2
+      },
+      {
+       "name": "PROFUNDITY",
+       "required": 2
+      },
+      {
+       "name": "R2-D2",
+       "required": 2
+      },
+      {
+       "name": "TECH",
+       "required": 2
+      },
+      {
+       "name": "WEDGE ANTILLES'S X-WING",
+       "required": 2
+      },
+      {
+       "name": "AMILYN HOLDO",
+       "required": 1
+      },
+      {
+       "name": "BARRISS OFFEE",
+       "required": 1
+      },
+      {
+       "name": "BASTILA SHAN",
+       "required": 1
+      },
+      {
+       "name": "BODHI ROOK",
+       "required": 1
+      },
+      {
+       "name": "BOUSHH (LEIA ORGANA)",
+       "required": 1
+      },
+      {
+       "name": "CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "CHIRRUT ÎMWE",
+       "required": 1
+      },
+      {
+       "name": "CHOPPER",
+       "required": 1
+      },
+      {
+       "name": "CLONE SERGEANT'S ARC-170",
+       "required": 1
+      },
+      {
+       "name": "CLONE WARS CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "CT-7567 \"REX\"",
+       "required": 1
+      },
+      {
+       "name": "ECHO",
+       "required": 1
+      },
+      {
+       "name": "GHOST",
+       "required": 1
+      },
+      {
+       "name": "HAN'S MILLENNIUM FALCON",
+       "required": 1
+      },
+      {
+       "name": "HOTH REBEL SOLDIER",
+       "required": 1
+      },
+      {
+       "name": "IMA-GUN DI",
+       "required": 1
+      },
+      {
+       "name": "LANDO CALRISSIAN",
+       "required": 1
+      },
+      {
+       "name": "LOBOT",
+       "required": 1
+      },
+      {
+       "name": "MON MOTHMA",
+       "required": 1
+      },
+      {
+       "name": "NEGOTIATOR",
+       "required": 1
+      },
+      {
+       "name": "OMEGA",
+       "required": 1
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 1
+      },
+      {
+       "name": "RESISTANCE TROOPER",
+       "required": 1
+      },
+      {
+       "name": "ROSE TICO",
+       "required": 1
+      },
+      {
+       "name": "T3-M4",
+       "required": 1
+      },
+      {
+       "name": "THE ARMORER",
+       "required": 1
+      },
+      {
+       "name": "UMBARAN STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "VETERAN SMUGGLER CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "ZAALBAR",
+       "required": 1
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "phase": 6,
+   "minRelic": 9,
+   "planets": [
+    {
+     "alignment": "Dark Side",
+     "units": [
+      {
+       "name": "LORD VADER",
+       "required": 7
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 6
+      },
+      {
+       "name": "EXECUTOR",
+       "required": 5
+      },
+      {
+       "name": "MAUL",
+       "required": 5
+      },
+      {
+       "name": "DARTH MALGUS",
+       "required": 4
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 4
+      },
+      {
+       "name": "HONDO OHNAKA",
+       "required": 3
+      },
+      {
+       "name": "HYENA BOMBER",
+       "required": 3
+      },
+      {
+       "name": "SCYTHE",
+       "required": 3
+      },
+      {
+       "name": "COUNT DOOKU",
+       "required": 2
+      },
+      {
+       "name": "EMPEROR'S SHUTTLE",
+       "required": 2
+      },
+      {
+       "name": "GEONOSIAN BROOD ALPHA",
+       "required": 2
+      },
+      {
+       "name": "IG-88",
+       "required": 2
+      },
+      {
+       "name": "IMPERIAL SUPER COMMANDO",
+       "required": 2
+      },
+      {
+       "name": "MALEVOLENCE",
+       "required": 2
+      },
+      {
+       "name": "NIGHTSISTER ACOLYTE",
+       "required": 2
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 2
+      },
+      {
+       "name": "UGNAUGHT",
+       "required": 2
+      },
+      {
+       "name": "ASAJJ VENTRESS",
+       "required": 1
+      },
+      {
+       "name": "B1 BATTLE DROID",
+       "required": 1
+      },
+      {
+       "name": "B2 SUPER BATTLE DROID",
+       "required": 1
+      },
+      {
+       "name": "DARTH MAUL",
+       "required": 1
+      },
+      {
+       "name": "DARTH TALON",
+       "required": 1
+      },
+      {
+       "name": "EXECUTRIX",
+       "required": 1
+      },
+      {
+       "name": "FIFTH BROTHER",
+       "required": 1
+      },
+      {
+       "name": "GENERAL HUX",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SOLDIER",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SPY",
+       "required": 1
+      },
+      {
+       "name": "GEONOSIAN SPY'S STARFIGHTER",
+       "required": 1
+      },
+      {
+       "name": "GRAND MOFF TARKIN",
+       "required": 1
+      },
+      {
+       "name": "HK-47",
+       "required": 1
+      },
+      {
+       "name": "HOUND'S TOOTH",
+       "required": 1
+      },
+      {
+       "name": "IG-100 MAGNAGUARD",
+       "required": 1
+      },
+      {
+       "name": "IG-86 SENTINEL DROID",
+       "required": 1
+      },
+      {
+       "name": "JAWA",
+       "required": 1
+      },
+      {
+       "name": "JAWA ENGINEER",
+       "required": 1
+      },
+      {
+       "name": "JAWA SCAVENGER",
+       "required": 1
+      },
+      {
+       "name": "KRRSANTAN",
+       "required": 1
+      },
+      {
+       "name": "KYLO REN (UNMASKED)",
+       "required": 1
+      },
+      {
+       "name": "MARA JADE, THE EMPEROR'S HAND",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER SPIRIT",
+       "required": 1
+      },
+      {
+       "name": "NINTH SISTER",
+       "required": 1
+      },
+      {
+       "name": "RANGE TROOPER",
+       "required": 1
+      },
+      {
+       "name": "ROYAL GUARD",
+       "required": 1
+      },
+      {
+       "name": "SAVAGE OPRESS",
+       "required": 1
+      },
+      {
+       "name": "SHORETROOPER",
+       "required": 1
+      },
+      {
+       "name": "SITH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "TUSKEN RAIDER",
+       "required": 1
+      },
+      {
+       "name": "URORRUR'R'R",
+       "required": 1
+      },
+      {
+       "name": "ZAM WESELL",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Mixed",
+     "units": [
+      {
+       "name": "DARTH MALGUS",
+       "required": 7
+      },
+      {
+       "name": "SCYTHE",
+       "required": 6
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 5
+      },
+      {
+       "name": "REY",
+       "required": 5
+      },
+      {
+       "name": "SUPREME LEADER KYLO REN",
+       "required": 4
+      },
+      {
+       "name": "BEN SOLO",
+       "required": 3
+      },
+      {
+       "name": "BOBA FETT, SCION OF JANGO",
+       "required": 3
+      },
+      {
+       "name": "DARTH TRAYA",
+       "required": 3
+      },
+      {
+       "name": "GENERAL KENOBI",
+       "required": 3
+      },
+      {
+       "name": "HAN SOLO",
+       "required": 3
+      },
+      {
+       "name": "LORD VADER",
+       "required": 3
+      },
+      {
+       "name": "MAUL",
+       "required": 3
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 3
+      },
+      {
+       "name": "IMPERIAL PROBE DROID",
+       "required": 2
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 2
+      },
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 2
+      },
+      {
+       "name": "SANA STARROS",
+       "required": 2
+      },
+      {
+       "name": "WAT TAMBOR",
+       "required": 2
+      },
+      {
+       "name": "ADMIRAL RADDUS",
+       "required": 1
+      },
+      {
+       "name": "ASAJJ VENTRESS",
+       "required": 1
+      },
+      {
+       "name": "AURRA SING",
+       "required": 1
+      },
+      {
+       "name": "B1 BATTLE DROID",
+       "required": 1
+      },
+      {
+       "name": "CHIEF NEBIT",
+       "required": 1
+      },
+      {
+       "name": "CLONE SERGEANT - PHASE I",
+       "required": 1
+      },
+      {
+       "name": "DARK TROOPER",
+       "required": 1
+      },
+      {
+       "name": "DENGAR",
+       "required": 1
+      },
+      {
+       "name": "EMPEROR'S SHUTTLE",
+       "required": 1
+      },
+      {
+       "name": "EXECUTOR",
+       "required": 1
+      },
+      {
+       "name": "FIRST ORDER OFFICER",
+       "required": 1
+      },
+      {
+       "name": "HERMIT YODA",
+       "required": 1
+      },
+      {
+       "name": "HK-47",
+       "required": 1
+      },
+      {
+       "name": "IG-100 MAGNAGUARD",
+       "required": 1
+      },
+      {
+       "name": "JEDI CONSULAR",
+       "required": 1
+      },
+      {
+       "name": "NIGHTSISTER INITIATE",
+       "required": 1
+      },
+      {
+       "name": "NINTH SISTER",
+       "required": 1
+      },
+      {
+       "name": "NUTE GUNRAY",
+       "required": 1
+      },
+      {
+       "name": "OLD DAKA",
+       "required": 1
+      },
+      {
+       "name": "OUTRIDER",
+       "required": 1
+      },
+      {
+       "name": "PAO",
+       "required": 1
+      },
+      {
+       "name": "REBEL OFFICER LEIA ORGANA",
+       "required": 1
+      },
+      {
+       "name": "RESISTANCE PILOT",
+       "required": 1
+      },
+      {
+       "name": "SITH EMPIRE TROOPER",
+       "required": 1
+      },
+      {
+       "name": "SITH ETERNAL EMPEROR",
+       "required": 1
+      },
+      {
+       "name": "SITH TROOPER",
+       "required": 1
+      },
+      {
+       "name": "TIE ECHELON",
+       "required": 1
+      },
+      {
+       "name": "VETERAN SMUGGLER CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "YOUNG LANDO CALRISSIAN",
+       "required": 1
+      }
+     ]
+    },
+    {
+     "alignment": "Light Side",
+     "units": [
+      {
+       "name": "BEN SOLO",
+       "required": 7
+      },
+      {
+       "name": "JEDI MASTER LUKE SKYWALKER",
+       "required": 7
+      },
+      {
+       "name": "RAZOR CREST",
+       "required": 7
+      },
+      {
+       "name": "BASTILA SHAN",
+       "required": 6
+      },
+      {
+       "name": "REY",
+       "required": 6
+      },
+      {
+       "name": "DASH RENDAR",
+       "required": 5
+      },
+      {
+       "name": "JEDI MASTER KENOBI",
+       "required": 5
+      },
+      {
+       "name": "COMMANDER AHSOKA TANO",
+       "required": 4
+      },
+      {
+       "name": "HERMIT YODA",
+       "required": 4
+      },
+      {
+       "name": "HAN SOLO",
+       "required": 3
+      },
+      {
+       "name": "KI-ADI-MUNDI",
+       "required": 3
+      },
+      {
+       "name": "RAVEN'S CLAW",
+       "required": 3
+      },
+      {
+       "name": "REBEL OFFICER LEIA ORGANA",
+       "required": 3
+      },
+      {
+       "name": "IMA-GUN DI",
+       "required": 2
+      },
+      {
+       "name": "REY (SCAVENGER)",
+       "required": 2
+      },
+      {
+       "name": "SKIFF GUARD (LANDO CALRISSIAN)",
+       "required": 2
+      },
+      {
+       "name": "BB-8",
+       "required": 1
+      },
+      {
+       "name": "BIGGS DARKLIGHTER'S X-WING",
+       "required": 1
+      },
+      {
+       "name": "CHEWBACCA",
+       "required": 1
+      },
+      {
+       "name": "CORUSCANT UNDERWORLD POLICE",
+       "required": 1
+      },
+      {
+       "name": "GENERAL KENOBI",
+       "required": 1
+      },
+      {
+       "name": "GRAND MASTER YODA",
+       "required": 1
+      },
+      {
+       "name": "HAN'S MILLENNIUM FALCON",
+       "required": 1
+      },
+      {
+       "name": "JEDI KNIGHT REVAN",
+       "required": 1
+      },
+      {
+       "name": "KANAN JARRUS",
+       "required": 1
+      },
+      {
+       "name": "L3-37",
+       "required": 1
+      },
+      {
+       "name": "LOBOT",
+       "required": 1
+      },
+      {
+       "name": "LOGRAY",
+       "required": 1
+      },
+      {
+       "name": "MARA JADE, THE EMPEROR'S HAND",
+       "required": 1
+      },
+      {
+       "name": "OUTRIDER",
+       "required": 1
+      },
+      {
+       "name": "PADMÉ AMIDALA",
+       "required": 1
+      },
+      {
+       "name": "POE DAMERON",
+       "required": 1
+      },
+      {
+       "name": "RESISTANCE X-WING",
+       "required": 1
+      },
+      {
+       "name": "TECH",
+       "required": 1
+      },
+      {
+       "name": "THE MANDALORIAN",
+       "required": 1
+      },
+      {
+       "name": "XANADU BLOOD",
+       "required": 1
+      },
+      {
+       "name": "ZAALBAR",
+       "required": 1
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
