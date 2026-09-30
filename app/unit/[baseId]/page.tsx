@@ -45,9 +45,9 @@ export default async function UnitPage({ params }: { params: Promise<{ baseId: s
               <span className="text-sm text-slate-400">{s.owned} own it</span>
             </div>
             <p className="text-xs text-slate-500">
-              Each player fills this unit once per phase. Players are placed on the focus planets of the phase plan first.
+              Each player fills this unit once per phase. Pills show the platoons this unit is in: filled when the phase plan fills that platoon.
             </p>
-            <UnitPlanetPlan unitPlanets={s.planets} meets={s.meets} plan={getPhasePlan(phase.phase)} planets={phase.planets} />
+            <UnitPlanetPlan phase={phase} plan={getPhasePlan(phase.phase)} baseId={baseId} meets={s.meets} />
           </div>
 
           <section>

@@ -134,6 +134,12 @@ Two groups:
 
 Players who don't own the unit are shown only as a count.
 
+### 5.5 Platoon plan per phase
+
+A platoon only scores when all 15 slots are filled, and a player fills a unit once per phase, so platoons compete for the same players across all planets. `lib/plan.ts` finds the **largest set of platoons that can be filled at the same time**, given how many players meet each unit (exact branch and bound, about 1 ms per phase). On a tie it prefers regular planets over bonus planets, then platoons that need fewer scarce units.
+
+Shown as six pills per planet: filled when the plan fills that platoon, open otherwise. Per unit and planet, "short for N platoons" counts the open platoons it is in where it has no spare player left after the planned ones.
+
 ## 6. Screens
 
 Mobile first. Most members will open this from Discord on a phone.

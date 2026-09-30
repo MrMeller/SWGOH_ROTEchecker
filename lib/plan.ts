@@ -1,104 +1,159 @@
-// Phase deployment plan. Platoons only score when all 15 slots are filled, so a planet
-// is only worth its full value when all 90 slots are covered. Each player fills a unit
-// once per phase, so units compete for players across planets. Planets are identified
-// by name (a bonus planet shares its alignment with a regular one). Pure functions only.
+// Platoon plan for a phase. A platoon only scores when all 15 slots are filled, and each
+// player fills a unit once per phase, so platoons compete for the same players across all
+// planets. The plan is the largest set of platoons that can be filled at the same time.
+// Pure functions only.
 import type { Phase } from "./requirements";
-import type { PhaseUnitStatus } from "./status";
 
-type Unit = Pick<PhaseUnitStatus, "baseId" | "meets" | "planets">;
-type PlanetSlots = readonly { planet: string; required: number }[];
+/** Units needed per platoon: base_id -> slots. */
+type Demand = Map<string, number>;
 
-/** Planet names in display order (buildRequirements already sorts planets in map order). */
-export function planetOrder(phase: Phase): string[] {
-  return phase.planets.map((p) => p.name);
-}
-
-const req = (planets: PlanetSlots, planet: string) => planets.find((p) => p.planet === planet)?.required ?? 0;
-const sumReq = (u: Unit, set: readonly string[]) => set.reduce((a, p) => a + req(u.planets, p), 0);
-
-/** Slots that stay empty when all `set` planets are filled with priority. */
-export function missingSlots(units: readonly Unit[], set: readonly string[]): number {
-  return units.reduce((a, u) => a + Math.max(0, sumReq(u, set) - u.meets), 0);
-}
-
-export interface PlanetSummary {
+interface PlatoonRef {
   planet: string;
-  slots: number;
-  /** Slots the plan fills on this planet (focus planets first, leftovers after). */
+  index: number;
+  bonus: boolean;
+  demand: Demand;
+}
+
+export interface PlanetPlan {
+  planet: string;
+  /** One entry per platoon, in board order: true when the plan fills it. */
+  platoons: boolean[];
   filled: number;
-  focus: boolean;
 }
 
 export interface PhasePlan {
-  /** Planets to fill completely, in display order. */
-  focus: string[];
-  /** True when every focus planet can be filled to 100%. */
-  complete: boolean;
-  planets: PlanetSummary[];
+  planets: PlanetPlan[];
+  filled: number;
+  total: number;
+  /** False when the search hit its node limit and the result may not be the maximum. */
+  exact: boolean;
+  /** Slots each unit fills in the planned platoons, per planet: base_id -> planet -> slots. */
+  planned: Map<string, Map<string, number>>;
 }
 
-function subsets<T>(items: readonly T[]): T[][] {
-  const out: T[][] = [];
-  for (let mask = 1; mask < 1 << items.length; mask++) out.push(items.filter((_, i) => mask & (1 << i)));
-  return out;
-}
+const demandOf = (platoon: readonly string[]): Demand => {
+  const d = new Map<string, number>();
+  for (const id of platoon) d.set(id, (d.get(id) ?? 0) + 1);
+  return d;
+};
 
-export function phasePlan(units: readonly Unit[], order: readonly string[]): PhasePlan {
-  const planets = order.filter((p) => units.some((u) => req(u.planets, p) > 0));
-  const complete = subsets(planets).filter((s) => missingSlots(units, s) === 0);
+const fits = (d: Demand, supply: ReadonlyMap<string, number>) => [...d].every(([id, n]) => (supply.get(id) ?? 0) >= n);
 
-  let focus: string[];
-  if (complete.length) {
-    const size = Math.max(...complete.map((s) => s.length));
-    const best = complete.filter((s) => s.length === size);
-    // Tie: prefer the set that leaves the other planets closest to full.
-    const leftoverFill = (s: string[]) =>
-      fill(units, s, order).reduce((a, p) => a + (s.includes(p.planet) ? 0 : p.filled), 0);
-    focus = best.reduce((a, s) => (leftoverFill(s) > leftoverFill(a) ? s : a));
-  } else {
-    focus = [planets.reduce((a, p) => (missingSlots(units, [p]) < missingSlots(units, [a]) ? p : a))];
-  }
+/** Default search budget: plenty for 18 to 24 platoons, and keeps builds fast in the worst case. */
+const NODE_LIMIT = 2_000_000;
 
-  return {
-    focus,
-    complete: complete.length > 0,
-    planets: fill(units, focus, order).map((p) => ({ ...p, focus: focus.includes(p.planet) })),
+/**
+ * Largest set of platoons whose combined demand fits the supply (players meeting each unit).
+ * Exact branch and bound. Ties go to the first set found in `candidates` order, so callers
+ * put the platoons they prefer first.
+ */
+export function maxPlatoons(
+  candidates: readonly Demand[],
+  supply: ReadonlyMap<string, number>,
+  nodeLimit = NODE_LIMIT,
+): { chosen: number[]; exact: boolean } {
+  const usable = candidates.map((d, i) => ({ d, i })).filter((c) => fits(c.d, supply));
+  const left = new Map(supply);
+  const take = (d: Demand, sign: 1 | -1) => {
+    for (const [id, n] of d) left.set(id, (left.get(id) ?? 0) - sign * n);
   };
-}
 
-function fill(units: readonly Unit[], focus: readonly string[], order: readonly string[]): Omit<PlanetSummary, "focus">[] {
-  const totals = new Map(order.map((p) => [p, { slots: 0, filled: 0 }]));
-  for (const u of units) {
-    for (const a of allocateUnit(u.planets, u.meets, focus, order)) {
-      const t = totals.get(a.planet)!;
-      t.slots += a.required;
-      t.filled += a.placed;
+  // Greedy start: often optimal, and gives the search a good bound.
+  let best: number[] = [];
+  for (const c of usable) {
+    if (fits(c.d, left)) {
+      take(c.d, 1);
+      best.push(c.i);
     }
   }
-  return order.filter((p) => totals.get(p)!.slots > 0).map((p) => ({ planet: p, ...totals.get(p)! }));
+  for (const i of best) take(candidates[i], -1);
+  if (best.length === usable.length) return { chosen: best, exact: true };
+
+  let nodes = 0;
+  let exact = true;
+  const chosen: number[] = [];
+  const search = (k: number) => {
+    if (++nodes > nodeLimit) {
+      exact = false;
+      return;
+    }
+    if (chosen.length + (usable.length - k) <= best.length) return;
+    if (k === usable.length) {
+      best = [...chosen];
+      return;
+    }
+    const c = usable[k];
+    if (fits(c.d, left)) {
+      take(c.d, 1);
+      chosen.push(c.i);
+      search(k + 1);
+      chosen.pop();
+      take(c.d, -1);
+    }
+    if (exact) search(k + 1);
+  };
+  search(0);
+  return { chosen: best.sort((a, b) => a - b), exact };
+}
+
+export function phasePlan(phase: Phase, meets: ReadonlyMap<string, number>): PhasePlan {
+  const refs: PlatoonRef[] = phase.planets.flatMap((pl) =>
+    pl.platoons.map((platoon, index) => ({ planet: pl.name, index, bonus: pl.bonus, demand: demandOf(platoon) })),
+  );
+  // Prefer regular planets (bonus planets need unlocking), then platoons that need fewer
+  // scarce units, so ties land on the easiest platoons.
+  const pressure = (r: PlatoonRef) => [...r.demand].reduce((a, [id, n]) => a + n / Math.max(1, meets.get(id) ?? 0), 0);
+  const order = refs
+    .map((r, i) => ({ r, i, p: pressure(r) }))
+    .sort((a, b) => Number(a.r.bonus) - Number(b.r.bonus) || a.p - b.p || a.i - b.i);
+
+  const { chosen, exact } = maxPlatoons(order.map((o) => o.r.demand), meets);
+  const filled = new Set(chosen.map((k) => order[k].i));
+
+  const planned = new Map<string, Map<string, number>>();
+  const planets = phase.planets.map((pl) => ({ planet: pl.name, platoons: pl.platoons.map(() => false), filled: 0 }));
+  refs.forEach((r, i) => {
+    if (!filled.has(i)) return;
+    const p = planets.find((x) => x.planet === r.planet)!;
+    p.platoons[r.index] = true;
+    p.filled++;
+    for (const [id, n] of r.demand) {
+      const perPlanet = planned.get(id) ?? new Map<string, number>();
+      perPlanet.set(r.planet, (perPlanet.get(r.planet) ?? 0) + n);
+      planned.set(id, perPlanet);
+    }
+  });
+
+  return { planets, filled: filled.size, total: refs.length, exact, planned };
 }
 
 export interface UnitAllocation {
   planet: string;
+  /** Slots for this unit on the planet, across all six platoons. */
   required: number;
-  placed: number;
-  focus: boolean;
+  /** Slots it fills in the planned platoons. */
+  planned: number;
+  /** Per platoon: undefined when the unit is not in it, else whether the plan fills it. */
+  platoons: (boolean | undefined)[];
+  /** Open platoons on this planet this unit is short for, after the planned ones. */
+  shortFor: number;
 }
 
-/** Spread one unit's meeting players: focus planets first, then the rest, in display order. */
-export function allocateUnit(
-  planets: PlanetSlots,
-  meets: number,
-  focus: readonly string[],
-  order: readonly string[],
-): UnitAllocation[] {
-  const byPriority = [...order].sort((a, b) => Number(focus.includes(b)) - Number(focus.includes(a)));
-  let left = meets;
-  const placed = new Map<string, number>();
-  for (const p of byPriority) {
-    const n = Math.min(req(planets, p), left);
-    placed.set(p, n);
-    left -= n;
-  }
-  return order.map((p) => ({ planet: p, required: req(planets, p), placed: placed.get(p)!, focus: focus.includes(p) }));
+/** Where one unit's players go under the phase plan, per planet in display order. */
+export function unitAllocation(phase: Phase, plan: PhasePlan, baseId: string, meets: number): UnitAllocation[] {
+  const planned = plan.planned.get(baseId);
+  const spare = meets - [...(planned?.values() ?? [])].reduce((a, n) => a + n, 0);
+  return phase.planets.map((pl) => {
+    const state = plan.planets.find((p) => p.planet === pl.name)!.platoons;
+    let required = 0;
+    let shortFor = 0;
+    const platoons = pl.platoons.map((platoon, i) => {
+      const n = platoon.filter((id) => id === baseId).length;
+      if (!n) return undefined;
+      required += n;
+      if (!state[i] && spare < n) shortFor++;
+      return state[i];
+    });
+    return { planet: pl.name, required, planned: planned?.get(pl.name) ?? 0, platoons, shortFor };
+  });
 }

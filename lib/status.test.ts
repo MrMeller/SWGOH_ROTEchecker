@@ -27,17 +27,18 @@ const phase: Phase = {
   phase: 3,
   minRelic: 7,
   planets: [
-    { name: "DS", alignment: "Dark Side", bonus: false, units: [{ name: "A", required: 3, baseId: "A", combatType: 1 }] },
+    { name: "DS", alignment: "Dark Side", bonus: false, platoons: [], units: [{ name: "A", required: 3, baseId: "A", combatType: 1 }] },
     {
       name: "MX",
       alignment: "Mixed",
       bonus: false,
+      platoons: [],
       units: [
         { name: "A", required: 1, baseId: "A", combatType: 1 },
         { name: "SHIP", required: 2, baseId: "SHIP", combatType: 2 },
       ],
     },
-    { name: "LS", alignment: "Light Side", bonus: false, units: [] },
+    { name: "LS", alignment: "Light Side", bonus: false, platoons: [], units: [] },
   ],
 };
 

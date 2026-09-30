@@ -47,6 +47,8 @@ export interface Planet {
   alignment: Alignment;
   bonus: boolean;
   units: RequirementUnit[];
+  /** The six platoons, each a list of 15 base_ids. */
+  platoons: string[][];
 }
 
 export interface Phase {
@@ -105,7 +107,7 @@ export function buildRequirements(data: PlatoonData, catalog: readonly CatalogUn
           return { baseId, name: c.name, combatType: (c.combat_type === 2 ? 2 : 1) as CombatType, required };
         });
         units.sort((a, b) => b.required - a.required || a.name.localeCompare(b.name));
-        return { name: planet.name, alignment: planet.alignment, bonus: planet.bonus, units };
+        return { name: planet.name, alignment: planet.alignment, bonus: planet.bonus, units, platoons: planet.platoons };
       }),
     })),
   };
