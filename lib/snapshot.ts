@@ -11,12 +11,11 @@ export interface Snapshot {
   demo?: boolean;
 }
 
-const SNAPSHOT_DIR = path.join(process.cwd(), "data/snapshots");
-
 /** latest.json from the sync when it exists, otherwise the generated demo snapshot. */
 export function loadSnapshot(): Snapshot {
-  for (const file of ["latest.json", "demo.json"]) {
-    const p = path.join(SNAPSHOT_DIR, file);
+  const latest = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "snapshots", "latest.json");
+  const demo = path.join(/*turbopackIgnore: true*/ process.cwd(), "data", "snapshots", "demo.json");
+  for (const p of [latest, demo]) {
     if (existsSync(p)) return JSON.parse(readFileSync(p, "utf8")) as Snapshot;
   }
   throw new Error("No snapshot found in data/snapshots/ (run npm run demo or npm run sync)");
