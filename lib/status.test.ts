@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
 import type { Phase, Requirements } from "./requirements";
-import { phaseRequirements, phaseStatus, planetPlan, statusFor, STATUS_COLOUR } from "./status";
+import { phaseRequirements, phaseStatus, statusFor, STATUS_COLOUR } from "./status";
 import type { TrimmedPlayer } from "./swgoh";
 
 describe("statusFor (§5.3)", () => {
@@ -64,55 +64,6 @@ describe("phaseRequirements", () => {
       expect(units.reduce((a, u) => a + u.need, 0)).toBe(90 * 3);
       for (const u of units) expect(u.need).toBe(u.planets.reduce((a, x) => a + x.required, 0));
     }
-  });
-});
-
-describe("planetPlan", () => {
-  const ds = (n: number) => ({ alignment: "Dark Side", required: n });
-  const mx = (n: number) => ({ alignment: "Mixed", required: n });
-  const ls = (n: number) => ({ alignment: "Light Side", required: n });
-
-  it("always returns planets in map order, with unused planets at 0", () => {
-    const plan = planetPlan([ls(1), mx(1)], 1);
-    expect(plan.planets.map((p) => [p.alignment, p.required])).toEqual([
-      ["Dark Side", 0],
-      ["Mixed", 1],
-      ["Light Side", 1],
-    ]);
-    expect(plan.needed).toBe(2);
-  });
-
-  it("yellow: each planet alone, but not both (Mixed 1, LS 1, one player)", () => {
-    const plan = planetPlan([mx(1), ls(1)], 1);
-    expect(plan.planets.filter((p) => p.fillableAlone).map((p) => p.alignment)).toEqual(["Mixed", "Light Side"]);
-    expect(plan.maxAtOnce).toBe(1);
-    expect(plan.bestPlans).toEqual([["Mixed"], ["Light Side"]]);
-  });
-
-  it("red can still fill a small planet (DS 6, LS 1, three players)", () => {
-    const plan = planetPlan([ds(6), ls(1)], 3);
-    expect(plan.planets.find((p) => p.alignment === "Dark Side")!.fillableAlone).toBe(false);
-    expect(plan.planets.find((p) => p.alignment === "Light Side")!.fillableAlone).toBe(true);
-    expect(plan.bestPlans).toEqual([["Light Side"]]);
-  });
-
-  it("prefers more planets, then more slots", () => {
-    // 7 players: DS 5 + LS 2 (2 planets, 7 slots) beats DS 5 + Mixed 1 (2 planets, 6 slots)
-    const plan = planetPlan([ds(5), mx(1), ls(2)], 7);
-    expect(plan.bestPlans).toEqual([["Dark Side", "Light Side"]]);
-    expect(plan.maxAtOnce).toBe(2);
-  });
-
-  it("fills everything when meets covers the phase total", () => {
-    const plan = planetPlan([ds(3), mx(2), ls(1)], 6);
-    expect(plan.maxAtOnce).toBe(3);
-    expect(plan.planets.every((p) => p.inBestPlan)).toBe(true);
-  });
-
-  it("fills nothing when nobody meets it", () => {
-    const plan = planetPlan([ds(2)], 0);
-    expect(plan.maxAtOnce).toBe(0);
-    expect(plan.bestPlans).toEqual([]);
   });
 });
 

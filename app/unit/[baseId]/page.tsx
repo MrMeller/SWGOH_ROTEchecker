@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { PlanetPlan } from "@/components/PlanetPlan";
+import { UnitPlanetPlan } from "@/components/PlanetPlan";
 import { StatusChip } from "@/components/StatusChip";
 import { Tabs } from "@/components/Tabs";
-import { allUnits, getPhaseStatus, getRequirements, getSnapshot } from "@/lib/data";
+import { allUnits, getPhasePlan, getPhaseStatus, getRequirements, getSnapshot } from "@/lib/data";
 import { stepsLabel } from "@/lib/format";
 import { playerListForUnit } from "@/lib/matching";
 
@@ -45,9 +45,9 @@ export default async function UnitPage({ params }: { params: Promise<{ baseId: s
               <span className="text-sm text-slate-400">{s.owned} own it</span>
             </div>
             <p className="text-xs text-slate-500">
-              A player can fill this unit once per phase, so {s.need} players are needed to cover all planets.
+              Each player fills this unit once per phase. Players are placed on the focus planets of the phase plan first.
             </p>
-            <PlanetPlan planets={s.planets} meets={s.meets} />
+            <UnitPlanetPlan planets={s.planets} meets={s.meets} plan={getPhasePlan(phase.phase)} />
           </div>
 
           <section>

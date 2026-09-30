@@ -5,6 +5,7 @@ import requirements from "@/data/rote-requirements.json";
 import ships from "@/data/fixtures/ships.json";
 import { focusList, type FocusItem } from "./focus";
 import type { CatalogUnit, Phase, Requirements } from "./requirements";
+import { phasePlan, type PhasePlan } from "./plan";
 import { loadSnapshot, type Snapshot } from "./snapshot";
 import { phaseStatus, type PhaseUnitStatus } from "./status";
 
@@ -56,6 +57,13 @@ export function getFocus(n: number): FocusItem[] {
   const c = load();
   if (!c.focus.has(n)) c.focus.set(n, focusList(getPhase(n)!, c.snapshot.players));
   return c.focus.get(n)!;
+}
+
+const plans = new Map<number, PhasePlan>();
+
+export function getPhasePlan(n: number): PhasePlan {
+  if (!plans.has(n)) plans.set(n, phasePlan(getPhaseStatus(n)));
+  return plans.get(n)!;
 }
 
 /** Every distinct unit across all phases, with its display name and combat type. */

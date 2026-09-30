@@ -1,22 +1,24 @@
 import Link from "next/link";
-import { getPhase, getPhaseStatus, getSnapshot, unitName } from "@/lib/data";
+import { getPhase, getPhasePlan, getPhaseStatus, getSnapshot, unitName } from "@/lib/data";
 import { formatDate } from "@/lib/format";
+import { allocateUnit } from "@/lib/plan";
 import { PhaseSwitcher } from "./PhaseSwitcher";
-import { PLANET_STYLE } from "./PlanetPlan";
+import { PhasePlanCard, PLANET_STYLE } from "./PlanetPlan";
+import { ShortFilter } from "./ShortFilter";
+import { StatusChip } from "./StatusChip";
 
 const PLANET_BORDER: Record<string, string> = {
   "Dark Side": "border-red-500",
   Mixed: "border-yellow-400",
   "Light Side": "border-sky-400",
 };
-import { ShortFilter } from "./ShortFilter";
-import { StatusChip } from "./StatusChip";
 
 export function PhaseOverview({ phase: n }: { phase: number }) {
   const phase = getPhase(n)!;
   const snapshot = getSnapshot();
   const status = getPhaseStatus(n);
   const byId = new Map(status.map((s) => [s.baseId, s]));
+  const plan = getPhasePlan(n);
   const count = (k: string) => status.filter((s) => s.status === k).length;
 
   return (
@@ -58,6 +60,14 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
         </div>
       </section>
 
+      <section className="rounded-xl bg-slate-900/60 p-4 ring-1 ring-slate-800">
+        <h2 className="mb-1 text-sm font-semibold text-slate-300">Phase plan</h2>
+        <p className="mb-2 text-xs text-slate-500">
+          Platoons only score when all 15 slots are filled, so the plan aims for complete planets (90 slots).
+        </p>
+        <PhasePlanCard plan={plan} />
+      </section>
+
       <ShortFilter>
         <div className="space-y-6">
           {phase.planets.map((planet) => (
@@ -71,6 +81,7 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
               <ul className="divide-y divide-slate-800 overflow-hidden rounded-xl bg-slate-900/60 ring-1 ring-slate-800">
                 {planet.units.map((u) => {
                   const s = byId.get(u.baseId!)!;
+                  const placed = allocateUnit(s.planets, s.meets, plan.focus).find((a) => a.alignment === planet.alignment)!.placed;
                   return (
                     <li
                       key={u.baseId}
@@ -90,10 +101,10 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
                           <span className="block text-xs text-slate-500">
                             {u.required} on this planet, {s.owned} own it
                             {s.status !== "enough" &&
-                              (s.meets >= u.required ? (
-                                <span className="text-emerald-300">, can fill this planet</span>
+                              (placed >= u.required ? (
+                                <span className="text-emerald-300">, covered here</span>
                               ) : (
-                                <span className="text-rose-300">, short {u.required - s.meets} here</span>
+                                <span className="text-rose-300">, short {u.required - placed} here</span>
                               ))}
                           </span>
                         </span>
