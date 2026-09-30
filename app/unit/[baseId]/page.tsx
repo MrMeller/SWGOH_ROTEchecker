@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { PlanetPlan } from "@/components/PlanetPlan";
 import { StatusChip } from "@/components/StatusChip";
 import { Tabs } from "@/components/Tabs";
 import { allUnits, getPhaseStatus, getRequirements, getSnapshot } from "@/lib/data";
-import { PLANET_SHORT, stepsLabel } from "@/lib/format";
+import { stepsLabel } from "@/lib/format";
 import { playerListForUnit } from "@/lib/matching";
 
 export const dynamicParams = false;
@@ -34,16 +35,19 @@ export default async function UnitPage({ params }: { params: Promise<{ baseId: s
       label: `P${phase.phase}`,
       panel: (
         <div className="space-y-4">
-          <div className="flex flex-wrap items-center gap-3 rounded-xl bg-slate-900 p-4 ring-1 ring-slate-800">
-            <StatusChip status={s.status} />
-            <span className="text-sm">
-              <span className="text-lg font-semibold">{s.meets}</span>
-              <span className="text-slate-400"> / {s.need} meet {ship ? "7★" : `R${phase.minRelic}`}</span>
-            </span>
-            <span className="text-sm text-slate-400">{s.owned} own it</span>
-            <span className="w-full text-xs text-slate-500">
-              Per planet: {s.planets.map((p) => `${PLANET_SHORT[p.alignment] ?? p.alignment} ${p.required}`).join(", ")}
-            </span>
+          <div className="space-y-3 rounded-xl bg-slate-900/60 p-4 ring-1 ring-slate-800">
+            <div className="flex flex-wrap items-center gap-3">
+              <StatusChip status={s.status} />
+              <span className="text-sm">
+                <span className="text-lg font-semibold">{s.meets}</span>
+                <span className="text-slate-400"> / {s.need} meet {ship ? "7★" : `R${phase.minRelic}`}</span>
+              </span>
+              <span className="text-sm text-slate-400">{s.owned} own it</span>
+            </div>
+            <p className="text-xs text-slate-500">
+              A player can fill this unit once per phase, so {s.need} players are needed to cover all planets.
+            </p>
+            <PlanetPlan planets={s.planets} meets={s.meets} />
           </div>
 
           <section>

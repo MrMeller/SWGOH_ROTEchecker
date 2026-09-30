@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { focusList, recommendationsFor } from "./focus";
-import { DISCORD_LIMIT, focusToDiscord } from "./format";
+import { DISCORD_LIMIT, focusToDiscord, planSentence } from "./format";
+import { planetPlan } from "./status";
 import type { Phase } from "./requirements";
 import type { TrimmedPlayer } from "./swgoh";
 
@@ -52,6 +53,24 @@ describe("recommendationsFor", () => {
     const focus = focusList(phase, players);
     expect(recommendationsFor(2, focus).map((r) => [r.unit.baseId, r.rank])).toEqual([["A", 1]]);
     expect(recommendationsFor(4, focus)).toEqual([]);
+  });
+});
+
+describe("planSentence", () => {
+  const plan = (planets: [string, number][], meets: number) =>
+    planSentence(planetPlan(planets.map(([alignment, required]) => ({ alignment, required })), meets), meets);
+
+  it("explains each case in plain words", () => {
+    expect(plan([["Mixed", 1], ["Light Side", 1]], 1)).toBe("Enough for one planet at a time: pick Mixed or LS.");
+    expect(plan([["Dark Side", 6], ["Light Side", 1]], 3)).toBe("Enough to fill LS, not DS.");
+    expect(plan([["Dark Side", 5], ["Mixed", 1], ["Light Side", 2]], 7)).toBe(
+      "Enough to fill DS and LS at the same time, not Mixed as well.",
+    );
+    expect(plan([["Dark Side", 3], ["Mixed", 2]], 5)).toBe("Enough to fill every planet at the same time.");
+    expect(plan([["Mixed", 4]], 4)).toBe("Enough to fill Mixed.");
+    expect(plan([["Dark Side", 4], ["Light Side", 3]], 1)).toBe(
+      "Not enough for any planet yet. The smallest (LS 3) needs 2 more.",
+    );
   });
 });
 

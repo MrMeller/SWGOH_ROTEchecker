@@ -2,6 +2,13 @@ import Link from "next/link";
 import { getPhase, getPhaseStatus, getSnapshot, unitName } from "@/lib/data";
 import { formatDate } from "@/lib/format";
 import { PhaseSwitcher } from "./PhaseSwitcher";
+import { PLANET_STYLE } from "./PlanetPlan";
+
+const PLANET_BORDER: Record<string, string> = {
+  "Dark Side": "border-red-500",
+  Mixed: "border-yellow-400",
+  "Light Side": "border-sky-400",
+};
 import { ShortFilter } from "./ShortFilter";
 import { StatusChip } from "./StatusChip";
 
@@ -55,7 +62,9 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
         <div className="space-y-6">
           {phase.planets.map((planet) => (
             <section key={planet.alignment}>
-              <h2 className="mb-2 flex items-baseline justify-between text-sm font-semibold tracking-wide text-slate-300 uppercase">
+              <h2
+                className={`mb-2 flex items-baseline justify-between border-l-4 pl-2 text-sm font-semibold tracking-wide uppercase ${PLANET_STYLE[planet.alignment]?.text ?? "text-slate-300"} ${PLANET_BORDER[planet.alignment] ?? "border-slate-600"}`}
+              >
                 {planet.alignment}
                 <span className="text-xs font-normal normal-case text-slate-500">{planet.units.length} units</span>
               </h2>
@@ -80,6 +89,12 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
                           </span>
                           <span className="block text-xs text-slate-500">
                             {u.required} on this planet, {s.owned} own it
+                            {s.status !== "enough" &&
+                              (s.meets >= u.required ? (
+                                <span className="text-emerald-300">, can fill this planet</span>
+                              ) : (
+                                <span className="text-rose-300">, short {u.required - s.meets} here</span>
+                              ))}
                           </span>
                         </span>
                         <span className="text-right text-sm tabular-nums">
