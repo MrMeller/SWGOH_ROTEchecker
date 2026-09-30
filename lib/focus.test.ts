@@ -9,7 +9,9 @@ const phase: Phase = {
   minRelic: 9,
   planets: [
     {
+      name: "Mustafar",
       alignment: "Dark Side",
+      bonus: false,
       units: [
         { name: "A", required: 3, baseId: "A", combatType: 1 },
         { name: "B", required: 1, baseId: "B", combatType: 1 },
@@ -40,7 +42,7 @@ describe("focusList", () => {
   });
 
   it("marks gaps that gearing alone cannot close", () => {
-    const [b] = focusList({ ...phase, planets: [{ alignment: "Dark Side", units: [{ name: "B", required: 4, baseId: "B", combatType: 1 }] }] }, players);
+    const [b] = focusList({ ...phase, planets: [{ name: "Mustafar", alignment: "Dark Side", bonus: false, units: [{ name: "B", required: 4, baseId: "B", combatType: 1 }] }] }, players);
     expect(b.gap).toBe(3);
     expect(b.candidates).toHaveLength(1);
     expect(b.closable).toBe(false);

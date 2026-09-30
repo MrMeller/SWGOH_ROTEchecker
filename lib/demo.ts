@@ -1,7 +1,7 @@
 // Demo rosters calibrated on the June 2026 sheet counts (guildHas / guildMeets per phase),
 // so the UI shows realistic green / yellow / red mixes before the real sync exists.
 // Deterministic: same seed, same output.
-import type { RawRow, Requirements } from "./requirements";
+import { sheetBaseId, sheetNameIndex, type CatalogUnit, type RawRow, type Requirements } from "./requirements";
 import type { TrimmedPlayer, TrimmedUnit } from "./swgoh";
 
 /** The sheet was made when the guild had 50 members. */
@@ -25,31 +25,46 @@ interface UnitProfile {
   survival: { relic: number; frac: number }[];
 }
 
-export function unitProfiles(req: Requirements, raw: RawRow[]): Map<string, UnitProfile> {
-  const minRelic = new Map(req.phases.map((p) => [p.phase, p.minRelic]));
-  const baseIdOf = new Map<string, { baseId: string; combatType: 1 | 2 }>();
-  for (const p of req.phases)
-    for (const pl of p.planets)
-      for (const u of pl.units) baseIdOf.set(u.name, { baseId: u.baseId!, combatType: u.combatType! });
+/** Units the sheet never listed (bonus planets): owned by half the guild, few relicked high. */
+const DEFAULT_SURVIVAL = [
+  { relic: 5, frac: 0.35 },
+  { relic: 7, frac: 0.15 },
+  { relic: 8, frac: 0.08 },
+  { relic: 9, frac: 0.03 },
+];
 
-  const acc = new Map<string, { combatType: 1 | 2; has: number; meets: Map<number, number> }>();
+export function unitProfiles(
+  req: Requirements,
+  raw: readonly RawRow[],
+  catalog: readonly CatalogUnit[],
+): Map<string, UnitProfile> {
+  const minRelic = new Map(req.phases.map((p) => [p.phase, p.minRelic]));
+  const combatType = new Map(req.phases.flatMap((p) => p.planets.flatMap((pl) => pl.units.map((u) => [u.baseId, u.combatType] as const))));
+  const index = sheetNameIndex(catalog);
+
+  const acc = new Map<string, { has: number; meets: Map<number, number> }>();
   for (const r of raw) {
-    const id = baseIdOf.get(r.name);
-    if (!id) continue;
-    const a = acc.get(id.baseId) ?? { combatType: id.combatType, has: 0, meets: new Map() };
+    const baseId = sheetBaseId(index, r.name);
+    if (!baseId || !combatType.has(baseId)) continue;
+    const a = acc.get(baseId) ?? { has: 0, meets: new Map() };
     a.has = Math.max(a.has, r.guildHas);
     const relic = minRelic.get(r.phase)!;
     a.meets.set(relic, Math.max(a.meets.get(relic) ?? 0, r.guildMeets));
-    acc.set(id.baseId, a);
+    acc.set(baseId, a);
   }
 
   const out = new Map<string, UnitProfile>();
-  for (const [baseId, a] of acc) {
+  for (const [baseId, type] of combatType) {
+    const a = acc.get(baseId);
+    if (!a) {
+      out.set(baseId, { combatType: type, ownFrac: 0.5, survival: DEFAULT_SURVIVAL.map((x) => ({ ...x })) });
+      continue;
+    }
     const points = [...a.meets.entries()].sort((x, y) => x[0] - y[0]);
     // Survival must not increase with relic; fix sheet noise by carrying the max down.
     const survival = points.map(([relic, meets]) => ({ relic, frac: a.has ? meets / a.has : 0 }));
     for (let i = survival.length - 2; i >= 0; i--) survival[i].frac = Math.max(survival[i].frac, survival[i + 1].frac);
-    out.set(baseId, { combatType: a.combatType, ownFrac: Math.min(1, a.has / SHEET_GUILD_SIZE), survival });
+    out.set(baseId, { combatType: type, ownFrac: Math.min(1, a.has / SHEET_GUILD_SIZE), survival });
   }
   return out;
 }

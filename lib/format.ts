@@ -3,24 +3,20 @@ import type { FocusItem } from "./focus";
 import type { Candidate } from "./matching";
 import type { PhasePlan, UnitAllocation } from "./plan";
 
-export const PLANET_SHORT: Record<string, string> = { "Dark Side": "DS", Mixed: "Mixed", "Light Side": "LS" };
-
-const short = (alignment: string) => PLANET_SHORT[alignment] ?? alignment;
-
 function joinWords(words: string[], last = "and"): string {
   return words.length <= 1 ? words.join("") : `${words.slice(0, -1).join(", ")} ${last} ${words.at(-1)}`;
 }
 
 /** Phase level: which planets to fill completely. */
 export function phasePlanSentence(plan: PhasePlan): string {
-  const focus = joinWords(plan.focus.map(short));
+  const focus = joinWords(plan.focus);
   const rest = plan.planets.filter((p) => !p.focus);
   if (!plan.complete) {
     const f = plan.planets.find((p) => p.focus)!;
     return `No planet can be filled completely yet. Closest is ${focus}: ${f.slots - f.filled} of ${f.slots} slots still empty.`;
   }
   if (!rest.length) return "Every planet can be filled completely.";
-  const gaps = joinWords(rest.map((p) => `${short(p.alignment)} ${p.slots - p.filled} short`));
+  const gaps = joinWords(rest.map((p) => `${p.planet} ${p.slots - p.filled} short`));
   return `Focus on ${focus}: ${plan.focus.length === 1 ? "it" : "they"} can be filled completely. After that, ${gaps}.`;
 }
 
@@ -31,13 +27,13 @@ export function unitPlanSentence(alloc: UnitAllocation[]): string {
   const otherShort = needed.filter((a) => !a.focus && a.placed < a.required);
   if (focusShort.length) {
     const n = focusShort.reduce((s, a) => s + a.required - a.placed, 0);
-    return `${n} short on ${joinWords(focusShort.map((a) => short(a.alignment)))}, the focus planet. Gear this unit first.`;
+    return `${n} short on ${joinWords(focusShort.map((a) => a.planet))}, the focus planet. Gear this unit first.`;
   }
   if (!otherShort.length) return "Enough for every planet.";
   const n = otherShort.reduce((s, a) => s + a.required - a.placed, 0);
   const focusHere = needed.some((a) => a.focus);
   const lead = focusHere ? "Covers the focus planet" : "Not needed on the focus planet";
-  return `${lead}. ${n} more needed for ${joinWords(otherShort.map((a) => short(a.alignment)))}.`;
+  return `${lead}. ${n} more needed for ${joinWords(otherShort.map((a) => a.planet))}.`;
 }
 
 export function formatDate(iso: string): string {

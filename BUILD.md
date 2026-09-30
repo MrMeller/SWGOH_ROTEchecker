@@ -25,37 +25,34 @@ No login. Everything is public-readable. Guild data on swgoh.gg is already publi
 
 ## 3. Requirements dataset
 
-Source: `data/rote-requirements.json`, generated from `data/rote_raw.txt` (transcribed from the sheet by Jim Petron & Mhann, snapshot 2026-06-10).
+Source of truth: `data/rote-platoons.json`, read on 2026-09-30 from the swgoh.gg platoon board (https://swgoh.gg/territory-battles/t05D/platoons/?view=board). For every phase and planet it lists the 6 platoons and the 15 unit `base_id`s in each. Per-planet counts are derived from it at build time (`buildRequirements` in `lib/requirements.ts`), so there is nothing to resolve by name.
 
 Validated facts:
 
 - A platoon only pays out when all 15 slots are filled (confirmed by the guild)
-- 6 phases × 3 planets (Dark Side, Mixed, Light Side) = 18 planets
-- Every planet sums to **90 slots** (6 platoons × 15 slots)
-- Unit counts per planet range from 35 to 58 distinct units
-- Phase total for each unit equals the sum across its three planets
+- 6 phases × 3 planets (Dark Side, Mixed, Light Side) = 18 regular planets, plus 2 bonus planets: **Zeffo** (P3, Light Side) and **Mandalore** (P4, Mixed). Bonus planets must be unlocked first.
+- Every planet has 6 platoons × 15 slots = **90 slots**
+- 293 distinct units across all platoons, every `base_id` known in the swgoh.gg catalogs
+- A unit can appear more than once in a platoon
 
 Shape:
 
 ```json
 {
+  "source": "...",
   "phases": [
     { "phase": 1, "minRelic": 5,
       "planets": [
-        { "alignment": "Dark Side",
-          "units": [ { "name": "DARTH TRAYA", "required": 7 } ] }
+        { "name": "Mustafar", "alignment": "Dark Side", "bonus": false,
+          "platoons": [ ["EMPERORPALPATINE", "BT1", "..."] ] }
       ] }
   ]
 }
 ```
 
-To add during setup: a resolved `baseId` and `combatType` per unit (1 = character, 2 = ship), filled by the validation script from the swgoh.gg catalogs.
+The June 2026 guild sheet (`data/rote_raw.txt`, transcribed by Jim Petron & Mhann) is kept for reference and for calibrating the demo data. It matches the platoon data except for one unit swap on Lothal (P4) and one on Hoth (P6); `npm run validate` lists them.
 
-Known limitations:
-
-- The sheet does not list platoon positions, only counts per planet. The app works at that level too.
-- Bonus or special planets are not in the sheet. Verify with the guild whether any are relevant; out of scope for v1.
-- When the game updates platoon requirements, `rote_raw.txt` is edited and the JSON regenerated. Validation catches typos in totals.
+When the game changes platoons: update `data/rote-platoons.json` from the swgoh.gg board and run `npm run validate`.
 
 ## 4. Roster data (swgoh.gg public API)
 
@@ -70,7 +67,7 @@ To verify with a saved fixture before coding matching logic:
 
 - Unit fields, expected: `units[].data.base_id`, `name`, `gear_level`, `relic_tier`, `rarity`, `combat_type`
 - **Relic offset:** swgoh.gg is commonly reported to store `relic_tier` shifted by 2 (1 = locked, 2 = R0, 3 = R1 ... 12 = R10). **Verification fixture (MrMeller, ally code 528558646):** Rey (Galactic Legend), Supreme Leader Kylo Ren and Leia Organa (Galactic Legend) are R7 in game. If the API shows `relic_tier = 9` for them, the offset is 2. Write this as the first test in step 3.
-- Unit catalogs for name resolution: `/api/characters/` and `/api/ships/` (verify)
+- Unit catalogs (display names, combat type): `/api/characters/` and `/api/ships/`, cached in `data/fixtures/`
 
 Trimmed snapshot format, committed to the repo as `data/snapshots/latest.json` plus a dated copy:
 
@@ -179,7 +176,7 @@ When is a database worth it? Only if the app later needs to write user input (no
 | Step | Deliverable | Done when |
 |---|---|---|
 | 1 | Scaffold Next.js + Tailwind + Vitest, add `data/` files | `npm run dev` shows placeholder |
-| 2 | Validation script with name resolution against swgoh.gg catalogs, alias file | All names resolve, all totals pass |
+| 2 | Validation script: platoon structure and `base_id`s against the swgoh.gg catalogs | All planets 6 × 15, all units known |
 | 3 | swgoh.gg client + trim, save a real fixture, measure sync duration | Fixture test confirms field names and relic offset |
 | 4 | `matching.ts` and `status.ts` with tests (ladder, ships, status table) | Tests green |
 | 5 | GitHub Action sync + refresh route with cooldown | Action commits `latest.json`, Vercel redeploys |
@@ -196,4 +193,4 @@ Sanity check for step 6: the sheet's "units that meet reqs" column (in `rote_raw
 2. ~~"Almost" threshold~~ Decided 2026-09-30: no threshold, show counts and a sorted list (§5.4).
 3. ~~"Won't fill" flag~~ Decided 2026-09-30: out of scope, insight only.
 4. ~~Public URL or unlisted?~~ Decided 2026-09-30: public.
-5. Bonus planets: needed?
+5. ~~Bonus planets: needed?~~ Decided 2026-09-30: yes, Zeffo and Mandalore are included.
