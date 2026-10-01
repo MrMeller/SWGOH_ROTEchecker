@@ -14,7 +14,7 @@ Full product spec: `BUILD.md`. Read it before starting any feature.
 
 - Next.js (App Router) + TypeScript, deployed on Vercel
 - Tailwind CSS for styling
-- Vercel Web Analytics (`@vercel/analytics`, cookie-free page view counts)
+- Vercel Web Analytics and Speed Insights (`@vercel/analytics`, `@vercel/speed-insights`; cookie-free page views and performance metrics)
 - No database. Roster snapshots are JSON files committed to this repo
 - GitHub Actions runs the weekly sync (and on demand via the Refresh button)
 - Vitest for unit tests
