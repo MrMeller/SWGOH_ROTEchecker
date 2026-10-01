@@ -104,12 +104,12 @@ function Cell({ cell }: { cell: TableCell }) {
 
 export function PhaseTable({ phase, planets, rows }: { phase: number; planets: TablePlanet[]; rows: TableRow[] }) {
   const [onlyShort, setOnlyShort] = useState(false);
-  const [showPlanets, setShowPlanets] = useState(true);
+  const [showPlanets, setShowPlanets] = useState(false);
   const [sortPlanet, setSortPlanet] = useState<number | null>(null);
 
   useEffect(() => {
     setOnlyShort(remember(KEYS.onlyShort, false));
-    setShowPlanets(remember(KEYS.planets, true));
+    setShowPlanets(remember(KEYS.planets, false));
   }, []);
 
   const toggleShort = (v: boolean) => {
