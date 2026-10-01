@@ -3,6 +3,7 @@ import { getPhase, getPhasePlan, getPhaseStatus, getSnapshot } from "@/lib/data"
 import { formatDate } from "@/lib/format";
 import { unitAllocation } from "@/lib/plan";
 import { planetSlug } from "@/lib/requirements";
+import { RememberPhase } from "./PhaseLink";
 import { PhaseSwitcher } from "./PhaseSwitcher";
 import { PhaseTable, type TablePlanet, type TableRow } from "./PhaseTable";
 import { PhasePlanCard } from "./PlanetPlan";
@@ -42,6 +43,7 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
 
   return (
     <div className="space-y-5">
+      <RememberPhase phase={n} />
       <PhaseSwitcher current={n} href={(p) => `/phase/${p}`} />
 
       <div className="flex items-start justify-between gap-3">

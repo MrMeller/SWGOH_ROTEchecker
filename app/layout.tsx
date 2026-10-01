@@ -2,6 +2,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import { PhaseLink } from "@/components/PhaseLink";
 import { getSnapshot } from "@/lib/data";
 import { formatDate } from "@/lib/format";
 import "./globals.css";
@@ -14,7 +15,6 @@ export const metadata: Metadata = {
 export const viewport: Viewport = { themeColor: "#020617" };
 
 const NAV = [
-  { href: "/", label: "Overview" },
   { href: "/phase/1/focus", label: "Focus" },
   { href: "/player", label: "Players" },
 ];
@@ -30,6 +30,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               RotE Tracker <span className="text-slate-500">DutchJedi</span>
             </Link>
             <nav className="flex gap-1 text-sm">
+              <PhaseLink className="rounded-md px-2.5 py-1.5 text-slate-300 hover:bg-slate-800 hover:text-white">Overview</PhaseLink>
               {NAV.map((n) => (
                 <Link key={n.href} href={n.href} className="rounded-md px-2.5 py-1.5 text-slate-300 hover:bg-slate-800 hover:text-white">
                   {n.label}
