@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { getSnapshot } from "@/lib/data";
@@ -46,6 +47,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {snapshot.memberCount} members, data from {formatDate(snapshot.syncedAt)}. Roster data from{" "}
           <a href="https://swgoh.gg" className="underline hover:text-slate-300">swgoh.gg</a>.
         </footer>
+        <Analytics />
       </body>
     </html>
   );
