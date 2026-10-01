@@ -6,8 +6,42 @@ import type { Alignment } from "@/lib/requirements";
 import type { Status } from "@/lib/status";
 import { PLANET_STYLE } from "./planets";
 
-/** Remembered per browser, so the filter survives opening a unit and coming back. */
-const STORAGE_KEY = "rote:onlyShort";
+/** Remembered per browser, so the toggles survive opening a unit and coming back. */
+const KEYS = { onlyShort: "rote:onlyShort", planets: "rote:planets" } as const;
+
+function remember(key: string, fallback: boolean): boolean {
+  try {
+    const v = localStorage.getItem(key);
+    return v === null ? fallback : v === "1";
+  } catch {
+    return fallback; // private mode or blocked storage
+  }
+}
+
+function store(key: string, value: boolean) {
+  try {
+    localStorage.setItem(key, value ? "1" : "0");
+  } catch {
+    // nothing to remember, the page still works
+  }
+}
+
+function Toggle({ checked, onChange, children }: { checked: boolean; onChange: (v: boolean) => void; children: React.ReactNode }) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={checked}
+      onClick={() => onChange(!checked)}
+      className="flex items-center gap-2 text-sm text-slate-300"
+    >
+      <span className={`relative inline-block h-5 w-9 rounded-full transition ${checked ? "bg-sky-500" : "bg-slate-700"}`}>
+        <span className={`absolute top-0.5 size-4 rounded-full bg-white transition ${checked ? "left-4.5" : "left-0.5"}`} />
+      </span>
+      {children}
+    </button>
+  );
+}
 
 export interface TablePlanet {
   name: string;
@@ -70,23 +104,23 @@ function Cell({ cell }: { cell: TableCell }) {
 
 export function PhaseTable({ phase, planets, rows }: { phase: number; planets: TablePlanet[]; rows: TableRow[] }) {
   const [onlyShort, setOnlyShort] = useState(false);
+  const [showPlanets, setShowPlanets] = useState(true);
   const [sortPlanet, setSortPlanet] = useState<number | null>(null);
 
   useEffect(() => {
-    try {
-      setOnlyShort(localStorage.getItem(STORAGE_KEY) === "1");
-    } catch {
-      // Private mode or blocked storage: the filter just starts unchecked.
-    }
+    setOnlyShort(remember(KEYS.onlyShort, false));
+    setShowPlanets(remember(KEYS.planets, true));
   }, []);
 
-  const toggle = (checked: boolean) => {
-    setOnlyShort(checked);
-    try {
-      localStorage.setItem(STORAGE_KEY, checked ? "1" : "0");
-    } catch {
-      // Nothing to remember, the page still works.
-    }
+  const toggleShort = (v: boolean) => {
+    setOnlyShort(v);
+    store(KEYS.onlyShort, v);
+  };
+
+  const togglePlanets = (v: boolean) => {
+    setShowPlanets(v);
+    store(KEYS.planets, v);
+    if (!v) setSortPlanet(null); // nothing to sort by when the planet columns are hidden
   };
 
   const shown = useMemo(() => {
@@ -98,13 +132,13 @@ export function PhaseTable({ phase, planets, rows }: { phase: number; planets: T
 
   return (
     <div>
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-sm">
-        <label className="flex cursor-pointer items-center gap-2 text-slate-300">
-          <input type="checkbox" checked={onlyShort} onChange={(e) => toggle(e.target.checked)} className="size-4 accent-sky-500" />
-          Show only units we are short on
-        </label>
-        <span className="text-xs text-slate-500">
-          {sortPlanet === null ? "Sorted: short first. Tap a planet to sort by it." : (
+      <div className="mb-3 space-y-2">
+        <Toggle checked={onlyShort} onChange={toggleShort}>Show only units we are short on</Toggle>
+        <Toggle checked={showPlanets} onChange={togglePlanets}>Show planet distribution</Toggle>
+        <p className="text-xs text-slate-500">
+          {sortPlanet === null ? (
+            showPlanets ? "Sorted short first. Tap a planet to sort by it." : "Sorted short first."
+          ) : (
             <>
               Sorted by {planets[sortPlanet].name}.{" "}
               <button onClick={() => setSortPlanet(null)} className="text-sky-400 hover:underline">
@@ -112,21 +146,19 @@ export function PhaseTable({ phase, planets, rows }: { phase: number; planets: T
               </button>
             </>
           )}
-        </span>
+        </p>
       </div>
 
       <table className="w-full table-fixed border-collapse text-xs">
         <colgroup>
           <col />
-          {planets.map((p) => (
-            <col key={p.name} className="w-10" />
-          ))}
+          {showPlanets && planets.map((p) => <col key={p.name} className="w-10" />)}
           <col className="w-16" />
         </colgroup>
         <thead>
           <tr className="border-b border-slate-700 text-[11px] text-slate-400">
             <th className="py-1.5 pl-2 text-left font-medium">Unit</th>
-            {planets.map((p, i) => (
+            {showPlanets && planets.map((p, i) => (
               <th key={p.name} className="py-1.5 text-right font-medium">
                 <button
                   onClick={() => setSortPlanet(sortPlanet === i ? null : i)}
@@ -151,7 +183,7 @@ export function PhaseTable({ phase, planets, rows }: { phase: number; planets: T
                   {r.ship && <span className="ml-1 text-[10px] text-slate-500">ship</span>}
                 </Link>
               </td>
-              {r.cells.map((c, i) => (
+              {showPlanets && r.cells.map((c, i) => (
                 <td key={i} className="py-1.5 text-right align-top tabular-nums">
                   <Cell cell={c} />
                 </td>
@@ -164,7 +196,7 @@ export function PhaseTable({ phase, planets, rows }: { phase: number; planets: T
           ))}
           {!shown.length && (
             <tr>
-              <td colSpan={cols + 2} className="py-6 text-center text-slate-500">
+              <td colSpan={(showPlanets ? cols : 0) + 2} className="py-6 text-center text-slate-500">
                 Every unit in this phase is covered.
               </td>
             </tr>
@@ -172,6 +204,7 @@ export function PhaseTable({ phase, planets, rows }: { phase: number; planets: T
         </tbody>
       </table>
 
+      {showPlanets && (
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-[11px] text-slate-500">
         <span>Cells: players the plan places / slots on that planet.</span>
         <span><span className="rounded bg-emerald-500/15 px-1 text-emerald-300">5/5</span> covered</span>
@@ -180,6 +213,7 @@ export function PhaseTable({ phase, planets, rows }: { phase: number; planets: T
         <span>· not needed</span>
         {planets.some((p) => p.bonus) && <span>* bonus planet</span>}
       </div>
+      )}
     </div>
   );
 }
