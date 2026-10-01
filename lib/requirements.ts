@@ -13,6 +13,8 @@ export interface CatalogUnit {
   name: string;
   base_id: string;
   combat_type: number;
+  /** Portrait URL on game-assets.swgoh.gg. */
+  image?: string;
 }
 
 // ---- rote-platoons.json ----
@@ -202,4 +204,12 @@ export function sheetDifferences(req: Requirements, raw: readonly RawRow[], cata
     }
   }
   return out;
+}
+
+/** URL slug for a planet name: "Ring of Kafrene" -> "ring-of-kafrene". */
+export function planetSlug(name: string): string {
+  return name
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
 }

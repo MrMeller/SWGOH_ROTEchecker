@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getPhase, getPhasePlan, getPhaseStatus, getSnapshot } from "@/lib/data";
 import { formatDate } from "@/lib/format";
 import { unitAllocation } from "@/lib/plan";
+import { planetSlug } from "@/lib/requirements";
 import { PhaseSwitcher } from "./PhaseSwitcher";
 import { PhasePlanCard, PlatoonPills } from "./PlanetPlan";
 import { PLANET_STYLE } from "./planets";
@@ -60,7 +61,7 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
         <p className="mb-2 text-xs text-slate-500">
           A platoon only scores when all 15 slots are filled, and each player fills a unit once per phase. The plan is the largest set of platoons we can fill at the same time. Bonus planets count only once unlocked.
         </p>
-        <PhasePlanCard plan={plan} planets={phase.planets} />
+        <PhasePlanCard plan={plan} planets={phase.planets} phase={n} />
       </section>
 
       <ShortFilter>
@@ -73,7 +74,9 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
                   className={`mb-2 flex items-baseline justify-between border-l-4 pl-2 text-sm font-semibold tracking-wide uppercase ${PLANET_STYLE[planet.alignment]?.text ?? "text-slate-300"} ${PLANET_STYLE[planet.alignment]?.border ?? "border-slate-600"}`}
                 >
                   <span>
-                    {planet.name}
+                    <Link href={`/phase/${n}/planet/${planetSlug(planet.name)}`} className="hover:underline">
+                      {planet.name}
+                    </Link>
                     <span className="ml-2 text-[11px] font-medium text-slate-500">
                       {planet.bonus ? `Bonus, ${planet.alignment}` : planet.alignment}
                     </span>

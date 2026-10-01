@@ -157,3 +157,49 @@ export function unitAllocation(phase: Phase, plan: PhasePlan, baseId: string, me
     return { planet: pl.name, required, planned: planned?.get(pl.name) ?? 0, platoons, shortFor };
   });
 }
+
+export type SlotState = "filled" | "lacking" | "held";
+
+export interface PlatoonView {
+  /** 1-based, as numbered on the in-game board. */
+  number: number;
+  filled: boolean;
+  slots: { baseId: string; state: SlotState }[];
+  /** Units this platoon lacks and how many more players each needs: base_id -> shortfall. */
+  lacking: Map<string, number>;
+}
+
+/**
+ * The six platoons of one planet with a state per slot: "filled" when the plan fills the
+ * platoon. In an open platoon a unit with N slots and S spare players (meeting it, not used
+ * by the planned platoons) has max(0, N - S) "lacking" slots, the rest "held": the missing
+ * players are what it takes to open this platoon next, on top of the plan.
+ */
+export function platoonViews(phase: Phase, plan: PhasePlan, planet: string, meets: ReadonlyMap<string, number>): PlatoonView[] {
+  const pl = phase.planets.find((p) => p.name === planet);
+  if (!pl) throw new Error(`No planet ${planet} in phase ${phase.phase}`);
+  const state = plan.planets.find((p) => p.planet === planet)!.platoons;
+  const spare = (id: string) =>
+    (meets.get(id) ?? 0) - [...(plan.planned.get(id)?.values() ?? [])].reduce((a, n) => a + n, 0);
+
+  return pl.platoons.map((platoon, i) => {
+    const demand = demandOf(platoon);
+    const lacking = new Map<string, number>();
+    if (!state[i]) {
+      for (const [id, n] of demand) {
+        const short = n - Math.max(0, spare(id));
+        if (short > 0) lacking.set(id, short);
+      }
+    }
+    // Ring the last occurrences of a unit, so the slots we can still cover come first.
+    const seen = new Map<string, number>();
+    const slots = platoon.map((baseId) => {
+      if (state[i]) return { baseId, state: "filled" as const };
+      const k = (seen.get(baseId) ?? 0) + 1;
+      seen.set(baseId, k);
+      const covered = (demand.get(baseId) ?? 0) - (lacking.get(baseId) ?? 0);
+      return { baseId, state: k > covered ? ("lacking" as const) : ("held" as const) };
+    });
+    return { number: i + 1, filled: state[i], slots, lacking };
+  });
+}

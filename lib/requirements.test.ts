@@ -1,5 +1,13 @@
 import { describe, expect, it } from "vitest";
-import { buildRequirements, checkPlatoons, normalizeName, parseRaw, sheetDifferences, wantedUnits } from "./requirements";
+import {
+  buildRequirements,
+  checkPlatoons,
+  normalizeName,
+  parseRaw,
+  planetSlug,
+  sheetDifferences,
+  wantedUnits,
+} from "./requirements";
 import { catalog, platoons, readData, requirements } from "./test-data";
 
 describe("checkPlatoons", () => {
@@ -69,5 +77,14 @@ describe("June sheet (reference only)", () => {
   it("matches names exactly, never fuzzily", () => {
     expect(normalizeName('CT-21-0408 "ECHO"')).toBe(normalizeName('CT-21-0408 "Echo"'));
     expect(normalizeName("REY (SCAVENGER)")).not.toBe(normalizeName("REY"));
+  });
+});
+
+describe("planetSlug", () => {
+  it("makes URL-safe, unique slugs for every planet", () => {
+    expect(planetSlug("Haven-class Medical Station")).toBe("haven-class-medical-station");
+    expect(planetSlug("Ring of Kafrene")).toBe("ring-of-kafrene");
+    const names = requirements.phases.flatMap((p) => p.planets.map((pl) => pl.name));
+    expect(new Set(names.map(planetSlug)).size).toBe(new Set(names).size);
   });
 });
