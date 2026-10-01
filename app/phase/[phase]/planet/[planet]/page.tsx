@@ -74,7 +74,7 @@ export default async function PlanetPage({ params }: { params: Params }) {
       <p className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
         <span>Full colour: the plan fills this platoon.</span>
         <span>
-          <span className="text-rose-300">Red ring</span>: we lack this unit for the platoon.
+          <span className="text-rose-300">Red ring</span>: a slot we have no player for yet.
         </span>
         <span>Faded: held back by other units or needed elsewhere.</span>
       </p>
@@ -120,7 +120,7 @@ export default async function PlanetPage({ params }: { params: Params }) {
                       {i > 0 && ", "}
                       <Link href={`/unit/${id}?phase=${n}`} className="text-rose-300 hover:underline">
                         {unitName(id)}
-                        {count > 1 && ` ×${count}`}
+                        {count > 1 && ` (${count} more)`}
                       </Link>
                     </span>
                   ))}

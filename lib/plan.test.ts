@@ -151,6 +151,16 @@ describe("platoonViews", () => {
     expect(views[1].filled).toBe(true);
   });
 
+  it("rings only the slots we are short for when a spare player covers some", () => {
+    // 2 A: the plan fills platoon 2 (A x1), leaving 1 spare. Platoon 1 needs A x3: 2 short.
+    const q = phase(planet("Corellia", [["A", "A", "A", "B"], ["A"]]));
+    const meets = supply({ A: 2, B: 1 });
+    const [open, filled] = platoonViews(q, phasePlan(q, meets), "Corellia", meets);
+    expect(filled.filled).toBe(true);
+    expect(open.slots.map((s) => s.state)).toEqual(["held", "lacking", "lacking", "held"]);
+    expect(open.lacking).toEqual(new Map([["A", 2]]));
+  });
+
   it("rejects an unknown planet", () => {
     expect(() => platoonViews(p, phasePlan(p, new Map()), "Nowhere", new Map())).toThrow(/No planet Nowhere/);
   });
