@@ -41,6 +41,7 @@ lib/
 app/
   page.tsx                 # phase overview
   unit/[baseId]/page.tsx   # unit detail, sorted players
+  phase/[phase]/planet/[planet]/page.tsx  # board view of one planet, portraits per platoon
   player/[allyCode]/page.tsx
   api/refresh/route.ts     # triggers the GitHub Action, 6h cooldown
 scripts/

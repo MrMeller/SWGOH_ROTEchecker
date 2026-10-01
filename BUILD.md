@@ -147,8 +147,9 @@ Mobile first. Most members will open this from Discord on a phone.
 1. **Phase overview** (home). Phase switcher P1 to P6 on top, last-sync timestamp and Refresh button. Three planet sections (DS, Mixed, LS), each a compact list of units with status chip, `meets / need` and `owned`. Filter: show only short units. Summary bar: X of Y units enough.
 2. **Unit detail.** Requirement per phase and planet where this unit appears, ranked player list (§5.4).
 3. **Focus list.** Across the selected phase, every short unit with the specific players whose gearing would close the gap soonest. Copy-to-clipboard button producing Discord-ready text.
-4. **Player page.** Pick your name: units where the guild is short and you are among the closest candidates, sorted by your distance. This is the "what should I gear" view.
-5. **Progress (v1.1).** Per phase: count of "enough" units over time from stored snapshots.
+4. **Planet page.** Opened from a planet card in the phase plan or a planet header. The six platoons as on the in-game board (platoons 1 to 3 in the left column, 4 to 6 in the right; stacked on phones), with unit portraits from the swgoh.gg catalog. Full colour when the plan fills the platoon; faded otherwise, with a red ring on units we lack for that platoon and a "Lacking" line naming them. Badge per platoon: Filled, Almost (1 or 2 short), N short, or Held back (every unit available but used elsewhere).
+5. **Player page.** Pick your name: units where the guild is short and you are among the closest candidates, sorted by your distance. This is the "what should I gear" view.
+6. **Progress (v1.1).** Per phase: count of "enough" units over time from stored snapshots.
 
 ## 7. Sync and storage (no database)
 

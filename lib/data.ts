@@ -4,7 +4,15 @@ import characters from "@/data/fixtures/characters.json";
 import platoons from "@/data/rote-platoons.json";
 import ships from "@/data/fixtures/ships.json";
 import { focusList, type FocusItem } from "./focus";
-import { buildRequirements, type CatalogUnit, type Phase, type PlatoonData, type Requirements } from "./requirements";
+import {
+  buildRequirements,
+  planetSlug,
+  type CatalogUnit,
+  type Phase,
+  type Planet,
+  type PlatoonData,
+  type Requirements,
+} from "./requirements";
 import { phasePlan, type PhasePlan } from "./plan";
 import { loadSnapshot, type Snapshot } from "./snapshot";
 import { phaseStatus, type PhaseUnitStatus } from "./status";
@@ -13,6 +21,7 @@ let cache: {
   req: Requirements;
   snapshot: Snapshot;
   names: Map<string, string>;
+  images: Map<string, string>;
   status: Map<number, PhaseUnitStatus[]>;
   focus: Map<number, FocusItem[]>;
 } | null = null;
@@ -22,9 +31,10 @@ function load() {
   const catalog = [...characters, ...ships] as CatalogUnit[];
   const req = buildRequirements(platoons as PlatoonData, catalog);
   const names = new Map(catalog.map((u) => [u.base_id, u.name]));
+  const images = new Map(catalog.flatMap((u) => (u.image ? [[u.base_id, u.image] as const] : [])));
   const snapshot = loadSnapshot();
   snapshot.players.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
-  cache = { req, snapshot, names, status: new Map(), focus: new Map() };
+  cache = { req, snapshot, names, images, status: new Map(), focus: new Map() };
   return cache;
 }
 
@@ -45,6 +55,16 @@ export function getSnapshot(): Snapshot {
 /** In-game display name from the swgoh.gg catalog, falling back to the sheet name. */
 export function unitName(baseId: string, fallback = baseId): string {
   return load().names.get(baseId) ?? fallback;
+}
+
+/** Portrait from the swgoh.gg catalog (game-assets.swgoh.gg). */
+export function unitImage(baseId: string): string | undefined {
+  return load().images.get(baseId);
+}
+
+/** Planet of a phase by its URL slug. */
+export function findPlanet(phase: Phase, slug: string): Planet | undefined {
+  return phase.planets.find((p) => planetSlug(p.name) === slug);
 }
 
 export function getPhaseStatus(n: number): PhaseUnitStatus[] {

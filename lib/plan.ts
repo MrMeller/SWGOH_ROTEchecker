@@ -157,3 +157,39 @@ export function unitAllocation(phase: Phase, plan: PhasePlan, baseId: string, me
     return { planet: pl.name, required, planned: planned?.get(pl.name) ?? 0, platoons, shortFor };
   });
 }
+
+export type SlotState = "filled" | "lacking" | "held";
+
+export interface PlatoonView {
+  /** 1-based, as numbered on the in-game board. */
+  number: number;
+  filled: boolean;
+  slots: { baseId: string; state: SlotState }[];
+  /** Distinct units this platoon lacks, with how many slots each: base_id -> slots. */
+  lacking: Map<string, number>;
+}
+
+/**
+ * The six platoons of one planet with a state per slot: "filled" when the plan fills the
+ * platoon, otherwise "lacking" when the unit has no spare player left for this platoon
+ * (so gearing it is needed to open the platoon) or "held" when only other units hold it back.
+ */
+export function platoonViews(phase: Phase, plan: PhasePlan, planet: string, meets: ReadonlyMap<string, number>): PlatoonView[] {
+  const pl = phase.planets.find((p) => p.name === planet);
+  if (!pl) throw new Error(`No planet ${planet} in phase ${phase.phase}`);
+  const state = plan.planets.find((p) => p.planet === planet)!.platoons;
+  const spare = (id: string) =>
+    (meets.get(id) ?? 0) - [...(plan.planned.get(id)?.values() ?? [])].reduce((a, n) => a + n, 0);
+
+  return pl.platoons.map((platoon, i) => {
+    const demand = demandOf(platoon);
+    const lacking = new Map<string, number>();
+    if (!state[i]) for (const [id, n] of demand) if (spare(id) < n) lacking.set(id, n);
+    return {
+      number: i + 1,
+      filled: state[i],
+      slots: platoon.map((baseId) => ({ baseId, state: state[i] ? "filled" : lacking.has(baseId) ? "lacking" : "held" })),
+      lacking,
+    };
+  });
+}

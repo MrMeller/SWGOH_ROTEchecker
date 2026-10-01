@@ -1,6 +1,7 @@
+import Link from "next/link";
 import { phasePlanSentence, unitPlanSentence } from "@/lib/format";
 import { unitAllocation, type PhasePlan } from "@/lib/plan";
-import type { Phase, Planet } from "@/lib/requirements";
+import { planetSlug, type Phase, type Planet } from "@/lib/requirements";
 import { PLANET_STYLE } from "./planets";
 
 type PlanetMeta = Pick<Planet, "name" | "alignment" | "bonus">;
@@ -51,28 +52,32 @@ export function PlatoonPills({
   );
 }
 
-function PlanetCard({ planet, children }: { planet: PlanetMeta; children: React.ReactNode }) {
+/** Links to the planet page (board view of its six platoons). */
+function PlanetCard({ planet, phase, children }: { planet: PlanetMeta; phase: number; children: React.ReactNode }) {
   const style = PLANET_STYLE[planet.alignment];
   return (
-    <div className={`rounded-lg border-t-4 ${style.accent} bg-slate-900 p-2 text-center ring-1 ring-slate-800`}>
+    <Link
+      href={`/phase/${phase}/planet/${planetSlug(planet.name)}`}
+      className={`block rounded-lg border-t-4 ${style.accent} bg-slate-900 p-2 text-center ring-1 ring-slate-800 transition hover:bg-slate-800 hover:ring-slate-600`}
+    >
       <p className={`text-xs leading-tight font-semibold break-words ${style.text}`}>{planet.name}</p>
       <PlanetTag planet={planet} />
       {children}
-    </div>
+    </Link>
   );
 }
 
 const gridCols = (n: number) => (n > 3 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3");
 
 /** Phase level: per planet, how many of its six platoons the plan fills. */
-export function PhasePlanCard({ plan, planets }: { plan: PhasePlan; planets: PlanetMeta[] }) {
+export function PhasePlanCard({ plan, planets, phase }: { plan: PhasePlan; planets: PlanetMeta[]; phase: number }) {
   return (
     <div>
       <div className={`grid gap-2 ${gridCols(planets.length)}`}>
         {planets.map((meta) => {
           const p = plan.planets.find((x) => x.planet === meta.name)!;
           return (
-            <PlanetCard key={meta.name} planet={meta}>
+            <PlanetCard key={meta.name} planet={meta} phase={phase}>
               <p className="mt-1 text-lg leading-tight font-semibold tabular-nums">
                 {p.filled}
                 <span className="text-sm font-normal text-slate-500"> / {p.platoons.length}</span>
@@ -97,7 +102,7 @@ export function UnitPlanetPlan({ phase, plan, baseId, meets }: { phase: Phase; p
         {alloc.map((a, i) => {
           const meta = phase.planets[i];
           return (
-            <PlanetCard key={a.planet} planet={meta}>
+            <PlanetCard key={a.planet} planet={meta} phase={phase.phase}>
               {a.required ? (
                 <>
                   <p className="mt-1 text-lg leading-tight font-semibold tabular-nums">

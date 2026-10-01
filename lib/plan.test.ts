@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { phasePlanSentence, unitPlanSentence } from "./format";
-import { maxPlatoons, phasePlan, unitAllocation } from "./plan";
+import { maxPlatoons, phasePlan, platoonViews, unitAllocation } from "./plan";
 import type { Phase, Planet } from "./requirements";
 import type { Snapshot } from "./snapshot";
 import { phaseStatus } from "./status";
@@ -118,5 +118,40 @@ describe("unitAllocation", () => {
     const tight = phasePlan(p, supply({ A: 1, B: 2 }));
     expect(unitPlanSentence(unitAllocation(p, tight, "A", 1))).toMatch(/^Short for \d platoons? on /);
     expect(phasePlanSentence(phasePlan(p, new Map()))).toBe("No platoon can be filled completely yet.");
+  });
+});
+
+describe("platoonViews", () => {
+  const p = phase(planet("Kessel", [["A", "A", "B"], ["A", "C"], ["B"]]), planet("Lothal", [["A"]]));
+
+  it("marks filled platoons, lacking units and held slots", () => {
+    // 3 A, 2 B, no C: the plan fills Kessel 1 and 3 and Lothal. Kessel 2 is open: C is
+    // missing, and A has no spare player left, so both count as lacking.
+    const plan = phasePlan(p, supply({ A: 3, B: 2 }));
+    const views = platoonViews(p, plan, "Kessel", supply({ A: 3, B: 2 }));
+    expect(views.map((v) => [v.number, v.filled])).toEqual([
+      [1, true],
+      [2, false],
+      [3, true],
+    ]);
+    expect(views[0].slots.every((s) => s.state === "filled")).toBe(true);
+    expect(views[1].slots).toEqual([
+      { baseId: "A", state: "lacking" },
+      { baseId: "C", state: "lacking" },
+    ]);
+    expect(views[1].lacking).toEqual(new Map([["A", 1], ["C", 1]]));
+  });
+
+  it("shows held slots when every unit is available but used elsewhere", () => {
+    // 2 A only: Kessel 1 (A x2) or Kessel 2 + Lothal. Plan takes the pair; Kessel 1 is held.
+    const meets = supply({ A: 2, B: 2, C: 1 });
+    const views = platoonViews(p, phasePlan(p, meets), "Kessel", meets);
+    expect(views[0].filled).toBe(false);
+    expect(views[0].slots.map((s) => s.state)).toEqual(["lacking", "lacking", "held"]);
+    expect(views[1].filled).toBe(true);
+  });
+
+  it("rejects an unknown planet", () => {
+    expect(() => platoonViews(p, phasePlan(p, new Map()), "Nowhere", new Map())).toThrow(/No planet Nowhere/);
   });
 });
