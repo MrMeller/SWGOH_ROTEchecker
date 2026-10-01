@@ -40,7 +40,7 @@ lib/
   data.ts                  # server-side loading for pages
   demo.ts                  # demo rosters calibrated on the sheet counts
 app/
-  page.tsx                 # phase overview
+  page.tsx                 # phase overview (plan cards + units table)
   unit/[baseId]/page.tsx   # unit detail, sorted players
   phase/[phase]/planet/[planet]/page.tsx  # board view of one planet, portraits per platoon
   player/[allyCode]/page.tsx

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { UnitPlanetPlan } from "@/components/PlanetPlan";
+import { PhaseLink } from "@/components/PhaseLink";
 import { StatusChip } from "@/components/StatusChip";
 import { Tabs } from "@/components/Tabs";
 import { allUnits, getPhasePlan, getPhaseStatus, getRequirements, getSnapshot } from "@/lib/data";
@@ -100,7 +101,7 @@ export default async function UnitPage({ params }: { params: Promise<{ baseId: s
   return (
     <div className="space-y-5">
       <div>
-        <Link href="/" className="text-sm text-sky-400 hover:underline">← Overview</Link>
+        <PhaseLink className="text-sm text-sky-400 hover:underline">← Overview</PhaseLink>
         <h1 className="mt-2 text-xl font-semibold">{unit.name}</h1>
         <p className="text-sm text-slate-400">
           {ship ? "Ship, needs 7 stars" : "Character, needs G13 and the phase relic"}. Needed in{" "}
