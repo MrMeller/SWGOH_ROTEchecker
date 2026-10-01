@@ -22,11 +22,14 @@ export async function generateMetadata({ params }: { params: Params }) {
   return { title: `${pl?.name ?? "Planet"} P${phase} | RotE Platoon Tracker` };
 }
 
-/** Portrait styling per slot state: full colour only for platoons the plan fills. */
-const SLOT_STYLE: Record<SlotState, string> = {
-  filled: "",
-  lacking: "opacity-70 grayscale ring-2 ring-rose-500",
-  held: "opacity-35 grayscale",
+/**
+ * Styling per slot state: full colour only for platoons the plan fills. The fade goes on
+ * the image, not the tile, so the red ring on lacking units keeps its colour.
+ */
+const SLOT_STYLE: Record<SlotState, { tile: string; image: string }> = {
+  filled: { tile: "", image: "" },
+  lacking: { tile: "ring-2 ring-rose-500", image: "opacity-70 grayscale" },
+  held: { tile: "", image: "opacity-35 grayscale" },
 };
 
 function badge(p: PlatoonView): { label: string; className: string } {
@@ -98,12 +101,12 @@ export default async function PlanetPage({ params }: { params: Params }) {
                       key={i}
                       href={`/unit/${slot.baseId}?phase=${n}`}
                       title={name}
-                      className={`block overflow-hidden rounded-md bg-slate-800 ${SLOT_STYLE[slot.state]}`}
+                      className={`block overflow-hidden rounded-md bg-slate-800 ${SLOT_STYLE[slot.state].tile}`}
                     >
                       {src ? (
-                        <img src={src} alt={name} loading="lazy" className="aspect-square w-full object-cover" />
+                        <img src={src} alt={name} loading="lazy" className={`aspect-square w-full object-cover ${SLOT_STYLE[slot.state].image}`} />
                       ) : (
-                        <span className="flex aspect-square items-center p-1 text-center text-[9px] leading-tight">{name}</span>
+                        <span className={`flex aspect-square items-center p-1 text-center text-[9px] leading-tight ${SLOT_STYLE[slot.state].image}`}>{name}</span>
                       )}
                     </Link>
                   );
