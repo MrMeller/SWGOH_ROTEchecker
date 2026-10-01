@@ -1,4 +1,5 @@
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import { getSnapshot } from "@/lib/data";
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="https://swgoh.gg" className="underline hover:text-slate-300">swgoh.gg</a>.
         </footer>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
