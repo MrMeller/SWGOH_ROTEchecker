@@ -8,7 +8,7 @@ Guidance for Claude Code when working in this repository.
 
 > For every unit the platoons need, do we have enough guild members who meet the requirement, and if not, who is closest to getting there?
 
-Full product spec: `BUILD.md`. Read it before starting any feature.
+Full product spec: `BUILD.md`. Read it before starting any feature. Current state and next steps: `STATUS.md`. Update it at the end of a session.
 
 ## Stack
 
