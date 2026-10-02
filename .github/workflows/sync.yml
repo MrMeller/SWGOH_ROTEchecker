@@ -25,14 +25,10 @@ jobs:
         env:
           APP_NAME: dutchjedi-rote-tracker
           PORT: 3000
+        # No Docker health check: GitHub passes --health-cmd as a shell string and the
+        # comlink image is a bare binary without /bin/sh. The wait step below probes it instead.
         ports:
           - 3000:3000
-        options: >-
-          --health-cmd "/swgoh-comlink --check"
-          --health-interval 2s
-          --health-timeout 5s
-          --health-retries 15
-          --health-start-period 5s
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +38,9 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Wait for comlink to be ready
+        run: curl --silent --show-error --fail --retry 30 --retry-delay 2 --retry-all-errors http://localhost:3000/readyz
 
       - name: Sync guild through comlink
         id: sync
