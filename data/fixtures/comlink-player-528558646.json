@@ -1,0 +1,2303 @@
+{
+ "name": "MrMeller",
+ "level": 85,
+ "allyCode": "528558646",
+ "playerId": "7bPGpb2VSf6xaD-tEtyQNw",
+ "guildId": "7JSQexIuSQeSTz94gaRsew",
+ "guildName": "DutchJedi",
+ "lastActivityTime": "1790944125000",
+ "rosterUnit": [
+  {
+   "definitionId": "MAGMATROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 65,
+   "currentTier": 7,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "HERMITYODA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "GREEFKARGA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 2
+   }
+  },
+  {
+   "definitionId": "ZEBS3:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 10,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "BARRISSOFFEE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "FIRSTORDERTIEECHELON:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "RAVENSCLAW:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "B1BATTLEDROIDV2:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CT210408:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "COLONELSTARCK:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "TIEFIGHTERFOSF:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "BB8:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "POGGLETHELESSER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CEREJUNDA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "FIRSTORDERSPECIALFORCESPILOT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "GENERALKENOBI:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "MILLENNIUMFALCON:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "JAWASCAVENGER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 50,
+   "currentTier": 3,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "DROIDEKA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "L3_37:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 85,
+   "currentTier": 7,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "EWOKSCOUT:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "K2SO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "SITHINFILTRATOR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "NIGHTSISTERACOLYTE:FOUR_STAR",
+   "currentRarity": 4,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "SITHTROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 6
+   }
+  },
+  {
+   "definitionId": "50RT:FOUR_STAR",
+   "currentRarity": 4,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "BADBATCHHUNTER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "IG86SENTINELDROID:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "C3POCHEWBACCA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "REYJEDITRAINING:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "KRRSANTAN:THREE_STAR",
+   "currentRarity": 3,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "KYLOREN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "DENGAR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 2
+   }
+  },
+  {
+   "definitionId": "ARC170REX:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "TIEFIGHTERFIRSTORDER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "BOKATAN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "MAGNAGUARD:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "FIFTHBROTHER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "COMEUPPANCE:THREE_STAR",
+   "currentRarity": 3,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "RANGETROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "QUIGONJINN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 6
+   }
+  },
+  {
+   "definitionId": "ROYALGUARD:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "BASTILASHAN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "GEONOSIANSPY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "BT1:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "JAWA:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 53,
+   "currentTier": 7,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "XWINGRESISTANCE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "QIRA:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "BADBATCHOMEGA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "MERRIN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "POE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "EIGHTHBROTHER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "TALIA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "ADMIRALRADDUS:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "NIGHTSISTERZOMBIE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 9,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "STAP:FOUR_STAR",
+   "currentRarity": 4,
+   "currentLevel": 53,
+   "currentTier": 7,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "JEDISTARFIGHTERANAKIN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "GRANDADMIRALTHRAWN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "SCARIFREBEL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "IMPERIALPROBEDROID:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "SABINEWRENS3:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "PAPLOO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "YOUNGHAN:TWO_STAR",
+   "currentRarity": 2,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "EWOKELDER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 11,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "EPIXPOE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "CHIEFCHIRPA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "GENERALHUX:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "CT5555:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "VISASMARR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "COMMANDERAHSOKA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "LUKESKYWALKER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 2
+   }
+  },
+  {
+   "definitionId": "CAPITALRADDUS:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "GRANDMASTERLUKE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "GAMORREANGUARD:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "KITFISTO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "HOUNDSTOOTH:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "ANAKINKNIGHT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 6
+   }
+  },
+  {
+   "definitionId": "ADMINISTRATORLANDO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "ADMIRALPIETT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "IG2000:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "GENERALSKYWALKER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "NIGHTSISTERSPIRIT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "XANADUBLOOD:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "CLONESERGEANTPHASEI:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 11,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "SUPREMELEADERKYLOREN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "ADMIRALACKBAR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "FULCRUMAHSOKA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "JANGOFETT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "LUMINARAUNDULI:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "HOTHREBELSCOUT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "GHOST:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "TIEBOMBERIMPERIAL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "NUTEGUNRAY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "SLAVE1:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "TIEADVANCED:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "VEERS:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "PAO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 7,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "DARTHTALON:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "IG88:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 2
+   }
+  },
+  {
+   "definitionId": "MILLENNIUMFALCONPRISTINE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "EBONHAWK:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "REY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "BLADEOFDORIN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "MONMOTHMA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "EMPERORPALPATINE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "RAZORCREST:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "PLOKOON:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 51,
+   "currentTier": 6,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "DAKA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 9,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "GRANDMOFFTARKIN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "LOGRAY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 11,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "MG100STARFORTRESSSF17:TWO_STAR",
+   "currentRarity": 2,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "KELLERANBEQ:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "GEONOSIANSOLDIER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "CARADUNE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "CAPTAINREX:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "VULTUREDROID:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 80,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "RESISTANCETROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "HK47:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 6
+   }
+  },
+  {
+   "definitionId": "TUSKENRAIDER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "DASHRENDAR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "DARTHTRAYA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CAPTAINDROGAN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "EPIXFINN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "BAZEMALBUS:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "ZAALBAR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CLONEWARSCHEWBACCA:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 85,
+   "currentTier": 5,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "COMMANDERLUKESKYWALKER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "B2SUPERBATTLEDROID:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "UWINGROGUEONE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "DARTHSIDIOUS:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "OUTRIDER:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "OLDBENKENOBI:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "KYLORENUNMASKED:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "YOUNGCHEWBACCA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "YOUNGLANDO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "HANSOLO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "ARMORER:THREE_STAR",
+   "currentRarity": 3,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "BADBATCHWRECKER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "THEMANDALORIAN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 2
+   }
+  },
+  {
+   "definitionId": "FOSITHTROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "UGNAUGHT:FOUR_STAR",
+   "currentRarity": 4,
+   "currentLevel": 1,
+   "currentTier": 5,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "TRIPLEZERO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 4
+   }
+  },
+  {
+   "definitionId": "UMBARANSTARFIGHTER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "WAMPA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "SMUGGLERCHEWBACCA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "GRANDINQUISITOR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "DARKTROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "DARTHREVAN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 6
+   }
+  },
+  {
+   "definitionId": "R2D2_LEGENDARY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 10
+   }
+  },
+  {
+   "definitionId": "HONDO:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "UWINGSCARIF:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "THEMANDALORIANBESKARARMOR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "GARSAXON:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CORUSCANTUNDERWORLDPOLICE:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "ENFYSNEST:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "MOTHERTALZIN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CC2224:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "C3POLEGENDARY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "PADMEAMIDALA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "JEDIKNIGHTREVAN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "NIGHTSISTERINITIATE:ONE_STAR",
+   "currentRarity": 1,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CT7567:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "EMPERORSSHUTTLE:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "MOFFGIDEONS1:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "ZAMWESELL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "JAWAENGINEER:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 50,
+   "currentTier": 6,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "BOUSHH:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "JEDIKNIGHTLUKE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "CAPITALMONCALAMARICRUISER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "STARKILLER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "LOBOT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "BADBATCHECHO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "EMBO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "TIESILENCER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "IMAGUNDI:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 1,
+   "currentTier": 6,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "YWINGCLONEWARS:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "XWINGRED3:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "EETHKOTH:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CAPITALSTARDESTROYER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "T3_M4:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "XWINGRED2:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "NINTHSISTER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "HOTHREBELSOLDIER:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "ASAJVENTRESS:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "GRIEVOUS:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CHIRRUTIMWE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "JUHANI:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CAPITALNEGOTIATOR:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "KANANJARRUSS3:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "PRINCESSKNEESAA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "ROSETICO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "JEDIKNIGHTCONSULAR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 11,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "DIRECTORKRENNIC:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "TIEFIGHTERIMPERIAL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "BASTILASHANDARK:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 6
+   }
+  },
+  {
+   "definitionId": "BOSSK:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "FIRSTORDEREXECUTIONER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "VADER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "TARFFUL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 12,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "COUNTDOOKU:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 10,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "MISSIONVAO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "ARC170CLONESERGEANT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "GEONOSIANBROODALPHA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "MAUL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 9,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "JOLEEBINDO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CHIEFNEBIT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 50,
+   "currentTier": 4,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "TUSKENSHAMAN:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "IMPERIALSUPERCOMMANDO:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "TIEDAGGER:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "FIRSTORDERTIEPILOT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "DARTHSION:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CAPITALJEDICRUISER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "IDENVERSIOEMPIRE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CAPITALCHIMAERA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "COMMANDSHUTTLE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "FIRSTORDERTROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "PHANTOM2:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "HOTHLEIA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "BODHIROOK:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 7,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CHEWBACCALEGENDARY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "CHOPPERS3:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "BOBAFETT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 4
+   }
+  },
+  {
+   "definitionId": "WATTAMBOR:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "WEDGEANTILLES:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "MARAJADE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "DEATHTROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "ARCTROOPER501ST:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "WICKET:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "GEONOSIANSTARFIGHTER2:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "SECONDSISTER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "GEONOSIANSTARFIGHTER3:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "MACEWINDU:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "DATHCHA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 50,
+   "currentTier": 4,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "JYNERSO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "TEEBO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 7,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "BADBATCHTECH:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "XWINGBLACKONE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "GLREY:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "AMILYNHOLDO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "GLLEIA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 9
+   }
+  },
+  {
+   "definitionId": "URORRURRR:TWO_STAR",
+   "currentRarity": 2,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "GAUNTLETSTARFIGHTER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "SITHASSASSIN:FIVE_STAR",
+   "currentRarity": 5,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "SNOWTROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "SHORETROOPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 80,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "SAVAGEOPRESS:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "DARTHMALAK:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 6
+   }
+  },
+  {
+   "definitionId": "FINN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "CAPITALFINALIZER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "EZRABRIDGERS3:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "TIEREAPER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "JEDISTARFIGHTERCONSULAR:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "FIRSTORDEROFFICERMALE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "AAYLASECURA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 8,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "YWINGREBEL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 1,
+   "relic": null
+  },
+  {
+   "definitionId": "SEVENTHSISTER:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "RESISTANCEPILOT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "KUIIL:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 3
+   }
+  },
+  {
+   "definitionId": "KYLEKATARN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 8
+   }
+  },
+  {
+   "definitionId": "AURRA_SING:FOUR_STAR",
+   "currentRarity": 4,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "JEDIKNIGHTGUARDIAN:SIX_STAR",
+   "currentRarity": 6,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  },
+  {
+   "definitionId": "CANDEROUSORDO:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "CADBANE:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "TIEFIGHTERPILOT:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 7
+   }
+  },
+  {
+   "definitionId": "GRANDMASTERYODA:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 85,
+   "currentTier": 13,
+   "relic": {
+    "currentTier": 5
+   }
+  },
+  {
+   "definitionId": "BISTAN:SEVEN_STAR",
+   "currentRarity": 7,
+   "currentLevel": 1,
+   "currentTier": 1,
+   "relic": {
+    "currentTier": 1
+   }
+  }
+ ]
+}

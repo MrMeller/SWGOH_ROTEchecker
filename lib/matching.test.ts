@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { evaluate, ladderStep, ladderTarget, playerListForUnit } from "./matching";
-import type { TrimmedPlayer, TrimmedUnit } from "./swgoh";
+import type { TrimmedPlayer, TrimmedUnit } from "./snapshot";
 
 const char = (g: number, r?: number, s = 7): TrimmedUnit => (r === undefined ? { g, s } : { g, r, s });
 

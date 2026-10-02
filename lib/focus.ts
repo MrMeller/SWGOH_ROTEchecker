@@ -2,7 +2,7 @@
 import { playerListForUnit, type Candidate } from "./matching";
 import type { Phase } from "./requirements";
 import { phaseStatus, type PhaseUnitStatus } from "./status";
-import type { TrimmedPlayer } from "./swgoh";
+import type { TrimmedPlayer } from "./snapshot";
 
 export interface FocusItem extends PhaseUnitStatus {
   /** Players still needed: need - meets. */

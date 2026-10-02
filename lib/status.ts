@@ -1,7 +1,7 @@
 // Green / yellow / red per unit per phase (BUILD.md §5.3). Pure functions only.
 import { evaluate } from "./matching";
 import type { CombatType, Phase } from "./requirements";
-import type { TrimmedPlayer } from "./swgoh";
+import type { TrimmedPlayer } from "./snapshot";
 
 export type Status = "enough" | "planet" | "short";
 

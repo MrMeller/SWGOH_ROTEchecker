@@ -1,6 +1,6 @@
 // Meets / distance logic (BUILD.md §5.1, §5.2, §5.4). Pure functions only.
 import type { CombatType } from "./requirements";
-import type { TrimmedPlayer, TrimmedUnit } from "./swgoh";
+import type { TrimmedPlayer, TrimmedUnit } from "./snapshot";
 
 export const MAX_GEAR = 13;
 export const MAX_STARS = 7;
