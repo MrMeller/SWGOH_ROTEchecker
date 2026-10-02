@@ -54,43 +54,47 @@ The June 2026 guild sheet (`data/rote_raw.txt`, transcribed by Jim Petron & Mhan
 
 When the game changes platoons: update `data/rote-platoons.json` from the swgoh.gg board and run `npm run validate`.
 
-## 4. Roster data (swgoh.gg public API)
+## 4. Roster data (swgoh-comlink)
 
-Checked on 2026-09-30. Cloudflare blocks every non-browser request, so the API needs a bot access key (applied for on swgoh.gg), sent as the `x-gg-bot-access` header. API terms: about 1 request per second, no large-scale production use, keys can be revoked at any time.
+Decided 2026-10-02 after a smoke test (findings in `docs/comlink-exploration.md`). The sync reads the game's own data through [swgoh-comlink](https://github.com/swgoh-utils/swgoh-comlink), run as a service container inside the GitHub Action: no API key, no login, nothing hosted. swgoh.gg's API was the first choice, but Cloudflare blocks it without a bot access key.
 
-| Endpoint | Returns |
+| Endpoint (POST, JSON body) | Returns |
 |---|---|
-| `GET https://swgoh.gg/api/guild-profile/7JSQexIuSQeSTz94gaRsew/` | Guild name, `member_count` (41), `members[]` with `ally_code`, `player_name`, `last_activity_time`, `guild_join_time` |
-| `GET https://swgoh.gg/api/player/{ally_code}/` | Player profile, `units[]`, plus large `mods[]` and `datacrons[]` blocks we discard |
+| `/guild` with `{"payload":{"guildId":"7JSQexIuSQeSTz94gaRsew","includeRecentGuildActivityInfo":true},"enums":false}` | `guild.profile` (`id`, `name`, `memberCount`, `memberMax`) and `guild.member[]` with `playerId`, `playerName`, `memberLevel`, `lastActivityTime` (ms), `guildJoinTime` (s). **No ally codes.** |
+| `/player` with `{"payload":{"playerId":"..."},"enums":false}` (`allyCode` also works) | `name`, `allyCode`, `playerId`, `guildId`, `rosterUnit[]`. About 2.4 MB, of which 2.2 MB are mods we discard. |
 
-To verify with a saved fixture before coding matching logic:
+Fixtures from the smoke test, reduced to the fields and units we use: `data/fixtures/comlink-guild.json` and `data/fixtures/comlink-player-528558646.json`. What `lib/comlink.test.ts` pins:
 
-- Unit fields, expected: `units[].data.base_id`, `name`, `gear_level`, `relic_tier`, `rarity`, `combat_type`
-- **Relic offset:** swgoh.gg is commonly reported to store `relic_tier` shifted by 2 (1 = locked, 2 = R0, 3 = R1 ... 12 = R10). **Verification fixture (MrMeller, ally code 528558646):** Rey (Galactic Legend), Supreme Leader Kylo Ren and Leia Organa (Galactic Legend) are R7 in game. If the API shows `relic_tier = 9` for them, the offset is 2. Write this as the first test in step 3.
-- Unit catalogs (display names, combat type): `/api/characters/` and `/api/ships/`, cached in `data/fixtures/`
+- `rosterUnit[].definitionId` is `"BASEID:SEVEN_STAR"`; the `base_id` is the part before the colon.
+- `currentTier` is the gear level, `currentRarity` the stars. `currentLevel` is ignored.
+- `relic.currentTier` is shifted by 2, like on swgoh.gg: 1 = locked, 2 = R0 ... 12 = R10, `null` for ships. **Verification:** MrMeller's Rey (Galactic Legend), Supreme Leader Kylo Ren and Leia Organa (Galactic Legend) are R7 in game and show 9.
+- Combat type is not in the payload: a unit is a ship when its `base_id` is in `data/fixtures/ships.json`.
+- Unit catalogs (display names, combat type, portraits) stay the swgoh.gg catalogs cached in `data/fixtures/`. Refresh them only when a platoon lists an unknown unit.
 
 Trimmed snapshot format, committed to the repo as `data/snapshots/latest.json` plus a dated copy:
 
 ```json
 {
-  "syncedAt": "2026-10-05T03:00:00Z",
+  "syncedAt": "2026-10-05T01:18:00Z",
+  "source": "comlink",
+  "memberCount": 41,
   "players": [
-    { "allyCode": 528558646, "name": "MrMeller",
-      "units": { "DARTHTRAYA": { "g": 13, "r": 7, "s": 7 } } }
+    { "allyCode": 528558646, "playerId": "7bPGpb2VSf6xaD-tEtyQNw", "name": "MrMeller",
+      "units": { "DARTHTRAYA": { "g": 13, "r": 3, "s": 7 } } }
   ]
 }
 ```
 
-Only units that appear in the requirements dataset are kept. Expected size: well under 1 MB for 41 players.
+Only units that appear in the requirements dataset are kept. Size: about 8 KB per player, about 300 KB for the guild. Player names are the public in-game names (decided 2026-10-02): members need them to find themselves, and no real names are involved.
 
 ### Payload size
 
-swgoh.gg has no "units only" option: the player endpoint always returns the full profile including mods and datacrons, and the older all-in-one guild endpoint (`/api/guild/{id}/`) returns 404. So the **download** cannot be made smaller; what we control is everything after it:
+Comlink has no "units only" option: the player endpoint always returns the full roster including mods. So the **download** cannot be made smaller; what we control is everything after it:
 
-1. Fetch server-side only, weekly plus the rate-limited refresh (about 41 downloads per week).
-2. Parse, keep only `base_id`, `gear_level`, `relic_tier`, `rarity` for units in the requirements dataset, discard the rest immediately.
-3. Store and serve only the trimmed snapshot. The browser never sees the raw payload.
-4. The sync runs as a GitHub Action (§7), which has no practical time limit, so no batching is needed.
+1. Fetch server-side only, in the GitHub Action, every other night (about 41 downloads, 100 MB, on GitHub's network).
+2. Parse, keep only `base_id`, gear, relic and stars for units in the requirements dataset, discard the rest immediately.
+3. Store and serve only the trimmed snapshot (about 300 KB). The browser never sees the raw payload.
+4. The Action has no practical time limit, so no batching is needed.
 
 ## 5. Matching and scoring
 
@@ -144,7 +148,7 @@ Shown as six pills per planet: filled when the plan fills that platoon, open oth
 
 Mobile first. Most members will open this from Discord on a phone.
 
-1. **Phase overview** (home). Phase switcher P1 to P6 on top, last-sync timestamp and Refresh button. Summary bar (X of Y units enough), the phase plan with a card per planet (platoon pills, tap for the planet board), then one table with a row per unit: optionally (toggle, off by default) a cell per planet showing players the plan places / slots on that planet (green covered, red when we lack players there, plain when the players are used elsewhere, a dot when not needed), and a have / need total with the spare count. Status as a coloured left edge. Sorted short first; tapping a planet header sorts by that planet. Filter: show only short units, remembered per browser.
+1. **Phase overview** (home). Phase switcher P1 to P6 on top and the snapshot date ("Data from ..."). Summary bar (X of Y units enough), the phase plan with a card per planet (platoon pills, tap for the planet board), then one table with a row per unit: optionally (toggle, off by default) a cell per planet showing players the plan places / slots on that planet (green covered, red when we lack players there, plain when the players are used elsewhere, a dot when not needed), and a have / need total with the spare count. Status as a coloured left edge. Sorted short first; tapping a planet header sorts by that planet. Filter: show only short units, remembered per browser.
 2. **Unit detail.** Requirement per phase and planet where this unit appears, ranked player list (§5.4).
 3. **Focus list.** Across the selected phase, every short unit with the specific players whose gearing would close the gap soonest. Copy-to-clipboard button producing Discord-ready text.
 4. **Planet page.** Opened from a planet card in the phase plan or a planet header. The six platoons as on the in-game board (platoons 1 to 3 in the left column, 4 to 6 in the right; stacked on phones), with unit portraits from the swgoh.gg catalog. Full colour when the plan fills the platoon; faded otherwise. In an open platoon, a unit with N slots and S spare players (meeting it, not used by the planned platoons) gets N minus S red-ringed slots, and the "Lacking" line names the units with how many more players each needs. That is what it takes to open this platoon next, on top of the plan, and it matches the unit counts in the list view. Badge per platoon: Filled, Almost (1 or 2 short), N short, or Held back (every unit available but used elsewhere).
@@ -153,27 +157,30 @@ Mobile first. Most members will open this from Discord on a phone.
 
 ## 7. Sync and storage (no database)
 
-Architecture: **JSON files in the GitHub repo, a GitHub Action does the sync, Vercel serves a static-ish site.** No Supabase, no Vercel Blob, no cron on Vercel.
+Architecture: **JSON files in the GitHub repo, a GitHub Action does the sync, Vercel serves a static-ish site.** No database, no Blob, no cron on Vercel, no secrets anywhere.
 
 ```
-GitHub Action (weekly, or triggered by Refresh)
-  -> fetch guild profile -> fetch each current member -> trim
-  -> commit data/snapshots/latest.json + data/snapshots/YYYY-MM-DD.json
+GitHub Action (every other night, 01:17 UTC)
+  -> start swgoh-comlink as a service container on the runner
+  -> POST /guild -> POST /player for each current member -> trim
+  -> nothing changed? stop. changed? commit data/snapshots/latest.json + data/snapshots/YYYY-MM-DD.json
   -> push triggers Vercel redeploy -> site shows new data
 ```
 
-- **Schedule:** `.github/workflows/sync.yml` with `schedule` (e.g. Sunday 03:00 UTC) and `workflow_dispatch`.
-- **Manual refresh:** the Refresh button calls `/api/refresh`, a small Vercel function that triggers `workflow_dispatch` via the GitHub API (fine-grained token with Actions permission on this repo only, stored as a Vercel env var). Cooldown 6 hours, checked against `syncedAt` in `latest.json`. The UI says "Refresh started, new data in about 3 minutes".
-- **History for free:** every dated snapshot is a git commit, which powers the progress view later. Old dated files can be pruned to one per week.
-- **Politeness:** sequential requests at about 1 per second (swgoh.gg API terms), descriptive `User-Agent`, API key from the `SWGOH_GG_API_KEY` Actions secret. A sync takes about 45 seconds.
+- **Schedule:** `.github/workflows/sync.yml` with cron `17 1 */2 * *` (odd days of the month, off the hour as GitHub advises) plus `workflow_dispatch` for a manual run from the Actions tab. Every 48 hours is the trade-off between fresh data and the number of anonymous guest accounts comlink registers (one per run, because every runner has a new public IP). Rosters change slowly, so this is enough.
+- **Comlink:** `ghcr.io/swgoh-utils/swgoh-comlink` pinned to a version, `APP_NAME=dutchjedi-rote-tracker`, reached at `http://localhost:3000` on the runner, health check before the sync starts. Bump the version by hand after reading the release notes.
+- **No Refresh button** (decided 2026-10-02): no API route, no GitHub token in Vercel, no cooldown. The page shows "Data from <date>".
+- **Commit only on change:** `npm run sync` compares the new snapshot with `latest.json` ignoring `syncedAt` and writes nothing when no unit moved. Quiet weeks produce no commits and no deploys, and every dated snapshot marks a day with real progress, which powers the progress view later. In git the dated copy and `latest.json` are the same blob and successive snapshots delta-compress well; the checkout grows by about 300 KB per changed sync, so prune old dated files to one per week when that matters.
+- **Politeness:** sequential requests at about 1 per second (CG allows about 20 per IP per second), descriptive `User-Agent`. About one minute per sync.
+- **Keep-alive:** GitHub disables scheduled workflows in a public repo after 60 days without repository activity. The sync commits should count; check after two quiet months and re-enable from the Actions tab if needed.
 
 ### Membership changes
 
 Guild membership is rebuilt from scratch on **every** sync:
 
-1. First call is always the guild profile. Its `members[]` list is the only source of truth for who is in the guild.
-2. Only those ally codes are fetched. Players who left are simply absent from the new snapshot; new joiners appear automatically.
-3. If a current member's player fetch fails, reuse their units from the previous snapshot, mark them `stale: true`, and show that in the UI. Never reuse data for someone no longer in the guild.
+1. First call is always `/guild`. Its `member[]` list is the only source of truth for who is in the guild.
+2. Only those `playerId`s are fetched. Players who left are simply absent from the new snapshot; new joiners appear automatically.
+3. If a current member's player fetch fails, reuse their units from the previous snapshot (matched by `playerId`), mark them `stale: true`, and show that in the UI. Never reuse data for someone no longer in the guild.
 4. The snapshot stores `memberCount` so the UI can show "41 members, synced 5 Oct".
 
 When is a database worth it? Only if the app later needs to write user input (notes, assignments, "I'll gear this" claims). Not in v1.
@@ -184,9 +191,9 @@ When is a database worth it? Only if the app later needs to write user input (no
 |---|---|---|
 | 1 | Scaffold Next.js + Tailwind + Vitest, add `data/` files | `npm run dev` shows placeholder |
 | 2 | Validation script: platoon structure and `base_id`s against the swgoh.gg catalogs | All planets 6 × 15, all units known |
-| 3 | swgoh.gg client + trim, save a real fixture, measure sync duration | Fixture test confirms field names and relic offset |
+| 3 | comlink client + trim, reduced fixtures from a real response | Fixture test confirms field names and relic offset |
 | 4 | `matching.ts` and `status.ts` with tests (ladder, ships, status table) | Tests green |
-| 5 | GitHub Action sync + refresh route with cooldown | Action commits `latest.json`, Vercel redeploys |
+| 5 | GitHub Action with comlink service container, every other night, commit on change | Action commits `latest.json`, Vercel redeploys, Refresh button removed |
 | 6 | Phase overview screen | Matches sheet colours for a sample phase |
 | 7 | Unit detail + focus list + Discord copy | Officers can use it |
 | 8 | Player page | Members can use it |

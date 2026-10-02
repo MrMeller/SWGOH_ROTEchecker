@@ -1,64 +1,78 @@
-// Guild sync (BUILD.md §7): guild profile -> each current member -> trim -> snapshot.
-// buildSnapshot is pure; runSync does the paced fetching. File IO lives in scripts/sync.ts.
-import type { Snapshot } from "./snapshot";
+// Guild sync (BUILD.md §7): /guild -> /player for each current member -> trim -> snapshot.
+// buildSnapshot and snapshotChanged are pure; runSync does the paced fetching. File IO lives in scripts/sync.ts.
 import {
-  fetchGuildProfile,
+  fetchGuild,
   fetchPlayer,
   REQUEST_INTERVAL_MS,
   trimPlayer,
-  type RawGuildProfile,
-  type RawPlayer,
-  type TrimmedPlayer,
-} from "./swgoh";
+  type ComlinkGuild,
+  type ComlinkPlayer,
+} from "./comlink";
+import type { Snapshot, TrimmedPlayer } from "./snapshot";
 
 export const GUILD_ID = "7JSQexIuSQeSTz94gaRsew"; // DutchJedi
+
+export interface MemberRef {
+  playerId: string;
+  name: string;
+}
 
 export interface BuildResult {
   snapshot: Snapshot;
   /** Current members whose fetch failed and who had old data to reuse (marked stale). */
-  stale: { allyCode: number; name: string }[];
+  stale: MemberRef[];
   /** Current members with no fresh and no old data: left out of the snapshot. */
-  missing: { allyCode: number; name: string }[];
+  missing: MemberRef[];
 }
 
 export function buildSnapshot(
-  guild: RawGuildProfile,
-  players: readonly RawPlayer[],
+  guild: ComlinkGuild,
+  players: readonly ComlinkPlayer[],
   wanted: ReadonlySet<string>,
+  ships: ReadonlySet<string>,
   syncedAt: string,
   previous?: Snapshot,
 ): BuildResult {
-  const fresh = new Map(players.map((p) => [p.data.ally_code, p]));
-  const old = new Map((previous?.players ?? []).map((p) => [p.allyCode, p]));
+  const fresh = new Map(players.map((p) => [p.playerId, p]));
+  const old = new Map((previous?.players ?? []).flatMap((p) => (p.playerId ? [[p.playerId, p] as const] : [])));
   const out: TrimmedPlayer[] = [];
-  const stale: BuildResult["stale"] = [];
-  const missing: BuildResult["missing"] = [];
+  const stale: MemberRef[] = [];
+  const missing: MemberRef[] = [];
 
-  // Membership comes only from the guild profile: departed players are simply absent.
-  for (const m of guild.data.members) {
-    const raw = fresh.get(m.ally_code);
+  // Membership comes only from the guild roster: departed players are simply absent.
+  for (const m of guild.guild.member) {
+    const raw = fresh.get(m.playerId);
     if (raw) {
-      out.push(trimPlayer(raw, wanted));
+      out.push(trimPlayer(raw, wanted, ships));
       continue;
     }
-    const prev = old.get(m.ally_code);
+    const prev = old.get(m.playerId);
     if (prev) {
-      out.push({ ...prev, name: m.player_name, stale: true });
-      stale.push({ allyCode: m.ally_code, name: m.player_name });
+      out.push({ ...prev, name: m.playerName, stale: true });
+      stale.push({ playerId: m.playerId, name: m.playerName });
     } else {
-      missing.push({ allyCode: m.ally_code, name: m.player_name });
+      missing.push({ playerId: m.playerId, name: m.playerName });
     }
   }
 
   out.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
-  return { snapshot: { syncedAt, memberCount: guild.data.members.length, players: out }, stale, missing };
+  const snapshot: Snapshot = { syncedAt, source: "comlink", memberCount: guild.guild.member.length, players: out };
+  return { snapshot, stale, missing };
+}
+
+/** True when anything but the sync time differs, so a quiet sync writes and commits nothing. */
+export function snapshotChanged(previous: Snapshot | undefined, next: Snapshot): boolean {
+  if (!previous) return true;
+  const strip = ({ syncedAt: _ignored, ...rest }: Snapshot) => rest;
+  return JSON.stringify(strip(previous)) !== JSON.stringify(strip(next));
 }
 
 export interface SyncOptions {
-  apiKey: string;
   wanted: ReadonlySet<string>;
+  ships: ReadonlySet<string>;
   previous?: Snapshot;
   guildId?: string;
+  baseUrl?: string;
   fetchImpl?: typeof fetch;
   intervalMs?: number;
   now?: () => Date;
@@ -66,34 +80,35 @@ export interface SyncOptions {
 }
 
 export interface SyncResult extends BuildResult {
-  failed: { allyCode: number; name: string; error: string }[];
+  failed: (MemberRef & { error: string })[];
+  changed: boolean;
 }
 
 const sleep = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-/** Fetches the guild profile, then every current member one at a time (about 1 per second). */
+/** Fetches the guild roster, then every current member one at a time (about 1 per second). */
 export async function runSync(opts: SyncOptions): Promise<SyncResult> {
-  const { apiKey, fetchImpl, intervalMs = REQUEST_INTERVAL_MS, now = () => new Date(), log = () => {} } = opts;
-  const client = { apiKey, fetchImpl };
+  const { baseUrl, fetchImpl, intervalMs = REQUEST_INTERVAL_MS, now = () => new Date(), log = () => {} } = opts;
+  const client = { baseUrl, fetchImpl };
 
-  const guild = await fetchGuildProfile(opts.guildId ?? GUILD_ID, client);
-  const members = guild.data.members;
-  log(`${guild.data.name}: ${members.length} members`);
+  const guild = await fetchGuild(opts.guildId ?? GUILD_ID, client);
+  const members = guild.guild.member;
+  log(`${guild.guild.profile.name}: ${members.length} members`);
 
-  const players: RawPlayer[] = [];
+  const players: ComlinkPlayer[] = [];
   const failed: SyncResult["failed"] = [];
   for (const [i, m] of members.entries()) {
     await sleep(intervalMs);
     try {
-      players.push(await fetchPlayer(m.ally_code, client));
-      log(`${i + 1}/${members.length} ${m.player_name}`);
+      players.push(await fetchPlayer(m.playerId, client));
+      log(`${i + 1}/${members.length} ${m.playerName}`);
     } catch (e) {
       const error = e instanceof Error ? e.message : String(e);
-      failed.push({ allyCode: m.ally_code, name: m.player_name, error });
-      log(`${i + 1}/${members.length} ${m.player_name} FAILED: ${error}`);
+      failed.push({ playerId: m.playerId, name: m.playerName, error });
+      log(`${i + 1}/${members.length} ${m.playerName} FAILED: ${error}`);
     }
   }
 
-  const built = buildSnapshot(guild, players, opts.wanted, now().toISOString(), opts.previous);
-  return { ...built, failed };
+  const built = buildSnapshot(guild, players, opts.wanted, opts.ships, now().toISOString(), opts.previous);
+  return { ...built, failed, changed: snapshotChanged(opts.previous, built.snapshot) };
 }

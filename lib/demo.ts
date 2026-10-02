@@ -2,7 +2,7 @@
 // so the UI shows realistic green / yellow / red mixes before the real sync exists.
 // Deterministic: same seed, same output.
 import { sheetBaseId, sheetNameIndex, type CatalogUnit, type RawRow, type Requirements } from "./requirements";
-import type { TrimmedPlayer, TrimmedUnit } from "./swgoh";
+import type { TrimmedPlayer, TrimmedUnit } from "./snapshot";
 
 /** The sheet was made when the guild had 50 members. */
 export const SHEET_GUILD_SIZE = 50;

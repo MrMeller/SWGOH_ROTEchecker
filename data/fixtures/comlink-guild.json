@@ -1,0 +1,381 @@
+{
+ "guild": {
+  "profile": {
+   "id": "7JSQexIuSQeSTz94gaRsew",
+   "name": "DutchJedi",
+   "memberCount": 41,
+   "memberMax": 50
+  },
+  "member": [
+   {
+    "playerId": "D63vD8IhS8u2o1bWlibB8w",
+    "playerName": "RPS2",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790399705000",
+    "guildJoinTime": "1623185710",
+    "galacticPower": "10596242"
+   },
+   {
+    "playerId": "ujW0dndoQpKU9QcSozcIVA",
+    "playerName": "Panzerdelta",
+    "playerLevel": 85,
+    "memberLevel": 3,
+    "lastActivityTime": "1790939313000",
+    "guildJoinTime": "1627200803",
+    "galacticPower": "10372847"
+   },
+   {
+    "playerId": "XZaD6OaUTlaZ5fcPGn9AAA",
+    "playerName": "Razixx",
+    "playerLevel": 85,
+    "memberLevel": 3,
+    "lastActivityTime": "1790939934000",
+    "guildJoinTime": "1640425292",
+    "galacticPower": "9085910"
+   },
+   {
+    "playerId": "aVUC5b5ZS4qvR4332wL4cg",
+    "playerName": "Mol Quois",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790926347000",
+    "guildJoinTime": "1654325035",
+    "galacticPower": "11455375"
+   },
+   {
+    "playerId": "_8p6fQQLQzOqLCHyXYbVgA",
+    "playerName": "My Key",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790912177000",
+    "guildJoinTime": "1654747091",
+    "galacticPower": "12351291"
+   },
+   {
+    "playerId": "l3bmXGCoRjyIPODyoIRZ0w",
+    "playerName": "Disantyk",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790921189000",
+    "guildJoinTime": "1656319257",
+    "galacticPower": "11798268"
+   },
+   {
+    "playerId": "Nt0HogHbQkiRrjiaW22-mg",
+    "playerName": "Soyjin",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790918527000",
+    "guildJoinTime": "1661094628",
+    "galacticPower": "11146678"
+   },
+   {
+    "playerId": "HfGXQNfcTTORLXgceKiO8w",
+    "playerName": "Dan Ferdinand",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790920744000",
+    "guildJoinTime": "1662921140",
+    "galacticPower": "12095116"
+   },
+   {
+    "playerId": "N3Jwnjl8The-yZwriKjy_w",
+    "playerName": "Djoktal",
+    "playerLevel": 85,
+    "memberLevel": 3,
+    "lastActivityTime": "1790937267000",
+    "guildJoinTime": "1666940564",
+    "galacticPower": "10332123"
+   },
+   {
+    "playerId": "GQp-IVYXR1ydl_WI9rSeAQ",
+    "playerName": "BrandX",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790940687000",
+    "guildJoinTime": "1667839465",
+    "galacticPower": "10169382"
+   },
+   {
+    "playerId": "imiuYUWPQQOQ-IJzoDli_g",
+    "playerName": "Illithial",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790928057000",
+    "guildJoinTime": "1681027258",
+    "galacticPower": "12366259"
+   },
+   {
+    "playerId": "FV7Dv5a3QgGdwtDBYgX0Jw",
+    "playerName": "Link",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790925935000",
+    "guildJoinTime": "1688102742",
+    "galacticPower": "7372119"
+   },
+   {
+    "playerId": "frC-dC7mTVmCnMU00XvBFg",
+    "playerName": "Pauk",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790891295000",
+    "guildJoinTime": "1694687076",
+    "galacticPower": "9057881"
+   },
+   {
+    "playerId": "IDj17ptbR66yKBijgwc93w",
+    "playerName": "DarthNihilus",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790868280000",
+    "guildJoinTime": "1700629295",
+    "galacticPower": "9357533"
+   },
+   {
+    "playerId": "CMMfHrM7SJ6_qg3IsNo_9w",
+    "playerName": "ELRocket",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790927740000",
+    "guildJoinTime": "1706032990",
+    "galacticPower": "10350944"
+   },
+   {
+    "playerId": "gX8Jj5iSQ6amLcBFm7m_jQ",
+    "playerName": "ej boma",
+    "playerLevel": 85,
+    "memberLevel": 4,
+    "lastActivityTime": "1790935572000",
+    "guildJoinTime": "1716497859",
+    "galacticPower": "11272681"
+   },
+   {
+    "playerId": "9XPsX3zoQNCNKY4GL7KvCw",
+    "playerName": "Bezemsteel",
+    "playerLevel": 85,
+    "memberLevel": 3,
+    "lastActivityTime": "1790944131000",
+    "guildJoinTime": "1725148396",
+    "galacticPower": "14421934"
+   },
+   {
+    "playerId": "7bPGpb2VSf6xaD-tEtyQNw",
+    "playerName": "MrMeller",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790944125000",
+    "guildJoinTime": "1735632909",
+    "galacticPower": "8818620"
+   },
+   {
+    "playerId": "x2r-SGf6Su2hhv0U_CVf9Q",
+    "playerName": "gersyb97",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790943759000",
+    "guildJoinTime": "1737536538",
+    "galacticPower": "10808864"
+   },
+   {
+    "playerId": "BT_awHJlSWGNgXjzVLyG7g",
+    "playerName": "Jelle",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790892337000",
+    "guildJoinTime": "1738563983",
+    "galacticPower": "11946718"
+   },
+   {
+    "playerId": "aJxuf7hbSzyXy8luJTXsbw",
+    "playerName": "Anna",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790928784000",
+    "guildJoinTime": "1738564006",
+    "galacticPower": "8532951"
+   },
+   {
+    "playerId": "4J5tHRdOSOC1ArIVWqXrqQ",
+    "playerName": "Pigo6907",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790937382000",
+    "guildJoinTime": "1738564023",
+    "galacticPower": "9602463"
+   },
+   {
+    "playerId": "BADo7lYuRoeZRaDzEN5IGg",
+    "playerName": "Matsiepatsie",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790908738000",
+    "guildJoinTime": "1741211912",
+    "galacticPower": "7271829"
+   },
+   {
+    "playerId": "AezAarpmRWi8jYA2OZ7pDg",
+    "playerName": "Rellix",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790936041000",
+    "guildJoinTime": "1744054620",
+    "galacticPower": "11896905"
+   },
+   {
+    "playerId": "Uqk9r-a8ShaSlHNA9hcECA",
+    "playerName": "Bullo",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790942899000",
+    "guildJoinTime": "1744312375",
+    "galacticPower": "13405163"
+   },
+   {
+    "playerId": "L9IguZ-hTeeqX-IzrNRMtQ",
+    "playerName": "jensieboy91",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790939386000",
+    "guildJoinTime": "1745172304",
+    "galacticPower": "7350194"
+   },
+   {
+    "playerId": "gmtaPfBqRo6yjE0Dfrg1Hg",
+    "playerName": "DarthLaser",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790940057000",
+    "guildJoinTime": "1747546550",
+    "galacticPower": "8648902"
+   },
+   {
+    "playerId": "mblgSR7WTuKYbw6hnQZxtg",
+    "playerName": "Cero Kurn",
+    "playerLevel": 85,
+    "memberLevel": 3,
+    "lastActivityTime": "1790937730000",
+    "guildJoinTime": "1757604144",
+    "galacticPower": "10819098"
+   },
+   {
+    "playerId": "85DfiAjlQKmXroa6B-hVqw",
+    "playerName": "SlachtVarken",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790934509000",
+    "guildJoinTime": "1760908531",
+    "galacticPower": "4317306"
+   },
+   {
+    "playerId": "ezT1jtF8RyuaPN_Bwv6R4w",
+    "playerName": "Protomelas",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790891604000",
+    "guildJoinTime": "1763311096",
+    "galacticPower": "12366257"
+   },
+   {
+    "playerId": "km6DV3kFSealXyR6Og6L2g",
+    "playerName": "Water Zilst",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790940024000",
+    "guildJoinTime": "1771233668",
+    "galacticPower": "13700423"
+   },
+   {
+    "playerId": "3IiSkLiZTDubT6LdfxGdTg",
+    "playerName": "ProjectRX",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790853552000",
+    "guildJoinTime": "1773400064",
+    "galacticPower": "4772274"
+   },
+   {
+    "playerId": "TjMwr-l_ThC67usXzG_0JA",
+    "playerName": "Darkness Awakend",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790923187000",
+    "guildJoinTime": "1774466981",
+    "galacticPower": "9625952"
+   },
+   {
+    "playerId": "MyMIR9lNRICuEjCpgqslYQ",
+    "playerName": "surikiller",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790921933000",
+    "guildJoinTime": "1778260156",
+    "galacticPower": "6614266"
+   },
+   {
+    "playerId": "iuGrUqaqQjaFpIUuqOAGcA",
+    "playerName": "Tantam Lenda",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790942670000",
+    "guildJoinTime": "1779886227",
+    "galacticPower": "12071850"
+   },
+   {
+    "playerId": "sAM0PfmtRpadZqa71o1hfA",
+    "playerName": "DoctorChaos",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790942339000",
+    "guildJoinTime": "1785422615",
+    "galacticPower": "7014000"
+   },
+   {
+    "playerId": "l-cqAM8-StaBV4O-PngmYw",
+    "playerName": "Bommelbummel",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790754401000",
+    "guildJoinTime": "1785422616",
+    "galacticPower": "3532184"
+   },
+   {
+    "playerId": "8ayJ-kaAT2yps3PulRMUYg",
+    "playerName": "Doomdog",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790896053000",
+    "guildJoinTime": "1785422617",
+    "galacticPower": "6305974"
+   },
+   {
+    "playerId": "3016dvSRQ2eKX1qLyVCjiQ",
+    "playerName": "Two Friez",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790944053000",
+    "guildJoinTime": "1787150415",
+    "galacticPower": "5721587"
+   },
+   {
+    "playerId": "wa-0DaQqQ2a6wXplvpEbCA",
+    "playerName": "MiCally",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790867493000",
+    "guildJoinTime": "1789341671",
+    "galacticPower": "8147232"
+   },
+   {
+    "playerId": "25-FGMeATGG5MEzD1LslIw",
+    "playerName": "Boom Eagle JR",
+    "playerLevel": 85,
+    "memberLevel": 2,
+    "lastActivityTime": "1790928753000",
+    "guildJoinTime": "1789458174",
+    "galacticPower": "4231553"
+   }
+  ]
+ }
+}

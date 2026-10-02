@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import { focusList, recommendationsFor } from "./focus";
 import { DISCORD_LIMIT, focusToDiscord } from "./format";
 import type { Phase } from "./requirements";
-import type { TrimmedPlayer } from "./swgoh";
+import type { TrimmedPlayer } from "./snapshot";
 
 const phase: Phase = {
   phase: 5,

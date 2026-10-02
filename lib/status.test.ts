@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { Phase } from "./requirements";
 import { phaseRequirements, phaseStatus, statusFor } from "./status";
-import type { TrimmedPlayer } from "./swgoh";
+import type { TrimmedPlayer } from "./snapshot";
 import { requirements } from "./test-data";
 
 describe("statusFor (§5.3)", () => {

@@ -1,0 +1,59 @@
+# Guild roster sync (BUILD.md §7). Runs swgoh-comlink as a service container on the runner,
+# fetches the guild, and commits data/snapshots/ only when a roster changed.
+name: Sync roster
+
+on:
+  schedule:
+    # Every other night at 01:17 UTC (odd days of the month, off the hour as GitHub advises).
+    - cron: "17 1 */2 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-roster
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    services:
+      comlink:
+        image: ghcr.io/swgoh-utils/swgoh-comlink:4.5.0
+        env:
+          APP_NAME: dutchjedi-rote-tracker
+          PORT: 3000
+        ports:
+          - 3000:3000
+        options: >-
+          --health-cmd "/swgoh-comlink --check"
+          --health-interval 2s
+          --health-timeout 5s
+          --health-retries 15
+          --health-start-period 5s
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - name: Sync guild through comlink
+        id: sync
+        run: npm run sync
+        env:
+          COMLINK_URL: http://localhost:3000
+
+      - name: Commit and push the new snapshot
+        if: steps.sync.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/snapshots/latest.json "data/snapshots/$(date -u +%F).json"
+          git commit -m "Sync roster $(date -u +%F)"
+          git push

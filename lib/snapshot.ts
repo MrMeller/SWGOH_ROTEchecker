@@ -1,10 +1,29 @@
 // Snapshot format (BUILD.md §4) and loading. Server-side only.
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
-import type { TrimmedPlayer } from "./swgoh";
+
+/** g = gear level, r = in-game relic (0..10, only when G13 with relics unlocked), s = stars. */
+export interface TrimmedUnit {
+  g?: number;
+  r?: number;
+  s: number;
+}
+
+export interface TrimmedPlayer {
+  allyCode: number;
+  /** Game player id, the key comlink's guild roster uses. Absent on generated demo players. */
+  playerId?: string;
+  /** Public in-game name. */
+  name: string;
+  units: Record<string, TrimmedUnit>;
+  /** Fetch failed in the last sync; units reused from the previous snapshot. */
+  stale?: boolean;
+}
 
 export interface Snapshot {
   syncedAt: string;
+  /** Where the roster data came from. The real sync writes "comlink". */
+  source?: "comlink";
   memberCount: number;
   players: TrimmedPlayer[];
   /** Set on generated demo data; the real sync never writes it. */
