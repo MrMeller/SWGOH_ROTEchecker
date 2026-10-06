@@ -15,15 +15,15 @@ import {
 } from "./requirements";
 import { phasePlan, type PhasePlan } from "./plan";
 import { loadSnapshot, type Snapshot } from "./snapshot";
-import { phaseStatus, type PhaseUnitStatus } from "./status";
+import { DEFAULT_DAYS, phaseStatus, type Days, type PhaseUnitStatus } from "./status";
 
 let cache: {
   req: Requirements;
   snapshot: Snapshot;
   names: Map<string, string>;
   images: Map<string, string>;
-  status: Map<number, PhaseUnitStatus[]>;
-  focus: Map<number, FocusItem[]>;
+  status: Map<string, PhaseUnitStatus[]>;
+  focus: Map<string, FocusItem[]>;
 } | null = null;
 
 function load() {
@@ -67,23 +67,31 @@ export function findPlanet(phase: Phase, slug: string): Planet | undefined {
   return phase.planets.find((p) => planetSlug(p.name) === slug);
 }
 
-export function getPhaseStatus(n: number): PhaseUnitStatus[] {
+// Derived results depend on the phase and on the days the guild plays it (BUILD.md §5.3).
+const key = (n: number, days: Days) => `${n}:${days}`;
+
+export function getPhaseStatus(n: number, days: Days = DEFAULT_DAYS): PhaseUnitStatus[] {
   const c = load();
-  if (!c.status.has(n)) c.status.set(n, phaseStatus(getPhase(n)!, c.snapshot.players));
-  return c.status.get(n)!;
+  const k = key(n, days);
+  if (!c.status.has(k)) c.status.set(k, phaseStatus(getPhase(n)!, c.snapshot.players, days));
+  return c.status.get(k)!;
 }
 
-export function getFocus(n: number): FocusItem[] {
+export function getFocus(n: number, days: Days = DEFAULT_DAYS): FocusItem[] {
   const c = load();
-  if (!c.focus.has(n)) c.focus.set(n, focusList(getPhase(n)!, c.snapshot.players));
-  return c.focus.get(n)!;
+  const k = key(n, days);
+  if (!c.focus.has(k)) c.focus.set(k, focusList(getPhase(n)!, c.snapshot.players, days));
+  return c.focus.get(k)!;
 }
 
-const plans = new Map<number, PhasePlan>();
+const plans = new Map<string, PhasePlan>();
 
-export function getPhasePlan(n: number): PhasePlan {
-  if (!plans.has(n)) plans.set(n, phasePlan(getPhase(n)!, new Map(getPhaseStatus(n).map((u) => [u.baseId, u.meets]))));
-  return plans.get(n)!;
+export function getPhasePlan(n: number, days: Days = DEFAULT_DAYS): PhasePlan {
+  const k = key(n, days);
+  if (!plans.has(k)) {
+    plans.set(k, phasePlan(getPhase(n)!, new Map(getPhaseStatus(n, days).map((u) => [u.baseId, u.meets])), days));
+  }
+  return plans.get(k)!;
 }
 
 /** Every distinct unit across all phases, with its display name and combat type. */

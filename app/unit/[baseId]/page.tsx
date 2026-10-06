@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DaysVariants } from "@/components/Days";
 import { UnitPlanetPlan } from "@/components/PlanetPlan";
 import { PhaseLink } from "@/components/PhaseLink";
 import { StatusChip } from "@/components/StatusChip";
@@ -7,6 +8,8 @@ import { Tabs } from "@/components/Tabs";
 import { allUnits, getPhasePlan, getPhaseStatus, getRequirements, getSnapshot } from "@/lib/data";
 import { stepsLabel } from "@/lib/format";
 import { playerListForUnit } from "@/lib/matching";
+import type { Phase } from "@/lib/requirements";
+import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
 export const dynamicParams = false;
 
@@ -20,6 +23,30 @@ export async function generateMetadata({ params }: { params: Promise<{ baseId: s
   return { title: `${unit?.name ?? baseId} | RotE Platoon Tracker` };
 }
 
+/** Status, numbers and platoon plan for one unit in one phase, under the plan for `days` days. */
+function UnitStatus({ phase, baseId, ship, days }: { phase: Phase; baseId: string; ship: boolean; days: Days }) {
+  const s = getPhaseStatus(phase.phase, days).find((x) => x.baseId === baseId)!;
+  return (
+    <>
+      <div className="flex flex-wrap items-center gap-3">
+        <StatusChip status={s.status} />
+        <span className="text-sm">
+          <span className="text-lg font-semibold">{s.meets}</span>
+          <span className="text-slate-400"> / {s.need} meet {ship ? "7★" : `R${phase.minRelic}`}</span>
+        </span>
+        <span className="text-sm text-slate-400">{s.owned} own it</span>
+      </div>
+      <p className="text-xs text-slate-500">
+        {days > 1
+          ? `Each player places this unit once per day, so ${s.floor} players fill all ${s.need} slots over ${days} days. `
+          : "Each player places this unit once. "}
+        Pills show the platoons this unit is in: filled when the phase plan fills that platoon, half when it fills on a later day.
+      </p>
+      <UnitPlanetPlan phase={phase} plan={getPhasePlan(phase.phase, days)} baseId={baseId} meets={s.meets} />
+    </>
+  );
+}
+
 export default async function UnitPage({ params }: { params: Promise<{ baseId: string }> }) {
   const { baseId } = await params;
   const unit = allUnits().find((u) => u.baseId === baseId);
@@ -29,7 +56,6 @@ export default async function UnitPage({ params }: { params: Promise<{ baseId: s
   const phases = getRequirements().phases.filter((p) => p.planets.some((pl) => pl.units.some((u) => u.baseId === baseId)));
 
   const tabs = phases.map((phase) => {
-    const s = getPhaseStatus(phase.phase).find((x) => x.baseId === baseId)!;
     const list = playerListForUnit(baseId, unit.combatType, phase.minRelic, players);
     return {
       key: String(phase.phase),
@@ -37,18 +63,13 @@ export default async function UnitPage({ params }: { params: Promise<{ baseId: s
       panel: (
         <div className="space-y-4">
           <div className="space-y-3 rounded-xl bg-slate-900/60 p-4 ring-1 ring-slate-800">
-            <div className="flex flex-wrap items-center gap-3">
-              <StatusChip status={s.status} />
-              <span className="text-sm">
-                <span className="text-lg font-semibold">{s.meets}</span>
-                <span className="text-slate-400"> / {s.need} meet {ship ? "7★" : `R${phase.minRelic}`}</span>
-              </span>
-              <span className="text-sm text-slate-400">{s.owned} own it</span>
-            </div>
-            <p className="text-xs text-slate-500">
-              Each player fills this unit once per phase. Pills show the platoons this unit is in: filled when the phase plan fills that platoon.
-            </p>
-            <UnitPlanetPlan phase={phase} plan={getPhasePlan(phase.phase)} baseId={baseId} meets={s.meets} />
+            <DaysVariants
+              variants={
+                Object.fromEntries(
+                  DAYS_OPTIONS.map((d) => [d, <UnitStatus key={d} phase={phase} baseId={baseId} ship={ship} days={d} />]),
+                ) as Record<Days, React.ReactNode>
+              }
+            />
           </div>
 
           <section>

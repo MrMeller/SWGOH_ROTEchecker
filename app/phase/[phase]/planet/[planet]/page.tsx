@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DaysVariants } from "@/components/Days";
 import { PlanetTag, PlatoonPills } from "@/components/PlanetPlan";
 import { PLANET_STYLE } from "@/components/planets";
 import { findPlanet, getPhase, getPhasePlan, getPhaseStatus, getRequirements, unitImage, unitName } from "@/lib/data";
 import { platoonViews, type PlatoonView, type SlotState } from "@/lib/plan";
-import { planetSlug } from "@/lib/requirements";
+import { planetSlug, type Phase, type Planet } from "@/lib/requirements";
+import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
 export const dynamicParams = false;
 
@@ -50,11 +52,6 @@ export default async function PlanetPage({ params }: { params: Params }) {
   const phase = getPhase(n);
   const planet = phase && findPlanet(phase, slug);
   if (!phase || !planet) notFound();
-
-  const plan = getPhasePlan(n);
-  const meets = new Map(getPhaseStatus(n).map((u) => [u.baseId, u.meets]));
-  const platoons = platoonViews(phase, plan, planet.name, meets);
-  const planetPlan = plan.planets.find((p) => p.planet === planet.name)!;
   const style = PLANET_STYLE[planet.alignment];
 
   return (
@@ -66,17 +63,46 @@ export default async function PlanetPage({ params }: { params: Params }) {
         <h1 className={`mt-2 text-xl font-semibold ${style.text}`}>
           {planet.name} <PlanetTag planet={planet} />
         </h1>
+        <p className="text-sm text-slate-400">Phase {n}, R{phase.minRelic} needed.</p>
+      </div>
+
+      <DaysVariants
+        variants={
+          Object.fromEntries(DAYS_OPTIONS.map((d) => [d, <Board key={d} phase={phase} planet={planet} days={d} />])) as Record<Days, React.ReactNode>
+        }
+      />
+    </div>
+  );
+}
+
+/** The six platoons under the plan for `days` days. */
+function Board({ phase, planet, days }: { phase: Phase; planet: Planet; days: Days }) {
+  const n = phase.phase;
+  const plan = getPhasePlan(n, days);
+  const meets = new Map(getPhaseStatus(n, days).map((u) => [u.baseId, u.meets]));
+  const platoons = platoonViews(phase, plan, planet.name, meets);
+  const planetPlan = plan.planets.find((p) => p.planet === planet.name)!;
+  const later = planetPlan.filled - planetPlan.firstDay;
+
+  return (
+    <div className="space-y-5">
+      <div>
         <p className="text-sm text-slate-400">
-          Phase {n}, R{phase.minRelic} needed. {planetPlan.filled} of {platoons.length} platoons can be filled with the
-          current phase plan.
+          {planetPlan.filled} of {platoons.length} platoons can be filled with the current phase plan
+          {later > 0 ? `, ${planetPlan.firstDay} on day 1 and ${later} on a later day.` : "."}
         </p>
         <PlatoonPills platoons={planetPlan.platoons} alignment={planet.alignment} className="mt-2 max-w-xs" />
       </div>
 
       <p className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
         <span>Full colour: the plan fills this platoon.</span>
+        {days > 1 && (
+          <span>
+            <span className="text-amber-200">Orange ring</span>: a player places this unit again on a later day.
+          </span>
+        )}
         <span>
-          <span className="text-rose-300">Red ring</span>: a slot we have no player for yet.
+          <span className="text-rose-300">Red ring</span>: a slot we have no player for, even over {days === 1 ? "the day" : `${days} days`}.
         </span>
         <span>Faded: held back by other units or needed elsewhere.</span>
       </p>
@@ -122,7 +148,7 @@ export default async function PlanetPage({ params }: { params: Params }) {
                       {i > 0 && ", "}
                       <Link href={`/unit/${id}?phase=${n}`} className="text-rose-300 hover:underline">
                         {unitName(id)}
-                        {count > 1 && ` (${count} more)`}
+                        {!meets.get(id) ? " (nobody)" : count > 1 && ` (${count} more)`}
                       </Link>
                     </span>
                   ))}

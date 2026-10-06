@@ -1,7 +1,7 @@
 // Focus list (BUILD.md §6.3) and "what should I gear" (§6.4). Pure functions only.
 import { playerListForUnit, type Candidate } from "./matching";
 import type { Phase } from "./requirements";
-import { phaseStatus, type PhaseUnitStatus } from "./status";
+import { DEFAULT_DAYS, phaseStatus, type PhaseUnitStatus } from "./status";
 import type { TrimmedPlayer } from "./snapshot";
 
 export interface FocusItem extends PhaseUnitStatus {
@@ -17,8 +17,8 @@ export interface FocusItem extends PhaseUnitStatus {
 
 const STATUS_ORDER = { short: 0, days: 1, enough: 2 } as const;
 
-export function focusList(phase: Phase, players: readonly TrimmedPlayer[]): FocusItem[] {
-  return phaseStatus(phase, players)
+export function focusList(phase: Phase, players: readonly TrimmedPlayer[], days: number = DEFAULT_DAYS): FocusItem[] {
+  return phaseStatus(phase, players, days)
     .filter((u) => u.status !== "enough")
     .map((u) => {
       const gap = u.need - u.meets;

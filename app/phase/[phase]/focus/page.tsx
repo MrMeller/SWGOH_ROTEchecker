@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyButtons } from "@/components/CopyButtons";
+import { DaysVariants } from "@/components/Days";
 import { PhaseSwitcher } from "@/components/PhaseSwitcher";
 import { StatusChip } from "@/components/StatusChip";
 import { getFocus, getPhase, getSnapshot, PHASES, unitName } from "@/lib/data";
 import { focusToDiscord, stepsLabel } from "@/lib/format";
+import type { Phase } from "@/lib/requirements";
+import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
 export const dynamicParams = false;
 
@@ -20,8 +23,6 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
   const n = Number((await params).phase);
   const phase = getPhase(n);
   if (!phase) notFound();
-  const focus = getFocus(n).map((f) => ({ ...f, name: unitName(f.baseId, f.name) }));
-  const messages = focusToDiscord(n, phase.minRelic, focus, getSnapshot().syncedAt);
 
   return (
     <div className="space-y-5">
@@ -36,6 +37,21 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
         </p>
       </div>
 
+      <DaysVariants
+        variants={Object.fromEntries(DAYS_OPTIONS.map((d) => [d, <FocusBody key={d} phase={phase} days={d} />])) as Record<Days, React.ReactNode>}
+      />
+    </div>
+  );
+}
+
+/** The focus list and its Discord text under the plan for `days` days. */
+function FocusBody({ phase, days }: { phase: Phase; days: Days }) {
+  const n = phase.phase;
+  const focus = getFocus(n, days).map((f) => ({ ...f, name: unitName(f.baseId, f.name) }));
+  const messages = focusToDiscord(n, phase.minRelic, focus, getSnapshot().syncedAt);
+
+  return (
+    <div className="space-y-5">
       {focus.length > 0 && <CopyButtons messages={messages} />}
 
       {focus.length === 0 ? (
