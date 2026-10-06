@@ -59,12 +59,12 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
         </p>
         <div className="mt-3 flex h-2 overflow-hidden rounded-full bg-slate-800">
           <div className="bg-emerald-400" style={{ width: `${(count("enough") / status.length) * 100}%` }} />
-          <div className="bg-amber-300" style={{ width: `${(count("planet") / status.length) * 100}%` }} />
+          <div className="bg-amber-300" style={{ width: `${(count("days") / status.length) * 100}%` }} />
           <div className="bg-rose-400" style={{ width: `${(count("short") / status.length) * 100}%` }} />
         </div>
         <div className="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
           <span><span className="text-emerald-300">{count("enough")}</span> enough</span>
-          <span><span className="text-amber-200">{count("planet")}</span> planet only</span>
+          <span><span className="text-amber-200">{count("days")}</span> over days</span>
           <span><span className="text-rose-300">{count("short")}</span> short</span>
           <Link href={`/phase/${n}/focus`} className="ml-auto text-sky-400 hover:underline">
             Focus list →

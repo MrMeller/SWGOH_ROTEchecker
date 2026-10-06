@@ -15,7 +15,7 @@ export interface FocusItem extends PhaseUnitStatus {
   effort: number;
 }
 
-const STATUS_ORDER = { short: 0, planet: 1, enough: 2 } as const;
+const STATUS_ORDER = { short: 0, days: 1, enough: 2 } as const;
 
 export function focusList(phase: Phase, players: readonly TrimmedPlayer[]): FocusItem[] {
   return phaseStatus(phase, players)

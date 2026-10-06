@@ -73,11 +73,11 @@ export interface TableRow {
   cells: TableCell[];
 }
 
-const STATUS_ORDER: Record<Status, number> = { short: 0, planet: 1, enough: 2 };
-const STATUS_EDGE: Record<Status, string> = { short: "border-rose-400", planet: "border-amber-300", enough: "border-emerald-400" };
-const STATUS_TEXT: Record<Status, string> = { short: "text-rose-300", planet: "text-amber-200", enough: "text-emerald-300" };
+const STATUS_ORDER: Record<Status, number> = { short: 0, days: 1, enough: 2 };
+const STATUS_EDGE: Record<Status, string> = { short: "border-rose-400", days: "border-amber-300", enough: "border-emerald-400" };
+const STATUS_TEXT: Record<Status, string> = { short: "text-rose-300", days: "text-amber-200", enough: "text-emerald-300" };
 
-/** Status first (short, planet only, enough), then the biggest requirement. */
+/** Status first (short, over days, enough), then the biggest requirement. */
 const byStatus = (a: TableRow, b: TableRow) =>
   STATUS_ORDER[a.status] - STATUS_ORDER[b.status] || b.need - a.need || a.name.localeCompare(b.name);
 
