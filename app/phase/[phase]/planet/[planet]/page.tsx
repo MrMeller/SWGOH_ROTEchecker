@@ -4,6 +4,7 @@ import { DaysVariants } from "@/components/Days";
 import { PlanetTag, PlatoonPills } from "@/components/PlanetPlan";
 import { PLANET_STYLE } from "@/components/planets";
 import { findPlanet, getPhase, getPhasePlan, getPhaseStatus, getRequirements, unitImage, unitName } from "@/lib/data";
+import { laterDays } from "@/lib/format";
 import { platoonViews, type PlatoonView, type SlotState } from "@/lib/plan";
 import { planetSlug, type Phase, type Planet } from "@/lib/requirements";
 import { DAYS_OPTIONS, type Days } from "@/lib/status";
@@ -35,9 +36,12 @@ const SLOT_STYLE: Record<SlotState, { tile: string; image: string }> = {
   held: { tile: "", image: "opacity-35 grayscale" },
 };
 
-function badge(p: PlatoonView): { label: string; className: string } {
+function badge(p: PlatoonView, days: number): { label: string; className: string } {
   if (p.fill === "day1") return { label: "Filled", className: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/40" };
-  if (p.fill === "later") return { label: "Day 2+", className: "bg-amber-400/15 text-amber-200 ring-amber-400/40" };
+  if (p.fill === "later") {
+    const when = laterDays(days);
+    return { label: when[0].toUpperCase() + when.slice(1), className: "bg-amber-400/15 text-amber-200 ring-amber-400/40" };
+  }
   const short = [...p.lacking.values()].reduce((a, n) => a + n, 0);
   if (!short) return { label: "Held back", className: "bg-slate-700/40 text-slate-300 ring-slate-600" };
   const label = `${short} short`;
@@ -89,16 +93,16 @@ function Board({ phase, planet, days }: { phase: Phase; planet: Planet; days: Da
       <div>
         <p className="text-sm text-slate-400">
           {planetPlan.filled} of {platoons.length} platoons can be filled with the current phase plan
-          {later > 0 ? `, ${planetPlan.firstDay} on day 1 and ${later} on a later day.` : "."}
+          {later > 0 ? `, ${planetPlan.firstDay} on day 1 and ${later} on ${laterDays(days)}.` : "."}
         </p>
-        <PlatoonPills platoons={planetPlan.platoons} alignment={planet.alignment} className="mt-2 max-w-xs" />
+        <PlatoonPills platoons={planetPlan.platoons} alignment={planet.alignment} days={days} className="mt-2 max-w-xs" />
       </div>
 
       <p className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
         <span>Full colour: the plan fills this platoon.</span>
         {days > 1 && (
           <span>
-            <span className="text-amber-200">Orange ring</span>: a player places this unit again on a later day.
+            <span className="text-amber-200">Orange ring</span>: a player places this unit again on {laterDays(days)}, so the platoon completes then.
           </span>
         )}
         <span>
@@ -110,7 +114,7 @@ function Board({ phase, planet, days }: { phase: Phase; planet: Planet; days: Da
       {/* Board order as in game: platoons 1 to 3 in the left column, 4 to 6 in the right. */}
       <div className="grid grid-cols-1 gap-3 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-3">
         {platoons.map((p) => {
-          const b = badge(p);
+          const b = badge(p, days);
           return (
             <section
               key={p.number}

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { phasePlanSentence, unitPlanSentence } from "@/lib/format";
+import { laterDays, phasePlanSentence, unitPlanSentence } from "@/lib/format";
 import { unitAllocation, type Fill, type PhasePlan } from "@/lib/plan";
 import { planetSlug, type Phase, type Planet } from "@/lib/requirements";
 import { PLANET_STYLE } from "./planets";
@@ -17,16 +17,19 @@ export function PlanetTag({ planet }: { planet: PlanetMeta }) {
 
 /**
  * Six flat pills, one per platoon: filled in the planet colour when the plan fills it on
- * day 1, half filled when it fills on a later day, an outline when it stays open.
+ * day 1, half filled when it fills on day 2 (or 3), an outline when it stays open.
  * `undefined` marks a platoon that does not apply (faded).
  */
 export function PlatoonPills({
   platoons,
   alignment,
+  days,
   className = "",
 }: {
   platoons: readonly (Fill | undefined)[];
   alignment: Planet["alignment"];
+  /** Days the plan spans, for the label of half-filled pills. */
+  days: number;
   className?: string;
 }) {
   const filled = platoons.filter(Boolean).length;
@@ -36,7 +39,7 @@ export function PlatoonPills({
   return (
     <div
       role="img"
-      aria-label={`${filled} of ${applies} platoons filled${later ? `, ${later} on a later day` : ""}`}
+      aria-label={`${filled} of ${applies} platoons filled${later ? `, ${later} on ${laterDays(days)}` : ""}`}
       className={`grid grid-cols-6 gap-1 ${className}`}
     >
       {platoons.map((p, i) => (
@@ -88,7 +91,7 @@ export function PhasePlanCard({ plan, planets, phase }: { plan: PhasePlan; plane
                 <span className="text-sm font-normal text-slate-500"> / {p.platoons.length}</span>
               </p>
               <p className="text-[11px] text-slate-500">platoons</p>
-              <PlatoonPills platoons={p.platoons} alignment={meta.alignment} className="mt-2" />
+              <PlatoonPills platoons={p.platoons} alignment={meta.alignment} days={plan.days} className="mt-2" />
             </PlanetCard>
           );
         })}
@@ -115,7 +118,7 @@ export function UnitPlanetPlan({ phase, plan, baseId, meets }: { phase: Phase; p
                     <span className="text-sm font-normal text-slate-500"> / {a.required}</span>
                   </p>
                   <p className="text-[11px] text-slate-500">in planned platoons</p>
-                  <PlatoonPills platoons={a.platoons} alignment={meta.alignment} className="mt-2" />
+                  <PlatoonPills platoons={a.platoons} alignment={meta.alignment} days={plan.days} className="mt-2" />
                   {a.shortFor > 0 && <p className="mt-1.5 text-[11px] text-rose-300">short for {a.shortFor}</p>}
                 </>
               ) : (

@@ -6,7 +6,7 @@ import { PhaseLink } from "@/components/PhaseLink";
 import { StatusChip } from "@/components/StatusChip";
 import { Tabs } from "@/components/Tabs";
 import { allUnits, getPhasePlan, getPhaseStatus, getRequirements, getSnapshot } from "@/lib/data";
-import { stepsLabel } from "@/lib/format";
+import { laterDays, stepsLabel } from "@/lib/format";
 import { playerListForUnit } from "@/lib/matching";
 import type { Phase } from "@/lib/requirements";
 import { DAYS_OPTIONS, type Days } from "@/lib/status";
@@ -40,7 +40,7 @@ function UnitStatus({ phase, baseId, ship, days }: { phase: Phase; baseId: strin
         {days > 1
           ? `Each player places this unit once per day, so ${s.floor} players fill all ${s.need} slots over ${days} days. `
           : "Each player places this unit once. "}
-        Pills show the platoons this unit is in: filled when the phase plan fills that platoon, half when it fills on a later day.
+        Pills show the platoons this unit is in: filled when the phase plan fills that platoon{days > 1 ? `, half when it fills on ${laterDays(days)}` : ""}.
       </p>
       <UnitPlanetPlan phase={phase} plan={getPhasePlan(phase.phase, days)} baseId={baseId} meets={s.meets} />
     </>

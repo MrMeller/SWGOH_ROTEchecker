@@ -42,7 +42,7 @@ Observed in game: platoons of an earlier phase stay open after the next phase st
    - Player page tied to the plan (units where you help open platoons first).
    - Optional: toggle to exclude a bonus planet from the plan when the guild will not unlock it.
 3. **Known reading rule, decided to leave as is:** a unit can show "1 short" in the have / need total with no red ring on any board, when its spare placements cover every open platoon on its own. Rings and "short for N platoons" are the near-term gear list; the total is the long-term one. The "+N spare placements" hint (shown for units that are not green) marks this.
-4. **After the multi-day change ships:** watch one territory battle with the days toggle on 2 and check that platoons marked Day 2+ really complete on the second day, and that the last phase the guild reaches (which may get only one day) reads right with the toggle on 1.
+4. **After the multi-day change ships:** watch one territory battle with the days toggle on 2 and check that platoons marked Day 2 really complete on the second day, and that the last phase the guild reaches (which may get only one day) reads right with the toggle on 1.
 5. v1.1: progress chart from the dated snapshots (BUILD.md §6.5).
 
 ## Housekeeping

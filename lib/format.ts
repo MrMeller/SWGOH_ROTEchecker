@@ -32,6 +32,13 @@ export function unitPlanSentence(alloc: UnitAllocation[]): string {
   return "Enough for every platoon the plan fills. Other units hold its open platoons back.";
 }
 
+/** The days after day 1 a platoon can complete on: "day 2" for 2 days, "day 2 or 3" for 3. */
+export function laterDays(days: number): string {
+  if (days <= 2) return "day 2";
+  if (days === 3) return "day 2 or 3";
+  return `day 2 to ${days}`;
+}
+
 export function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric", timeZone: "UTC" });
 }

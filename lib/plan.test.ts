@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { phasePlanSentence, unitPlanSentence } from "./format";
+import { laterDays, phasePlanSentence, unitPlanSentence } from "./format";
 import { maxPlatoons, phasePlan, platoonViews, sparePlacements, unitAllocation } from "./plan";
 import type { Phase, Planet } from "./requirements";
 import type { Snapshot } from "./snapshot";
@@ -152,6 +152,11 @@ describe("unitAllocation", () => {
     const tight = phasePlan(p, supply({ A: 1, B: 2 }), 1);
     expect(unitPlanSentence(unitAllocation(p, tight, "A", 1))).toMatch(/^Short for \d platoons? on /);
     expect(phasePlanSentence(phasePlan(p, new Map(), 1))).toBe("No platoon can be filled completely yet.");
+  });
+
+  it("names the days after day 1 by the toggle", () => {
+    expect(laterDays(2)).toBe("day 2");
+    expect(laterDays(3)).toBe("day 2 or 3");
   });
 
   it("says how many platoons wait for a later day", () => {
