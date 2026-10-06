@@ -5,7 +5,7 @@ import { DaysVariants } from "@/components/Days";
 import { PhaseSwitcher } from "@/components/PhaseSwitcher";
 import { StatusChip } from "@/components/StatusChip";
 import { getFocus, getPhase, getSnapshot, PHASES, unitName } from "@/lib/data";
-import { focusToDiscord, stepsLabel } from "@/lib/format";
+import { focusToDiscord, gapSentence, stepsLabel } from "@/lib/format";
 import type { Phase } from "@/lib/requirements";
 import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
@@ -33,7 +33,7 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
         </h1>
         <p className="mt-1 text-sm text-slate-400">
           Every unit below its phase total, with the players whose gearing closes the gap soonest.
-          Red units first, then the easiest wins.
+          Red units first, then the easiest wins. Over several days, the first players listed make a red unit fillable.
         </p>
       </div>
 
@@ -73,7 +73,7 @@ function FocusBody({ phase, days }: { phase: Phase; days: Days }) {
                 </span>
               </div>
               <p className="mt-1 text-xs text-slate-400">
-                Need {f.gap} more.
+                {gapSentence(f)}
                 {!f.closable && (
                   <span className="text-rose-300">
                     {" "}Only {f.candidates.length} other {f.candidates.length === 1 ? "player owns" : "players own"} it, so it cannot be fully closed by gearing.
@@ -82,11 +82,12 @@ function FocusBody({ phase, days }: { phase: Phase; days: Days }) {
               </p>
               {f.candidates.length > 0 && (
                 <ol className="mt-2 space-y-1">
-                  {f.candidates.map((c) => (
+                  {f.candidates.map((c, i) => (
                     <li key={c.allyCode} className="flex items-center gap-2 text-sm">
                       <Link href={`/player/${c.allyCode}?phase=${n}`} className="min-w-0 flex-1 truncate hover:underline">
                         {c.name}
                       </Link>
+                      {f.days > 1 && i < f.gapDays && <span className="text-xs text-amber-200">makes it fillable</span>}
                       {c.needsStars && <span className="text-xs text-amber-300">needs stars</span>}
                       <span className="w-12 text-right font-mono text-slate-200">{c.label}</span>
                       <span className="w-24 text-right text-xs text-slate-500">{stepsLabel(c.distance, f.combatType === 2)}</span>

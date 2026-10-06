@@ -5,13 +5,20 @@ import { DEFAULT_DAYS, phaseStatus, type PhaseUnitStatus } from "./status";
 import type { TrimmedPlayer } from "./snapshot";
 
 export interface FocusItem extends PhaseUnitStatus {
-  /** Players still needed: need - meets. */
+  /** Days the guild plays the phase, as used for `floor` and `status`. */
+  days: number;
+  /** Players still needed to fill every slot on day 1: need - meets. */
   gap: number;
-  /** The `gap` closest players who own the unit but do not meet it yet. */
+  /** Players still needed to fill every slot over `days` days: floor - meets, 0 when there. */
+  gapDays: number;
+  /** The `gap` closest players who own the unit but do not meet it yet. The first `gapDays` come first. */
   candidates: Candidate[];
   /** False when fewer owners than the gap exist, so gearing alone cannot close it. */
   closable: boolean;
-  /** Sum of candidate distances: lower means the gap closes sooner. */
+  /**
+   * Sum of candidate distances to the next status up: the first `gapDays` candidates for a
+   * short unit, all `gap` candidates otherwise. Lower means that step comes sooner.
+   */
   effort: number;
 }
 
@@ -22,9 +29,11 @@ export function focusList(phase: Phase, players: readonly TrimmedPlayer[], days:
     .filter((u) => u.status !== "enough")
     .map((u) => {
       const gap = u.need - u.meets;
+      const gapDays = Math.max(0, u.floor - u.meets);
       const candidates = playerListForUnit(u.baseId, u.combatType, phase.minRelic, players).closest.slice(0, gap);
-      const effort = candidates.reduce((a, c) => a + c.distance, 0);
-      return { ...u, gap, candidates, closable: candidates.length >= gap, effort };
+      const next = gapDays > 0 ? candidates.slice(0, gapDays) : candidates;
+      const effort = next.reduce((a, c) => a + c.distance, 0);
+      return { ...u, days, gap, gapDays, candidates, closable: candidates.length >= gap, effort };
     })
     .sort(
       (a, b) =>

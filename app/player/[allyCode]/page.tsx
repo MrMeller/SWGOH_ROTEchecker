@@ -71,7 +71,10 @@ function Recommendations({ player, days }: { player: TrimmedPlayer; days: Days }
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-slate-400">
-                  {stepsLabel(c.distance, ship)}. You are #{rank} of the {unit.gap} the guild still needs
+                  {stepsLabel(c.distance, ship)}.{" "}
+                  {unit.days > 1 && rank <= unit.gapDays
+                    ? `You are #${rank} of the ${unit.gapDays} the guild needs to fill it over ${unit.days} days`
+                    : `You are #${rank} of the ${unit.gap} the guild needs to fill everything on day 1`}{" "}
                   ({unit.meets}/{unit.need} now).
                   {c.needsStars && <span className="text-amber-300"> Needs 7 stars first.</span>}
                 </p>
