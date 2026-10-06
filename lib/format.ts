@@ -7,12 +7,15 @@ function joinWords(words: string[], last = "and"): string {
   return words.length <= 1 ? words.join("") : `${words.slice(0, -1).join(", ")} ${last} ${words.at(-1)}`;
 }
 
-/** Phase level: how many platoons the plan fills, per planet. */
+/** Phase level: how many platoons the plan fills, per planet, and how many already on day 1. */
 export function phasePlanSentence(plan: PhasePlan): string {
-  if (plan.filled === plan.total) return `Every platoon can be filled (${plan.total} of ${plan.total}).`;
+  const later = plan.filled - plan.firstDay;
+  const onDayOne = later > 0 ? `, ${plan.firstDay} on day 1` : "";
+  if (plan.filled === plan.total) return `Every platoon can be filled (${plan.total} of ${plan.total}${onDayOne}).`;
   if (plan.filled === 0) return "No platoon can be filled completely yet.";
   const per = joinWords(plan.planets.filter((p) => p.filled).map((p) => `${p.planet} ${p.filled}`));
-  return `${plan.filled} of ${plan.total} platoons can be filled at the same time: ${per}.`;
+  const how = plan.days > 1 ? `over ${plan.days} days${onDayOne}` : "at the same time";
+  return `${plan.filled} of ${plan.total} platoons can be filled ${how}: ${per}.`;
 }
 
 const platoonWord = (n: number) => `${n} platoon${n === 1 ? "" : "s"}`;

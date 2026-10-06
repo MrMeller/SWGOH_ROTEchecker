@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getPhase, getPhasePlan, getPhaseStatus, getSnapshot } from "@/lib/data";
 import { formatDate } from "@/lib/format";
-import { unitAllocation } from "@/lib/plan";
+import { sparePlacements, unitAllocation } from "@/lib/plan";
 import { planetSlug } from "@/lib/requirements";
 import { RememberPhase } from "./PhaseLink";
 import { PhaseSwitcher } from "./PhaseSwitcher";
@@ -28,7 +28,6 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
 
   const rows: TableRow[] = status.map((s) => {
     const alloc = unitAllocation(phase, plan, s.baseId, s.meets);
-    const placed = alloc.reduce((a, c) => a + c.planned, 0);
     return {
       baseId: s.baseId,
       name: s.name,
@@ -36,7 +35,7 @@ export function PhaseOverview({ phase: n }: { phase: number }) {
       status: s.status,
       meets: s.meets,
       need: s.need,
-      spare: s.meets - placed,
+      spare: sparePlacements(plan, s.baseId, s.meets),
       cells: alloc.map((c) => ({ required: c.required, planned: c.planned, shortFor: c.shortFor })),
     };
   });

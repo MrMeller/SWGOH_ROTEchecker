@@ -28,12 +28,14 @@ export async function generateMetadata({ params }: { params: Params }) {
  */
 const SLOT_STYLE: Record<SlotState, { tile: string; image: string }> = {
   filled: { tile: "", image: "" },
+  scarce: { tile: "ring-2 ring-amber-400", image: "" },
   lacking: { tile: "ring-2 ring-rose-500", image: "opacity-70 grayscale" },
   held: { tile: "", image: "opacity-35 grayscale" },
 };
 
 function badge(p: PlatoonView): { label: string; className: string } {
-  if (p.filled) return { label: "Filled", className: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/40" };
+  if (p.fill === "day1") return { label: "Filled", className: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/40" };
+  if (p.fill === "later") return { label: "Day 2+", className: "bg-amber-400/15 text-amber-200 ring-amber-400/40" };
   const short = [...p.lacking.values()].reduce((a, n) => a + n, 0);
   if (!short) return { label: "Held back", className: "bg-slate-700/40 text-slate-300 ring-slate-600" };
   const label = `${short} short`;
@@ -86,7 +88,7 @@ export default async function PlanetPage({ params }: { params: Params }) {
           return (
             <section
               key={p.number}
-              className={`rounded-xl p-3 ring-1 ${p.filled ? "bg-slate-900 ring-slate-700" : "bg-slate-900/50 ring-slate-800"}`}
+              className={`rounded-xl p-3 ring-1 ${p.fill ? "bg-slate-900 ring-slate-700" : "bg-slate-900/50 ring-slate-800"}`}
             >
               <h2 className="mb-2 flex items-center justify-between text-sm font-semibold">
                 <span>Platoon {p.number}</span>
@@ -126,7 +128,7 @@ export default async function PlanetPage({ params }: { params: Params }) {
                   ))}
                 </p>
               )}
-              {!p.filled && p.lacking.size === 0 && (
+              {!p.fill && p.lacking.size === 0 && (
                 <p className="mt-2 text-xs text-slate-500">Every unit is available, but the plan uses their players elsewhere.</p>
               )}
             </section>
