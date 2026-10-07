@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyButtons } from "@/components/CopyButtons";
+import { DaysVariants } from "@/components/Days";
 import { PhaseSwitcher } from "@/components/PhaseSwitcher";
 import { StatusChip } from "@/components/StatusChip";
 import { getFocus, getPhase, getSnapshot, PHASES, unitName } from "@/lib/data";
-import { focusToDiscord, stepsLabel } from "@/lib/format";
+import { focusToDiscord, gapSentence, stepsLabel } from "@/lib/format";
+import type { Phase } from "@/lib/requirements";
+import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
 export const dynamicParams = false;
 
@@ -20,8 +23,6 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
   const n = Number((await params).phase);
   const phase = getPhase(n);
   if (!phase) notFound();
-  const focus = getFocus(n).map((f) => ({ ...f, name: unitName(f.baseId, f.name) }));
-  const messages = focusToDiscord(n, phase.minRelic, focus, getSnapshot().syncedAt);
 
   return (
     <div className="space-y-5">
@@ -32,10 +33,25 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
         </h1>
         <p className="mt-1 text-sm text-slate-400">
           Every unit below its phase total, with the players whose gearing closes the gap soonest.
-          Red units first, then the easiest wins.
+          Red units first, then the easiest wins. Over several days, the first players listed make a red unit fillable.
         </p>
       </div>
 
+      <DaysVariants
+        variants={Object.fromEntries(DAYS_OPTIONS.map((d) => [d, <FocusBody key={d} phase={phase} days={d} />])) as Record<Days, React.ReactNode>}
+      />
+    </div>
+  );
+}
+
+/** The focus list and its Discord text under the plan for `days` days. */
+function FocusBody({ phase, days }: { phase: Phase; days: Days }) {
+  const n = phase.phase;
+  const focus = getFocus(n, days).map((f) => ({ ...f, name: unitName(f.baseId, f.name) }));
+  const messages = focusToDiscord(n, phase.minRelic, focus, getSnapshot().syncedAt);
+
+  return (
+    <div className="space-y-5">
       {focus.length > 0 && <CopyButtons messages={messages} />}
 
       {focus.length === 0 ? (
@@ -57,7 +73,7 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
                 </span>
               </div>
               <p className="mt-1 text-xs text-slate-400">
-                Need {f.gap} more.
+                {gapSentence(f)}
                 {!f.closable && (
                   <span className="text-rose-300">
                     {" "}Only {f.candidates.length} other {f.candidates.length === 1 ? "player owns" : "players own"} it, so it cannot be fully closed by gearing.
@@ -66,11 +82,12 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
               </p>
               {f.candidates.length > 0 && (
                 <ol className="mt-2 space-y-1">
-                  {f.candidates.map((c) => (
+                  {f.candidates.map((c, i) => (
                     <li key={c.allyCode} className="flex items-center gap-2 text-sm">
                       <Link href={`/player/${c.allyCode}?phase=${n}`} className="min-w-0 flex-1 truncate hover:underline">
                         {c.name}
                       </Link>
+                      {f.days > 1 && i < f.gapDays && <span className="text-xs text-amber-200">makes it fillable</span>}
                       {c.needsStars && <span className="text-xs text-amber-300">needs stars</span>}
                       <span className="w-12 text-right font-mono text-slate-200">{c.label}</span>
                       <span className="w-24 text-right text-xs text-slate-500">{stepsLabel(c.distance, f.combatType === 2)}</span>

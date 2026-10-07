@@ -68,7 +68,7 @@ scripts/
 - Ships: meet the requirement at **7 stars** (`rarity == 7`). Relic does not apply.
 - Unit level (1 to 85) is ignored; gear implies it.
 - Phase minimum relic: P1 R5, P2 R6, P3 R7, P4 R8, P5 R9, P6 R9.
-- A player can fill a given unit **once per phase**, across all three planets. That is why the phase total, not the planet total, is the number that matters for "enough".
+- A player can place a given unit **once per day**, in any platoon of any open planet. Platoons of an earlier phase stay open after the next phase starts, until the planet is three-starred, and the daily reset lets the same player place the same unit again. So a phase the guild plays over D days gives each player D placements per unit. The phase total divided by D (rounded up) is the number that matters for "fillable"; the full phase total is what it takes to fill everything on day 1. D is a visitor toggle (1, 2 or 3), default 2: DutchJedi plays about three phases over the six days. Decided 2026-10-06 from in-game observation.
 
 ## Things to verify, not assume
 

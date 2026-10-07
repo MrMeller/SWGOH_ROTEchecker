@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DaysVariants } from "@/components/Days";
 import { StatusChip } from "@/components/StatusChip";
 import { Tabs } from "@/components/Tabs";
 import { getFocus, getPhase, getSnapshot, PHASES, unitName } from "@/lib/data";
 import { recommendationsFor } from "@/lib/focus";
 import { stepsLabel } from "@/lib/format";
+import type { TrimmedPlayer } from "@/lib/snapshot";
+import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
 export const dynamicParams = false;
 
@@ -22,9 +25,28 @@ export default async function PlayerPage({ params }: { params: Promise<{ allyCod
   const player = findPlayer((await params).allyCode);
   if (!player) notFound();
 
+  return (
+    <div className="space-y-5">
+      <div>
+        <Link href="/player" className="text-sm text-sky-400 hover:underline">← All players</Link>
+        <h1 className="mt-2 text-xl font-semibold">{player.name}</h1>
+        <p className="text-sm text-slate-400">
+          Units the guild is short on where you are one of the closest players, easiest first.
+          {player.stale && <span className="text-amber-300"> Your data could not be refreshed in the last sync.</span>}
+        </p>
+      </div>
+      <DaysVariants
+        variants={Object.fromEntries(DAYS_OPTIONS.map((d) => [d, <Recommendations key={d} player={player} days={d} />])) as Record<Days, React.ReactNode>}
+      />
+    </div>
+  );
+}
+
+/** Per phase, the units where this player is among the closest candidates, under the plan for `days` days. */
+function Recommendations({ player, days }: { player: TrimmedPlayer; days: Days }) {
   const tabs = PHASES.map((n) => {
     const phase = getPhase(n)!;
-    const recs = recommendationsFor(player.allyCode, getFocus(n));
+    const recs = recommendationsFor(player.allyCode, getFocus(n, days));
     return {
       key: String(n),
       label: (
@@ -49,7 +71,10 @@ export default async function PlayerPage({ params }: { params: Promise<{ allyCod
                   </span>
                 </div>
                 <p className="mt-1 text-xs text-slate-400">
-                  {stepsLabel(c.distance, ship)}. You are #{rank} of the {unit.gap} the guild still needs
+                  {stepsLabel(c.distance, ship)}.{" "}
+                  {unit.days > 1 && rank <= unit.gapDays
+                    ? `You are #${rank} of the ${unit.gapDays} the guild needs to fill it over ${unit.days} days`
+                    : `You are #${rank} of the ${unit.gap} the guild needs to fill everything on day 1`}{" "}
                   ({unit.meets}/{unit.need} now).
                   {c.needsStars && <span className="text-amber-300"> Needs 7 stars first.</span>}
                 </p>
@@ -65,17 +90,5 @@ export default async function PlayerPage({ params }: { params: Promise<{ allyCod
     };
   });
 
-  return (
-    <div className="space-y-5">
-      <div>
-        <Link href="/player" className="text-sm text-sky-400 hover:underline">← All players</Link>
-        <h1 className="mt-2 text-xl font-semibold">{player.name}</h1>
-        <p className="text-sm text-slate-400">
-          Units the guild is short on where you are one of the closest players, easiest first.
-          {player.stale && <span className="text-amber-300"> Your data could not be refreshed in the last sync.</span>}
-        </p>
-      </div>
-      <Tabs tabs={tabs} queryParam="phase" />
-    </div>
-  );
+  return <Tabs tabs={tabs} queryParam="phase" />;
 }

@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DaysVariants } from "@/components/Days";
 import { PlanetTag, PlatoonPills } from "@/components/PlanetPlan";
 import { PLANET_STYLE } from "@/components/planets";
 import { findPlanet, getPhase, getPhasePlan, getPhaseStatus, getRequirements, unitImage, unitName } from "@/lib/data";
+import { laterDays } from "@/lib/format";
 import { platoonViews, type PlatoonView, type SlotState } from "@/lib/plan";
-import { planetSlug } from "@/lib/requirements";
+import { planetSlug, type Phase, type Planet } from "@/lib/requirements";
+import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
 export const dynamicParams = false;
 
@@ -28,12 +31,17 @@ export async function generateMetadata({ params }: { params: Params }) {
  */
 const SLOT_STYLE: Record<SlotState, { tile: string; image: string }> = {
   filled: { tile: "", image: "" },
+  scarce: { tile: "ring-2 ring-amber-400", image: "" },
   lacking: { tile: "ring-2 ring-rose-500", image: "opacity-70 grayscale" },
   held: { tile: "", image: "opacity-35 grayscale" },
 };
 
-function badge(p: PlatoonView): { label: string; className: string } {
-  if (p.filled) return { label: "Filled", className: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/40" };
+function badge(p: PlatoonView, days: number): { label: string; className: string } {
+  if (p.fill === "day1") return { label: "Filled", className: "bg-emerald-500/15 text-emerald-300 ring-emerald-500/40" };
+  if (p.fill === "later") {
+    const when = laterDays(days);
+    return { label: when[0].toUpperCase() + when.slice(1), className: "bg-amber-400/15 text-amber-200 ring-amber-400/40" };
+  }
   const short = [...p.lacking.values()].reduce((a, n) => a + n, 0);
   if (!short) return { label: "Held back", className: "bg-slate-700/40 text-slate-300 ring-slate-600" };
   const label = `${short} short`;
@@ -48,11 +56,6 @@ export default async function PlanetPage({ params }: { params: Params }) {
   const phase = getPhase(n);
   const planet = phase && findPlanet(phase, slug);
   if (!phase || !planet) notFound();
-
-  const plan = getPhasePlan(n);
-  const meets = new Map(getPhaseStatus(n).map((u) => [u.baseId, u.meets]));
-  const platoons = platoonViews(phase, plan, planet.name, meets);
-  const planetPlan = plan.planets.find((p) => p.planet === planet.name)!;
   const style = PLANET_STYLE[planet.alignment];
 
   return (
@@ -64,17 +67,46 @@ export default async function PlanetPage({ params }: { params: Params }) {
         <h1 className={`mt-2 text-xl font-semibold ${style.text}`}>
           {planet.name} <PlanetTag planet={planet} />
         </h1>
+        <p className="text-sm text-slate-400">Phase {n}, R{phase.minRelic} needed.</p>
+      </div>
+
+      <DaysVariants
+        variants={
+          Object.fromEntries(DAYS_OPTIONS.map((d) => [d, <Board key={d} phase={phase} planet={planet} days={d} />])) as Record<Days, React.ReactNode>
+        }
+      />
+    </div>
+  );
+}
+
+/** The six platoons under the plan for `days` days. */
+function Board({ phase, planet, days }: { phase: Phase; planet: Planet; days: Days }) {
+  const n = phase.phase;
+  const plan = getPhasePlan(n, days);
+  const meets = new Map(getPhaseStatus(n, days).map((u) => [u.baseId, u.meets]));
+  const platoons = platoonViews(phase, plan, planet.name, meets);
+  const planetPlan = plan.planets.find((p) => p.planet === planet.name)!;
+  const later = planetPlan.filled - planetPlan.firstDay;
+
+  return (
+    <div className="space-y-5">
+      <div>
         <p className="text-sm text-slate-400">
-          Phase {n}, R{phase.minRelic} needed. {planetPlan.filled} of {platoons.length} platoons can be filled with the
-          current phase plan.
+          {planetPlan.filled} of {platoons.length} platoons can be filled with the current phase plan
+          {later > 0 ? `, ${planetPlan.firstDay} on day 1 and ${later} on ${laterDays(days)}.` : "."}
         </p>
-        <PlatoonPills platoons={planetPlan.platoons} alignment={planet.alignment} className="mt-2 max-w-xs" />
+        <PlatoonPills platoons={planetPlan.platoons} alignment={planet.alignment} days={days} className="mt-2 max-w-xs" />
       </div>
 
       <p className="flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-400">
         <span>Full colour: the plan fills this platoon.</span>
+        {days > 1 && (
+          <span>
+            <span className="text-amber-200">Orange ring</span>: a player places this unit again on {laterDays(days)}, so the platoon completes then.
+          </span>
+        )}
         <span>
-          <span className="text-rose-300">Red ring</span>: a slot we have no player for yet.
+          <span className="text-rose-300">Red ring</span>: a slot we have no player for, even over {days === 1 ? "the day" : `${days} days`}.
         </span>
         <span>Faded: held back by other units or needed elsewhere.</span>
       </p>
@@ -82,11 +114,11 @@ export default async function PlanetPage({ params }: { params: Params }) {
       {/* Board order as in game: platoons 1 to 3 in the left column, 4 to 6 in the right. */}
       <div className="grid grid-cols-1 gap-3 sm:grid-flow-col sm:grid-cols-2 sm:grid-rows-3">
         {platoons.map((p) => {
-          const b = badge(p);
+          const b = badge(p, days);
           return (
             <section
               key={p.number}
-              className={`rounded-xl p-3 ring-1 ${p.filled ? "bg-slate-900 ring-slate-700" : "bg-slate-900/50 ring-slate-800"}`}
+              className={`rounded-xl p-3 ring-1 ${p.fill ? "bg-slate-900 ring-slate-700" : "bg-slate-900/50 ring-slate-800"}`}
             >
               <h2 className="mb-2 flex items-center justify-between text-sm font-semibold">
                 <span>Platoon {p.number}</span>
@@ -120,13 +152,13 @@ export default async function PlanetPage({ params }: { params: Params }) {
                       {i > 0 && ", "}
                       <Link href={`/unit/${id}?phase=${n}`} className="text-rose-300 hover:underline">
                         {unitName(id)}
-                        {count > 1 && ` (${count} more)`}
+                        {!meets.get(id) ? " (nobody)" : count > 1 && ` (${count} more)`}
                       </Link>
                     </span>
                   ))}
                 </p>
               )}
-              {!p.filled && p.lacking.size === 0 && (
+              {!p.fill && p.lacking.size === 0 && (
                 <p className="mt-2 text-xs text-slate-500">Every unit is available, but the plan uses their players elsewhere.</p>
               )}
             </section>

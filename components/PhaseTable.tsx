@@ -67,17 +67,17 @@ export interface TableRow {
   status: Status;
   meets: number;
   need: number;
-  /** Players meeting the unit that no planned platoon uses. */
+  /** Placements (players × days) the planned platoons leave unused. */
   spare: number;
   /** One cell per planet, in the phase's planet order. */
   cells: TableCell[];
 }
 
-const STATUS_ORDER: Record<Status, number> = { short: 0, planet: 1, enough: 2 };
-const STATUS_EDGE: Record<Status, string> = { short: "border-rose-400", planet: "border-amber-300", enough: "border-emerald-400" };
-const STATUS_TEXT: Record<Status, string> = { short: "text-rose-300", planet: "text-amber-200", enough: "text-emerald-300" };
+const STATUS_ORDER: Record<Status, number> = { short: 0, days: 1, enough: 2 };
+const STATUS_EDGE: Record<Status, string> = { short: "border-rose-400", days: "border-amber-300", enough: "border-emerald-400" };
+const STATUS_TEXT: Record<Status, string> = { short: "text-rose-300", days: "text-amber-200", enough: "text-emerald-300" };
 
-/** Status first (short, planet only, enough), then the biggest requirement. */
+/** Status first (short, over days, enough), then the biggest requirement. */
 const byStatus = (a: TableRow, b: TableRow) =>
   STATUS_ORDER[a.status] - STATUS_ORDER[b.status] || b.need - a.need || a.name.localeCompare(b.name);
 
@@ -102,7 +102,7 @@ function Cell({ cell }: { cell: TableCell }) {
   return <span className="text-slate-400">{text}</span>;
 }
 
-export function PhaseTable({ phase, planets, rows }: { phase: number; planets: TablePlanet[]; rows: TableRow[] }) {
+export function PhaseTable({ phase, days, planets, rows }: { phase: number; days: number; planets: TablePlanet[]; rows: TableRow[] }) {
   const [onlyShort, setOnlyShort] = useState(false);
   const [showPlanets, setShowPlanets] = useState(false);
   const [sortPlanet, setSortPlanet] = useState<number | null>(null);
@@ -190,7 +190,11 @@ export function PhaseTable({ phase, planets, rows }: { phase: number; planets: T
               ))}
               <td className={`py-1.5 pr-1 text-right align-top text-[13px] font-semibold tabular-nums ${STATUS_TEXT[r.status]}`}>
                 {r.meets} / {r.need}
-                {r.spare > 0 && <span className="block text-[10px] font-normal text-slate-500">+{r.spare} spare</span>}
+                {r.status !== "enough" && r.spare > 0 && (
+                  <span className="block text-[10px] font-normal text-slate-500">
+                    +{r.spare} spare {days > 1 ? "placement" : "player"}{r.spare === 1 ? "" : "s"}
+                  </span>
+                )}
               </td>
             </tr>
           ))}

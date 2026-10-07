@@ -119,13 +119,15 @@ Characters also need 7 stars to unlock relics. If `rarity < 7`, show a "needs st
 
 ### 5.3 Per-unit status for a phase
 
-No "almost" threshold. Let `need = phase total`, `maxPlanet = highest single-planet count`, `meets = players meeting the requirement`.
+A player places a unit once per day, and platoons stay open across the daily reset until the planet is three-starred, so a phase the guild plays over `days` days gives every player `days` placements per unit (see the game rules in CLAUDE.md). Let `need = phase total` (slots for the unit across all platoons of the phase), `meets = players meeting the requirement`, `floor = ceil(need / days)` (players needed to fill every slot over `days` days). No "almost" threshold.
 
-| Status | Rule | Colour |
-|---|---|---|
-| Enough | `meets >= need` | green |
-| Planet only | `maxPlanet <= meets < need` | yellow (same as sheet legend) |
-| Short | `meets < maxPlanet` | red |
+| Status | Rule | Colour | Meaning |
+|---|---|---|---|
+| Enough | `meets >= need` | green | every slot fills on day 1 |
+| Over days | `floor <= meets < need` | orange | fills, but some players place the unit again on a later day |
+| Short | `meets < floor` | red | not fillable even over `days` days, including nobody meets it |
+
+`days` is a visitor toggle (1, 2 or 3), remembered per browser, default 2. With `days = 1` the model is the old "once per phase" one. "Planet only" (enough for the biggest planet) no longer exists: it only mattered when the phase total was the binding limit.
 
 Always show the numbers: `meets / need`, plus `owned` (players who have the unit at all).
 
@@ -140,18 +142,18 @@ Players who don't own the unit are shown only as a count.
 
 ### 5.5 Platoon plan per phase
 
-A platoon only scores when all 15 slots are filled, and a player fills a unit once per phase, so platoons compete for the same players across all planets. `lib/plan.ts` finds the **largest set of platoons that can be filled at the same time**, given how many players meet each unit (exact branch and bound, about 1 ms per phase). On a tie it prefers regular planets over bonus planets, then platoons that need fewer scarce units.
+A platoon only scores when all 15 slots are filled, and a player places a unit once per day, so platoons compete for the same players across all planets of the phase. Each unit's capacity is `meets × days` placements. `lib/plan.ts` finds the **largest set of platoons that can be filled over `days` days** (exact branch and bound, about 1 ms per phase). The plan is nested: first the largest set fillable on day 1 (capacity `meets`), then the largest extension of that set with the full capacity, so the day-1 platoons are always part of the plan. On a tie it prefers regular planets over bonus planets, then platoons that need fewer scarce units.
 
-Shown as six pills per planet: filled when the plan fills that platoon, open otherwise. Per unit and planet, "short for N platoons" counts the open platoons it is in where it has no spare player left after the planned ones.
+Shown as six pills per planet: full when the plan fills that platoon on day 1, half when it fills on a later day, open otherwise. Per unit and planet, "short for N platoons" counts the open platoons it is in where it has no spare placement left after the planned ones (`meets × days` minus planned slots).
 
 ## 6. Screens
 
 Mobile first. Most members will open this from Discord on a phone.
 
-1. **Phase overview** (home). Phase switcher P1 to P6 on top and the snapshot date ("Data from ..."). Summary bar (X of Y units enough), the phase plan with a card per planet (platoon pills, tap for the planet board), then one table with a row per unit: optionally (toggle, off by default) a cell per planet showing players the plan places / slots on that planet (green covered, red when we lack players there, plain when the players are used elsewhere, a dot when not needed), and a have / need total with the spare count. Status as a coloured left edge. Sorted short first; tapping a planet header sorts by that planet. Filter: show only short units, remembered per browser.
+1. **Phase overview** (home). Phase switcher P1 to P6 on top and the snapshot date ("Data from ..."). Summary bar (X of Y units enough), the phase plan with a card per planet (platoon pills, tap for the planet board), then one table with a row per unit: optionally (toggle, off by default) a cell per planet showing players the plan places / slots on that planet (green covered, red when we lack players there, plain when the players are used elsewhere, a dot when not needed), and a have / need total with the spare count. Status as a coloured left edge. Sorted short first; tapping a planet header sorts by that planet. Filter: show only short units, remembered per browser. Days per phase toggle (1, 2, 3) next to the phase plan, remembered per browser and applied on every page.
 2. **Unit detail.** Requirement per phase and planet where this unit appears, ranked player list (§5.4).
 3. **Focus list.** Across the selected phase, every short unit with the specific players whose gearing would close the gap soonest. Copy-to-clipboard button producing Discord-ready text.
-4. **Planet page.** Opened from a planet card in the phase plan or a planet header. The six platoons as on the in-game board (platoons 1 to 3 in the left column, 4 to 6 in the right; stacked on phones), with unit portraits from the swgoh.gg catalog. Full colour when the plan fills the platoon; faded otherwise. In an open platoon, a unit with N slots and S spare players (meeting it, not used by the planned platoons) gets N minus S red-ringed slots, and the "Lacking" line names the units with how many more players each needs. That is what it takes to open this platoon next, on top of the plan, and it matches the unit counts in the list view. Badge per platoon: Filled, Almost (1 or 2 short), N short, or Held back (every unit available but used elsewhere).
+4. **Planet page.** Opened from a planet card in the phase plan or a planet header. The six platoons as on the in-game board (platoons 1 to 3 in the left column, 4 to 6 in the right; stacked on phones), with unit portraits from the swgoh.gg catalog. Full colour when the plan fills the platoon; faded otherwise. In a platoon the plan fills on a later day, the slots of units that a player has to place again get an orange ring: the platoon completes on day 2 or later. In an open platoon, a unit with N slots and S spare placements (`meets × days` minus what the planned platoons use) gets N minus S red-ringed slots, and the "Lacking" line names the units with how many more players each needs, "nobody" when no player meets it. That is what it takes to open this platoon next, on top of the plan, and it matches the unit counts in the list view. Badge per platoon: Filled (day 1), Day 2 or Day 2 or 3 (completes after a daily reset, named after the days toggle), Almost (1 or 2 short), N short, or Held back (every unit available but used elsewhere).
 5. **Player page.** Pick your name: units where the guild is short and you are among the closest candidates, sorted by your distance. This is the "what should I gear" view.
 6. **Progress (v1.1).** Per phase: count of "enough" units over time from stored snapshots.
 
@@ -208,3 +210,4 @@ Sanity check for step 6: the sheet's "units that meet reqs" column (in `rote_raw
 3. ~~"Won't fill" flag~~ Decided 2026-09-30: out of scope, insight only.
 4. ~~Public URL or unlisted?~~ Decided 2026-09-30: public.
 5. ~~Bonus planets: needed?~~ Decided 2026-09-30: yes, Zeffo and Mandalore are included.
+6. ~~Once per phase or once per day?~~ Decided 2026-10-06: once per day. Observed in game: platoons of an earlier phase stay open after the next phase starts (until the planet is three-starred) and the daily reset lets a player place the same unit again. The guild plays about three phases over six days, so a unit needs roughly half the phase total. Encoded as the `days` toggle (§5.3, §5.5).
