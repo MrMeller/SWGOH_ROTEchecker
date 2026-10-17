@@ -77,8 +77,18 @@ function PlanetCard({ planet, phase, children }: { planet: PlanetMeta; phase: nu
 
 const gridCols = (n: number) => (n > 3 ? "grid-cols-2 sm:grid-cols-4" : "grid-cols-3");
 
-/** Phase level: per planet, how many of its six platoons the plan fills. */
-export function PhasePlanCard({ plan, planets, phase }: { plan: PhasePlan; planets: PlanetMeta[]; phase: number }) {
+/** Phase level: per planet, how many of its six platoons the plan fills, plus an optional note (special missions). */
+export function PhasePlanCard({
+  plan,
+  planets,
+  phase,
+  notes,
+}: {
+  plan: PhasePlan;
+  planets: PlanetMeta[];
+  phase: number;
+  notes?: Record<string, React.ReactNode>;
+}) {
   return (
     <div>
       <div className={`grid gap-2 ${gridCols(planets.length)}`}>
@@ -92,6 +102,7 @@ export function PhasePlanCard({ plan, planets, phase }: { plan: PhasePlan; plane
               </p>
               <p className="text-[11px] text-slate-500">platoons</p>
               <PlatoonPills platoons={p.platoons} alignment={meta.alignment} days={plan.days} className="mt-2" />
+              {notes?.[meta.name]}
             </PlanetCard>
           );
         })}

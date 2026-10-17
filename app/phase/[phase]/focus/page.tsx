@@ -2,10 +2,12 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { CopyButtons } from "@/components/CopyButtons";
 import { DaysVariants } from "@/components/Days";
+import { CoverageNotice, UnlockChip, unlockSentence } from "@/components/MissionCard";
 import { PhaseSwitcher } from "@/components/PhaseSwitcher";
 import { StatusChip } from "@/components/StatusChip";
-import { getFocus, getPhase, getSnapshot, PHASES, unitName } from "@/lib/data";
+import { getFocus, getMissionStatus, getPhase, getSnapshot, missionHref, missionsIn, PHASES, unitName } from "@/lib/data";
 import { focusToDiscord, gapSentence, stepsLabel } from "@/lib/format";
+import { MISSION_FOCUS_LIMIT, missingText, missionFocus, missionRequirement, rewardText, type MissionFocusItem } from "@/lib/missions";
 import type { Phase } from "@/lib/requirements";
 import { DAYS_OPTIONS, type Days } from "@/lib/status";
 
@@ -23,6 +25,7 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
   const n = Number((await params).phase);
   const phase = getPhase(n);
   if (!phase) notFound();
+  const missions = missionsIn(n).map((m) => missionFocus(getMissionStatus(m)));
 
   return (
     <div className="space-y-5">
@@ -34,25 +37,81 @@ export default async function FocusPage({ params }: { params: Promise<{ phase: s
         <p className="mt-1 text-sm text-slate-400">
           Every unit below its phase total, with the players whose gearing closes the gap soonest.
           Red units first, then the easiest wins. Over several days, the first players listed make a red unit fillable.
+          {missions.length > 0 && " The special missions of this phase follow the units."}
         </p>
       </div>
 
       <DaysVariants
-        variants={Object.fromEntries(DAYS_OPTIONS.map((d) => [d, <FocusBody key={d} phase={phase} days={d} />])) as Record<Days, React.ReactNode>}
+        variants={
+          Object.fromEntries(DAYS_OPTIONS.map((d) => [d, <FocusBody key={d} phase={phase} days={d} missions={missions} />])) as Record<Days, React.ReactNode>
+        }
       />
     </div>
   );
 }
 
+const name = (id: string) => unitName(id);
+
+/** The special missions of the phase: members ready, and who to ask next. Independent of the days toggle. */
+function MissionFocus({ phase: n, missions }: { phase: number; missions: MissionFocusItem[] }) {
+  return (
+    <section className="space-y-3">
+      <div>
+        <h2 className="text-sm font-semibold text-slate-300">Special missions</h2>
+        <p className="text-xs text-slate-400">
+          One attempt per member. For a mission that unlocks a bonus planet, the members listed close the gap to the wins needed; otherwise the
+          closest {MISSION_FOCUS_LIMIT} are listed.
+        </p>
+      </div>
+      <CoverageNotice />
+      <ul className="space-y-3">
+        {missions.map(({ status: s, candidates }) => {
+          const m = s.mission;
+          return (
+            <li key={`${m.planet}-${m.id}`} className="rounded-xl bg-slate-900/60 p-3 ring-1 ring-slate-800">
+              <div className="flex items-center gap-3">
+                {s.unlock && <UnlockChip status={s.unlock.status} />}
+                <Link href={missionHref(m)} className="min-w-0 flex-1 truncate font-medium hover:underline">
+                  {m.title} <span className="text-xs font-normal text-slate-400">{m.planet}</span>
+                </Link>
+                <span className="text-sm tabular-nums">
+                  <span className="font-semibold">{s.ready.length}</span>
+                  <span className="text-slate-500"> ready</span>
+                </span>
+              </div>
+              <p className="mt-1 text-xs text-slate-400">
+                {missionRequirement(m, name)}. {s.unlock ? unlockSentence(s.unlock) : `${rewardText(m.reward)}.`}
+              </p>
+              {candidates.length > 0 && (
+                <ol className="mt-2 space-y-1">
+                  {candidates.map((c) => (
+                    <li key={c.allyCode} className="flex items-baseline gap-2 text-sm">
+                      <Link href={`/player/${c.allyCode}`} className="shrink-0 hover:underline">
+                        {c.name}
+                      </Link>
+                      <span className="min-w-0 flex-1 text-xs text-slate-500">{missingText(c, m, name)}</span>
+                      <span className="shrink-0 text-xs text-slate-400">{c.missing} short</span>
+                    </li>
+                  ))}
+                </ol>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
 /** The focus list and its Discord text under the plan for `days` days. */
-function FocusBody({ phase, days }: { phase: Phase; days: Days }) {
+function FocusBody({ phase, days, missions }: { phase: Phase; days: Days; missions: MissionFocusItem[] }) {
   const n = phase.phase;
   const focus = getFocus(n, days).map((f) => ({ ...f, name: unitName(f.baseId, f.name) }));
-  const messages = focusToDiscord(n, phase.minRelic, focus, getSnapshot().syncedAt);
+  const messages = focusToDiscord(n, phase.minRelic, focus, getSnapshot().syncedAt, missions, name);
 
   return (
     <div className="space-y-5">
-      {focus.length > 0 && <CopyButtons messages={messages} />}
+      {(focus.length > 0 || missions.length > 0) && <CopyButtons messages={messages} />}
 
       {focus.length === 0 ? (
         <p className="rounded-xl bg-emerald-500/10 p-4 text-emerald-200 ring-1 ring-emerald-500/30">
@@ -99,6 +158,8 @@ function FocusBody({ phase, days }: { phase: Phase; days: Days }) {
           ))}
         </ul>
       )}
+
+      {missions.length > 0 && <MissionFocus phase={n} missions={missions} />}
     </div>
   );
 }

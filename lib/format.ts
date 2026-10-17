@@ -1,6 +1,7 @@
 // Display helpers shared by the UI and the Discord export. No em dashes in output.
 import type { FocusItem } from "./focus";
 import type { Candidate } from "./matching";
+import { missingText, type MissionFocusItem } from "./missions";
 import type { PhasePlan, UnitAllocation } from "./plan";
 
 function joinWords(words: string[], last = "and"): string {
@@ -54,6 +55,18 @@ function candidateText(c: Candidate): string {
 
 export const DISCORD_LIMIT = 2000;
 
+/** One Discord line per special mission: members ready, the unlock it feeds, and who to ask with what they lack. */
+export function missionLine({ status: s, candidates }: MissionFocusItem, name: (baseId: string) => string): string {
+  const m = s.mission;
+  const unlock = !s.unlock
+    ? ""
+    : s.unlock.gap > 0
+      ? `, ${s.unlock.gap} more needed for the ${s.unlock.wins} wins that unlock ${s.unlock.planet}`
+      : `, covers the ${s.unlock.wins} wins that unlock ${s.unlock.planet}`;
+  const who = candidates.length ? `: ${candidates.map((c) => `${c.name} (${missingText(c, m, name, false)})`).join(", ")}` : "";
+  return `• **${m.title}** (${m.planet}) ${s.ready.length} ready${unlock}${who}`;
+}
+
 /** "Need 2 more" in words, with the days split when the guild plays the phase over several days. */
 export function gapSentence(u: Pick<FocusItem, "days" | "gap" | "gapDays" | "status">): string {
   if (u.days === 1 || u.gapDays === u.gap) return `Need ${u.gap} more.`;
@@ -62,7 +75,14 @@ export function gapSentence(u: Pick<FocusItem, "days" | "gap" | "gapDays" | "sta
 }
 
 /** Discord-ready focus text for one phase, split into messages under the 2000 character limit. */
-export function focusToDiscord(phase: number, minRelic: number, items: readonly FocusItem[], syncedAt: string): string[] {
+export function focusToDiscord(
+  phase: number,
+  minRelic: number,
+  items: readonly FocusItem[],
+  syncedAt: string,
+  missions: readonly MissionFocusItem[] = [],
+  name: (baseId: string) => string = (id) => id,
+): string[] {
   const days = items[0]?.days ?? 1;
   const over = days > 1 ? `, over ${days} days` : "";
   const header = `**RotE Phase ${phase} focus** (R${minRelic}${over}, data from ${formatDate(syncedAt)})`;
@@ -72,7 +92,8 @@ export function focusToDiscord(phase: number, minRelic: number, items: readonly 
     const gap = u.days === 1 || u.gapDays === u.gap ? "" : u.status === "short" ? ` need ${u.gapDays} for ${u.days} days, ${u.gap} for day 1:` : ` fills over ${u.days} days, ${u.gap} more for day 1:`;
     return `• **${u.name}** ${u.meets}/${u.need}:${gap} ${who}${note}`;
   });
-  if (!lines.length) return [`${header}\nEvery unit is covered. Nice work!`];
+  if (!lines.length) lines.push("Every unit is covered. Nice work!");
+  if (missions.length) lines.push("**Special missions** (one attempt per member)", ...missions.map((m) => missionLine(m, name)));
 
   const messages: string[] = [];
   let current = header;

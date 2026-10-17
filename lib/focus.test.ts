@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { focusList, recommendationsFor } from "./focus";
 import { DISCORD_LIMIT, focusToDiscord, gapSentence } from "./format";
+import { missionFocus, missionStatus, type Mission } from "./missions";
 import type { Phase } from "./requirements";
 import type { TrimmedPlayer } from "./snapshot";
 
@@ -107,5 +108,41 @@ describe("focusToDiscord", () => {
     const msgs = focusToDiscord(5, 9, many, "2026-10-05T03:00:00Z");
     expect(msgs.length).toBeGreaterThan(1);
     for (const m of msgs) expect(m.length).toBeLessThanOrEqual(DISCORD_LIMIT);
+  });
+});
+
+describe("focusToDiscord with special missions", () => {
+  const mission: Mission = {
+    id: "han",
+    phase: 5,
+    planet: "Vandor",
+    title: "Han",
+    squad: 2,
+    minRelic: 9,
+    tag: null,
+    required: ["A", "B"],
+    anyOf: [],
+    reward: { item: "Mk III Guild Event Tokens", amount: 20 },
+    unlocks: { planet: "X", wins: 3 },
+  };
+  const catalog = [
+    { name: "A", base_id: "A", combat_type: 1 },
+    { name: "B", base_id: "B", combat_type: 1 },
+  ];
+
+  it("adds a mission block after the units with who to ask and what they lack", () => {
+    const item = missionFocus(missionStatus(mission, players, catalog));
+    const [msg] = focusToDiscord(5, 9, focusList(phase, players, 1), "2026-10-05T03:00:00Z", [item], (id) => id);
+    expect(msg).toContain("**Special missions** (one attempt per member)");
+    expect(msg).toContain("• **Han** (Vandor) 0 ready, 3 more needed for the 3 wins that unlock X: p1 (B R8), p3 (A R5), p2 (A R8, B not owned)");
+    expect(msg.indexOf("**A** 1/3")).toBeLessThan(msg.indexOf("**Special missions**"));
+    expect(msg).not.toMatch(/—/);
+  });
+
+  it("keeps the covered message and still lists the missions", () => {
+    const item = missionFocus(missionStatus(mission, players, catalog));
+    const [msg] = focusToDiscord(5, 9, [], "2026-10-05T03:00:00Z", [item]);
+    expect(msg).toContain("Every unit is covered. Nice work!");
+    expect(msg).toContain("• **Han** (Vandor)");
   });
 });

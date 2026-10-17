@@ -54,6 +54,8 @@ The June 2026 guild sheet (`data/rote_raw.txt`, transcribed by Jim Petron & Mhan
 
 When the game changes platoons: update `data/rote-platoons.json` from the swgoh.gg board and run `npm run validate`.
 
+Special missions have their own file, `data/rote-special-missions.json`, also checked by `npm run validate` (§10).
+
 ## 4. Roster data (swgoh-comlink)
 
 Decided 2026-10-02 after a smoke test (findings in `docs/comlink-exploration.md`). The sync reads the game's own data through [swgoh-comlink](https://github.com/swgoh-utils/swgoh-comlink), run as a service container inside the GitHub Action: no API key, no login, nothing hosted. swgoh.gg's API was the first choice, but Cloudflare blocks it without a bot access key.
@@ -85,14 +87,14 @@ Trimmed snapshot format, committed to the repo as `data/snapshots/latest.json` p
 }
 ```
 
-Only units that appear in the requirements dataset are kept. Size: about 8 KB per player, about 300 KB for the guild. Player names are the public in-game names (decided 2026-10-02): members need them to find themselves, and no real names are involved.
+Only units that appear in the platoon data or that a special mission can use are kept (`keptUnits` in `lib/missions.ts`, 403 units). Size: about 11 KB per player, about 400 KB for the guild. Player names are the public in-game names (decided 2026-10-02): members need them to find themselves, and no real names are involved.
 
 ### Payload size
 
 Comlink has no "units only" option: the player endpoint always returns the full roster including mods. So the **download** cannot be made smaller; what we control is everything after it:
 
 1. Fetch server-side only, in the GitHub Action, every other night (about 41 downloads, 100 MB, on GitHub's network).
-2. Parse, keep only `base_id`, gear, relic and stars for units in the requirements dataset, discard the rest immediately.
+2. Parse, keep only `base_id`, gear, relic and stars for units in the platoon data or a special mission, discard the rest immediately.
 3. Store and serve only the trimmed snapshot (about 300 KB). The browser never sees the raw payload.
 4. The Action has no practical time limit, so no batching is needed.
 
@@ -154,8 +156,9 @@ Mobile first. Most members will open this from Discord on a phone.
 2. **Unit detail.** Requirement per phase and planet where this unit appears, ranked player list (§5.4).
 3. **Focus list.** Across the selected phase, every short unit with the specific players whose gearing would close the gap soonest. Copy-to-clipboard button producing Discord-ready text.
 4. **Planet page.** Opened from a planet card in the phase plan or a planet header. The six platoons as on the in-game board (platoons 1 to 3 in the left column, 4 to 6 in the right; stacked on phones), with unit portraits from the swgoh.gg catalog. Full colour when the plan fills the platoon; faded otherwise. In a platoon the plan fills on a later day, the slots of units that a player has to place again get an orange ring: the platoon completes on day 2 or later. In an open platoon, a unit with N slots and S spare placements (`meets × days` minus what the planned platoons use) gets N minus S red-ringed slots, and the "Lacking" line names the units with how many more players each needs, "nobody" when no player meets it. That is what it takes to open this platoon next, on top of the plan, and it matches the unit counts in the list view. Badge per platoon: Filled (day 1), Day 2 or Day 2 or 3 (completes after a daily reset, named after the days toggle), Almost (1 or 2 short), N short, or Held back (every unit available but used elsewhere).
-5. **Player page.** Pick your name: units where the guild is short and you are among the closest candidates, sorted by your distance. This is the "what should I gear" view.
+5. **Player page.** Pick your name: units where the guild is short and you are among the closest candidates, sorted by your distance. This is the "what should I gear" view. Below it, every special mission: ready, or what you still lack for it.
 6. **Progress (v1.1).** Per phase: count of "enough" units over time from stored snapshots.
+7. **Special missions (§10).** A card per mission at the top of its planet page, a one-line note on the planet cards of the overview, and a mission page: requirement, members ready, the unlock bar, the not-ready members closest first with what each lacks, and the units that count as a portrait grid with members at the relic per unit.
 
 ## 7. Sync and storage (no database)
 
@@ -200,6 +203,7 @@ When is a database worth it? Only if the app later needs to write user input (no
 | 7 | Unit detail + focus list + Discord copy | Officers can use it |
 | 8 | Player page | Members can use it |
 | 9 | Progress chart | v1.1 |
+| 10 | Special missions: data file, validation, `lib/missions.ts`, planet cards, mission page, player section (§10) | Counts match the in-game "successful attempts" once everyone ready has played |
 
 Sanity check for step 6: the sheet's "units that meet reqs" column (in `rote_raw.txt`, June 2026) should be in the same ballpark as the app's numbers; differences are expected because rosters have progressed since then.
 
@@ -211,3 +215,33 @@ Sanity check for step 6: the sheet's "units that meet reqs" column (in `rote_raw
 4. ~~Public URL or unlisted?~~ Decided 2026-09-30: public.
 5. ~~Bonus planets: needed?~~ Decided 2026-09-30: yes, Zeffo and Mandalore are included.
 6. ~~Once per phase or once per day?~~ Decided 2026-10-06: once per day. Observed in game: platoons of an earlier phase stay open after the next phase starts (until the planet is three-starred) and the daily reset lets a player place the same unit again. The guild plays about three phases over six days, so a unit needs roughly half the phase total. Encoded as the `days` toggle (§5.3, §5.5).
+
+## 10. Special missions
+
+Decided 2026-10-17 from the in-game mission panels (TB #23). Some planets have a **special mission**: a squad requirement with one or two named units, one attempt per member per territory battle, paying guild tokens or a shard per win. Two of them unlock the bonus planets. A mission stays open after its planet is three-starred and the next phase has started, so the count keeps running.
+
+Source of truth: `data/rote-special-missions.json`, checked by `npm run validate` (planet exists in that phase, every `base_id` and tag exists in the swgoh.gg catalog, named units carry the tag, squad at least the named units, unlocks point at a later bonus planet). Tags are the catalog's `categories`.
+
+| Phase | Planet | Squad | Relic | Must include | Reward per win | Unlocks |
+|---|---|---|---|---|---|---|
+| P2 | Bracca | 2 | R7 | Cere Junda, Cal Kestis or Jedi Knight Cal Kestis | 50 Mk II Guild Event Tokens | Zeffo at 30 wins |
+| P3 | Dathomir | 5 Nightsisters | R7 | Merrin | 50 Mk II Guild Event Tokens | |
+| P3 | Tatooine | 3 Mandalorians | R7 | Bo-Katan (Mand'alor), The Mandalorian (Beskar Armor) | 50 Mk II Guild Event Tokens | Mandalore at 25 wins |
+| P3 | Tatooine | 5 Inquisitorius | R7 | Grand Inquisitor | 1 Third Sister shard | |
+| P3 | Kashyyyk | 5 Rebel Fighters | R7 | Saw Gerrera | 50 Mk II Guild Event Tokens | |
+| P3 | Zeffo (bonus) | 5 Clone Troopers | R7 | none | 50 Mk II Guild Event Tokens | |
+| P4 | Haven-class Medical Station | 5 Inquisitorius | R8 | Third Sister | 20 Mk III Guild Event Tokens | |
+| P4 | Kessel | 5 any characters | R8 | Qi'ra, L3-37 | 20 Mk III Guild Event Tokens | |
+| P5 | Vandor | 5 any characters | R9 | Young Han Solo, Vandor Chewbacca | 20 Mk III Guild Event Tokens | |
+
+Rules (`lib/missions.ts`, pure functions with tests):
+
+- A member is **ready** when every required unit, and one unit of each "any of" group, is G13 at the mission relic or higher, and at least `squad` characters from the pool are: the pool is the tag's characters, or every character when there is no tag, named units included. Ships never count. Ready means the units are there, not that the battle is won.
+- The mission relic is its own number, not the phase relic (Bracca is a P2 planet with R6 platoons; its mission needs R7).
+- Not ready: units short = named gaps + max(0, squad - units at the relic - named gaps). Effort = ladder steps (§5.1) over the named gaps and the closest owned fillers; a unit the member does not own counts the whole ladder. Members sort by fewest units short, then least effort, then name.
+- The guild number is **members ready**, capped by the guild size since each member attempts once. Unlock missions: enough when ready >= wins, close when within 5, short otherwise. The other missions show the count only (decided 2026-10-17). The days toggle does not apply.
+- The sync keeps every unit a mission can use on top of the platoon units (`keptUnits`): 403 units instead of 293, about a third more per player. A snapshot from before this shows the mission-only units as not owned; the pages say so until the next sync.
+
+Screens: a card per mission on the planet page (requirement, members ready, unlock bar, reward), a mission page (ready members, not-ready members with what each lacks, the pool as a portrait grid with members at the relic per unit), a special missions section on the player page, and a one-line note on the planet cards of the phase overview.
+
+Focus list: after the units, one block per special mission of the phase with members ready and who to ask next (`missionFocus`): for an unlock mission as many not-ready members as the gap to the wins needed, closest first; otherwise the closest five. The Discord text gets the same as a "Special missions" section, one line per mission with each member's gaps in short form (no closest-filler detail). Missions do not depend on the days toggle, so the block is the same in every variant.

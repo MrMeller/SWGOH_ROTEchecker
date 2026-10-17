@@ -1,6 +1,7 @@
 // Shared file loading for the npm scripts (the site uses lib/data.ts instead).
 import { readFileSync } from "node:fs";
 import path from "node:path";
+import type { MissionData } from "../lib/missions";
 import { buildRequirements, type CatalogUnit, type PlatoonData } from "../lib/requirements";
 
 export const root = path.resolve(import.meta.dirname, "..");
@@ -13,5 +14,7 @@ export const loadCatalog = (): CatalogUnit[] => [
 ];
 
 export const loadPlatoons = () => readJson<PlatoonData>("data/rote-platoons.json");
+
+export const loadMissions = () => readJson<MissionData>("data/rote-special-missions.json");
 
 export const loadRequirements = () => buildRequirements(loadPlatoons(), loadCatalog());

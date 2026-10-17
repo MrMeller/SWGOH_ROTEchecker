@@ -1,0 +1,122 @@
+{
+  "source": "In-game special mission panels, read 2026-10-17 during TB #23 (phase 5). One attempt per account per mission; the mission stays open after the planet is three-starred and the next phase has started.",
+  "missions": [
+    {
+      "id": "cere-and-cal",
+      "phase": 2,
+      "planet": "Bracca",
+      "title": "Cere Junda and Cal Kestis",
+      "squad": 2,
+      "minRelic": 7,
+      "tag": null,
+      "required": ["CEREJUNDA"],
+      "anyOf": [["CALKESTIS", "JEDIKNIGHTCAL"]],
+      "reward": { "item": "Mk II Guild Event Tokens", "amount": 50 },
+      "unlocks": { "planet": "Zeffo", "wins": 30 }
+    },
+    {
+      "id": "nightsisters",
+      "phase": 3,
+      "planet": "Dathomir",
+      "title": "Nightsisters",
+      "squad": 5,
+      "minRelic": 7,
+      "tag": "Nightsister",
+      "required": ["MERRIN"],
+      "anyOf": [],
+      "reward": { "item": "Mk II Guild Event Tokens", "amount": 50 },
+      "unlocks": null
+    },
+    {
+      "id": "mandalorians",
+      "phase": 3,
+      "planet": "Tatooine",
+      "title": "Mandalorians",
+      "squad": 3,
+      "minRelic": 7,
+      "tag": "Mandalorian",
+      "required": ["MANDALORBOKATAN", "THEMANDALORIANBESKARARMOR"],
+      "anyOf": [],
+      "reward": { "item": "Mk II Guild Event Tokens", "amount": 50 },
+      "unlocks": { "planet": "Mandalore", "wins": 25 }
+    },
+    {
+      "id": "inquisitorius",
+      "phase": 3,
+      "planet": "Tatooine",
+      "title": "Inquisitorius",
+      "squad": 5,
+      "minRelic": 7,
+      "tag": "Inquisitorius",
+      "required": ["GRANDINQUISITOR"],
+      "anyOf": [],
+      "reward": { "item": "Third Sister shard", "amount": 1 },
+      "unlocks": null
+    },
+    {
+      "id": "rebel-fighters",
+      "phase": 3,
+      "planet": "Kashyyyk",
+      "title": "Rebel Fighters",
+      "squad": 5,
+      "minRelic": 7,
+      "tag": "Rebel Fighter",
+      "required": ["SAWGERRERA"],
+      "anyOf": [],
+      "reward": { "item": "Mk II Guild Event Tokens", "amount": 50 },
+      "unlocks": null
+    },
+    {
+      "id": "clone-troopers",
+      "phase": 3,
+      "planet": "Zeffo",
+      "title": "Clone Troopers",
+      "squad": 5,
+      "minRelic": 7,
+      "tag": "Clone Trooper",
+      "required": [],
+      "anyOf": [],
+      "reward": { "item": "Mk II Guild Event Tokens", "amount": 50 },
+      "unlocks": null
+    },
+    {
+      "id": "inquisitorius",
+      "phase": 4,
+      "planet": "Haven-class Medical Station",
+      "title": "Inquisitorius",
+      "squad": 5,
+      "minRelic": 8,
+      "tag": "Inquisitorius",
+      "required": ["THIRDSISTER"],
+      "anyOf": [],
+      "reward": { "item": "Mk III Guild Event Tokens", "amount": 20 },
+      "unlocks": null
+    },
+    {
+      "id": "qira-and-l3",
+      "phase": 4,
+      "planet": "Kessel",
+      "title": "Qi'ra and L3-37",
+      "squad": 5,
+      "minRelic": 8,
+      "tag": null,
+      "required": ["QIRA", "L3_37"],
+      "anyOf": [],
+      "reward": { "item": "Mk III Guild Event Tokens", "amount": 20 },
+      "unlocks": null
+    },
+    {
+      "id": "han-and-chewbacca",
+      "phase": 5,
+      "planet": "Vandor",
+      "title": "Young Han Solo and Vandor Chewbacca",
+      "squad": 5,
+      "minRelic": 9,
+      "tag": null,
+      "required": ["YOUNGHAN", "YOUNGCHEWBACCA"],
+      "anyOf": [],
+      "reward": { "item": "Mk III Guild Event Tokens", "amount": 20 },
+      "unlocks": null
+    }
+  ]
+}

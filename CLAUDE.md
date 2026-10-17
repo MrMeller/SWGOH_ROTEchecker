@@ -26,6 +26,7 @@ Keep dependencies minimal. No auth, no user accounts. The app is read-only for v
 ```
 data/
   rote-platoons.json       # source of truth: every platoon's 15 base_ids, from the swgoh.gg board
+  rote-special-missions.json # the 9 special missions: squad, relic, tag, named units, reward, unlock (BUILD.md §10)
   rote_raw.txt             # June 2026 guild sheet, reference + demo calibration only
   fixtures/                # swgoh.gg unit catalogs + reduced comlink responses for tests
   snapshots/latest.json    # written by the sync, never by hand
@@ -36,6 +37,7 @@ lib/
   sync.ts                  # buildSnapshot (membership, stale) + runSync (paced fetching)
   matching.ts              # meets / distance logic (pure functions)
   status.ts                # green / yellow / red per unit per phase
+  missions.ts              # special missions: validation, ready / units short per member, members ready per mission
   focus.ts                 # focus list + per-player recommendations
   format.ts                # display labels + Discord text
   data.ts                  # server-side loading for pages
@@ -43,7 +45,8 @@ lib/
 app/
   page.tsx                 # phase overview (plan cards + units table)
   unit/[baseId]/page.tsx   # unit detail, sorted players
-  phase/[phase]/planet/[planet]/page.tsx  # board view of one planet, portraits per platoon
+  phase/[phase]/planet/[planet]/page.tsx  # board view of one planet, special mission cards on top, portraits per platoon
+  phase/[phase]/planet/[planet]/mission/[mission]/page.tsx  # one special mission: who is ready, who is close, the units that count
   player/[allyCode]/page.tsx
 scripts/
   sync.ts                  # npm run sync: guild -> members -> trim -> write JSON (logic in lib/sync.ts)
@@ -54,12 +57,12 @@ scripts/
 
 ## Hard rules
 
-1. **Requirements data is authoritative and validated.** `data/rote-platoons.json` is the source of truth: every planet has 6 platoons of 15 units (90 slots), every `base_id` must exist in the swgoh.gg catalogs. Per-planet counts are derived from it, never hand-edited. `npm run validate` must pass before any commit that touches `data/`.
+1. **Requirements data is authoritative and validated.** `data/rote-platoons.json` is the source of truth: every planet has 6 platoons of 15 units (90 slots), every `base_id` must exist in the swgoh.gg catalogs. Per-planet counts are derived from it, never hand-edited. `data/rote-special-missions.json` is the source of truth for special missions, checked the same way (planets, base_ids, catalog tags). `npm run validate` must pass before any commit that touches `data/`.
 2. **Match units by `base_id`, never by display name.** Display names come from the swgoh.gg catalogs. Planets are identified by name (a bonus planet shares its alignment with a regular one) and shown in map order: Dark Side, Mixed, Light Side, then bonus planets.
 3. **Matching logic lives in pure functions** in `lib/matching.ts` and `lib/status.ts` with unit tests. UI code never recomputes it.
 4. **Be a polite API client.** Roster data comes from swgoh-comlink, run as a service container inside the GitHub Action, which talks to the game servers with an anonymous guest account. One scheduled run every 48 hours, sequential requests at about 1 per second, a descriptive `User-Agent`, a pinned comlink version. No API keys anywhere. Never fetch player data from the browser or from Vercel.
 5. **Membership comes from the guild profile on every sync.** Never carry over players who are no longer in `members[]`. Failed fetches for current members reuse old data marked `stale`.
-6. **Trim on ingest.** The player endpoint returns mods, datacrons and more. Store only the fields listed in BUILD.md §4.
+6. **Trim on ingest.** The player endpoint returns mods, datacrons and more. Store only the fields listed in BUILD.md §4, and only for platoon units and units a special mission can use (`keptUnits`).
 7. **No em dashes in UI copy.** Use commas, colons or parentheses.
 
 ## Game rules the code must encode
@@ -68,6 +71,7 @@ scripts/
 - Ships: meet the requirement at **7 stars** (`rarity == 7`). Relic does not apply.
 - Unit level (1 to 85) is ignored; gear implies it.
 - Phase minimum relic: P1 R5, P2 R6, P3 R7, P4 R8, P5 R9, P6 R9.
+- Special missions (BUILD.md §10): a squad of N characters at the mission's own relic, with the named units in it. Ships never count. One attempt per member per TB, open until the TB ends. The guild number is members ready; two missions unlock the bonus planets at 25 (Mandalore) and 30 (Zeffo) wins.
 - A player can place a given unit **once per day**, in any platoon of any open planet. Platoons of an earlier phase stay open after the next phase starts, until the planet is three-starred, and the daily reset lets the same player place the same unit again. So a phase the guild plays over D days gives each player D placements per unit. The phase total divided by D (rounded up) is the number that matters for "fillable"; the full phase total is what it takes to fill everything on day 1. D is a visitor toggle (1, 2 or 3), default 2: DutchJedi plays about three phases over the six days. Decided 2026-10-06 from in-game observation.
 
 ## Things to verify, not assume

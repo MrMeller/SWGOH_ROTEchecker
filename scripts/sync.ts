@@ -5,17 +5,19 @@
 import { appendFileSync, existsSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { DEFAULT_COMLINK_URL } from "../lib/comlink";
-import { wantedUnits } from "../lib/requirements";
+import { keptUnits } from "../lib/missions";
 import type { Snapshot } from "../lib/snapshot";
 import { runSync } from "../lib/sync";
-import { loadCatalog, loadPlatoons } from "./load";
+import { loadCatalog, loadMissions, loadPlatoons } from "./load";
 
 const root = path.resolve(import.meta.dirname, "..");
 if (existsSync(path.join(root, ".env"))) process.loadEnvFile(path.join(root, ".env"));
 
 const baseUrl = process.env.COMLINK_URL ?? DEFAULT_COMLINK_URL;
-const wanted = wantedUnits(loadPlatoons());
-const ships = new Set(loadCatalog().filter((u) => u.combat_type === 2).map((u) => u.base_id));
+const catalog = loadCatalog();
+// Platoon units plus every unit a special mission can use (BUILD.md §10).
+const wanted = keptUnits(loadPlatoons(), loadMissions(), catalog);
+const ships = new Set(catalog.filter((u) => u.combat_type === 2).map((u) => u.base_id));
 const latestPath = path.join(root, "data/snapshots/latest.json");
 const previous = existsSync(latestPath) ? (JSON.parse(readFileSync(latestPath, "utf8")) as Snapshot) : undefined;
 
