@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { DaysVariants } from "@/components/Days";
+import { CoverageNotice, MissionCard } from "@/components/MissionCard";
 import { PlanetTag, PlatoonPills } from "@/components/PlanetPlan";
 import { PLANET_STYLE } from "@/components/planets";
-import { findPlanet, getPhase, getPhasePlan, getPhaseStatus, getRequirements, unitImage, unitName } from "@/lib/data";
+import { findPlanet, getMissionStatus, getPhase, getPhasePlan, getPhaseStatus, getRequirements, missionsOn, unitImage, unitName } from "@/lib/data";
 import { laterDays } from "@/lib/format";
 import { platoonViews, type PlatoonView, type SlotState } from "@/lib/plan";
 import { planetSlug, type Phase, type Planet } from "@/lib/requirements";
@@ -57,6 +58,7 @@ export default async function PlanetPage({ params }: { params: Params }) {
   const planet = phase && findPlanet(phase, slug);
   if (!phase || !planet) notFound();
   const style = PLANET_STYLE[planet.alignment];
+  const missions = missionsOn(n, planet.name);
 
   return (
     <div className="space-y-5">
@@ -69,6 +71,15 @@ export default async function PlanetPage({ params }: { params: Params }) {
         </h1>
         <p className="text-sm text-slate-400">Phase {n}, R{phase.minRelic} needed.</p>
       </div>
+
+      {missions.length > 0 && (
+        <section className="space-y-3">
+          {missions.map((m) => (
+            <MissionCard key={m.id} status={getMissionStatus(m)} />
+          ))}
+          <CoverageNotice />
+        </section>
+      )}
 
       <DaysVariants
         variants={

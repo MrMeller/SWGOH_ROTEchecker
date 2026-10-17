@@ -1,9 +1,11 @@
 // Server-side data access for pages. Builds requirements from the platoon data, loads the snapshot and unit names once
 // per build and memoises the derived per-phase results.
 import characters from "@/data/fixtures/characters.json";
+import missionData from "@/data/rote-special-missions.json";
 import platoons from "@/data/rote-platoons.json";
 import ships from "@/data/fixtures/ships.json";
 import { focusList, type FocusItem } from "./focus";
+import { missionStatus, missionUnits, type Mission, type MissionData, type MissionStatus } from "./missions";
 import {
   buildRequirements,
   planetSlug,
@@ -19,11 +21,14 @@ import { DEFAULT_DAYS, phaseStatus, type Days, type PhaseUnitStatus } from "./st
 
 let cache: {
   req: Requirements;
+  catalog: CatalogUnit[];
+  missions: Mission[];
   snapshot: Snapshot;
   names: Map<string, string>;
   images: Map<string, string>;
   status: Map<string, PhaseUnitStatus[]>;
   focus: Map<string, FocusItem[]>;
+  missionStatus: Map<Mission, MissionStatus>;
 } | null = null;
 
 function load() {
@@ -34,7 +39,8 @@ function load() {
   const images = new Map(catalog.flatMap((u) => (u.image ? [[u.base_id, u.image] as const] : [])));
   const snapshot = loadSnapshot();
   snapshot.players.sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }));
-  cache = { req, snapshot, names, images, status: new Map(), focus: new Map() };
+  const missions = (missionData as MissionData).missions;
+  cache = { req, catalog, missions, snapshot, names, images, status: new Map(), focus: new Map(), missionStatus: new Map() };
   return cache;
 }
 
@@ -102,4 +108,44 @@ export function allUnits(): { baseId: string; name: string; combatType: 1 | 2 }[
       for (const u of pl.units)
         if (!seen.has(u.baseId)) seen.set(u.baseId, { baseId: u.baseId, name: unitName(u.baseId, u.name), combatType: u.combatType });
   return [...seen.values()];
+}
+
+// ---- Special missions (BUILD.md §10) ----
+
+/** Every special mission, in data order (by phase, then map order). */
+export function getMissions(): Mission[] {
+  return load().missions;
+}
+
+export function missionsIn(phase: number): Mission[] {
+  return load().missions.filter((m) => m.phase === phase);
+}
+
+export function missionsOn(phase: number, planet: string): Mission[] {
+  return load().missions.filter((m) => m.phase === phase && m.planet === planet);
+}
+
+export function findMission(phase: number, slug: string, id: string): Mission | undefined {
+  return load().missions.find((m) => m.phase === phase && planetSlug(m.planet) === slug && m.id === id);
+}
+
+export function missionHref(m: Mission): string {
+  return `/phase/${m.phase}/planet/${planetSlug(m.planet)}/mission/${m.id}`;
+}
+
+export function getMissionStatus(m: Mission): MissionStatus {
+  const c = load();
+  if (!c.missionStatus.has(m)) c.missionStatus.set(m, missionStatus(m, c.snapshot.players, c.catalog));
+  return c.missionStatus.get(m)!;
+}
+
+/**
+ * False when no member has any unit outside the platoon data: the snapshot was synced before
+ * the missions were tracked, so members look short on units the sync simply left out.
+ */
+export function snapshotCoversMissions(): boolean {
+  const c = load();
+  const platoonIds = new Set(c.req.phases.flatMap((p) => p.planets.flatMap((pl) => pl.platoons.flat())));
+  const extra = [...missionUnits({ source: "", missions: c.missions }, c.catalog)].filter((id) => !platoonIds.has(id));
+  return c.snapshot.players.some((p) => extra.some((id) => id in p.units));
 }

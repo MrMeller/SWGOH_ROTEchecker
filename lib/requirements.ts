@@ -15,6 +15,8 @@ export interface CatalogUnit {
   combat_type: number;
   /** Portrait URL on game-assets.swgoh.gg. */
   image?: string;
+  /** Faction and role tags as swgoh.gg lists them ("Nightsister", "Clone Trooper"). Special missions match on these. */
+  categories?: string[];
 }
 
 // ---- rote-platoons.json ----
