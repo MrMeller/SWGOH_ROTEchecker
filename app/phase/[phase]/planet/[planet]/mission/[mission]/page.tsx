@@ -3,8 +3,8 @@ import { notFound } from "next/navigation";
 import { CoverageNotice, MissionSummary, UnlockChip } from "@/components/MissionCard";
 import { PlanetTag } from "@/components/PlanetPlan";
 import { PLANET_STYLE } from "@/components/planets";
-import { allUnits, findMission, findPlanet, getMissionStatus, getMissions, getPhase, unitImage, unitName } from "@/lib/data";
-import { missingText, missionRequirement, rewardText, tagPlural, type MissionCandidate } from "@/lib/missions";
+import { findMission, findPlanet, getMissionStatus, getMissions, getPhase, pageUnits, unitImage, unitName } from "@/lib/data";
+import { missingText, missionRequirement, missionTabKey, rewardText, tagPlural, type MissionCandidate } from "@/lib/missions";
 import { planetSlug } from "@/lib/requirements";
 
 export const dynamicParams = false;
@@ -36,7 +36,7 @@ export default async function MissionPage({ params }: { params: Params }) {
   if (!phase || !planet || !mission) notFound();
   const s = getMissionStatus(mission);
   const style = PLANET_STYLE[planet.alignment];
-  const unitPages = new Set(allUnits().map((u) => u.baseId));
+  const unitPages = new Set(pageUnits().map((u) => u.baseId));
   const squadWord = mission.tag ? tagPlural(mission.tag, 2) : "characters";
 
   return (
@@ -64,6 +64,46 @@ export default async function MissionPage({ params }: { params: Params }) {
       <div className="rounded-xl bg-slate-900/60 p-4 ring-1 ring-slate-800">
         <MissionSummary status={s} />
       </div>
+
+      <section>
+        <h2 className="mb-1 text-sm font-semibold text-slate-300">Units that count ({s.units.length})</h2>
+        <p className="mb-2 text-xs text-slate-500">
+          The units the mission names come first (sky ring), then the rest with the most members at R{mission.minRelic} or higher first.
+          {mission.tag === null && mission.squad > mission.required.length + mission.anyOf.length && " Any character counts, so only the named ones are shown."}
+        </p>
+        <div className="grid grid-cols-5 gap-1.5 sm:grid-cols-8">
+          {s.units
+            .filter((u) => mission.tag !== null || u.named)
+            .map((u) => {
+              const src = unitImage(u.baseId);
+              const tile = (
+                <>
+                  <div className={`overflow-hidden rounded-md bg-slate-800 ${u.named ? "ring-2 ring-sky-400" : ""}`}>
+                    {src ? (
+                      <img src={src} alt={u.name} loading="lazy" className={`aspect-square w-full object-cover ${u.atLevel ? "" : "opacity-50 grayscale"}`} />
+                    ) : (
+                      <span className="flex aspect-square items-center p-1 text-center text-[9px] leading-tight">{u.name}</span>
+                    )}
+                  </div>
+                  <p className="mt-0.5 text-center text-[11px] leading-tight tabular-nums">
+                    <span className={u.atLevel ? "text-slate-100" : "text-slate-500"}>{u.atLevel}</span>
+                    <span className="text-slate-500"> / {u.owned}</span>
+                  </p>
+                </>
+              );
+              return unitPages.has(u.baseId) ? (
+                <Link key={u.baseId} href={`/unit/${u.baseId}?phase=${missionTabKey(mission)}`} title={u.name} className="block hover:opacity-90">
+                  {tile}
+                </Link>
+              ) : (
+                <div key={u.baseId} title={u.name}>
+                  {tile}
+                </div>
+              );
+            })}
+        </div>
+        <p className="mt-1 text-xs text-slate-500">Under each portrait: members at the relic / members who own it.</p>
+      </section>
 
       <CoverageNotice />
 
@@ -110,45 +150,6 @@ export default async function MissionPage({ params }: { params: Params }) {
         )}
       </section>
 
-      <section>
-        <h2 className="mb-1 text-sm font-semibold text-slate-300">Units that count ({s.units.length})</h2>
-        <p className="mb-2 text-xs text-slate-500">
-          Members with the unit at R{mission.minRelic} or higher, most first. A sky ring marks a unit the mission names.
-          {mission.tag === null && mission.squad > mission.required.length + mission.anyOf.length && " Any character counts, so only the named ones are shown."}
-        </p>
-        <div className="grid grid-cols-5 gap-1.5 sm:grid-cols-8">
-          {s.units
-            .filter((u) => mission.tag !== null || u.named)
-            .map((u) => {
-              const src = unitImage(u.baseId);
-              const tile = (
-                <>
-                  <div className={`overflow-hidden rounded-md bg-slate-800 ${u.named ? "ring-2 ring-sky-400" : ""}`}>
-                    {src ? (
-                      <img src={src} alt={u.name} loading="lazy" className={`aspect-square w-full object-cover ${u.atLevel ? "" : "opacity-50 grayscale"}`} />
-                    ) : (
-                      <span className="flex aspect-square items-center p-1 text-center text-[9px] leading-tight">{u.name}</span>
-                    )}
-                  </div>
-                  <p className="mt-0.5 text-center text-[11px] leading-tight tabular-nums">
-                    <span className={u.atLevel ? "text-slate-100" : "text-slate-500"}>{u.atLevel}</span>
-                    <span className="text-slate-500"> / {u.owned}</span>
-                  </p>
-                </>
-              );
-              return unitPages.has(u.baseId) ? (
-                <Link key={u.baseId} href={`/unit/${u.baseId}?phase=${n}`} title={u.name} className="block hover:opacity-90">
-                  {tile}
-                </Link>
-              ) : (
-                <div key={u.baseId} title={u.name}>
-                  {tile}
-                </div>
-              );
-            })}
-        </div>
-        <p className="mt-1 text-xs text-slate-500">Under each portrait: members at the relic / members who own it.</p>
-      </section>
     </div>
   );
 }

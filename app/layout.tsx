@@ -16,6 +16,7 @@ export const viewport: Viewport = { themeColor: "#020617" };
 
 const NAV = [
   { href: "/phase/1/focus", label: "Focus" },
+  { href: "/characters", label: "Characters" },
   { href: "/player", label: "Players" },
 ];
 
@@ -25,11 +26,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className="min-h-screen bg-slate-950 text-slate-100 antialiased">
         <header className="sticky top-0 z-10 border-b border-slate-800 bg-slate-950/90 backdrop-blur">
-          <div className="mx-auto flex max-w-3xl items-center justify-between gap-3 px-4 py-3">
-            <Link href="/" className="font-semibold tracking-tight">
+          <div className="mx-auto flex max-w-3xl flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-2 sm:flex-nowrap sm:py-3">
+            <Link href="/" className="font-semibold tracking-tight whitespace-nowrap">
               RotE Tracker <span className="text-slate-500">DutchJedi</span>
             </Link>
-            <nav className="flex gap-1 text-sm">
+            <nav className="-mx-2.5 flex gap-1 text-sm sm:mx-0">
               <PhaseLink className="rounded-md px-2.5 py-1.5 text-slate-300 hover:bg-slate-800 hover:text-white">Overview</PhaseLink>
               {NAV.map((n) => (
                 <Link key={n.href} href={n.href} className="rounded-md px-2.5 py-1.5 text-slate-300 hover:bg-slate-800 hover:text-white">

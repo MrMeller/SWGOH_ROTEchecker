@@ -104,6 +104,23 @@ export function missionPool(m: Mission, catalog: readonly CatalogUnit[]): string
   return [...ids];
 }
 
+export type MissionRole = "named" | "squad";
+
+/**
+ * How a unit counts for a mission on the unit pages: named by it, or one of the squad's tag.
+ * Fillers of an any-character squad (Kessel, Vandor) get null, or every character would qualify.
+ */
+export function missionRole(m: Mission, u: CatalogUnit): MissionRole | null {
+  if (namedUnits(m).includes(u.base_id)) return "named";
+  if (m.tag !== null && isCharacter(u) && hasTag(u, m.tag) && m.squad > m.required.length + m.anyOf.length) return "squad";
+  return null;
+}
+
+/** Tab key of a mission on a unit page, next to the phase numbers of the platoon tabs ("3-mandalorians"). */
+export function missionTabKey(m: Pick<Mission, "phase" | "id">): string {
+  return `${m.phase}-${m.id}`;
+}
+
 /** Every unit any mission can use. */
 export function missionUnits(data: MissionData, catalog: readonly CatalogUnit[]): Set<string> {
   return new Set(data.missions.flatMap((m) => missionPool(m, catalog)));
@@ -213,7 +230,7 @@ export interface MissionStatus {
   ready: MissionCandidate[];
   /** Fewest units short first, then least effort, then by name. */
   notReady: MissionCandidate[];
-  /** The pool, most members at the relic first. */
+  /** The pool: the named units in mission order, then the rest, most members at the relic first. */
   units: MissionPoolUnit[];
   unlock?: MissionUnlock & { status: UnlockStatus; gap: number };
   /**
@@ -232,7 +249,8 @@ export function compareNotReady(a: MissionCandidate, b: MissionCandidate): numbe
 export function missionStatus(m: Mission, players: readonly TrimmedPlayer[], catalog: readonly CatalogUnit[]): MissionStatus {
   const pool = missionPool(m, catalog);
   const names = new Map(catalog.map((u) => [u.base_id, u.name]));
-  const namedIds = new Set(namedUnits(m));
+  const namedOrder = namedUnits(m);
+  const namedIds = new Set(namedOrder);
 
   const ready: MissionCandidate[] = [];
   const notReady: MissionCandidate[] = [];
@@ -255,7 +273,10 @@ export function missionStatus(m: Mission, players: readonly TrimmedPlayer[], cat
       }
       return { baseId, name: names.get(baseId) ?? baseId, named: namedIds.has(baseId), atLevel, owned };
     })
-    .sort((a, b) => b.atLevel - a.atLevel || b.owned - a.owned || byName(a, b));
+    .sort((a, b) => {
+      if (a.named || b.named) return a.named && b.named ? namedOrder.indexOf(a.baseId) - namedOrder.indexOf(b.baseId) : a.named ? -1 : 1;
+      return b.atLevel - a.atLevel || b.owned - a.owned || byName(a, b);
+    });
 
   const present = new Set(players.flatMap((p) => Object.keys(p.units)));
   const uncovered = [

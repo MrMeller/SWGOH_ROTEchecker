@@ -4,6 +4,8 @@ import {
   evaluateMission,
   keptUnits,
   missionPool,
+  missionRole,
+  missionTabKey,
   missionRequirement,
   missingText,
   missionFocus,
@@ -81,6 +83,30 @@ describe("missionPool", () => {
   });
 });
 
+describe("missionRole", () => {
+  const unit = (id: string) => catalog.find((u) => u.base_id === id)!;
+
+  it("names the required and any-of units", () => {
+    expect(missionRole(mandalorians, unit("MANDALORBOKATAN"))).toBe("named");
+    expect(missionRole(cereAndCal, unit("JEDIKNIGHTCAL"))).toBe("named");
+    expect(missionRole(kessel, unit("QIRA"))).toBe("named");
+  });
+
+  it("counts characters with the squad's tag, not others", () => {
+    expect(missionRole(nightsisters, unit("MOTHERTALZIN"))).toBe("squad");
+    expect(missionRole(nightsisters, unit("GLREY"))).toBeNull();
+  });
+
+  it("leaves out the fillers of an any-character squad and squads that are only named units", () => {
+    expect(missionRole(kessel, unit("GLREY"))).toBeNull();
+    expect(missionRole(cereAndCal, unit("GLREY"))).toBeNull();
+  });
+
+  it("keys a mission tab by phase and id", () => {
+    expect(missionTabKey(mandalorians)).toBe("3-mandalorians");
+  });
+});
+
 describe("evaluateMission", () => {
   const pool = missionPool(nightsisters, catalog);
   const five = { MERRIN: r(7), MOTHERTALZIN: r(8), DAKA: r(7), ASAJVENTRESS: r(9), TALIA: r(7) };
@@ -142,6 +168,13 @@ describe("missionStatus", () => {
     player({}, "Dee", 5),
   ];
 
+  it("lists the named units first in mission order, then the rest by members at the relic", () => {
+    const s = missionStatus(mandalorians, [player({ BOKATAN: r(7), JANGOFETT: r(8) }, "Amy")], catalog);
+    expect(s.units.slice(0, 2).map((u) => u.baseId)).toEqual(["MANDALORBOKATAN", "THEMANDALORIANBESKARARMOR"]);
+    expect(s.units.slice(2, 4).map((u) => u.atLevel)).toEqual([1, 1]);
+    expect(s.units.slice(4).every((u) => !u.named && u.atLevel === 0)).toBe(true);
+  });
+
   it("splits ready from not ready, closest first, and counts the pool", () => {
     const s = missionStatus(nightsisters, players, catalog);
     expect(s.ready.map((c) => c.name)).toEqual(["Amy", "Zed"]);
@@ -150,8 +183,8 @@ describe("missionStatus", () => {
       ["Cid", 3],
       ["Dee", 5],
     ]);
-    expect(s.units[0]).toMatchObject({ baseId: "MOTHERTALZIN", atLevel: 4, owned: 4 });
-    expect(s.units.find((u) => u.baseId === "MERRIN")).toMatchObject({ named: true, atLevel: 3, owned: 4 });
+    expect(s.units[0]).toMatchObject({ baseId: "MERRIN", named: true, atLevel: 3, owned: 4 });
+    expect(s.units[1]).toMatchObject({ baseId: "MOTHERTALZIN", atLevel: 4, owned: 4 });
     expect(s.unlock).toBeUndefined();
     expect(s.uncovered).toEqual([]);
   });

@@ -5,7 +5,17 @@ import missionData from "@/data/rote-special-missions.json";
 import platoons from "@/data/rote-platoons.json";
 import ships from "@/data/fixtures/ships.json";
 import { focusList, type FocusItem } from "./focus";
-import { missionStatus, missionUnits, type Mission, type MissionData, type MissionStatus } from "./missions";
+import { playerListForUnit } from "./matching";
+import {
+  missionRole,
+  missionStatus,
+  missionTabKey,
+  missionUnits,
+  type Mission,
+  type MissionData,
+  type MissionRole,
+  type MissionStatus,
+} from "./missions";
 import {
   buildRequirements,
   planetSlug,
@@ -17,7 +27,8 @@ import {
 } from "./requirements";
 import { phasePlan, type PhasePlan } from "./plan";
 import { loadSnapshot, type Snapshot } from "./snapshot";
-import { DEFAULT_DAYS, phaseStatus, type Days, type PhaseUnitStatus } from "./status";
+import { DAYS_OPTIONS, DEFAULT_DAYS, phaseStatus, type Days, type PhaseUnitStatus, type Status } from "./status";
+import type { UnitIndexRow } from "./units";
 
 let cache: {
   req: Requirements;
@@ -148,4 +159,79 @@ export function snapshotCoversMissions(): boolean {
   const platoonIds = new Set(c.req.phases.flatMap((p) => p.planets.flatMap((pl) => pl.platoons.flat())));
   const extra = [...missionUnits({ source: "", missions: c.missions }, c.catalog)].filter((id) => !platoonIds.has(id));
   return c.snapshot.players.some((p) => extra.some((id) => id in p.units));
+}
+
+// ---- Unit pages and the unit index (Characters page) ----
+
+export interface UnitMission {
+  mission: Mission;
+  role: MissionRole;
+}
+
+let unitMissions: Map<string, UnitMission[]> | null = null;
+
+/** Special missions a unit counts for, named or by the squad's tag, in mission order. */
+export function missionsForUnit(baseId: string): UnitMission[] {
+  if (!unitMissions) {
+    const c = load();
+    unitMissions = new Map();
+    for (const u of c.catalog)
+      for (const mission of c.missions) {
+        const role = missionRole(mission, u);
+        if (role) unitMissions.set(u.base_id, [...(unitMissions.get(u.base_id) ?? []), { mission, role }]);
+      }
+  }
+  return unitMissions.get(baseId) ?? [];
+}
+
+/** Units with a page: every platoon unit, plus every character a special mission counts. */
+export function pageUnits(): { baseId: string; name: string; combatType: 1 | 2 }[] {
+  const units = allUnits();
+  const seen = new Set(units.map((u) => u.baseId));
+  for (const u of load().catalog)
+    if (!seen.has(u.base_id) && missionsForUnit(u.base_id).length) units.push({ baseId: u.base_id, name: u.name, combatType: 1 });
+  return units;
+}
+
+let index: UnitIndexRow[] | null = null;
+
+/** Every unit with a page, with its catalog details, guild status per phase and days, and its special missions. */
+export function getUnitIndex(): UnitIndexRow[] {
+  if (index) return index;
+  const c = load();
+  const byId = new Map(c.catalog.map((u) => [u.base_id, u]));
+  const rows = new Map<string, UnitIndexRow>();
+  for (const unit of pageUnits()) {
+    const cat = byId.get(unit.baseId) as (CatalogUnit & { alignment?: string }) | undefined;
+    rows.set(unit.baseId, {
+      ...unit,
+      image: cat?.image,
+      alignment: cat?.alignment,
+      tags: cat?.categories ?? [],
+      phases: [],
+      missions: missionsForUnit(unit.baseId).map(({ mission: m, role }) => ({
+        phase: m.phase,
+        planet: m.planet,
+        title: m.title,
+        key: missionTabKey(m),
+        minRelic: m.minRelic,
+        named: role === "named",
+        meets: playerListForUnit(unit.baseId, 1, m.minRelic, c.snapshot.players).meets.length,
+      })),
+    });
+  }
+  for (const phase of c.req.phases) {
+    const perDays = DAYS_OPTIONS.map((d) => new Map(getPhaseStatus(phase.phase, d).map((s) => [s.baseId, s])));
+    for (const [baseId, s] of perDays[0]) {
+      rows.get(baseId)!.phases.push({
+        phase: phase.phase,
+        minRelic: phase.minRelic,
+        need: s.need,
+        meets: s.meets,
+        status: Object.fromEntries(DAYS_OPTIONS.map((d, i) => [d, perDays[i].get(baseId)!.status])) as Record<Days, Status>,
+      });
+    }
+  }
+  index = [...rows.values()];
+  return index;
 }
