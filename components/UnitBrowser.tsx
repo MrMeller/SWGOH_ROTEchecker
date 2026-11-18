@@ -95,15 +95,39 @@ function UnitList({ rows, days, phase, usedIn }: { rows: UnitIndexRow[]; days: D
   );
 }
 
+const DEFAULTS = {
+  query: "",
+  type: "all" as TypeFilter,
+  usedIn: "all" as UsedInFilter,
+  phase: 0,
+  alignment: "",
+  tag: "",
+  status: "all" as StatusFilter,
+  sort: "name" as SortKey,
+};
+
 export function UnitBrowser({ rows }: { rows: UnitIndexRow[] }) {
-  const [query, setQuery] = useState("");
-  const [type, setType] = useState<TypeFilter>("character");
-  const [usedIn, setUsedIn] = useState<UsedInFilter>("all");
-  const [phase, setPhase] = useState(0);
-  const [alignment, setAlignment] = useState("");
-  const [tag, setTag] = useState("");
-  const [status, setStatus] = useState<StatusFilter>("all");
-  const [sort, setSort] = useState<SortKey>("name");
+  const [query, setQuery] = useState(DEFAULTS.query);
+  const [type, setType] = useState<TypeFilter>(DEFAULTS.type);
+  const [usedIn, setUsedIn] = useState<UsedInFilter>(DEFAULTS.usedIn);
+  const [phase, setPhase] = useState(DEFAULTS.phase);
+  const [alignment, setAlignment] = useState(DEFAULTS.alignment);
+  const [tag, setTag] = useState(DEFAULTS.tag);
+  const [status, setStatus] = useState<StatusFilter>(DEFAULTS.status);
+  const [sort, setSort] = useState<SortKey>(DEFAULTS.sort);
+
+  const current = { query, type, usedIn, phase, alignment, tag, status, sort };
+  const changed = (Object.keys(DEFAULTS) as (keyof typeof DEFAULTS)[]).some((k) => current[k] !== DEFAULTS[k]);
+  const reset = () => {
+    setQuery(DEFAULTS.query);
+    setType(DEFAULTS.type);
+    setUsedIn(DEFAULTS.usedIn);
+    setPhase(DEFAULTS.phase);
+    setAlignment(DEFAULTS.alignment);
+    setTag(DEFAULTS.tag);
+    setStatus(DEFAULTS.status);
+    setSort(DEFAULTS.sort);
+  };
 
   const tags = useMemo(() => [...new Set(rows.flatMap((r) => r.tags))].filter((t) => t !== "Leader").sort(), [rows]);
   const alignments = useMemo(() => [...new Set(rows.flatMap((r) => (r.alignment ? [r.alignment] : [])))].sort(), [rows]);
@@ -188,6 +212,16 @@ export function UnitBrowser({ rows }: { rows: UnitIndexRow[] }) {
             { value: "need", label: "Most slots uncovered" },
           ]}
         />
+        <div className="flex items-end">
+          <button
+            type="button"
+            onClick={reset}
+            disabled={!changed}
+            className="w-full rounded-lg bg-slate-800 px-3 py-2 text-sm text-slate-100 ring-1 ring-slate-700 hover:bg-slate-700 disabled:cursor-default disabled:text-slate-500 disabled:hover:bg-slate-800"
+          >
+            Reset filters
+          </button>
+        </div>
       </div>
       <DaysVariants variants={variants} />
     </div>
